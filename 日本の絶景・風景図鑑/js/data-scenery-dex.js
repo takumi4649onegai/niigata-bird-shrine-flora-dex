@@ -3,6 +3,7 @@ window.SCENERY_DEX_DATABASE = [
   {
     "id": "yahiko_momijidani",
     "dexNo": "001",
+    "photoUrl": "../img/scenery/yahiko_shrine_grand_torii.jpg",
     "name": "弥彦公園「もみじ谷・観月橋」（朱色の太鼓橋と四季のリフレクション・弥彦村）",
     "englishTitle": "Yahiko Park Momijidani: Vermilion Moon-Viewing Bridge in Autumn Leaves",
     "category": "絶景・風景",
@@ -67,6 +68,7 @@ window.SCENERY_DEX_DATABASE = [
   {
     "id": "fukushimagata_morning_mist",
     "dexNo": "002",
+    "photoUrl": "../img/scenery/fukushimagata_morning_mirror_iide.jpg",
     "name": "福島潟の朝霧・水鏡と冠雪の飯豊連峰（新潟市北区）",
     "englishTitle": "Fukushimagata Lagoon: Dawn Mist, Mirror Water & Snowy Mountains",
     "category": "絶景・風景",
@@ -501,6 +503,7 @@ window.SCENERY_DEX_DATABASE = [
   {
     "id": "shimamihama_sunset",
     "dexNo": "008",
+    "photoUrl": "../img/scenery/shimamihama_magichour_sado_island.jpg",
     "name": "島見浜・太郎代浜から望む「日本海の大夕日と佐渡島」（新潟市北区）",
     "recipeImages": [
       {
@@ -1382,6 +1385,7 @@ window.SCENERY_DEX_DATABASE = [
   {
     "id": "shibata_shimizuen",
     "dexNo": "021",
+    "photoUrl": "../img/scenery/shibata_shimizuen_frame_pond.jpg",
     "name": "新発田・清水園（旧新発田藩下屋敷・名勝池泉回遊式庭園と書院）",
     "englishTitle": "Shimizu-en Garden: Historic Samurai Daimyo Villa & Pond Reflection",
     "category": "絶景・風景",
@@ -1527,6 +1531,7 @@ window.SCENERY_DEX_DATABASE = [
   {
     "id": "sanjo_yagigahana",
     "dexNo": "023",
+    "photoUrl": "../img/scenery/yagigahana_cliff_reflection.jpg",
     "name": "三条・八木ヶ鼻の石壁と清流（高さ200mの柱状節理絶壁とハヤブサの空）",
     "englishTitle": "Yagigahana Giant Rock Cliff: 200m Sheer Precipice & Ikarashi River",
     "category": "絶景・風景",
@@ -1601,6 +1606,7 @@ window.SCENERY_DEX_DATABASE = [
   {
     "id": "kita_shimami_sandune",
     "dexNo": "024",
+    "photoUrl": "../img/scenery/shimamihama_sunset_telephoto_gull.jpg",
     "name": "島見浜・クロマツ砂丘防風林と砂浜展望台（新潟市北区島見町）",
     "englishTitle": "Shimami Coastal Black Pine Dunes & Sea Lookout in Kita-ku",
     "category": "絶景・風景",
@@ -1676,6 +1682,7 @@ window.SCENERY_DEX_DATABASE = [
   {
     "id": "kita_araigo_sluice",
     "dexNo": "025",
+    "photoUrl": "../img/scenery/araigo_sluice_sunset_agano.jpg",
     "name": "新井郷川排水機場・夕暮れ水門と阿賀野川合流リフレクション（北区松浜）",
     "englishTitle": "Araigo River Sluice Gate Sunset Reflection at Aganogawa Confluence",
     "category": "絶景・風景",
@@ -2297,6 +2304,7 @@ window.SCENERY_DEX_DATABASE = [
   {
     "id": "view_fukushimagata_onibasu",
     "dexNo": "036",
+    "photoUrl": "../img/scenery/fukushimagata_rapeseed_view_tower.jpg",
     "name": "水の駅「ビュー福島潟」（新潟市北区前新田・潟とオニバス自生水路）",
     "englishTitle": "View Fukushimagata & Northernmost Euryale Ferox Lagoon Waterways",
     "category": "絶景・風景",

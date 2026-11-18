@@ -300,17 +300,24 @@
       border-radius: 4px;
     }
     .split-label.mine { background: #d97706; }
-    .dex-badge {
+    .card-badges-left {
       position: absolute;
       top: 8px;
       left: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 5;
+    }
+    .dex-badge {
       background: rgba(15,23,42,0.85);
       color: #fde68a;
       font-size: 0.72rem;
       font-weight: 800;
       padding: 3px 9px;
       border-radius: 6px;
-      z-index: 2;
+      border: 1px solid rgba(251,191,36,0.3);
+      display: inline-block;
     }
     .get-badge {
       position: absolute;
@@ -2027,7 +2034,7 @@
             filtered = filtered.filter(it => it._geo && it._geo.homeApproach && it._geo.homeApproach.isCloserToHome);
           }
 
-          // ソート判定（距離順または地域順）
+          // ソート判定（距離順または図鑑No順）
           if (isSortByDistance || isWayHomeMode) {
             filtered.sort((a, b) => {
               const dA = (a._geo && a._geo.dist != null) ? a._geo.dist : 9999;
@@ -2035,27 +2042,12 @@
               return dA - dB;
             });
           } else {
-            // 通常の地域順ソート
-            const regionOrder = { kaetsu: 1, chuetsu: 2, joetsu: 3, sado: 4 };
-            filtered.sort((a, b) => {
-              if (currentRegion === "all") {
-                const regA = regionOrder[a.region] || 99;
-                const regB = regionOrder[b.region] || 99;
-                if (regA !== regB) return regA - regB;
-              }
-              return (a.dexNo || "").localeCompare(b.dexNo || "");
-            });
+            // 図鑑ナンバー完全連番ソート（No.001〜No.042 順）
+            filtered.sort((a, b) => (a.dexNo || "").localeCompare(b.dexNo || ""));
           }
         } else {
-          const regionOrder = { kaetsu: 1, chuetsu: 2, joetsu: 3, sado: 4 };
-          filtered.sort((a, b) => {
-            if (currentRegion === "all") {
-              const regA = regionOrder[a.region] || 99;
-              const regB = regionOrder[b.region] || 99;
-              if (regA !== regB) return regA - regB;
-            }
-            return (a.dexNo || "").localeCompare(b.dexNo || "");
-          });
+          // 図鑑ナンバー完全連番ソート（No.001〜No.042 順）
+          filtered.sort((a, b) => (a.dexNo || "").localeCompare(b.dexNo || ""));
         }
 
         const gridEl = document.getElementById("japan-dex-grid");
@@ -2068,13 +2060,14 @@
           const caps = state.captures[it.id] || [];
           const bestCap = caps[0];
           const fallback = it.photoUrl || (state.wikiCache && state.wikiCache[it.id]) || getFallbackSvg(it);
+          const safeFallback = getFallbackSvg(it);
           const stars = "★".repeat(it.rarity || 3) + "☆".repeat(5 - (it.rarity || 3));
           const firstRecipe = (it.shotRecipes && it.shotRecipes[0]) ? it.shotRecipes[0] : "";
 
           const mediaHtml = bestCap ? `
             <div class="card-split">
               <div class="card-split-pane">
-                <img data-ref-id="${it.id}" src="${fallback}" alt="${it.name}" />
+                <img data-ref-id="${it.id}" referrerpolicy="no-referrer" src="${fallback}" alt="${it.name}" onerror="this.onerror=null; this.src='${safeFallback}';" />
                 <span class="split-label">お手本</span>
               </div>
               <div class="card-split-pane">
@@ -2083,13 +2076,13 @@
               </div>
             </div>
           ` : `
-            <img data-ref-id="${it.id}" src="${fallback}" alt="${it.name}" />
+            <img data-ref-id="${it.id}" referrerpolicy="no-referrer" src="${fallback}" alt="${it.name}" onerror="this.onerror=null; this.src='${safeFallback}';" />
           `;
 
           return `
             <article class="dex-card ${bestCap ? 'captured' : ''}" onclick="JapanApp.openDetailModal('${it.id}')">
               <div class="card-top">
-                <div style="display:flex; align-items:center; gap:5px;">
+                <div class="card-badges-left">
                   <span class="dex-badge">No.${it.dexNo}</span>
                   ${it.region === 'kaetsu' ? '<span style="background:rgba(15,23,42,0.85); color:#e2e8f0; border:1px solid #475569; font-size:0.68rem; font-weight:700; padding:2px 6px; border-radius:4px;">📍 下越・市内</span>' :
                     it.region === 'chuetsu' ? '<span style="background:rgba(15,23,42,0.85); color:#e2e8f0; border:1px solid #475569; font-size:0.68rem; font-weight:700; padding:2px 6px; border-radius:4px;">🚗 中越</span>' :
@@ -2335,7 +2328,7 @@
                 <span style="font-size:0.72rem; color:#fde68a;">${state.customRef[item.id] ? '✨カスタム設定中' : '📷 現地実写'}</span>
               </div>
               <div class="compare-img-wrap" style="cursor:pointer;" onclick="JapanApp.loadCandidates('${item.id}')">
-                <img id="mdl-ref-img" src="${initialRef}" alt="${item.name}" />
+                <img id="mdl-ref-img" referrerpolicy="no-referrer" src="${initialRef}" alt="${item.name}" onerror="this.onerror=null; this.src='${fallback}';" />
               </div>
             </div>
 
