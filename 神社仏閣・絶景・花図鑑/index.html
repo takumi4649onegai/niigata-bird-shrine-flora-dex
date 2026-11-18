@@ -740,6 +740,66 @@
       border: 1px solid #f59e0b !important;
     }
 
+  
+    /* --- 今日の目的＆深掘りナビ専用スタイル --- */
+    .purpose-btn {
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+    .purpose-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    }
+    .purpose-btn.active.btn-buddha {
+      background: linear-gradient(135deg, #7c3aed, #6d28d9) !important;
+      color: #fff !important;
+      border-color: #6d28d9 !important;
+      box-shadow: 0 4px 12px rgba(109,40,217,0.35);
+    }
+    .purpose-btn.active.btn-goshuin {
+      background: linear-gradient(135deg, #e11d48, #be123c) !important;
+      color: #fff !important;
+      border-color: #be123c !important;
+      box-shadow: 0 4px 12px rgba(190,18,60,0.35);
+    }
+    .purpose-btn.active.btn-nearby {
+      background: linear-gradient(135deg, #0284c7, #0369a1) !important;
+      color: #fff !important;
+      border-color: #0369a1 !important;
+      box-shadow: 0 4px 12px rgba(2,132,199,0.35);
+    }
+    .purpose-btn.active.btn-all {
+      background: #0f172a !important;
+      color: #fff !important;
+      border-color: #0f172a !important;
+      box-shadow: 0 4px 10px rgba(15,23,42,0.25);
+    }
+    .subfilter-btn {
+      font-size: 0.72rem;
+      padding: 3px 8px;
+      border-radius: 99px;
+      border: 1px solid #cbd5e1;
+      background: #fff;
+      color: #475569;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .subfilter-btn.active {
+      background: #7c3aed;
+      color: #fff;
+      border-color: #6d28d9;
+      font-weight: 800;
+    }
+    .db-tab-btn {
+      transition: all 0.15s ease;
+    }
+    .db-tab-btn:hover {
+      transform: translateY(-1px);
+    }
+    .db-tab-btn.active {
+      box-shadow: 0 0 0 2px #0f172a;
+    }
+
   </style>
 </head>
 <body>
@@ -754,7 +814,7 @@
         <a href="../index.html" id="btn-back-bird-dex" class="suite-nav-pill">🐦 ① 野鳥図鑑</a>
         <a href="index.html" class="suite-nav-pill active">⛩️ ② 神社仏閣・仏像</a>
         <a href="../日本の絶景・風景図鑑/index.html" class="suite-nav-pill">🌄 ③ 日本の絶景</a>
-        <a href="../四季の花・草木図鑑/index.html" id="btn-to-flora-dex" class="suite-nav-pill">🌸 ④ 四季の花</a>
+        <a href="../四季の花・山野草・花木図鑑/index.html" id="btn-to-flora-dex" class="suite-nav-pill">🌸 ④ 四季の花</a>
         <a href="../昆虫図鑑/index.html" class="suite-nav-pill">🐝 ⑤ 昆虫図鑑</a>
         <a href="../冒険プランナー＆海釣り天気/index.html" class="suite-nav-pill">🗺️ ⑥ お出かけ・スナップ＆天気</a>
       </div>
@@ -783,16 +843,79 @@
     </div>
   </header>
 
-  <!-- カテゴリ＆機能切り替えナビ（野鳥図鑑と同じ白背景タブ） -->
-  <nav class="cat-nav">
-    <div class="cat-nav-inner">
-      <button class="cat-tab active" data-cat="all" onclick="JapanApp.setCategory('all')">✨ すべて表示 (88)</button>
-      <button class="cat-tab" data-cat="shrine_only" onclick="JapanApp.setCategory('shrine_only')">⛩️ 神社のみ (65)</button>
-      <button class="cat-tab" data-cat="temple_only" onclick="JapanApp.setCategory('temple_only')">🛕 お寺・仏像 (23)</button>
-      <button class="cat-tab" data-cat="goshuin_spot" onclick="JapanApp.setCategory('goshuin_spot')">🏮 御朱印あり (48)</button>
-      <button class="cat-tab" data-cat="buddha_rank" onclick="JapanApp.setCategory('buddha_rank')">👑 仏像4大階級</button>
-      <button class="cat-tab" data-cat="lineage" onclick="JapanApp.setCategory('lineage')">⛩️ 神社・親子相関図</button>
-      <button class="cat-tab" data-cat="goshuin_book" onclick="JapanApp.setCategory('goshuin_book')">📖 マイ御朱印帳記録</button>
+  <!-- 今日の目的＆深掘りナビ（ユーザーの目的に合わせて一発切り替え） -->
+  <nav class="purpose-nav-container" style="background:#fff; border-bottom:1.5px solid #e2e8f0; padding:12px 16px; box-shadow:0 2px 8px rgba(0,0,0,0.03);">
+    <div style="max-width:1400px; margin:0 auto; display:flex; flex-direction:column; gap:10px;">
+      
+      <!-- 第1段：今日の行き先を決める（3大目的 ＋ 全社寺） -->
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <span style="font-size:0.75rem; font-weight:900; color:#475569; background:#f1f5f9; padding:5px 9px; border-radius:6px; letter-spacing:0.03em;">
+            🎯 行く目的で選ぶ:
+          </span>
+          
+          <!-- ① 仏像・見どころ拝観 (第1の目的) -->
+          <button class="purpose-btn btn-buddha active" id="btn-mode-buddha" onclick="JapanApp.selectIntentMode('buddha')" style="font-weight:800; font-size:0.84rem; padding:6px 14px; border-radius:8px; border:2px solid #7c3aed; background:#f5f3ff; color:#6d28d9; cursor:pointer; display:flex; align-items:center; gap:6px;">
+            <span>👑</span>
+            <span>仏像・見どころ拝観</span>
+            <span style="font-size:0.7rem; background:#7c3aed; color:#fff; padding:1px 6px; border-radius:99px;">24名刹</span>
+          </button>
+
+          <!-- ② 御朱印めぐり (第2の目的) -->
+          <button class="purpose-btn btn-goshuin" id="btn-mode-goshuin" onclick="JapanApp.selectIntentMode('goshuin')" style="font-weight:800; font-size:0.84rem; padding:6px 14px; border-radius:8px; border:2px solid #e11d48; background:#fff1f2; color:#be123c; cursor:pointer; display:flex; align-items:center; gap:6px;">
+            <span>🏮</span>
+            <span>御朱印めぐり</span>
+            <span style="font-size:0.7rem; background:#e11d48; color:#fff; padding:1px 6px; border-radius:99px;">51社寺</span>
+          </button>
+
+          <!-- ③ 近く・帰り道 (第3の目的) -->
+          <button class="purpose-btn btn-nearby" id="btn-mode-nearby" onclick="JapanApp.selectIntentMode('nearby')" style="font-weight:800; font-size:0.84rem; padding:6px 14px; border-radius:8px; border:2px solid #0284c7; background:#f0f9ff; color:#0369a1; cursor:pointer; display:flex; align-items:center; gap:6px;">
+            <span>📍</span>
+            <span>近く・帰り道ナビ</span>
+            <span style="font-size:0.7rem; background:#0284c7; color:#fff; padding:1px 6px; border-radius:99px;">距離順</span>
+          </button>
+
+          <!-- 全社寺表示 -->
+          <button class="purpose-btn btn-all" id="btn-mode-all" onclick="JapanApp.selectIntentMode('all')" style="font-weight:700; font-size:0.8rem; padding:6px 12px; border-radius:8px; border:1px solid #cbd5e1; background:#fff; color:#475569; cursor:pointer;">
+            ⛩️ 新潟県全88社寺
+          </button>
+        </div>
+
+        <!-- 第2段（右側）：深掘りデータベース -->
+        <div style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+          <span style="font-size:0.72rem; font-weight:800; color:#64748b;">📚 深掘り図鑑:</span>
+          <button class="db-tab-btn" id="tab-btn-lineage" onclick="JapanApp.setCategory('lineage')" style="font-size:0.74rem; font-weight:700; padding:5px 11px; border-radius:6px; border:1px solid #d97706; background:#fffbeb; color:#92400e; cursor:pointer;">
+            ⛩️ 神社・親子相関図
+          </button>
+          <button class="db-tab-btn" id="tab-btn-buddha-rank" onclick="JapanApp.setCategory('buddha_rank')" style="font-size:0.74rem; font-weight:700; padding:5px 11px; border-radius:6px; border:1px solid #8b5cf6; background:#faf5ff; color:#6d28d9; cursor:pointer;">
+            👑 仏像4大階級ガイド
+          </button>
+          <button class="db-tab-btn" id="tab-btn-goshuin-book" onclick="JapanApp.setCategory('goshuin_book')" style="font-size:0.74rem; font-weight:700; padding:5px 11px; border-radius:6px; border:1px solid #cbd5e1; background:#fff; color:#334155; cursor:pointer;">
+            📖 マイ御朱印帳記録
+          </button>
+        </div>
+      </div>
+
+      <!-- 👑 仏像モード時に出現する「仏像系統・階級別サブフィルターバー」 -->
+      <div id="subbar-buddha" style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; padding:8px 12px; background:#faf5ff; border:1px solid #e9d5ff; border-radius:8px; font-size:0.75rem;">
+        <strong style="color:#6d28d9; margin-right:4px;">👑 仏像の系統から選ぶ:</strong>
+        <button class="subfilter-btn active" id="sbtn-buddha-all" onclick="JapanApp.filterBuddhaSub('all')">すべて (24)</button>
+        <button class="subfilter-btn" id="sbtn-buddha-nyorai" onclick="JapanApp.filterBuddhaSub('nyorai')">🌟 如来（五智国分寺・出湯薬師堂）</button>
+        <button class="subfilter-btn" id="sbtn-buddha-bosatsu" onclick="JapanApp.filterBuddhaSub('bosatsu')">💖 菩薩・大観音（胎内大観音・観音寺）</button>
+        <button class="subfilter-btn" id="sbtn-buddha-myoo" onclick="JapanApp.filterBuddhaSub('myoo')">🔥 不動明王（菅谷不動尊）</button>
+        <button class="subfilter-btn" id="sbtn-buddha-tenbu" onclick="JapanApp.filterBuddhaSub('tenbu')">⚔️ 天部・仁王像（国上寺・種月寺・浦佐）</button>
+        <button class="subfilter-btn" id="sbtn-buddha-rakan" onclick="JapanApp.filterBuddhaSub('rakan')">🗿 五百羅漢・石仏群（慈光寺・長谷寺）</button>
+      </div>
+
+      <!-- 🏮 御朱印モード時に出現する「御朱印案内バー」 -->
+      <div id="subbar-goshuin" style="display:none; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; padding:8px 12px; background:#fff1f2; border:1px solid #fecdd3; border-radius:8px; font-size:0.75rem;">
+        <div style="color:#be123c;">
+          <strong>🏮 御朱印めぐりモード中:</strong> 御朱印がいただける51社寺を表示中（各カードに受付時間・初穂料・オリジナル御朱印帳情報を表示）
+        </div>
+        <button class="btn btn-sm btn-vermilion" onclick="JapanApp.setCategory('goshuin_book')" style="font-size:0.72rem; padding:3px 9px;">
+          📖 マイ御朱印帳を開く ➔
+        </button>
+      </div>
     </div>
   </nav>
 
@@ -806,7 +929,7 @@
       </div>
       <div style="display:flex; gap:8px; flex-wrap:wrap;">
         <button class="btn btn-outline btn-sm" onclick="JapanApp.clearSpotFilter()">🗾 新潟県すべてを表示</button>
-        <a id="linked-spot-flora-btn" href="../四季の花・草木図鑑/index.html" class="btn btn-outline btn-sm">🌸 この場所の花図鑑へ →</a>
+        <a id="linked-spot-flora-btn" href="../四季の花・山野草・花木図鑑/index.html" class="btn btn-outline btn-sm">🌸 この場所の花図鑑へ →</a>
         <a id="linked-spot-back-btn" href="../index.html" class="btn btn-outline btn-sm">🐦 この場所の野鳥図鑑へ →</a>
       </div>
     </div>
@@ -1538,7 +1661,9 @@
   <script src="../js/data-birds.js"></script>
   <script src="../js/data-birds-vol2.js"></script>
   <script src="../js/data-birds-vol3.js"></script>
-  <script src="../四季の花・草木図鑑/js/data-flora-dex.js"></script>
+  <script src="../四季の花・山野草・花木図鑑/js/data-flora-dex.js"></script>
+  <script src="../js/data-insects.js"></script>
+  <script src="../日本の絶景・風景図鑑/js/data-scenery-dex.js"></script>
   <script src="../js/exif-analyzer.js"></script>
   <script src="../js/niigata-geo-engine.js"></script>
   <script src="js/data-snap-missions.js"></script>
@@ -1929,13 +2054,86 @@
         }).join("");
       }
 
+      
+      // --- 今日の3大目的ナビ管理 ---
+      let currentIntentMode = "buddha"; // "buddha" | "goshuin" | "nearby" | "all"
+      let currentBuddhaSub = "all";
+
+      function selectIntentMode(mode) {
+        currentIntentMode = mode;
+        currentBuddhaSub = "all";
+
+        // ボタンのアクティブ切り替え
+        const btnBuddha = document.getElementById("btn-mode-buddha");
+        const btnGoshuin = document.getElementById("btn-mode-goshuin");
+        const btnNearby = document.getElementById("btn-mode-nearby");
+        const btnAll = document.getElementById("btn-mode-all");
+        if (btnBuddha) btnBuddha.classList.toggle("active", mode === "buddha");
+        if (btnGoshuin) btnGoshuin.classList.toggle("active", mode === "goshuin");
+        if (btnNearby) btnNearby.classList.toggle("active", mode === "nearby");
+        if (btnAll) btnAll.classList.toggle("active", mode === "all");
+
+        // 深掘りタブのアクティブ解除
+        document.querySelectorAll(".db-tab-btn").forEach(b => b.classList.remove("active"));
+
+        // サブバーの表示・非表示
+        const subBuddha = document.getElementById("subbar-buddha");
+        const subGoshuin = document.getElementById("subbar-goshuin");
+        if (subBuddha) subBuddha.style.display = mode === "buddha" ? "flex" : "none";
+        if (subGoshuin) subGoshuin.style.display = mode === "goshuin" ? "flex" : "none";
+
+        // 仏像サブボタンリセット
+        document.querySelectorAll(".subfilter-btn").forEach(b => {
+          b.classList.toggle("active", b.id === "sbtn-buddha-all");
+        });
+
+        const gpsPanel = document.getElementById("gps-distance-nav-panel");
+        if (mode === "buddha") {
+          setCategory("temple_only");
+        } else if (mode === "goshuin") {
+          setCategory("goshuin_spot");
+        } else if (mode === "nearby") {
+          setCategory("all");
+          if (gpsPanel) gpsPanel.open = true;
+          isSortByDistance = true;
+          const btnDist = document.getElementById("btn-sort-dist");
+          const btnRegion = document.getElementById("btn-sort-region");
+          if (btnDist) btnDist.classList.add("active");
+          if (btnRegion) btnRegion.classList.remove("active");
+          showToast("📍【近く・帰り道モード】現在地・マイ自宅からの距離順で整列しました");
+        } else if (mode === "all") {
+          setCategory("all");
+        }
+
+        renderGrid();
+      }
+
+      function filterBuddhaSub(sub) {
+        currentBuddhaSub = sub;
+        document.querySelectorAll(".subfilter-btn").forEach(b => {
+          b.classList.toggle("active", b.id === `sbtn-buddha-${sub}`);
+        });
+        renderGrid();
+      }
+
       function setCategory(cat) {
         currentCat = cat;
 
-        // タブのactive状態切り替え
-        document.querySelectorAll(".cat-tab").forEach(b => {
-          b.classList.toggle("active", b.dataset.cat === cat);
+        // 深掘りデータベースタブのactive状態切り替え
+        document.querySelectorAll(".db-tab-btn").forEach(b => {
+          b.classList.toggle("active", 
+            (cat === "lineage" && b.id === "tab-btn-lineage") ||
+            (cat === "buddha_rank" && b.id === "tab-btn-buddha-rank") ||
+            (cat === "goshuin_book" && b.id === "tab-btn-goshuin-book")
+          );
         });
+        if (cat === "lineage" || cat === "buddha_rank" || cat === "goshuin_book") {
+          document.querySelectorAll(".purpose-btn").forEach(b => b.classList.remove("active"));
+          const subBuddha = document.getElementById("subbar-buddha");
+          const subGoshuin = document.getElementById("subbar-goshuin");
+          if (subBuddha) subBuddha.style.display = "none";
+          if (subGoshuin) subGoshuin.style.display = "none";
+        }
 
         const secDex = document.getElementById("sec-dex-main");
         const secBuddha = document.getElementById("sec-buddha-rank");
@@ -2026,7 +2224,7 @@
         if (!spotId || spotId === "all") {
           banner.style.display = "none";
           if (backHdrBtn) backHdrBtn.href = "../index.html";
-          if (floraHdrBtn) floraHdrBtn.href = "../四季の花・草木図鑑/index.html";
+          if (floraHdrBtn) floraHdrBtn.href = "../四季の花・山野草・花木図鑑/index.html";
           return;
         }
         const sp = (window.NIIGATA_SPOTS || []).find(s => s.id === spotId);
@@ -2038,9 +2236,9 @@
             ? `🐦 野鳥撮影や花撮影とあわせて同じ日に周辺で狙える「神社仏閣・日本の原風景」ターゲットです！`
             : "";
         document.getElementById("linked-spot-back-btn").href = `../index.html?spot=${encodeURIComponent(spotId)}`;
-        if (floraSpotBtn) floraSpotBtn.href = `../四季の花・草木図鑑/index.html?spot=${encodeURIComponent(spotId)}`;
+        if (floraSpotBtn) floraSpotBtn.href = `../四季の花・山野草・花木図鑑/index.html?spot=${encodeURIComponent(spotId)}`;
         if (backHdrBtn) backHdrBtn.href = `../index.html?spot=${encodeURIComponent(spotId)}`;
-        if (floraHdrBtn) floraHdrBtn.href = `../四季の花・草木図鑑/index.html?spot=${encodeURIComponent(spotId)}`;
+        if (floraHdrBtn) floraHdrBtn.href = `../四季の花・山野草・花木図鑑/index.html?spot=${encodeURIComponent(spotId)}`;
       }
 
       function getCatClass(cat) {
@@ -2245,6 +2443,7 @@
             const lng = pos.coords.longitude;
             window.NiigataGeoEngine.setUserHome("マイ自宅（GPS登録）", lat, lng);
             updateHomeLabelUI();
+        selectIntentMode("buddha");
             showToast("🏠 いまの現在地を「マイ自宅」として登録しました！");
             renderGrid();
           },
@@ -2361,6 +2560,17 @@
           if (featureFilter === "heritage" && !isHeritage) return false;
           if (featureFilter === "torii" && !isTorii) return false;
           if (featureFilter === "cedar" && !isCedar) return false;
+
+          if (featureFilter === "cedar" && !isCedar) return false;
+
+          // 👑 仏像サブ系統フィルター（如来・菩薩・明王・天部・羅漢）
+          if (currentIntentMode === "buddha" && currentBuddhaSub !== "all") {
+            if (currentBuddhaSub === "nyorai" && !isNyorai) return false;
+            if (currentBuddhaSub === "bosatsu" && !isBosatsu) return false;
+            if (currentBuddhaSub === "myoo" && !isMyoo) return false;
+            if (currentBuddhaSub === "tenbu" && !isTenbu) return false;
+            if (currentBuddhaSub === "rakan" && !isRakanAll) return false;
+          }
 
           if (q) {
             const hay = `${it.name} ${it.englishTitle} ${it.area} ${it.spotName} ${it.catchphrase} ${it.inboundAppeal} ${it.compositionType || ""} ${it.parkingInfo || ""} ${(it.subTags||[]).join(" ")}`.toLowerCase();
@@ -2519,6 +2729,24 @@
                 </div>
                 <h3 style="font-size:1rem; font-weight:900; color:#0f172a; margin-bottom:3px;">${it.name}</h3>
                 <div style="font-size:0.75rem; color:#991b1b; font-weight:700; margin-bottom:6px;">${it.catchphrase}</div>
+
+                <!-- 🎯 選択された目的に合わせた最優先ヒーロー情報枠 -->
+                ${currentIntentMode === 'buddha' ? `
+                  <div style="background:#faf5ff; border:1.5px solid #c084fc; border-radius:6px; padding:6px 9px; font-size:0.75rem; color:#581c87; margin-bottom:6px;">
+                    <strong style="color:#7c3aed;">👑 本尊・拝観見どころ：</strong>${it.catchphrase || '歴史ある仏像・境内見どころ'}
+                    ${it.hasNio ? '<span style="font-size:0.68rem; background:#dc2626; color:#fff; padding:1px 5px; border-radius:4px; font-weight:800; margin-left:4px;">💪 山門仁王像</span>' : ''}
+                    ${it.id === 'echigo_tainai_kannon' ? '<span style="font-size:0.68rem; background:#059669; color:#fff; padding:1px 5px; border-radius:4px; font-weight:800; margin-left:4px;">全高26m露天大観音</span>' : ''}
+                  </div>
+                ` : (currentIntentMode === 'goshuin' ? `
+                  <div style="background:#fffbeb; border:1.5px solid #f59e0b; border-radius:6px; padding:6px 9px; font-size:0.75rem; color:#92400e; margin-bottom:6px;">
+                    <strong style="color:#b45309;">🏮 御朱印情報：</strong>${it.goshuinInfo ? it.goshuinInfo.replace('🏮【御朱印あり】', '').slice(0, 65) + '...' : '社務所にて授与受付中'}
+                  </div>
+                ` : (currentIntentMode === 'nearby' && it._geo ? `
+                  <div style="background:#f0fdf4; border:1.5px solid #86efac; border-radius:6px; padding:6px 9px; font-size:0.75rem; color:#166534; margin-bottom:6px;">
+                    <strong style="color:#15803d;">📍 リアル現在地：</strong>距離 ${it._geo.dist}km（${it._geo.drive}）${it._geo.bearing.icon}${it._geo.bearing.text}
+                    ${it._geo.homeApproach && it._geo.homeApproach.isCloserToHome ? `<span style="background:#15803d; color:#fff; padding:1px 6px; border-radius:4px; font-weight:800; margin-left:4px;">➔ 🏠自宅へ${it._geo.homeApproach.closerDistance}km接近！</span>` : ''}
+                  </div>
+                ` : ''))}
 
                 ${it.goshuinInfo && it.category !== '絶景・風景' ? `
                   <div style="background:${it.hasGoshuin ? '#fffbeb' : '#f8fafc'}; border-left:3px solid ${it.hasGoshuin ? '#d97706' : '#64748b'}; padding:5px 8px; border-radius:4px; font-size:0.72rem; color:#334155; margin-bottom:6px;">
@@ -2875,18 +3103,92 @@
             </div>
           </div>
 
-          <!-- 野鳥観察アプリ＆花図鑑との相互連動カード -->
-          <div style="background:linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%); border:2px solid #0d9488; border-radius:12px; padding:14px 16px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-            <div>
-              <div style="font-size:0.88rem; font-weight:800; color:#0f766e;">
-                🐦🌸 同じ日・同じ場所（${item.spotName}）で一緒に撮影できる野鳥＆花図鑑連動！
+          <!-- 🌿 境内で見られる自然（鳥・花・虫）＆そばの景色・絶景連動ブロック -->
+          <div class="nature-crosslink-card" style="background:linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%); border:2px solid #0d9488; border-radius:12px; padding:16px; margin-bottom:16px; box-shadow:0 3px 10px rgba(13,148,136,0.08);">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+              <div style="display:flex; align-items:center; gap:8px;">
+                <span style="font-size:1.4rem;">🌿</span>
+                <div>
+                  <strong style="font-size:0.98rem; color:#0f766e;">この神社・境内で出会える自然（野鳥・花・虫）＆そばの絶景</strong>
+                  <div style="font-size:0.75rem; color:#475569;">お参りや撮影と一緒に探せる周辺の動植物と、車で立ち寄れる風景スポット</div>
+                </div>
               </div>
-              <div style="font-size:0.82rem; color:#1e293b; margin-top:4px;">
-                主な出現野鳥：<strong>${(item.linkedBirds || []).join(" ・ ")}</strong>
+              <span style="font-size:0.7rem; background:#0d9488; color:#fff; padding:2px 8px; border-radius:99px; font-weight:800;">4大図鑑相互リンク</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(220px, 1fr)); gap:10px;">
+              <!-- 🐦 境内の野鳥 -->
+              <div style="background:#fff; border:1px solid #ccfbf1; border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="font-size:0.76rem; font-weight:800; color:#0f766e; margin-bottom:4px; display:flex; align-items:center; gap:4px;">
+                    <span>🐦</span><span>境内の野鳥</span>
+                  </div>
+                  <div style="font-size:0.8rem; color:#1e293b; font-weight:700; line-height:1.45;">
+                    ${(item.linkedBirds && item.linkedBirds.length > 0) ? item.linkedBirds.slice(0, 4).join(" ・ ") : 'シメ・カワラヒワ・ヤマガラ'} など
+                  </div>
+                </div>
+                <a href="../index.html?spot=${item.spotId}" class="btn btn-sm btn-outline" style="margin-top:8px; font-size:0.72rem; padding:4px 8px; border-color:#0d9488; color:#0f766e; text-align:center; text-decoration:none; font-weight:700;">
+                  🐦 野鳥図鑑で探す ➔
+                </a>
+              </div>
+
+              <!-- 🌸 境内の花・草木 -->
+              <div style="background:#fff; border:1px solid #fce7f3; border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="font-size:0.76rem; font-weight:800; color:#be185d; margin-bottom:4px; display:flex; align-items:center; gap:4px;">
+                    <span>🌸</span><span>境内の花・草木</span>
+                  </div>
+                  <div style="font-size:0.8rem; color:#1e293b; font-weight:700; line-height:1.45;">
+                    ${(() => {
+                      const flora = (window.NIIGATA_FLORA_DEX || []).filter(f => f.spotId === item.spotId || (f.area && (item.area||'').includes(f.area)));
+                      return (flora.length > 0 ? flora.map(f => f.name.split('（')[0]).slice(0, 3).join(' ・ ') : '雪割草・カタクリ・杉古木') + ' など';
+                    })()}
+                  </div>
+                </div>
+                <a href="../四季の花・山野草・花木図鑑/index.html?spot=${item.spotId}" class="btn btn-sm btn-outline" style="margin-top:8px; font-size:0.72rem; padding:4px 8px; border-color:#db2777; color:#be185d; text-align:center; text-decoration:none; font-weight:700;">
+                  🌸 四季の花図鑑で見る ➔
+                </a>
+              </div>
+
+              <!-- 🦗 境内の昆虫 -->
+              <div style="background:#fff; border:1px solid #dcfce7; border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="font-size:0.76rem; font-weight:800; color:#15803d; margin-bottom:4px; display:flex; align-items:center; gap:4px;">
+                    <span>🦗</span><span>境内の昆虫</span>
+                  </div>
+                  <div style="font-size:0.8rem; color:#1e293b; font-weight:700; line-height:1.45;">
+                    ${(() => {
+                      const insects = (window.NIIGATA_INSECTS || []).filter(i => (i.spots || []).some(s => s.includes(item.spotId) || s.includes(item.area || '')));
+                      return (insects.length > 0 ? insects.map(i => i.name).slice(0, 3).join(' ・ ') : 'オオムラサキ・ミヤマクワガタ・赤とんぼ') + ' など';
+                    })()}
+                  </div>
+                </div>
+                <a href="../昆虫図鑑/index.html?spot=${item.spotId}" class="btn btn-sm btn-outline" style="margin-top:8px; font-size:0.72rem; padding:4px 8px; border-color:#16a34a; color:#15803d; text-align:center; text-decoration:none; font-weight:700;">
+                  🦗 昆虫図鑑で見る ➔
+                </a>
+              </div>
+
+              <!-- 🌄 そばの絶景・風景 -->
+              <div style="background:#fff; border:1px solid #e0e7ff; border-radius:8px; padding:10px 12px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div>
+                  <div style="font-size:0.76rem; font-weight:800; color:#4338ca; margin-bottom:4px; display:flex; align-items:center; gap:4px;">
+                    <span>🌄</span><span>そばの景色・絶景</span>
+                  </div>
+                  <div style="font-size:0.8rem; color:#1e293b; font-weight:700; line-height:1.45;">
+                    ${(() => {
+                      const sceneries = (window.SCENERY_DEX_DATABASE || []).filter(s => s.spotId === item.spotId || (s.area && (item.area||'').includes(s.area)));
+                      return (sceneries.length > 0 ? sceneries[0].name.split('（')[0] : (item.area || '周辺') + 'の夕日・里山風景');
+                    })()}
+                  </div>
+                </div>
+                <a href="../日本の絶景・風景図鑑/index.html?spot=${item.spotId}" class="btn btn-sm btn-outline" style="margin-top:8px; font-size:0.72rem; padding:4px 8px; border-color:#6366f1; color:#4338ca; text-align:center; text-decoration:none; font-weight:700;">
+                  🌄 絶景図鑑で見る ➔
+                </a>
               </div>
             </div>
+          </div>
             <div style="display:flex; gap:8px; flex-wrap:wrap;">
-              <a href="../四季の花・草木図鑑/index.html?spot=${item.spotId}" class="btn btn-sm" style="background:linear-gradient(135deg,#db2777,#15803d);color:#fff;">
+              <a href="../四季の花・山野草・花木図鑑/index.html?spot=${item.spotId}" class="btn btn-sm" style="background:linear-gradient(135deg,#db2777,#15803d);color:#fff;">
                 🌸 この場所の花・草木を見る →
               </a>
               <a href="../index.html?spot=${item.spotId}" class="btn btn-bird-link btn-sm">
@@ -3034,7 +3336,7 @@
             myMemo: best ? best.memo : null,
             refPhoto: floraWikiCache[fl.id] || getFallbackSvg({ name: fl.name, category: "花", colorPalette: fl.colorPalette }),
             wikiTitle: fl.wikiTitle,
-            linkUrl: `../四季の花・草木図鑑/index.html?spot=${encodeURIComponent(fl.spotId)}`
+            linkUrl: `../四季の花・山野草・花木図鑑/index.html?spot=${encodeURIComponent(fl.spotId)}`
           });
         });
 
@@ -3422,7 +3724,7 @@
             return;
           }
         } catch (_) {}
-        renderGrid();
+        selectIntentMode("buddha");
       }
 
 
@@ -3547,6 +3849,8 @@
       }
   
       return {
+        selectIntentMode,
+        filterBuddhaSub,
         saveCurrentLocationAsHome,
         saveCustomHomeByText,
         resetHomeToDefault,
