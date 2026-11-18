@@ -839,123 +839,144 @@
 
       <!-- 📍 GPS現在地 ＆ 「自宅・北区へ近づく寄り道ナビ」コントロールバー -->
       
-      <!-- 💡 仏像の4大階級と見分け方ガイド（タップで展開・新潟のスポット直行リンク付き） -->
+      <!-- 💡 仏像の4大階級と見分け方ガイド（統一フォーマット・全国展開対応） -->
       <details id="buddha-rank-guide-panel" style="background:#fffbeb; border:2px solid #f59e0b; border-radius:12px; margin-bottom:14px; overflow:hidden; box-shadow:0 4px 12px rgba(245,158,11,0.1);">
         <summary style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding:12px 16px; cursor:pointer; font-size:0.88rem; font-weight:900; color:#92400e; background:#fef3c7; user-select:none;">
           <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
             <span style="font-size:0.78rem; background:#b45309; color:#fff; padding:3px 9px; border-radius:99px;">💡 1分でわかる！</span>
             <span>仏像の4大階級（如来・菩薩・明王・天部）と見分け方ガイド</span>
           </div>
-          <span style="font-size:0.78rem; color:#b45309; font-weight:800;">▼ タップして階級表と命名ルールを見る</span>
+          <span style="font-size:0.78rem; color:#b45309; font-weight:800;">▼ タップして階級表と解説を見る</span>
         </summary>
         <div style="padding:16px 18px; font-size:0.83rem; color:#1e293b; line-height:1.7;">
           <p style="margin:0 0 14px 0; color:#78350f; font-weight:700;">
-            仏像は上から<strong>「如来 ➔ 菩薩 ➔ 明王 ➔ 天部」</strong>という明確な4大階級（ランク）に分かれています。各階級の解説と、<strong>「新潟で実際に会えるスポット」</strong>を直接選んで図鑑を絞り込めます！
+            仏像は上から<strong>「如来 ➔ 菩薩 ➔ 明王 ➔ 天部」</strong>という明確な4大階級（ランク）に分かれています。各階級の特徴と見分け方、代表的なスポットを直接選んで図鑑を絞り込めます。
           </p>
 
           <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:14px;">
             <!-- 第1位：如来 -->
-            <div style="background:#fff; border-left:4px solid #b45309; padding:12px 14px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
+            <div style="background:#fff; border-left:4px solid #b45309; padding:14px 16px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
               <div>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
                   <strong style="color:#b45309; font-size:0.95rem;">👑 第1位：如来（にょらい）</strong>
-                  <span style="font-size:0.7rem; background:#fef3c7; color:#92400e; padding:1px 6px; border-radius:4px; font-weight:800;">仏教の最高峰</span>
+                  <span style="font-size:0.7rem; background:#fef3c7; color:#92400e; padding:1px 6px; border-radius:4px; font-weight:800;">仏教の最高位</span>
                 </div>
-                <div style="font-size:0.76rem; color:#64748b; margin-bottom:6px;">【役割】悟りを開いた絶対的存在（会社の社長）</div>
-                <p style="font-size:0.78rem; margin:0 0 6px 0; line-height:1.5;">
-                  物欲を完全に断ち切っているため宝飾品はゼロ。薄い布1枚をまとい、頭はパンチパーマのような螺髪（らほつ）。<br/>
+                <div style="font-size:0.76rem; color:#64748b; margin-bottom:8px;">【役割】悟りを開いた絶対的存在（最高位・仏教の創始者）</div>
+                <p style="font-size:0.78rem; margin:0 0 8px 0; line-height:1.5;">
+                  物欲を断ち切っているため装飾品はゼロ。薄い布1枚をまとい、頭はパンチパーマ状の螺髪（らほつ）。<br/>
                   📍 <em>釈迦如来、阿弥陀如来、薬師如来、大日如来（五智如来）</em>
                 </p>
               </div>
-              <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_nyorai')" style="background:#b45309; color:#fff; font-size:0.75rem; font-weight:800; padding:5px 10px; border:none; border-radius:6px; cursor:pointer; width:100%; margin-top:8px;">
-                👑 新潟の如来スポット（五智如来坐像など）を見る ➔
-              </button>
+              <div style="margin-top:10px;">
+                <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_nyorai')" style="background:#b45309; color:#fff; font-size:0.76rem; font-weight:800; padding:6px 12px; border:none; border-radius:6px; cursor:pointer; width:100%; display:flex; justify-content:space-between; align-items:center;">
+                  <span>👑 如来スポット一覧を見る</span>
+                  <span>➔</span>
+                </button>
+                <div style="font-size:0.71rem; color:#64748b; margin-top:5px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+                  <span style="font-weight:700; color:#b45309;">主な見どころ：</span>
+                  <span>五智如来坐像（五智国分寺）、薬師堂など</span>
+                </div>
+              </div>
             </div>
 
             <!-- 第2位：菩薩 -->
-            <div style="background:#fff; border-left:4px solid #d97706; padding:12px 14px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
+            <div style="background:#fff; border-left:4px solid #d97706; padding:14px 16px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
               <div>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
                   <strong style="color:#d97706; font-size:0.95rem;">💎 第2位：菩薩（ぼさつ）</strong>
-                  <span style="font-size:0.7rem; background:#fef3c7; color:#92400e; padding:1px 6px; border-radius:4px; font-weight:800;">慈悲のリーダー</span>
+                  <span style="font-size:0.7rem; background:#fef3c7; color:#92400e; padding:1px 6px; border-radius:4px; font-weight:800;">慈悲の実践者</span>
                 </div>
-                <div style="font-size:0.76rem; color:#64748b; margin-bottom:6px;">【役割】人々を救うため人間界で修行する現場指揮官（専務）</div>
-                <p style="font-size:0.78rem; margin:0 0 6px 0; line-height:1.5;">
-                  悟れる境地に達しながら人々を救うため現場に残る。出家前の王子の姿（宝冠や首飾りなどきらびやかな装身具）。<br/>
+                <div style="font-size:0.76rem; color:#64748b; margin-bottom:8px;">【役割】人々を救うため人間界で修行する慈悲の仏様</div>
+                <p style="font-size:0.78rem; margin:0 0 8px 0; line-height:1.5;">
+                  悟れる境地に達しながら人々を救うため残る。出家前の王子の姿（宝冠や首飾りなどきらびやかな装飾）。<br/>
                   📍 <em>観音菩薩（聖観音・十一面・千手など六観音）、文殊菩薩、普賢菩薩、地蔵菩薩</em>
                 </p>
               </div>
-              <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;">
-                <button class="btn btn-sm" onclick="JapanApp.selectFeature('daikannon')" style="background:#d97706; color:#fff; font-size:0.72rem; font-weight:800; padding:5px 8px; border:none; border-radius:6px; cursor:pointer; flex:1;">
-                  💎 越後胎内観音（全高26m露天） ➔
+              <div style="margin-top:10px;">
+                <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_bosatsu')" style="background:#d97706; color:#fff; font-size:0.76rem; font-weight:800; padding:6px 12px; border:none; border-radius:6px; cursor:pointer; width:100%; display:flex; justify-content:space-between; align-items:center;">
+                  <span>💎 菩薩スポット一覧を見る</span>
+                  <span>➔</span>
                 </button>
-                <button class="btn btn-sm" onclick="JapanApp.selectFeature('kannon_temple')" style="background:#fef3c7; color:#92400e; border:1px solid #d97706; font-size:0.72rem; font-weight:800; padding:5px 8px; border-radius:6px; cursor:pointer; flex:1;">
-                  観音霊場（宝積院・普談寺など） ➔
-                </button>
+                <div style="font-size:0.71rem; color:#64748b; margin-top:5px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+                  <span style="font-weight:700; color:#d97706;">主な見どころ：</span>
+                  <span>越後胎内観音（全高26m青銅露天）、宝積院、普談寺など</span>
+                </div>
               </div>
             </div>
 
             <!-- 第3位：明王 -->
-            <div style="background:#fff; border-left:4px solid #dc2626; padding:12px 14px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
+            <div style="background:#fff; border-left:4px solid #dc2626; padding:14px 16px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
               <div>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
                   <strong style="color:#dc2626; font-size:0.95rem;">🔥 第3位：明王（みょうおう）</strong>
-                  <span style="font-size:0.7rem; background:#fee2e2; color:#991b1b; padding:1px 6px; border-radius:4px; font-weight:800;">怒りの鬼教官</span>
+                  <span style="font-size:0.7rem; background:#fee2e2; color:#991b1b; padding:1px 6px; border-radius:4px; font-weight:800;">如来の戦闘化身</span>
                 </div>
-                <div style="font-size:0.76rem; color:#64748b; margin-bottom:6px;">【役割】言うことを聞かない悪人を力づくでも改心させる如来の化身</div>
-                <p style="font-size:0.78rem; margin:0 0 6px 0; line-height:1.5;">
-                  背中に火炎光背（炎）を背負い、激しい怒りの形相。右手に魔を断つ利剣、左手に悪人を縛り引き上げる羂索（縄）を持つ。<br/>
+                <div style="font-size:0.76rem; color:#64748b; margin-bottom:8px;">【役割】言うことを聞かない悪人を力づくでも教化する如来の化身</div>
+                <p style="font-size:0.78rem; margin:0 0 8px 0; line-height:1.5;">
+                  背中に火炎光背（炎）を背負い、激しい怒りの形相。右手に魔を断つ利剣、左手に悪人を縛る羂索（縄）を持つ。<br/>
                   📍 <em>不動明王（五大明王の筆頭）、降三世明王、愛染明王、孔雀明王</em>
                 </p>
               </div>
-              <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_myoo')" style="background:#dc2626; color:#fff; font-size:0.75rem; font-weight:800; padding:5px 10px; border:none; border-radius:6px; cursor:pointer; width:100%; margin-top:8px;">
-                🔥 日本三不動・新発田「菅谷不動尊」を見る ➔
-              </button>
+              <div style="margin-top:10px;">
+                <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_myoo')" style="background:#dc2626; color:#fff; font-size:0.76rem; font-weight:800; padding:6px 12px; border:none; border-radius:6px; cursor:pointer; width:100%; display:flex; justify-content:space-between; align-items:center;">
+                  <span>🔥 明王スポット一覧を見る</span>
+                  <span>➔</span>
+                </button>
+                <div style="font-size:0.71rem; color:#64748b; margin-top:5px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+                  <span style="font-weight:700; color:#dc2626;">主な見どころ：</span>
+                  <span>日本三不動・新発田「菅谷不動尊」など</span>
+                </div>
+              </div>
             </div>
 
-            <!-- 第4位：天部（四天王・八部衆・仁王・毘沙門天） -->
-            <div style="background:#fff; border-left:4px solid #0284c7; padding:12px 14px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
+            <!-- 第4位：天部 -->
+            <div style="background:#fff; border-left:4px solid #0284c7; padding:14px 16px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
               <div>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
                   <strong style="color:#0284c7; font-size:0.95rem;">⚔️ 第4位：天部（てんぶ）</strong>
-                  <span style="font-size:0.7rem; background:#e0f2fe; color:#0369a1; padding:1px 6px; border-radius:4px; font-weight:800;">武神ボディーガード</span>
+                  <span style="font-size:0.7rem; background:#e0f2fe; color:#0369a1; padding:1px 6px; border-radius:4px; font-weight:800;">武神守護神団</span>
                 </div>
-                <div style="font-size:0.76rem; color:#64748b; margin-bottom:6px;">【役割】寺院と仏法を外敵から守る武闘派守護神軍団（警備隊長）</div>
-                <p style="font-size:0.78rem; margin:0 0 6px 0; line-height:1.5;">
-                  古代インドの神々や鬼神が仏教に帰依した姿。甲冑（よろい）や武器を身にまとい仏敵を踏みつける。<br/>
-                  ・<strong>金剛力士（仁王）</strong>：山門を守る阿形・吽形の最強ペア！<br/>
-                  ・<strong>四天王</strong>：東西南北を守る武将（持国天・増長天・広目天・多聞天/毘沙門天）<br/>
-                  ・<strong>八部衆</strong>：阿修羅（三面六臂の美少年武神）、夜叉、天、竜など<br/>
-                  ・<strong>十二神将</strong>：薬師如来を守る12体の武神（長岡・寛益寺のバサラ大将など）<br/>
-                  ・<strong>福神・女神</strong>：弁財天、大黒天、吉祥天、帝釈天
+                <div style="font-size:0.76rem; color:#64748b; margin-bottom:8px;">【役割】寺院と仏法を外敵から守る武闘派守護神軍団（警備隊長）</div>
+                <p style="font-size:0.78rem; margin:0 0 8px 0; line-height:1.5;">
+                  古代インドの神々が仏教に帰依した姿。甲冑（よろい）や武器を身にまとい仏敵を踏みつける。<br/>
+                  📍 <em>金剛力士（仁王）、毘沙門天、四天王、弁財天、大黒天、吉祥天</em>
                 </p>
               </div>
-              <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;">
-                <button class="btn btn-sm" onclick="JapanApp.selectFeature('nio')" style="background:#0284c7; color:#fff; font-size:0.72rem; font-weight:800; padding:5px 8px; border:none; border-radius:6px; cursor:pointer; flex:1;">
-                  ⚔️ 山門の仁王像（9社寺） ➔
+              <div style="margin-top:10px;">
+                <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_tenbu')" style="background:#0284c7; color:#fff; font-size:0.76rem; font-weight:800; padding:6px 12px; border:none; border-radius:6px; cursor:pointer; width:100%; display:flex; justify-content:space-between; align-items:center;">
+                  <span>⚔️ 天部スポット一覧を見る</span>
+                  <span>➔</span>
                 </button>
-                <button class="btn btn-sm" onclick="JapanApp.selectFeature('bishamon')" style="background:#e0f2fe; color:#0369a1; border:1px solid #0284c7; font-size:0.72rem; font-weight:800; padding:5px 8px; border-radius:6px; cursor:pointer; flex:1;">
-                  越後浦佐・毘沙門堂 ➔
-                </button>
+                <div style="font-size:0.71rem; color:#64748b; margin-top:5px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+                  <span style="font-weight:700; color:#0284c7;">主な見どころ：</span>
+                  <span>山門の仁王像（9社寺）、越後浦佐・毘沙門堂など</span>
+                </div>
               </div>
             </div>
 
             <!-- 番外：羅漢・石仏 -->
-            <div style="background:#fff; border-left:4px solid #64748b; padding:12px 14px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
+            <div style="background:#fff; border-left:4px solid #475569; padding:14px 16px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
               <div>
                 <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
-                  <strong style="color:#475569; font-size:0.95rem;">🪨 仏弟子・石仏：羅漢・お地蔵様</strong>
+                  <strong style="color:#475569; font-size:0.95rem;">🪨 番外：羅漢・石仏（らかん）</strong>
                   <span style="font-size:0.7rem; background:#f1f5f9; color:#475569; padding:1px 6px; border-radius:4px; font-weight:800;">生身の修行者</span>
                 </div>
-                <div style="font-size:0.76rem; color:#64748b; margin-bottom:6px;">【役割】お釈迦様の生身の弟子たち＆辻を守る身近な仏様</div>
-                <p style="font-size:0.78rem; margin:0 0 6px 0; line-height:1.5;">
-                  神仏ではなく「人間」なので、泣いたり笑ったり居眠りしたりと喜怒哀楽が豊か！苔むした境内に並ぶ石仏は最高の被写体です。<br/>
-                  📍 <em>五百羅漢（慈光寺・佐渡長谷寺）、六地蔵、道祖神</em>
+                <div style="font-size:0.76rem; color:#64748b; margin-bottom:8px;">【役割】お釈迦様の生身の弟子たち＆辻を守る身近な野仏様</div>
+                <p style="font-size:0.78rem; margin:0 0 8px 0; line-height:1.5;">
+                  神仏ではなく「人間」なので泣いたり笑ったり喜怒哀楽が豊か。苔むした境内に並ぶ石仏は最高の被写体。<br/>
+                  📍 <em>五百羅漢（弟子500人）、六地蔵、道祖神、庚申塔</em>
                 </p>
               </div>
-              <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_rakan')" style="background:#475569; color:#fff; font-size:0.75rem; font-weight:800; padding:5px 10px; border:none; border-radius:6px; cursor:pointer; width:100%; margin-top:8px;">
-                🪨 五百羅漢（慈光寺・長谷寺）＆石仏群を見る ➔
-              </button>
+              <div style="margin-top:10px;">
+                <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_rakan')" style="background:#475569; color:#fff; font-size:0.76rem; font-weight:800; padding:6px 12px; border:none; border-radius:6px; cursor:pointer; width:100%; display:flex; justify-content:space-between; align-items:center;">
+                  <span>🪨 羅漢・石仏スポット一覧を見る</span>
+                  <span>➔</span>
+                </button>
+                <div style="font-size:0.71rem; color:#64748b; margin-top:5px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+                  <span style="font-weight:700; color:#475569;">主な見どころ：</span>
+                  <span>五百羅漢（慈光寺・佐渡長谷寺）、里山の石仏群など</span>
+                </div>
+              </div>
             </div>
           </div>
 
@@ -968,10 +989,6 @@
               ・末尾が「〜天」「〜神」「〜力士」➔ ⚔️ <strong>天部</strong>（仁王像、毘沙門天、四天王、阿修羅、弁財天など）<br/>
               ・末尾が「〜羅漢」➔ 🪨 <strong>羅漢</strong>（お釈迦様の生身の弟子500人）
             </span>
-          </div>
-
-          <div style="background:#f8fafc; margin-top:10px; padding:10px 14px; border-radius:8px; border:1px solid #e2e8f0; font-size:0.8rem; color:#475569; line-height:1.6;">
-            📷 <strong>カメラ撮影のポイント：</strong> お寺の御本尊（如来・菩薩）は本堂の奥深くに安置され「秘仏」「撮影禁止」が一般的です。そのため本図鑑では、山門の格子越しに拝める<strong>「仁王像」</strong>や、屋外の全高26m青銅大観音<strong>「越後胎内観音」</strong>、苔むした<strong>「境内の石仏群・五百羅漢」</strong>など、現地でカメラマンが実際に撮影できるリアルな被写体を中心にご案内しています。
           </div>
         </div>
       </details>
