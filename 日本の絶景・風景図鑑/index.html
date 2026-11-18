@@ -1439,8 +1439,14 @@
           return;
         }
         if (state.wikiCache[item.id]) {
-          callback(state.wikiCache[item.id]);
-          return;
+          const cached = state.wikiCache[item.id];
+          if (!cached.includes("NDL") && !cached.includes(".pdf") && !cached.includes(".djvu") && !cached.includes("文書")) {
+            callback(cached);
+            return;
+          } else {
+            delete state.wikiCache[item.id];
+            saveState();
+          }
         }
         try {
           const url = `https://ja.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(item.wikiTitle || item.name)}&prop=pageimages&format=json&pithumbsize=720&origin=*`;
@@ -1451,29 +1457,38 @@
             if (pages) {
               const pg = Object.values(pages)[0];
               if (pg && pg.thumbnail && pg.thumbnail.source) {
-                state.wikiCache[item.id] = pg.thumbnail.source;
-                saveState();
-                callback(pg.thumbnail.source);
-                return;
+                const src = pg.thumbnail.source;
+                if (!src.includes("NDL") && !src.includes(".pdf") && !src.includes(".djvu")) {
+                  state.wikiCache[item.id] = src;
+                  saveState();
+                  callback(src);
+                  return;
+                }
               }
             }
           }
         } catch (_) {}
 
         try {
-          const cUrl = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(item.searchQuery || item.name)}&gsrnamespace=6&gsrlimit=1&prop=imageinfo&iiprop=url&iiurlwidth=720&format=json&origin=*`;
+          const cUrl = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(item.searchQuery || item.name)}&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url&iiurlwidth=720&format=json&origin=*`;
           const cRes = await fetch(cUrl);
           if (cRes.ok) {
             const cData = await cRes.json();
             if (cData.query && cData.query.pages) {
-              const firstPg = Object.values(cData.query.pages)[0];
-              const ii = firstPg && firstPg.imageinfo && firstPg.imageinfo[0];
-              if (ii && (ii.thumburl || ii.url)) {
-                const found = ii.thumburl || ii.url;
-                state.wikiCache[item.id] = found;
-                saveState();
-                callback(found);
-                return;
+              const pages = Object.values(cData.query.pages);
+              for (const firstPg of pages) {
+                const title = (firstPg.title || "").toLowerCase();
+                const isDoc = title.includes("ndl") || title.endsWith(".pdf") || title.endsWith(".djvu") || title.includes("文書") || title.includes("史料") || title.includes("地図") || title.includes("map");
+                const ii = firstPg.imageinfo && firstPg.imageinfo[0];
+                if (!isDoc && ii && (ii.thumburl || ii.url)) {
+                  const found = ii.thumburl || ii.url;
+                  if (!found.includes(".pdf") && !found.includes("NDL")) {
+                    state.wikiCache[item.id] = found;
+                    saveState();
+                    callback(found);
+                    return;
+                  }
+                }
               }
             }
           }

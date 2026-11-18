@@ -1577,20 +1577,28 @@
       }
 
       function getFallbackSvg(item) {
-        const [c1, c2, c3] = item.colorPalette || ["#991b1b", "#d97706", "#0f172a"];
-        const icon = item.category === "神社仏閣" ? "⛩️" : item.category === "絶景・風景" ? "🏔️" : "🌸";
-        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260">
+        const isBuddha = item.hasBuddha || item.hasNio || (item.name && (item.name.includes('寺') || item.name.includes('堂') || item.name.includes('如来') || item.name.includes('観音') || item.name.includes('大仏') || item.name.includes('羅漢') || item.name.includes('毘沙門')));
+        const icon = isBuddha ? "🛕" : "⛩️";
+        const badgeText = isBuddha ? "仏像・寺院" : "神社・参道";
+        const c1 = isBuddha ? "#3b1d11" : "#7f1d1d";
+        const c2 = isBuddha ? "#78350f" : "#b91c1c";
+        const c3 = "#0f172a";
+        const cleanName = (item.name || "").split("（")[0].slice(0, 16);
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240">
           <defs>
-            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+            <linearGradient id="g_${item.id}" x1="0" y1="0" x2="1" y2="1">
               <stop offset="0%" stop-color="${c1}"/>
-              <stop offset="60%" stop-color="${c2}"/>
+              <stop offset="65%" stop-color="${c2}"/>
               <stop offset="100%" stop-color="${c3}"/>
             </linearGradient>
           </defs>
-          <rect width="400" height="260" fill="url(#g)"/>
-          <circle cx="310" cy="70" r="45" fill="#fef08a" opacity="0.35"/>
-          <text x="200" y="135" font-size="64" text-anchor="middle">${icon}</text>
-          <text x="200" y="195" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">${item.name.slice(0, 18)}</text>
+          <rect width="400" height="240" fill="url(#g_${item.id})"/>
+          <rect x="12" y="12" width="376" height="216" fill="none" stroke="rgba(251,191,36,0.35)" stroke-width="1.5" rx="6"/>
+          <circle cx="310" cy="65" r="40" fill="#fef08a" opacity="0.18"/>
+          <text x="200" y="105" font-size="54" text-anchor="middle">${icon}</text>
+          <text x="200" y="152" font-family="'Hiragino Mincho ProN', 'Yu Mincho', serif, sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">${cleanName}</text>
+          <text x="200" y="180" font-family="sans-serif" font-size="12" font-weight="bold" fill="#fef08a" text-anchor="middle">【${badgeText}】実地撮影・マイSHOT募集中</text>
+          <text x="200" y="202" font-family="sans-serif" font-size="10" fill="#cbd5e1" text-anchor="middle">※現地で撮った写真を「📷 GET」で登録できます</text>
         </svg>`;
         return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
       }
@@ -1605,8 +1613,14 @@
           return;
         }
         if (state.wikiCache[item.id]) {
-          callback(state.wikiCache[item.id]);
-          return;
+          const cached = state.wikiCache[item.id];
+          if (!cached.includes("NDL") && !cached.includes(".pdf") && !cached.includes(".djvu") && !cached.includes("文書")) {
+            callback(cached);
+            return;
+          } else {
+            delete state.wikiCache[item.id];
+            saveState();
+          }
         }
         try {
           const url = `https://ja.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(item.wikiTitle || item.name)}&prop=pageimages&format=json&pithumbsize=720&origin=*`;
@@ -1617,29 +1631,38 @@
             if (pages) {
               const pg = Object.values(pages)[0];
               if (pg && pg.thumbnail && pg.thumbnail.source) {
-                state.wikiCache[item.id] = pg.thumbnail.source;
-                saveState();
-                callback(pg.thumbnail.source);
-                return;
+                const src = pg.thumbnail.source;
+                if (!src.includes("NDL") && !src.includes(".pdf") && !src.includes(".djvu")) {
+                  state.wikiCache[item.id] = src;
+                  saveState();
+                  callback(src);
+                  return;
+                }
               }
             }
           }
         } catch (_) {}
 
         try {
-          const cUrl = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(item.searchQuery || item.name)}&gsrnamespace=6&gsrlimit=1&prop=imageinfo&iiprop=url&iiurlwidth=720&format=json&origin=*`;
+          const cUrl = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(item.searchQuery || item.name)}&gsrnamespace=6&gsrlimit=3&prop=imageinfo&iiprop=url&iiurlwidth=720&format=json&origin=*`;
           const cRes = await fetch(cUrl);
           if (cRes.ok) {
             const cData = await cRes.json();
             if (cData.query && cData.query.pages) {
-              const firstPg = Object.values(cData.query.pages)[0];
-              const ii = firstPg && firstPg.imageinfo && firstPg.imageinfo[0];
-              if (ii && (ii.thumburl || ii.url)) {
-                const found = ii.thumburl || ii.url;
-                state.wikiCache[item.id] = found;
-                saveState();
-                callback(found);
-                return;
+              const pages = Object.values(cData.query.pages);
+              for (const firstPg of pages) {
+                const title = (firstPg.title || "").toLowerCase();
+                const isDoc = title.includes("ndl") || title.endsWith(".pdf") || title.endsWith(".djvu") || title.includes("文書") || title.includes("史料") || title.includes("地図") || title.includes("map");
+                const ii = firstPg.imageinfo && firstPg.imageinfo[0];
+                if (!isDoc && ii && (ii.thumburl || ii.url)) {
+                  const found = ii.thumburl || ii.url;
+                  if (!found.includes(".pdf") && !found.includes("NDL")) {
+                    state.wikiCache[item.id] = found;
+                    saveState();
+                    callback(found);
+                    return;
+                  }
+                }
               }
             }
           }
