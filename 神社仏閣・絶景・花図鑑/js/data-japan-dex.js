@@ -90,7 +90,8 @@ window.JAPAN_BEAUTY_DEX = [
     },
     "hasNio": false,
     "hasBuddha": false,
-    "buddhaTypes": []
+    "buddhaTypes": [],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/7/7e/Iyahiko-jinja_1.JPG"
   },
   {
     "id": "jikoji_cedar",
@@ -183,7 +184,8 @@ window.JAPAN_BEAUTY_DEX = [
     "hasBuddha": true,
     "buddhaTypes": [
       "nyorai"
-    ]
+    ],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Jik%C5%8Dji_Temple_%282%29%2C_Gosen%2C_Niigata%2C_Japan%2C_July_2022.jpg"
   },
   {
     "id": "hoppo_museum",
@@ -263,12 +265,13 @@ window.JAPAN_BEAUTY_DEX = [
     "lng": 139.135,
     "hasNio": false,
     "hasBuddha": false,
-    "buddhaTypes": []
+    "buddhaTypes": [],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/b/ba/Northern_Culture_Museum_002.jpg"
   },
   {
     "id": "asaiino_shrine",
     "dexNo": "004",
-    "photoUrl": "../img/scenery/asaiino_shrine_real.jpg",
+    "photoUrl": "img/scenery/asaiino_shrine_real.jpg",
     "name": "旦飯野神社（あさいいのじんじゃ・朱色の社殿と御神霊石）",
     "englishTitle": "Asaiino Shrine: Vibrant Vermilion Hall & Sacred Round Stone",
     "category": "神社仏閣",
@@ -530,7 +533,8 @@ window.JAPAN_BEAUTY_DEX = [
     },
     "hasNio": false,
     "hasBuddha": false,
-    "buddhaTypes": []
+    "buddhaTypes": [],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/87/Hakusan_Shrine_%28Niigata_City%29_Haiden.jpg"
   },
   {
     "id": "saito_villa",
@@ -668,7 +672,7 @@ window.JAPAN_BEAUTY_DEX = [
     "goshuinInfo": "🏮【御朱印＆オリジナル御朱印帳あり】拝観受付にて授与（9:00〜16:30頃・拝観料別）。直江兼続・上杉景勝ゆかりの名刹で、重厚なオリジナル御朱印帳も人気です。",
     "lat": 37.1065,
     "lng": 138.6186,
-    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/Unto-an_Niigata.jpg/800px-Unto-an_Niigata.jpg",
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/dc/Untoan1.jpg",
     "hasNio": false,
     "hasBuddha": false,
     "buddhaTypes": []
@@ -742,7 +746,7 @@ window.JAPAN_BEAUTY_DEX = [
     "goshuinInfo": "🏮【御朱印＆オリジナル御朱印帳あり】本殿（大礼殿）内の授与所にて授与（9:00〜16:30頃）。朱色の大神殿を描いた華やかなオリジナル御朱印帳も頒布されています。",
     "lat": 37.4475,
     "lng": 138.8524,
-    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/14/Aomi_Jinja_%28Kamo_City%29_haiden.jpg/800px-Aomi_Jinja_%28Kamo_City%29_haiden.jpg",
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/a/a7/Houtoku_Inari2.jpg",
     "hasNio": false,
     "hasBuddha": false,
     "buddhaTypes": []
@@ -812,7 +816,7 @@ window.JAPAN_BEAUTY_DEX = [
     "goshuinInfo": "🏮【御朱印あり】本堂脇の庫裡にて授与（9:00〜16:30頃）。日蓮宗の髭文字（妙法）の迫力ある御首題・御朱印がいただけます。",
     "lat": 38.0167,
     "lng": 138.3667,
-    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Oppo-ji_Sanjunoto.JPG/800px-Oppo-ji_Sanjunoto.JPG",
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Myousenji_temple_%E9%98%BF%E4%BB%8F%E5%9D%8A%E5%A6%99%E5%AE%A3%E5%AF%BA_%283658494016%29.jpg",
     "hasNio": true,
     "hasBuddha": true,
     "buddhaTypes": [
@@ -820,20 +824,20 @@ window.JAPAN_BEAUTY_DEX = [
     ]
   },
   {
-    "id": "tarodai_kannon_kita",
+    "id": "niigata_gokoku_shrine",
     "dexNo": "011",
-    "name": "太郎代観音（太郎代浜の小さな観音堂）とクロマツ林の古祠（新潟市北区）",
-    "englishTitle": "Tarodai Kannon: Hidden Coastal Wayside Temple & Pine Forest Shrine",
-    "category": "仏像・石仏・小さなお宮",
+    "name": "新潟県護国神社（日本海を望む白砂青松の杜と壮麗な社殿・新潟市中央区）",
+    "englishTitle": "Niigata Gokoku Shrine: Grand Torii & Pine Woods by the Japan Sea",
+    "category": "神社仏閣",
     "subTags": [
-      "小さなお宮",
-      "観音堂",
-      "石仏",
-      "新潟市北区"
+      "神社",
+      "大社・総鎮守",
+      "海辺の杜",
+      "新潟市中央区"
     ],
-    "spotId": "kaibenomori",
-    "spotName": "新潟市北区太郎代（島見浜・海辺の森のすぐ東隣！）",
-    "area": "新潟市北区",
+    "spotId": "niigatacity",
+    "spotName": "新潟市中央区西船見町（日本海海岸・西海岸公園近郊）",
+    "area": "新潟市中央区",
     "months": [
       1,
       2,
@@ -851,7 +855,7 @@ window.JAPAN_BEAUTY_DEX = [
     "rarity": 3,
     "compositionType": "額縁構図（松の幹や鳥居の間から小さなお堂を抜く）＋ ローキー（暗め）陰影構図",
     "photoPermission": "【境内の外観・石仏・鐘楼・参道：すべて撮影OK！】／【お堂内部の秘仏（十一面観音）は開帳日以外非公開・堂外からの参拝撮影は自由】",
-    "parkingInfo": "🅿️ 無料駐車場あり（太郎代観音境内の参拝スペース、または隣接する海辺の森・太郎代浜駐車場から徒歩すぐ）／🚻 海辺の森にトイレあり",
+    "parkingInfo": "🅿️ 無料大駐車場完備（境内参拝者用駐車場）／🚻 境内に清潔なトイレ完備",
     "bestTimeWeather": "早朝または夕方の斜光（松林の間から光の筋が差し込む時間）、雨上がりのしっとり濡れた石畳",
     "recommendedSpec": {
       "focalLength": "35mm〜85mm（中望遠で静寂を切り取る）",
@@ -859,22 +863,22 @@ window.JAPAN_BEAUTY_DEX = [
       "fStop": "F2.8〜F5.6"
     },
     "shotRecipes": [
-      "①【観光地化されていない『地元の小さなお堂』の侘び寂びショット】お堂全体を明るく撮るのではなく、露出補正を「-0.7EV（少し暗め）」にして、松林の影の中に浮かび上がる木造のお堂の屋根と鰐口（わにぐち・鈴）の紐を切り取ります！",
-      "②【境内の石仏・お地蔵様の『前ボケ・一体主役』ショット】並んでいる石仏を全部均等に撮ると説明的になるため、一番表情が優しい1体にピントを合わせ、手前の石仏をF2.8〜F4でふんわり前ボケさせるとプロの写真家の作品になります！",
-      "③【海辺の森の松林に佇む小さな祠（ほこら）と木漏れ日】お堂の裏手から海辺の森へ続くクロマツ林の中にある小さな祠を、逆光の木漏れ日と一緒に収めます。"
+      "①【青松の杜に映える壮麗な社殿の真正面シンメトリー構図】参道中央から社殿の重厚な屋根の反りをバランスよく収めます。",
+      "②【海風に揺れるクロマツ並木と木漏れ日参道】夕暮れの斜光が松林に差し込む時間帯に中望遠レンズで情緒豊かに切り取ります。",
+      "③【堂々たる大鳥居と青空のハイアングル・パノラマ】海岸通りの空に向かってそびえる鳥居の雄大さを捉えます。"
     ],
-    "wikiTitle": "新潟市北区",
-    "searchQuery": "新潟 太郎代観音 観音堂",
+    "wikiTitle": "新潟縣護國神社",
+    "searchQuery": "新潟県護国神社 新潟市中央区",
     "colorPalette": [
       "#451A03",
       "#065F46",
       "#D97706"
     ],
-    "catchphrase": "ホーム・北区の海辺の森のすぐ隣！約900年の歴史を秘めた砂丘と松林の小さな観音堂",
+    "catchphrase": "日本海を望む白砂青松の杜に鎮座する大社！壮大な社殿と緑豊かな参道スナップ",
     "inboundAppeal": "有名な巨大観光寺院ではなく、海辺の集落の人々が何百年も大切に手を合わせてきた「素朴な木造の小堂と苔むした石仏」こそ、海外の写真家が最も心を揺さぶられるリアルな日本の信仰風景（Wabi-Sabi）です。",
     "cameraTips": "小さなお宮や石仏を撮る最大のコツは『全部を写そうとせず、光が当たっている一部分（瓦の苔、石仏の横顔、古い木の木目）を切り取ること』です！",
     "englishTags": "Hidden coastal Kannon temple and weathered stone statues in a pine forest, Kita-ku, Niigata. #WabiSabi #HiddenJapan #StoneBuddha #Niigata #QuietPlaces",
-    "mannerNote": "地元の方が毎日お参りされる大切なお堂です。最初に合掌してご挨拶してから静かに撮影しましょう。",
+    "mannerNote": "県民に親しまれるお社です。心を込めて参拝してから撮影しましょう。",
     "linkedBirds": [
       "ヤマガラ",
       "シジュウカラ",
@@ -884,32 +888,33 @@ window.JAPAN_BEAUTY_DEX = [
       "キビタキ"
     ],
     "region": "kaetsu",
-    "hasGoshuin": false,
-    "hasGoshuincho": false,
-    "goshuinInfo": "🗿【無人・海辺の隠れ古堂（御朱印なし）】社務所のない無人の観音堂ですが、クロマツ林と苔むした石段の静寂感は写真作品として最高にシビれます！",
-    "lat": 37.978,
-    "lng": 139.215,
+    "hasGoshuin": true,
+    "hasGoshuincho": true,
+    "goshuinInfo": "⛩️【御朱印あり・社務所にて授与】白砂青松の杜にふさわしい清々しい墨書きの御朱印をいただけます。季節限定の美しい絵柄の御朱印も大人気です。",
+    "lat": 37.9308,
+    "lng": 139.0345,
     "hasNio": false,
     "hasBuddha": true,
     "buddhaTypes": [
       "kannon"
-    ]
+    ],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/2/29/Niigata_Gokoku_Shrine_20070815.png"
   },
   {
-    "id": "gohyaku_rakan_jikoji",
+    "id": "shugetsuji_temple",
     "dexNo": "012",
-    "name": "滝谷慈光寺・新津丘陵の「苔むす石仏・羅漢像と六地蔵」（秋葉区・五泉）",
-    "englishTitle": "Mossy Stone Buddhas, Rakan Statues & Jizo of Echigo Mountain Temples",
-    "category": "仏像・石仏・小さなお宮",
+    "name": "曹洞宗名刹 種月寺（国重文本堂と静寂の銀杏・庭園・新潟市江南区沢海）",
+    "englishTitle": "Shugetsuji Temple: National Important Cultural Property Hall & Zen Garden",
+    "category": "神社仏閣",
     "subTags": [
-      "仏像・石仏",
-      "羅漢像",
-      "お地蔵様",
-      "秋葉区・五泉"
+      "お寺・古堂",
+      "曹洞宗名刹",
+      "国重要文化財",
+      "江南区・沢海"
     ],
-    "spotId": "gosen",
-    "spotName": "五泉市・滝谷慈光寺参道 ＆ 新潟市秋葉区・新津丘陵の古寺・石仏群",
-    "area": "秋葉区・五泉エリア",
+    "spotId": "konan",
+    "spotName": "新潟市江南区沢海（北方文化博物館から徒歩数分！）",
+    "area": "新潟市江南区",
     "months": [
       4,
       5,
@@ -923,7 +928,7 @@ window.JAPAN_BEAUTY_DEX = [
     "rarity": 4,
     "compositionType": "望遠圧縮・前ボケ構図（手前の石仏をぼかして奥の1体の表情にピント！）",
     "photoPermission": "【屋外の参道・石仏・お地蔵様・羅漢像：すべて撮影OK！】（※本堂内の木造仏像はNGですが、屋外の石仏や野仏は自由にじっくり撮影できます！）",
-    "parkingInfo": "🅿️ 無料駐車場完備（滝谷慈光寺駐車場 約50台・秋葉公園駐車場 約200台）／🚻 駐車場にトイレあり",
+    "parkingInfo": "🅿️ 無料駐車場あり（種月寺境内参拝者駐車場、または北方文化博物館駐車場利用可）",
     "bestTimeWeather": "雨上がり・曇りの日（★石仏と緑の苔が濡れて、晴天時より10倍美しく発色します！）",
     "recommendedSpec": {
       "focalLength": "85mm〜300mm（野鳥用の中望遠〜望遠レンズが大活躍！）",
@@ -931,22 +936,22 @@ window.JAPAN_BEAUTY_DEX = [
       "fStop": "F2.8〜F5.6（背景を大きくぼかす）"
     },
     "shotRecipes": [
-      "①【真横または斜め45度から狙う『石仏の慈悲深い横顔』ショット】仏像や石仏を真正面から日の丸構図で撮ると証明写真のようになってしまいます。「斜め45度」または「真横」に回り込み、顔の半分に柔らかい光が当たり、もう半分が影になる角度（陰影）で撮ると、石に魂が宿ったような深い作品になります！",
-      "②【緑の苔・シダ植物と赤い前掛けの色彩対比ショット】杉並木の根元に佇む小さなお地蔵様の「深い緑の苔」と「赤いよだれかけ（または散ったモミジの葉）」の補色コントラストを切り取ります。",
-      "③【背後に杉の巨木をぼかして入れる『森の守り仏』ショット】石仏のすぐ近くから広角で撮るのではなく、5〜10メートル離れて望遠レンズ（200〜300mm）で抜くと、背景の千年杉が圧縮されて神秘的な空気感が出ます！"
+      "①【茅葺き屋根の風格を残す国重文本堂の全景ショット】静寂の境内から中望遠〜標準レンズで重厚な木造建築美を切り取ります。",
+      "②【山門の額縁構図から覗く緑の境内】古い山門の柱を額縁に見立てて、奥に続く手入れされた禅庭園を収めます。",
+      "③【秋の黄金色の大銀杏と石畳参道】晩秋に黄色い絨毯となる境内のイチョウの落ち葉をローアングルで捉えます。"
     ],
-    "wikiTitle": "石仏",
-    "searchQuery": "慈光寺 五泉 石仏 苔 参道",
+    "wikiTitle": "種月寺",
+    "searchQuery": "種月寺 新潟市 江南区 沢海",
     "colorPalette": [
       "#15803D",
       "#475569",
       "#DC2626"
     ],
-    "catchphrase": "本堂の中の仏像は撮影NGでも、参道の『苔むす石仏・羅漢様』は撮影OKでしかも最高に絵になる！",
+    "catchphrase": "越後曹洞宗の歴史を刻む国重要文化財の本堂！北方文化博物館すぐ隣の静寂なる禅刹",
     "inboundAppeal": "何百年もの風雪に耐え、緑の苔に覆われながら微笑む日本の「野仏（Stone Buddha / Jizo）」は、外国人にとって京都の金閣寺以上にスピリチュアルで感動的な被写体です。",
     "cameraTips": "仏像・石仏撮影の鉄則：カメラの露出補正を必ず『-0.7EV〜-1.0EV』に下げてください！背景の暗い森が黒く締まり、石仏の頭に積もった苔や表情の立体感が劇的に浮かび上がります。",
     "englishTags": "Ancient moss-covered stone Buddha and Jizo statues along a cedar forest path in Niigata. #StoneBuddha #Jizo #ZenJapan #MossGarden #SpiritualJapan",
-    "mannerNote": "石仏の上に乗っている落ち葉を少し整えるのは構いませんが、苔を剥がしたり石仏に触れたりしないよう優しく撮影しましょう。",
+    "mannerNote": "修行の場である静寂な禅寺です。大声を出さず静かに参拝・撮影しましょう。",
     "linkedBirds": [
       "オオルリ",
       "ミソサザイ",
@@ -956,30 +961,31 @@ window.JAPAN_BEAUTY_DEX = [
       "サシバ"
     ],
     "region": "kaetsu",
-    "hasGoshuin": false,
+    "hasGoshuin": true,
     "hasGoshuincho": false,
-    "goshuinInfo": "🗿【屋外石仏群】慈光寺の参道・山中に佇む無数の石仏・羅漢像（御朱印は慈光寺本堂にて授与）。雨上がりの苔と石仏の陰影が抜群です。",
-    "lat": 37.625,
-    "lng": 139.225,
+    "goshuinInfo": "📿【御朱印あり・庫裡にて授与】曹洞宗名刹ならではの端正で力強い墨書き御朱印を授与いただけます。",
+    "lat": 37.8596,
+    "lng": 139.1585,
     "hasNio": false,
     "hasBuddha": true,
-    "buddhaTypes": []
+    "buddhaTypes": [],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/Shugetsuji_Temple_%282%29%2C_Niigata%2C_Niigata%2C_Japan%2C_August_2022.jpg"
   },
   {
-    "id": "kakuda_small_shrine",
+    "id": "myokoji_temple",
     "dexNo": "013",
-    "name": "角田山麓の「小さな山の神の祠（ほこら）」と燈籠流しの古宮（西蒲・弥彦隣）",
-    "englishTitle": "Kakuda Mountain Tiny Forest Shrines (Hokora) & Ancient Sea Cave Sanctuary",
-    "category": "仏像・石仏・小さなお宮",
+    "name": "角田山 妙光寺（日蓮宗本山・開創700年の巨木古刹と安田瓦の大本堂・西蒲区角田浜）",
+    "englishTitle": "Myokoji Temple: Ancient Cedar Sanctuary & Yasuda Tile Hall at Mt. Kakuda",
+    "category": "神社仏閣",
     "subTags": [
-      "小さなお宮",
-      "山の神の祠",
-      "洞窟・鳥居",
-      "角田・弥彦"
+      "お寺・古堂",
+      "日蓮宗本山",
+      "巨木・古刹",
+      "西蒲・角田"
     ],
     "spotId": "nishikan",
-    "spotName": "新潟市西蒲区・角田山麓（宮前コース・浦浜・角田浜周辺）",
-    "area": "弥彦・西蒲エリア",
+    "spotName": "新潟市西蒲区角田浜（角田岬灯台・カーブドッチワイナリー近郊）",
+    "area": "新潟市西蒲区",
     "months": [
       3,
       4,
@@ -994,7 +1000,7 @@ window.JAPAN_BEAUTY_DEX = [
     "rarity": 4,
     "compositionType": "前ボケ＆ローアングル構図（足元の雪割草や落ち葉を手前にぼかして小さな祠を撮る）",
     "photoPermission": "【山麓の古社・石祠・鳥居・角田浜の判官舟かくし周辺：すべて屋外撮影OK！】",
-    "parkingInfo": "🅿️ 無料駐車場完備（角田浜海水浴場無料大駐車場・浦浜コース駐車場・ほたるの里駐車場などすべて無料！）／🚻 角田浜・ほたるの里にトイレあり",
+    "parkingInfo": "🅿️ 無料駐車場完備（妙光寺参拝者用駐車場・角田浜駐車場）／🚻 境内にトイレあり",
     "bestTimeWeather": "春（3〜4月：雪割草・カタクリと小さな祠）、秋（11月：黄色い落ち葉の絨毯と古宮）",
     "recommendedSpec": {
       "focalLength": "50mm〜200mm",
@@ -1002,22 +1008,22 @@ window.JAPAN_BEAUTY_DEX = [
       "fStop": "F4〜F5.6"
     },
     "shotRecipes": [
-      "①【雑木林の中にポツンと佇む『小さな石の祠（ほこら）』ショット】角田山の登山道入口や山麓の集落脇にある、高さ1メートルにも満たない小さな石の祠を、しゃがんで祠と同じ目線の高さ（ローアングル）から撮影します。まるでジブリの『となりのトトロ』の世界そのものです！",
-      "②【手前に春の花（雪割草やスミレ）を前ボケさせて奥に古鳥居】春なら足元に咲く小さな野の花をレンズのすぐ手前に入れてぼかし、その奥に古い石鳥居や社を配します。",
-      "③【角田浜・奇岩と洞窟に佇む海辺の信仰跡ショット】角田浜の灯台下にある岩場の洞窟（判官舟かくし）と日本海の荒波をコントラスト強く切り取ります。"
+      "①【堂々たる安田瓦葺き大本堂と静寂の参道ショット】山門から石畳の参道、重厚な安田瓦が重なる大本堂を広角〜標準で堂々と捉えます。",
+      "②【県指定天然記念物・カヤと杉の巨木並木スナップ】樹齢数百年の巨木が立ち並ぶ荘厳な境内。木漏れ日を中望遠でしっとり切り取ります。",
+      "③【角田岬と日本海を望む山麓寺院の佇まい】角田浜の波音を背に受ける寺院ならではの旅情あふれるカットを狙います。"
     ],
-    "wikiTitle": "角田山",
-    "searchQuery": "角田山 祠 神社 石仏",
+    "wikiTitle": "妙光寺 (新潟市)",
+    "searchQuery": "妙光寺 新潟市 西蒲区 角田浜",
     "colorPalette": [
       "#065F46",
       "#78350F",
       "#EC4899"
     ],
-    "catchphrase": "ガイドブックには載らない『トトロの森のような小さなお宮と石祠』！弥彦のすぐ隣で出会える原風景",
-    "inboundAppeal": "日本の神道（Shinto）の原点である「大きな建物を持たず、山や岩や古木そのものに小さな祠を祀るアニミズム信仰」がそのまま残っており、玄人好みの写真として抜群の味わいがあります。",
-    "cameraTips": "小さなお宮や祠を上から見下ろして撮るとただの記録写真になります。必ず『膝をつくかしゃがんで、下から少し見上げるアングル』で撮ると、小さな祠に堂々たる威厳が生まれます！",
-    "englishTags": "A tiny moss-covered Shinto wayside shrine (Hokora) hidden in the woods of Mt. Kakuda, Niigata. #ShintoShrine #Hokora #GhibliVibes #HiddenJapan #Animism",
-    "mannerNote": "集落の鎮守様や山の神様ですので、静かに一礼して撮影しましょう。",
+    "catchphrase": "角田山麓の海風と深い緑に抱かれた日蓮宗本山！威風堂々たる安田瓦の大本堂と県指定天然記念物の巨樹",
+    "inboundAppeal": "日蓮聖人佐渡流罪の歴史を刻む開創700年の古刹。日本海の海風に耐えてきた重厚な安田瓦の大本堂と、県指定天然記念物の巨樹が織りなす威厳は、本物の日本建築の奥深さを伝えます。",
+    "cameraTips": "大本堂の重厚な屋根瓦と石畳の直線ラインを意識し、広角〜標準で堂々と捉えます。木漏れ日が美しい杉並木はF2.8〜F4で中望遠切り取りが効果的です。",
+    "englishTags": "Myokoji Temple, historic Nichiren head temple with massive tiled hall surrounded by ancient cedars near Mt. Kakuda, Niigata. #Myokoji #HistoricTemple #Niigata #ZenArchitecture #JapanTravel",
+    "mannerNote": "由緒正しい名刹寺院です。参拝を済ませてからマナーを守って撮影しましょう。",
     "linkedBirds": [
       "ヤマガラ",
       "シジュウカラ",
@@ -1027,14 +1033,17 @@ window.JAPAN_BEAUTY_DEX = [
       "ハヤブサ"
     ],
     "region": "kaetsu",
-    "hasGoshuin": false,
-    "hasGoshuincho": false,
-    "goshuinInfo": "🗿【無人・山麓の隠れ祠（御朱印なし）】無人の小さな山の神の祠ですが、木漏れ日と雪割草・杉木立に包まれた神秘的な写真が撮れます。",
-    "lat": 37.7842,
-    "lng": 138.8351,
+    "hasGoshuin": true,
+    "hasGoshuincho": true,
+    "goshuinInfo": "📿【御朱印あり・寺務所受付】日蓮宗本山ならではの力強いお題目「南無妙法蓮華経」の髭文字の墨書き御朱印を授与いただけます。",
+    "lat": 37.7885,
+    "lng": 138.8415,
     "hasNio": false,
-    "hasBuddha": false,
-    "buddhaTypes": []
+    "hasBuddha": true,
+    "buddhaTypes": [
+      "shaka"
+    ],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/My%C5%8Dk%C5%8Dji_Temple_%282%29%2C_Niigata%2C_Niigata%2C_Japan%2C_August_2022.jpg"
   },
   {
     "id": "kokujoji_gogoan",
@@ -1110,7 +1119,8 @@ window.JAPAN_BEAUTY_DEX = [
       "kannon",
       "nio",
       "enma"
-    ]
+    ],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Kokujouji_Temple%2C_Tsubame%2C_Niigata%2C_Japan%2C_May_2021.jpg"
   },
   {
     "id": "deyu_yakushido_ubason",
@@ -1581,7 +1591,8 @@ window.JAPAN_BEAUTY_DEX = [
     "buddhaTypes": [
       "kannon",
       "nio"
-    ]
+    ],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/%E4%BD%90%E6%B8%A1%E3%83%BB%E6%B8%85%E6%B0%B4%E5%AF%BA_02.jpg"
   },
   {
     "id": "minato_inari",
@@ -1742,7 +1753,7 @@ window.JAPAN_BEAUTY_DEX = [
     "goshuinInfo": "🏮【御朱印＆季節の切り絵御朱印・御朱印帳あり】社務所にて授与（9:00〜16:30頃）。新発田総鎮守として季節ごとの美しい限定御朱印やオリジナル御朱印帳が大変人気です。",
     "lat": 37.9478,
     "lng": 139.3274,
-    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Suwa_Jinja_Shibata_Niigata.jpg/800px-Suwa_Jinja_Shibata_Niigata.jpg",
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/7/77/Shibata_SuwaShrine_March2020.jpg",
     "spotMapQuery": "新発田総鎮守 諏訪神社 新発田市諏訪町",
     "parkingMapQuery": "新発田諏訪神社 駐車場 新発田市",
     "lineage": {
@@ -1834,7 +1845,7 @@ window.JAPAN_BEAUTY_DEX = [
     "goshuinInfo": "🏮【御朱印あり】日本三不動のひとつ。本堂内の授与所にて迫力ある『菅谷不動尊』の御朱印を授与（9:00〜16:00頃）。",
     "lat": 37.9478,
     "lng": 139.3274,
-    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Sugatani_Fudouson_Shibata.jpg/800px-Sugatani_Fudouson_Shibata.jpg",
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/3/30/Entrance%2C_Kankoku-ji_Temple%2C_Shibata%2C_Niigata%2C_Japan%2C_April_2024.jpg",
     "spotMapQuery": "菅谷不動尊 菅谷寺 新発田市菅谷860",
     "parkingMapQuery": "菅谷不動尊 駐車場 新発田市菅谷",
     "hasNio": true,
@@ -1915,7 +1926,8 @@ window.JAPAN_BEAUTY_DEX = [
     "lng": 139.0425,
     "hasNio": false,
     "hasBuddha": false,
-    "buddhaTypes": []
+    "buddhaTypes": [],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d4/Sanj%C5%8D_Hachimangu_Shrine%2C_Sanj%C5%8D%2C_Niigata%2C_Japan%2C_July_2022.jpg"
   },
   {
     "id": "kota_shrine",
@@ -1988,7 +2000,8 @@ window.JAPAN_BEAUTY_DEX = [
     "lng": 138.2863,
     "hasNio": false,
     "hasBuddha": false,
-    "buddhaTypes": []
+    "buddhaTypes": [],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fb/Kota-jinja_%28Joetsu%29_shaden.JPG"
   },
   {
     "id": "rinsenji_temple",
@@ -2061,7 +2074,8 @@ window.JAPAN_BEAUTY_DEX = [
     "lng": 138.2863,
     "hasNio": false,
     "hasBuddha": true,
-    "buddhaTypes": []
+    "buddhaTypes": [],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Linsenji_1.jpg"
   },
   {
     "id": "kasugayama_shrine",
@@ -2130,7 +2144,8 @@ window.JAPAN_BEAUTY_DEX = [
     "lng": 138.2863,
     "hasNio": false,
     "hasBuddha": false,
-    "buddhaTypes": []
+    "buddhaTypes": [],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/2/26/Kasugayama_jinjya_1.jpg"
   },
   {
     "id": "murakami_haguro",
@@ -2903,7 +2918,8 @@ window.JAPAN_BEAUTY_DEX = [
     "buddhaTypes": [
       "nio",
       "nyorai"
-    ]
+    ],
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Gochi-kokubunji_hondou.JPG"
   },
   {
     "id": "hakkaisan_son_shrine",
