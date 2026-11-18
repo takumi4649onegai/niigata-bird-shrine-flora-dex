@@ -268,6 +268,7 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "asaiino_shrine",
     "dexNo": "004",
+    "photoUrl": "../img/scenery/asaiino_shrine_real.jpg",
     "name": "旦飯野神社（あさいいのじんじゃ・朱色の社殿と御神霊石）",
     "englishTitle": "Asaiino Shrine: Vibrant Vermilion Hall & Sacred Round Stone",
     "category": "神社仏閣",
