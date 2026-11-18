@@ -3,7 +3,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "yahiko_shrine",
     "dexNo": "001",
-    "photoUrl": "../img/scenery/yahiko_shrine_grand_torii.jpg",
     "name": "越後一宮 彌彦神社（弥彦山麓・玉の橋と巨杉の杜・弥彦村）",
     "englishTitle": "Yahiko Shrine: Sacred Vermilion Bridge & Ancient Cedar Forest",
     "category": "神社仏閣",
@@ -96,7 +95,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "jikoji_cedar",
     "dexNo": "002",
-    "photoUrl": "../img/scenery/jikoji_cedar_telephoto_compression.jpg",
     "name": "慈光寺・樹齢500年の巨杉並木と禅寺（秋葉区近郊・五泉）",
     "recipeImages": [
       {
@@ -190,7 +188,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "hoppo_museum",
     "dexNo": "003",
-    "photoUrl": "../img/scenery/hoppo_bunka_tatami_frame.jpg",
     "name": "北方文化博物館（豪農の館・百畳敷の額縁庭園と大藤）",
     "englishTitle": "Northern Culture Museum: Samurai-Era Mansion & Great Wisteria",
     "category": "神社仏閣",
@@ -271,7 +268,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "asaiino_shrine",
     "dexNo": "004",
-    "photoUrl": "../img/scenery/asaiino_shrine_spirit_stone.jpg",
     "name": "旦飯野神社（あさいいのじんじゃ・朱色の社殿と御神霊石）",
     "englishTitle": "Asaiino Shrine: Vibrant Vermilion Hall & Sacred Round Stone",
     "category": "神社仏閣",
@@ -370,7 +366,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "oppouji_pagoda",
     "dexNo": "005",
-    "photoUrl": "../img/scenery/oppouji_pagoda_three_story.jpg",
     "name": "乙宝寺（おっぽうじ・国重要文化財の木造三重塔）",
     "englishTitle": "Oppo-ji Temple: 1620 Three-Story Wooden Pagoda",
     "category": "神社仏閣",
@@ -449,7 +444,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "hakusan_shrine",
     "dexNo": "006",
-    "photoUrl": "../img/scenery/hakusan_shrine_suishinmon.jpg",
     "name": "新潟総鎮守・白山神社（蓮池・随神門・風鈴まつり・新潟市中央区）",
     "englishTitle": "Hakusan Shrine: Niigata's Guardian Shrine, Wind Chimes & Lotus Pond",
     "category": "神社仏閣",
@@ -903,7 +897,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "gohyaku_rakan_jikoji",
     "dexNo": "012",
-    "photoUrl": "../img/scenery/jikoji_mossy_lantern_macro.jpg",
     "name": "滝谷慈光寺・新津丘陵の「苔むす石仏・羅漢像と六地蔵」（秋葉区・五泉）",
     "englishTitle": "Mossy Stone Buddhas, Rakan Statues & Jizo of Echigo Mountain Temples",
     "category": "仏像・石仏・小さなお宮",
@@ -1270,7 +1263,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "horide_furutsu_akiha",
     "dexNo": "017",
-    "photoUrl": "../img/scenery/akiha_shrine_cedar_frame.jpg",
     "name": "秋葉区・古津八幡山と「新津の鎮守・小さな古社と忠魂碑・石祠群」（新潟市秋葉区）",
     "englishTitle": "Akiha Wayside Shrines, Ancient Tumulus Hill & Local Guardian Sanctuaries",
     "category": "仏像・石仏・小さなお宮",
@@ -3059,7 +3051,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "kamo_aomi_shrine",
     "dexNo": "041",
-    "photoUrl": "../img/scenery/kamo_aomi_shrine_stone_stairs.jpg",
     "name": "加茂山公園・青海神社（越後の小京都・巨杉と雪椿の石段社殿）",
     "englishTitle": "Aomi Shrine & Kamo Mountain Park: Sacred Ancient Cedars and Camellias",
     "category": "神社仏閣",
@@ -3216,7 +3207,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "matsuhama_inari_shrine",
     "dexNo": "043",
-    "photoUrl": "../img/scenery/matsuhama_inari_torii_tunnel.jpg",
     "name": "松浜稲荷神社（新潟市北区松浜本町・古い湊町の路地に佇む鎮守社）",
     "englishTitle": "Matsuhama Inari Shrine & Agano River Estuary: Red Torii Gate Path at Sunset",
     "category": "仏像・石仏・小さなお宮",
@@ -4336,7 +4326,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "kita_otematsu_yakushi",
     "dexNo": "058",
-    "photoUrl": "../img/scenery/otematsu_yakushido_cherry_blossom.jpg",
     "name": "乙松薬師堂・静寂の桜と古石仏（新潟市北区乙松）",
     "englishTitle": "Otematsu Yakushi-do: Ancient Cherry & Healing Buddha in Kita-ku",
     "category": "仏像・石仏・小さなお宮",
@@ -4418,7 +4407,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "kita_kizaki_suwa",
     "dexNo": "059",
-    "photoUrl": "../img/scenery/kizaki_suwa_giant_zelkova.jpg",
     "name": "木崎諏訪神社・巨木ケヤキ社叢と静寂の参道（新潟市北区木崎）",
     "englishTitle": "Kizaki Suwa Shrine: Giant Zelkova Sacred Forest in Kita-ku",
     "category": "神社仏閣",
@@ -4630,7 +4618,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "kita_kuzutsuka_ichiba_inari",
     "dexNo": "062",
-    "photoUrl": "../img/scenery/toyosaka_kuzutsuka_inari_tunnel.jpg",
     "name": "葛塚市場通り・稲荷古祠とレトロ町屋路地（新潟市北区葛塚）",
     "englishTitle": "Kuzutsuka Market Street & Historic Inari Shrine in Kita-ku",
     "category": "仏像・石仏・小さなお宮",
@@ -4751,7 +4738,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "kamo_aomi_inner_shrine",
     "dexNo": "064",
-    "photoUrl": "../img/scenery/kamo_aomi_shrine_stone_stairs.jpg",
     "name": "青海神社・奥宮と加茂川上流の清流石仏（加茂市加茂山奥）",
     "englishTitle": "Aomi Shrine Inner Sanctuary & Mountain Stream Stone Buddhas",
     "category": "仏像・石仏・小さなお宮",
@@ -5350,7 +5336,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "asaiino_okunomiya_megalith",
     "dexNo": "073",
-    "photoUrl": "../img/scenery/asaiino_shrine_spirit_stone.jpg",
     "name": "旦飯野神社奥宮・裏山巨石群（あさいいのじんじゃおくのみや・阿賀野市）",
     "englishTitle": "Asaiino Shrine Okunomiya: Sacred Ancient Megaliths & Ancient Mountain Grove",
     "category": "神社仏閣",
@@ -5845,8 +5830,7 @@ window.JAPAN_BEAUTY_DEX = [
     },
     "hasNio": false,
     "hasBuddha": false,
-    "buddhaTypes": [],
-    "photoUrl": "../img/scenery/asaiino_shrine_spirit_stone.jpg"
+    "buddhaTypes": []
   },
   {
     "id": "kaikata_shrine_niihana",
@@ -6012,8 +5996,7 @@ window.JAPAN_BEAUTY_DEX = [
     },
     "hasNio": false,
     "hasBuddha": false,
-    "buddhaTypes": [],
-    "photoUrl": "../img/scenery/kizaki_suwa_sacred_path.jpg"
+    "buddhaTypes": []
   },
   {
     "id": "kuzutsuka_isurugi_shrine",
@@ -6095,8 +6078,7 @@ window.JAPAN_BEAUTY_DEX = [
     },
     "hasNio": false,
     "hasBuddha": false,
-    "buddhaTypes": [],
-    "photoUrl": "../img/scenery/toyosaka_kuzutsuka_inari_tunnel.jpg"
+    "buddhaTypes": []
   },
   {
     "id": "yokoi_suwa_shrine",
@@ -6423,7 +6405,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "echigo_tainai_kannon",
     "dexNo": "087",
-    "photoUrl": "../img/scenery/echigo_tainai_kannon_bronze.jpg",
     "name": "越後胎内観音（えちごたいないかんのん・全高26m！青空にそびえる日本海側最大の青銅大観音・胎内市）",
     "englishTitle": "Echigo Tainai Kannon: 26m Giant Bronze Outdoor Kannon Bodhisattva in Tainai",
     "category": "仏像・石仏・小さなお宮",
@@ -6502,7 +6483,6 @@ window.JAPAN_BEAUTY_DEX = [
   {
     "id": "minamiuonuma_urasa_bishamon",
     "dexNo": "088",
-    "photoUrl": "../img/scenery/minamiuonuma_urasa_bishamon_sanmon.jpg",
     "name": "越後浦佐・普光寺 毘沙門堂（うらさ びしゃもんどう・日本三大奇祭『裸押合大祭』と国重文級の荘厳な山門・南魚沼市）",
     "englishTitle": "Urasa Bishamondō & Fukōji Temple: Legendary Heavenly King & Historic Mountain Gate",
     "category": "仏像・石仏・小さなお宮",
