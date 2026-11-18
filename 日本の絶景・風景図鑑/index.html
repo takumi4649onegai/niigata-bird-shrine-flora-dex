@@ -813,79 +813,36 @@
 
     <!-- ① 図鑑一覧セクション（all / 神社仏閣 / 絶景・風景） -->
     <section id="sec-dex-main">
-      <!-- 撮影マナー＆豆知識（スッキリ1行アコーディオン） -->
-      <details style="background:#fff; border:1px solid #cbd5e1; border-radius:10px; padding:9px 14px; margin-bottom:12px; font-size:0.8rem; color:#334155;">
-        <summary style="cursor:pointer; font-weight:700; color:#0f172a; display:flex; justify-content:space-between; align-items:center; list-style:none;">
-          <span>💡 <strong>撮影ガイド：</strong>屋外の参道・石仏・五百羅漢・お地蔵様はすべて撮影OK！（本堂内部は控えめに）</span>
-          <span style="font-size:0.74rem; color:#64748b; font-weight:600;">▼ 詳細・リンクを開く</span>
+      
+
+      <!-- 📍 GPS距離ナビ設定バー（コンパクト・1行展開） -->
+      <details id="gps-distance-nav-panel" style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; margin-bottom:12px; font-size:0.78rem;">
+        <summary style="padding:8px 12px; cursor:pointer; color:#0369a1; font-weight:700; display:flex; justify-content:space-between; align-items:center;">
+          <span>📍 <strong>リアル距離＆帰り道ナビ：</strong> 現在地からの距離や方角で並び替え</span>
+          <span style="font-size:0.72rem; color:#64748b;">▼ 設定を開く</span>
         </summary>
-        <div style="margin-top:8px; padding-top:8px; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
-          <span style="color:#475569;">参道の石仏や小さな祠は、苔や木漏れ日と重なって味わい深い作品になります。地域順（下越→中越→上越→佐渡）で並んでいます。</span>
-          <div style="display:flex; gap:6px;">
-            <button class="btn btn-outline btn-sm" onclick="JapanApp.setCategory('仏像・石仏・小さなお宮')">🗿 石仏・古社20選を見る</button>
-            <button class="btn btn-outline btn-sm" onclick="JapanApp.setCategory('composition')">📐 5大構図の撮り方</button>
-          </div>
-        </div>
-      </details>
-
-      <!-- 地域クイック絞り込みバー -->
-      <div class="region-filter-bar">
-        <strong style="font-size:0.76rem; color:#475569; margin-right:4px;">🗾 地域絞り込み:</strong>
-        <button class="btn-region active" data-region="all" onclick="JapanApp.setRegionFilter('all')">新潟県すべて (120)</button>
-        <button class="btn-region" data-region="kaetsu" onclick="JapanApp.setRegionFilter('kaetsu')">📍 下越・北区ホーム＆周辺 (72)</button>
-        <button class="btn-region" data-region="chuetsu" onclick="JapanApp.setRegionFilter('chuetsu')">🚗 中越・県央 (32)</button>
-        <button class="btn-region" data-region="joetsu" onclick="JapanApp.setRegionFilter('joetsu')">🏔️ 上越・糸魚川 (10)</button>
-        <button class="btn-region" data-region="sado" onclick="JapanApp.setRegionFilter('sado')">⛴️ 佐渡 (6)</button>
-      </div>
-
-      <!-- 📍 GPS現在地 ＆ 「自宅・北区へ近づく寄り道ナビ」コントロールバー -->
-      <details id="geo-location-panel" style="background:#f0f9ff; border:1.5px solid #0284c7; border-radius:12px; margin-bottom:14px; box-shadow:0 2px 8px rgba(2,132,199,0.06); overflow:hidden;">
-        <summary style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding:10px 14px; cursor:pointer; font-size:0.84rem; font-weight:800; color:#0c4a6e; user-select:none;">
-          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
-            <span style="font-size:0.75rem; font-weight:800; background:#0284c7; color:#fff; padding:3px 9px; border-radius:99px;">🧭 リアル距離＆帰り道ナビ</span>
-            <span id="geo-status-summary" style="font-size:0.8rem; color:#0369a1; font-weight:700;">現在地：新潟市北区（豊栄・福島潟周辺）</span>
-          </div>
-          <span style="font-size:0.78rem; color:#0284c7; font-weight:700;">▼ タップしてナビ・並び替え設定を開く</span>
-        </summary>
-        <div style="padding:10px 14px 14px; border-top:1px dashed #bae6fd;">
-          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
-            <strong id="geo-status-text" style="font-size:0.86rem; color:#0c4a6e;">現在地：新潟市北区（豊栄・福島潟周辺）</strong>
-            <div style="display:flex; gap:6px; flex-wrap:wrap;">
-              <button class="btn btn-primary btn-sm" onclick="JapanApp.requestCurrentGPS()">
-                📍 スマホの現在地（GPS）で更新
-              </button>
-              <button class="btn btn-outline btn-sm" id="btn-way-home" onclick="JapanApp.toggleWayHomeMode()">
-                🏠 自宅（北区）へ近づくスポットのみ表示
-              </button>
-            </div>
-          </div>
-
-          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:0.78rem; color:#334155;">
-            <span>📍 <strong>いま出先にいる場所を選択（手動変更）：</strong></span>
-            <select id="geo-preset-select" class="filter-select" style="font-size:0.78rem; padding:4px 8px;" onchange="JapanApp.setPresetLocation(this.value)">
-              <option value="home_kita">🏠 新潟市北区（豊栄・福島潟周辺）</option>
-              <option value="center_chuo">🏢 新潟市中央区（新潟駅・万代・古町）</option>
-              <option value="west_kounan">🌾 新潟市西区・江南区（内野・亀田）</option>
-              <option value="shibata_seiro">🏯 下越北東部：新発田・聖籠・胎内</option>
-              <option value="murakami_north">🌊 下越最北部：村上・笹川流れ</option>
-              <option value="agano_east">🦆 下越東部：阿賀野（瓢湖）・阿賀町</option>
-              <option value="akiha_niitsu">🍁 秋葉区・五泉（新津駅・秋葉公園・慈光寺）</option>
-              <option value="yahiko_shrine">⛩️ 弥彦・角田山（西蒲区・弥彦村）</option>
-              <option value="sanjo_kamo">🛠️ 県央：三条・加茂・燕（燕三条）</option>
-              <option value="nagaoka_st">🎆 中越：長岡・見附（長岡駅周辺）</option>
-              <option value="kashiwazaki_sea">🌊 中越沿岸：柏崎・出雲崎</option>
-              <option value="uonuma_tokamachi">🌾 魚沼・十日町（南魚沼・越後湯沢）</option>
-              <option value="joetsu_takada">🏔️ 上越：高田城址・直江津駅</option>
-              <option value="itoigawa_west">💎 上越西端：糸魚川・親不知</option>
-              <option value="sado_island">⛴️ 佐渡島（両津港・相川）</option>
-            </select>
-
-            <span style="margin-left:auto; display:flex; align-items:center; gap:6px;">
-              <strong>並び替え：</strong>
-              <button class="btn btn-sm btn-outline active" id="btn-sort-dist" onclick="JapanApp.toggleSortByDistance(true)">📍 現在地から近い順</button>
-              <button class="btn btn-sm btn-outline" id="btn-sort-region" onclick="JapanApp.toggleSortByDistance(false)">🗾 地域・番号順</button>
-            </span>
-          </div>
+        <div style="padding:10px 14px; border-top:1px solid #e2e8f0; background:#fff; display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+          <strong>現在地基準:</strong>
+          <select id="geo-custom-origin" class="filter-select" style="font-size:0.75rem; padding:3px 6px;" onchange="JapanApp.onGeoOriginChange(this.value)">
+            <option value="current">📍 GPS現在地を取得（スマホ・PCの現在位置）</option>
+            <option value="kitaku_toyosaka" selected>★ 北区：豊栄駅・福島潟周辺（ホーム）</option>
+            <option value="niigata_station">★ 中央区：新潟駅万代口・萬代橋周辺</option>
+            <option value="niizaki">★ 北区：新崎・阿賀野川河口周辺</option>
+            <option value="akiha_niitsu">★ 秋葉区：新津駅・新津丘陵周辺</option>
+            <option value="yahiko">★ 西蒲・弥彦：弥彦神社・角田山麓</option>
+            <option value="shibata">★ 下越：新発田駅・五十公野周辺</option>
+            <option value="nagaoka_center">★ 中越：長岡駅・信濃川周辺</option>
+            <option value="sanjo_tsubame">★ 県央：燕三条駅・弥彦山麓</option>
+            <option value="uonuma_tokamachi">★ 魚沼・十日町（南魚沼・越後湯沢）</option>
+            <option value="joetsu_takada">★ 上越：高田城址・直江津駅</option>
+            <option value="itoigawa_west">★ 上越西端：糸魚川・親不知</option>
+            <option value="sado_island">★ 佐渡島（両津港・相川）</option>
+          </select>
+          <span style="margin-left:auto; display:flex; align-items:center; gap:6px;">
+            <strong>並び順:</strong>
+            <button class="btn btn-sm btn-outline active" id="btn-sort-dist" onclick="JapanApp.toggleSortByDistance(true)">📍 近い順</button>
+            <button class="btn btn-sm btn-outline" id="btn-sort-region" onclick="JapanApp.toggleSortByDistance(false)">🗾 番号順</button>
+          </span>
         </div>
       </details>
 
@@ -1738,62 +1695,44 @@
 
       function setCategory(cat) {
         currentCat = cat;
+
         document.querySelectorAll(".cat-tab").forEach(b => {
           b.classList.toggle("active", b.dataset.cat === cat);
         });
 
         const secDex = document.getElementById("sec-dex-main");
         const secComp = document.getElementById("sec-composition-guide");
-        const secLineage = document.getElementById("sec-lineage-guide");
         const secPb = document.getElementById("sec-photobook");
         const secSuite = document.getElementById("sec-enjoy-suite");
         const secMission = document.getElementById("sec-snap-missions");
 
+        if (secDex) secDex.style.display = "none";
+        if (secComp) secComp.style.display = "none";
+        if (secPb) secPb.style.display = "none";
+        if (secSuite) secSuite.style.display = "none";
         if (secMission) secMission.style.display = "none";
 
-        if (cat === "lineage") {
-          secDex.style.display = "none";
-          secComp.style.display = "none";
-          secPb.style.display = "none";
-          if (secSuite) secSuite.style.display = "none";
-          if (secLineage) {
-            secLineage.style.display = "block";
-            renderLineageTree();
+        if (cat === "composition") {
+          if (secComp) secComp.style.display = "block";
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        } else if (cat === "missions") {
+          if (secMission) {
+            secMission.style.display = "block";
+            renderSnapMissions();
           }
-        } else if (cat === "composition") {
-          if (secLineage) secLineage.style.display = "none";
-          secDex.style.display = "none";
-          secComp.style.display = "block";
-          secPb.style.display = "none";
-          if (secSuite) secSuite.style.display = "none";
+          window.scrollTo({ top: 0, behavior: "smooth" });
         } else if (cat === "photobook") {
-          secDex.style.display = "none";
-          secComp.style.display = "none";
-          secPb.style.display = "block";
-          if (secSuite) secSuite.style.display = "none";
-          renderPhotoBook();
-          if (secLineage) secLineage.style.display = "none";
-        } else if (cat === "goshuin_book" || cat === "suite") {
-          secDex.style.display = "none";
-          secComp.style.display = "none";
-          secPb.style.display = "none";
-          if (secSuite) {
-            secSuite.style.display = "block";
-            if (window.CameraEnjoySuite) {
-              window.CameraEnjoySuite.renderSuiteMain("goshuin");
-            }
+          if (secPb) {
+            secPb.style.display = "block";
+            renderPhotoBook();
           }
+          window.scrollTo({ top: 0, behavior: "smooth" });
         } else {
-          secDex.style.display = "block";
-          secComp.style.display = "none";
-          secPb.style.display = "none";
-          if (secSuite) secSuite.style.display = "none";
-          if (secLineage) secLineage.style.display = "none";
+          if (secDex) secDex.style.display = "block";
           renderGrid();
         }
       }
 
-      
       function setRegionFilter(region) {
         currentRegion = region;
         document.querySelectorAll('.btn-region').forEach(btn => {
