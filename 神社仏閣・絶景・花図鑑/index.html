@@ -697,7 +697,7 @@
     }
 
   
-    /* 秘密のクリエイター・海外SNS発信モード用スタイル */
+    /* 秘密のクリエイター・海外SNS発信モード用スタイル（二重ロック安全仕様） */
     .secret-sns-section {
       display: none;
     }
@@ -709,23 +709,35 @@
       from { opacity: 0; transform: translateY(-4px); }
       to { opacity: 1; transform: translateY(0); }
     }
+    /* 通常時は鍵アイコン自体を完全非表示（押し間違いゼロ） */
     .secret-toggle-btn {
+      display: none !important;
+    }
+    /* タイトルをトリプルタップした時だけ半透明で静かに出現 */
+    body.secret-key-revealed .secret-toggle-btn {
+      display: inline-flex !important;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
-      opacity: 0.2;
-      transition: opacity 0.2s, transform 0.2s;
+      opacity: 0.45;
+      font-size: 0.9rem;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px dashed rgba(255, 255, 255, 0.35);
       user-select: none;
-      font-size: 0.85rem;
-      padding: 2px 6px;
-      border-radius: 4px;
+      transition: opacity 0.2s, background 0.2s, transform 0.15s;
     }
-    .secret-toggle-btn:hover {
-      opacity: 0.8;
-      background: rgba(255,255,255,0.15);
+    body.secret-key-revealed .secret-toggle-btn:hover {
+      opacity: 0.9;
+      background: rgba(255, 255, 255, 0.22);
+      transform: scale(1.05);
     }
+    /* 解放時はゴールドに点灯 */
     body.secret-sns-active .secret-toggle-btn {
-      opacity: 1;
-      background: rgba(245, 158, 11, 0.2);
-      border: 1px solid #f59e0b;
+      opacity: 1 !important;
+      background: rgba(245, 158, 11, 0.25) !important;
+      border: 1px solid #f59e0b !important;
     }
 
   </style>
@@ -2785,6 +2797,7 @@
       }
 
       function closeDetailModal() {
+        lockAndHideSecretKey();
         document.getElementById("modal-detail").classList.remove("open");
       }
 
@@ -3194,54 +3207,57 @@
         openDetailModal(itemId);
       }
 
-      // --- 秘密のクリエイター・海外SNS発信モード ---
+      // --- 秘密のクリエイター・海外SNS発信モード（二重ロック安全仕様） ---
       let secretTapCount = 0;
       let secretTapTimer = null;
-
-      function initSecretMode() {
-        const isSecret = localStorage.getItem('niigata_secret_sns_mode') === 'true';
-        if (isSecret) {
-          document.body.classList.add('secret-sns-active');
-        } else {
-          document.body.classList.remove('secret-sns-active');
-        }
-        updateSecretIcons();
-      }
 
       function updateSecretIcons() {
         const isActive = document.body.classList.contains('secret-sns-active');
         document.querySelectorAll('.secret-toggle-btn').forEach(el => {
           el.textContent = isActive ? '🔓' : '🔒';
-          el.title = isActive ? '【秘密モード中】タップで通常モード（非表示）に戻す' : '通常モード（タップまたはタイトル3回タップで秘密モードON）';
+          el.title = isActive ? '【解放中】タップすると施錠して非表示に戻します' : '【半透明キー】タップすると秘密の発信モードを解放します';
         });
       }
 
-      function toggleSecretSnsMode(explicitState) {
-        const current = document.body.classList.contains('secret-sns-active');
-        const next = explicitState !== undefined ? explicitState : !current;
-        if (next) {
-          document.body.classList.add('secret-sns-active');
-          localStorage.setItem('niigata_secret_sns_mode', 'true');
-          showToast('🔓【秘密モードON】海外SNS発信・インバウンド分析を表示しました');
-        } else {
-          document.body.classList.remove('secret-sns-active');
-          localStorage.setItem('niigata_secret_sns_mode', 'false');
-          showToast('🔒【通常モード】海外SNS発信・分析を非表示にしました');
-        }
-        updateSecretIcons();
-      }
-
+      // ステップ1: タイトルを素早く3回連続タップで「半透明の鍵」を静かに出現（または完全施錠）
       function handleTitleTripleClick() {
         secretTapCount++;
         clearTimeout(secretTapTimer);
         if (secretTapCount >= 3) {
           secretTapCount = 0;
-          toggleSecretSnsMode();
+          const isRevealed = document.body.classList.contains('secret-key-revealed');
+          if (!isRevealed) {
+            // 半透明の鍵マークを静かに出現（目立つ通知は出さない安全設計）
+            document.body.classList.add('secret-key-revealed');
+            updateSecretIcons();
+          } else {
+            // もう一度トリプルタップすると完全施錠して鍵も消滅
+            lockAndHideSecretKey();
+          }
         } else {
           secretTapTimer = setTimeout(() => {
             secretTapCount = 0;
           }, 500);
         }
+      }
+
+      // ステップ2: 半透明の鍵を押して本解放（または施錠）
+      function toggleSecretSnsMode() {
+        const isActive = document.body.classList.contains('secret-sns-active');
+        if (!isActive) {
+          document.body.classList.add('secret-sns-active');
+          showToast('🔓【秘密モード解放】海外発信・SNSタグを表示しました');
+        } else {
+          document.body.classList.remove('secret-sns-active');
+          showToast('🔒 海外発信・SNSタグを施錠（非表示）にしました');
+        }
+        updateSecretIcons();
+      }
+
+      // 完全施錠（鍵アイコンも完全に消す）
+      function lockAndHideSecretKey() {
+        document.body.classList.remove('secret-key-revealed', 'secret-sns-active');
+        updateSecretIcons();
       }
 
       function showToast(msg) {
@@ -3263,7 +3279,6 @@
       }
 
       async function init() {
-        initSecretMode();
         await loadState();
         updateHeader();
         try {
@@ -3288,14 +3303,15 @@
           if (viewParam === "suite") {
             setCategory("suite");
             const sub = params.get("sub");
-            if (sub && window.CameraEnjoySuite) {
-              window.CameraEnjoySuite.renderSuiteMain(sub);
+            if (sub && ["birds", "shrines", "flora", "insects", "outfit"].includes(sub)) {
+              setTimeout(() => switchSuiteTab(sub), 50);
             }
             return;
           }
         } catch (_) {}
         renderGrid();
       }
+
 
       function copyRecipePrompt(itemId, idx) {
         const item = window.JAPAN_BEAUTY_DEX.find(x => x.id === itemId);
@@ -3435,6 +3451,7 @@
         openDetailModal,
         toggleSecretSnsMode,
         handleTitleTripleClick,
+        lockAndHideSecretKey,
         closeDetailModal,
         renderPhotoBook,
         loadCandidates,
