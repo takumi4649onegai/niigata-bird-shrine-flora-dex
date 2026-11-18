@@ -1,0 +1,9 @@
+{
+  "name": "にいがた野鳥・神社仏閣・絶景・四季の花図鑑（3部作）",
+  "short_name": "新潟カメラ図鑑",
+  "description": "新潟市北区・秋葉区・弥彦＆新潟県全域の野鳥100種・神社仏閣＆仏像＆絶景30選・四季の花20種フィールドガイド",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#064e3b",
+  "theme_color": "#065f46"
+}

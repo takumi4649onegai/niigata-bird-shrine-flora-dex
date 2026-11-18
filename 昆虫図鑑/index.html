@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>にいがた昆虫ポケット図鑑 | 福島潟・嘉山・新潟全域 リアル昆虫ポケモン図鑑（全50種）</title>
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-dark: #064e3b;
+      --primary-light: #ecfdf5;
+      --accent: #d97706;
+      --danger: #dc2626;
+      --bg: #f8fafc;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* 全5アプリ共通・最上部グローバルナビバー */
+    .global-suite-nav {
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      padding: 7px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .global-suite-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .global-suite-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .suite-nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      text-decoration: none;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .suite-nav-pill:hover {
+      background: rgba(255,255,255,0.14);
+      color: #ffffff;
+    }
+    .suite-nav-pill.active {
+      background: #059669;
+      color: #ffffff;
+      border-color: #34d399;
+      font-weight: 800;
+    }
+
+    /* Header */
+    .insect-header {
+      background: linear-gradient(135deg, #064e3b 0%, #14532d 60%, #15803d 100%);
+      color: #fff;
+      padding: 12px 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+      border-bottom: 2px solid #34d399;
+    }
+    .header-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .brand-title {
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .brand-sub {
+      font-size: 0.75rem;
+      color: #a7f3d0;
+      margin-top: 2px;
+    }
+
+    /* Header Right Actions */
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .progress-pill {
+      background: rgba(15, 23, 42, 0.5);
+      border: 1px solid rgba(52, 211, 153, 0.45);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .btn {
+      padding: 7px 13px;
+      border-radius: 7px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: all 0.15s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn-gold {
+      background: #d97706;
+      color: #fff;
+    }
+
+    /* Category Nav（白背景＋下線タブに統一） */
+    .cat-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      padding: 0 12px;
+      position: sticky;
+      top: 43px;
+      z-index: 950;
+      overflow-x: auto;
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .cat-nav-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      gap: 4px;
+    }
+    .cat-tab {
+      background: transparent;
+      color: #64748b;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 11px 16px;
+      border-radius: 0;
+      font-size: 0.86rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cat-tab:hover {
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .cat-tab.active {
+      color: #059669;
+      border-bottom-color: #059669;
+      background: #ecfdf5;
+      font-weight: 800;
+    }
+    .cat-tab.tab-danger.active {
+      color: #dc2626;
+      border-bottom-color: #dc2626;
+      background: #fef2f2;
+      font-weight: 800;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    /* Filter Toolbar */
+    .filter-bar {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+    }
+    .filter-group {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .filter-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .filter-select, .filter-input {
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.82rem;
+      outline: none;
+      background: #f8fafc;
+      color: var(--text);
+    }
+    .filter-select:focus, .filter-input:focus {
+      border-color: var(--primary);
+    }
+
+    /* Insect Cards Grid */
+    .insect-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 20px;
+    }
+
+    .insect-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04);
+      transition: transform 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .insect-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      border-color: #10b981;
+    }
+    .insect-card.is-danger {
+      border: 2px solid #ef4444;
+      background: #fff5f5;
+    }
+
+    /* Card Top Banner */
+    .card-banner {
+      background: linear-gradient(135deg, #064e3b 0%, #0f766e 100%);
+      color: #fff;
+      padding: 14px 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-banner.danger-banner {
+      background: linear-gradient(135deg, #991b1b 0%, #b91c1c 100%);
+    }
+    .card-dex-no {
+      font-size: 0.75rem;
+      font-family: monospace;
+      color: #a7f3d0;
+      font-weight: 700;
+      letter-spacing: 1px;
+    }
+    .card-banner.danger-banner .card-dex-no {
+      color: #fca5a5;
+    }
+    .card-stars {
+      color: #fbbf24;
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+
+    .card-body {
+      padding: 16px 18px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .card-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .card-name {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--text);
+    }
+    .card-kana {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+    .card-order-tag {
+      font-size: 0.72rem;
+      background: #f1f5f9;
+      color: #475569;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    /* Tags */
+    .meta-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .meta-tag {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 600;
+    }
+    .tag-season { background: #dcfce7; color: #166534; }
+    .tag-env { background: #e0f2fe; color: #0369a1; }
+    .tag-lens { background: #fef3c7; color: #92400e; font-weight: 700; }
+    .tag-danger { background: #fee2e2; color: #991b1b; font-weight: 800; animation: pulseDanger 1.5s infinite; }
+    @keyframes pulseDanger {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
+    }
+
+    .card-desc {
+      font-size: 0.83rem;
+      color: #334155;
+      line-height: 1.55;
+    }
+
+    /* Spot List */
+    .card-spots {
+      background: #f8fafc;
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 0.75rem;
+      color: #475569;
+    }
+    .card-spots strong {
+      color: var(--primary);
+    }
+
+    /* Photo Tip Box */
+    .card-tip {
+      background: #f0fdf4;
+      border-left: 3px solid var(--primary);
+      padding: 8px 12px;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.76rem;
+      color: #14532d;
+      line-height: 1.5;
+    }
+    .card-tip.danger-tip {
+      background: #fef2f2;
+      border-left-color: #ef4444;
+      color: #7f1d1d;
+    }
+
+    /* Card Footer GET Button */
+    .card-footer {
+      padding: 12px 18px;
+      background: #f8fafc;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .get-status-badge {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-muted);
+    }
+    .get-status-badge.got {
+      color: #059669;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .btn-get {
+      padding: 5px 12px;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .btn-get:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Modal */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-backdrop.show { display: flex; }
+    .modal-box {
+      background: #fff;
+      border-radius: 16px;
+      max-width: 600px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: #f1f5f9;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 全5アプリ共通・最上部グローバルナビバー（1〜5番の順序固定） -->
+  <nav class="global-suite-nav">
+    <div class="global-suite-inner">
+      <div style="font-size:0.74rem; font-weight:800; color:#94a3b8; letter-spacing:0.04em;">
+        📷 新潟カメラ図鑑シリーズ
+      </div>
+      <div class="global-suite-links">
+        <a href="../index.html" class="suite-nav-pill">🐦 ① 野鳥図鑑</a>
+        <a href="../神社仏閣・絶景・花図鑑/index.html" class="suite-nav-pill">⛩️ ② 神社仏閣・仏像</a>
+        <a href="../日本の絶景・風景図鑑/index.html" class="suite-nav-pill">🌄 ③ 日本の絶景</a>
+        <a href="../四季の花・草木図鑑/index.html" class="suite-nav-pill">🌸 ④ 四季の花</a>
+        <a href="index.html" class="suite-nav-pill active">🐝 ⑤ 昆虫図鑑</a>
+        <a href="../冒険プランナー＆海釣り天気/index.html" class="suite-nav-pill">🗺️ ⑥ お出かけ・スナップ＆天気</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="insect-header">
+    <div class="header-inner">
+      <div>
+        <div class="brand-title">
+          <span>🐝 にいがた昆虫ポケット図鑑</span>
+          <span style="font-size:0.7rem; background:#34d399; color:#064e3b; padding:2px 8px; border-radius:99px; font-weight:800;">全50種・安全ガイド</span>
+        </div>
+        <div class="brand-sub">福島潟のオオモノサシトンボ・春のギフチョウから身近な甲虫まで！マクロ撮影設定＆危険虫アラート搭載</div>
+      </div>
+
+      <div class="header-actions">
+        <div class="progress-pill">
+          🏆 図鑑GET数: <strong id="hdr-get-count" style="color:#fbbf24;">0</strong> / <span id="hdr-total-count">50</span> (<span id="hdr-pct">0</span>%)
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Category Nav -->
+  <nav class="cat-nav">
+    <div class="cat-nav-inner">
+      <button class="cat-tab active" data-cat="all" onclick="InsectApp.setCategory('all')">✨ すべて表示 (50)</button>
+      <button class="cat-tab" data-cat="dragonfly" onclick="InsectApp.setCategory('dragonfly')">💧 水辺・潟のトンボ類 (15)</button>
+      <button class="cat-tab" data-cat="butterfly" onclick="InsectApp.setCategory('butterfly')">🦋 花・里山のチョウ類 (15)</button>
+      <button class="cat-tab" data-cat="beetle" onclick="InsectApp.setCategory('beetle')">🪲 神社の森・甲虫類 (10)</button>
+      <button class="cat-tab" data-cat="cricket" onclick="InsectApp.setCategory('cricket')">🌾 草むら・鳴く虫 (6)</button>
+      <button class="cat-tab tab-danger" data-cat="danger" onclick="InsectApp.setCategory('danger')">🚨 危険虫アラート (4)</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Filter Toolbar -->
+    <div class="filter-bar">
+      <div class="filter-group">
+        <span class="filter-label">🔍 絞り込み：</span>
+        <select id="filter-season" class="filter-select" onchange="InsectApp.applyFilter()">
+          <option value="all">すべての季節</option>
+          <option value="春">早春・春（ギフチョウ・菜の花）</option>
+          <option value="初夏">初夏（チョウトンボ・イトトンボ）</option>
+          <option value="夏">真夏（カブトムシ・セミ・タマムシ）</option>
+          <option value="秋">秋（赤とんぼ・アサギマダラ・コオロギ）</option>
+        </select>
+
+        <select id="filter-rarity" class="filter-select" onchange="InsectApp.applyFilter()">
+          <option value="all">すべてのレア度</option>
+          <option value="1">★1 身近で必ず会える</option>
+          <option value="2">★2 季節の花や木で狙える</option>
+          <option value="3">★3 福島潟や神社の森で狙う</option>
+          <option value="4">★4 美麗・人気中レア種</option>
+          <option value="5">★5 幻の激レア（天然記念物・国蝶等）</option>
+        </select>
+
+        <select id="filter-status" class="filter-select" onchange="InsectApp.applyFilter()">
+          <option value="all">GET状況：すべて</option>
+          <option value="got">GET済みのみ</option>
+          <option value="ungot">未GETのみ</option>
+        </select>
+      </div>
+
+      <div class="filter-group">
+        <input type="text" id="search-input" class="filter-input" placeholder="名前・生息地で検索（例: 福島潟, 弥彦）" oninput="InsectApp.applyFilter()" style="width:240px;">
+      </div>
+    </div>
+
+    <!-- Cards Grid -->
+    <div class="insect-grid" id="insect-grid"></div>
+  </main>
+
+  <!-- Photo GET Modal -->
+  <div class="modal-backdrop" id="capture-modal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="InsectApp.closeCaptureModal()">×</button>
+      <h3 style="font-size:1.15rem; color:#064e3b; margin-bottom:12px; display:flex; align-items:center; gap:6px;">
+        📸 昆虫写真GET登録
+      </h3>
+      <p style="font-size:0.85rem; color:#64748b; margin-bottom:16px;">
+        撮影した昆虫の写真を選ぶと、図鑑に「GET済み」として記録されます！
+      </p>
+
+      <form id="capture-form" onsubmit="InsectApp.saveCapture(event)">
+        <input type="hidden" id="cap-target-id" value="">
+        <div style="margin-bottom:14px;">
+          <label style="font-size:0.8rem; font-weight:700; color:#475569; display:block; margin-bottom:4px;">対象昆虫</label>
+          <input type="text" id="cap-target-name" readonly style="width:100%; padding:8px 12px; background:#f1f5f9; border:1px solid #cbd5e1; border-radius:6px; font-weight:700;">
+        </div>
+
+        <div style="margin-bottom:14px;">
+          <label style="font-size:0.8rem; font-weight:700; color:#475569; display:block; margin-bottom:4px;">写真ファイルを選択</label>
+          <input type="file" id="cap-file-input" accept="image/*" style="width:100%;" onchange="InsectApp.previewPhoto(event)" required>
+          <img id="cap-preview-img" style="width:100%; max-height:220px; object-fit:contain; border-radius:6px; margin-top:10px; display:none;">
+        </div>
+
+        <div style="margin-bottom:18px;">
+          <label style="font-size:0.8rem; font-weight:700; color:#475569; display:block; margin-bottom:4px;">撮影メモ・発見場所</label>
+          <input type="text" id="cap-memo" placeholder="例: 福島潟のオニバス池で75-300mmで撮影！" style="width:100%; padding:8px 12px; border:1px solid #cbd5e1; border-radius:6px;">
+        </div>
+
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+          <button type="button" class="btn" style="background:#e2e8f0; color:#475569;" onclick="InsectApp.closeCaptureModal()">キャンセル</button>
+          <button type="submit" class="btn btn-gold">🏆 GET登録を完了する</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="../js/data-insects.js"></script>
+  <script>
+    const InsectApp = {
+      state: {
+        category: 'all',
+        season: 'all',
+        rarity: 'all',
+        status: 'all',
+        searchQuery: '',
+        getRecords: {} // { insectId: { date, memo, photoUrl } }
+      },
+
+      init() {
+        this.loadStorage();
+        this.render();
+      },
+
+      loadStorage() {
+        try {
+          const raw = localStorage.getItem('niigata_insect_dex_records');
+          if (raw) this.state.getRecords = JSON.parse(raw);
+        } catch (_) {}
+      },
+
+      saveStorage() {
+        try {
+          localStorage.setItem('niigata_insect_dex_records', JSON.stringify(this.state.getRecords));
+        } catch (_) {}
+      },
+
+      setCategory(cat) {
+        this.state.category = cat;
+        document.querySelectorAll('.cat-tab').forEach(t => {
+          t.classList.toggle('active', t.getAttribute('data-cat') === cat);
+        });
+        this.render();
+      },
+
+      applyFilter() {
+        this.state.season = document.getElementById('filter-season').value;
+        this.state.rarity = document.getElementById('filter-rarity').value;
+        this.state.status = document.getElementById('filter-status').value;
+        this.state.searchQuery = document.getElementById('search-input').value.trim().toLowerCase();
+        this.render();
+      },
+
+      render() {
+        const list = window.NIIGATA_INSECTS || [];
+        const grid = document.getElementById('insect-grid');
+
+        // Filter logic
+        const filtered = list.filter(item => {
+          // Category
+          if (this.state.category === 'dragonfly' && !item.order.includes('トンボ')) return false;
+          if (this.state.category === 'butterfly' && !item.order.includes('チョウ')) return false;
+          if (this.state.category === 'beetle' && !item.order.includes('コウチュウ')) return false;
+          if (this.state.category === 'cricket' && (!item.order.includes('バッタ') && !item.order.includes('セミ') && !item.order.includes('カマキリ'))) return false;
+          if (this.state.category === 'danger' && item.danger === 'none') return false;
+
+          // Season
+          if (this.state.season !== 'all' && !item.season.includes(this.state.season)) return false;
+
+          // Rarity
+          if (this.state.rarity !== 'all' && item.rarity !== parseInt(this.state.rarity)) return false;
+
+          // Status
+          const isGot = !!this.state.getRecords[item.id];
+          if (this.state.status === 'got' && !isGot) return false;
+          if (this.state.status === 'ungot' && isGot) return false;
+
+          // Search query
+          if (this.state.searchQuery) {
+            const q = this.state.searchQuery;
+            const matchName = item.name.toLowerCase().includes(q) || item.kana.includes(q);
+            const matchSpots = item.spots.some(s => s.toLowerCase().includes(q));
+            const matchDesc = item.description.toLowerCase().includes(q);
+            if (!matchName && !matchSpots && !matchDesc) return false;
+          }
+
+          return true;
+        });
+
+        // Update Header progress
+        const total = list.length;
+        const gotCount = Object.keys(this.state.getRecords).length;
+        document.getElementById('hdr-get-count').textContent = gotCount;
+        document.getElementById('hdr-total-count').textContent = total;
+        document.getElementById('hdr-pct').textContent = total > 0 ? Math.round((gotCount / total) * 100) : 0;
+
+        // Render HTML
+        if (filtered.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align:center; padding:50px 20px; background:#fff; border-radius:12px; border:1px solid #e2e8f0;">
+              <div style="font-size:2.5rem; margin-bottom:10px;">🔍</div>
+              <h3 style="color:#64748b; font-size:1.05rem;">条件に一致する昆虫が見つかりませんでした</h3>
+              <p style="font-size:0.85rem; color:#94a3b8; margin-top:6px;">フィルター条件を変更して再度お試しください。</p>
+            </div>
+          `;
+          return;
+        }
+
+        grid.innerHTML = filtered.map(item => {
+          const isGot = !!this.state.getRecords[item.id];
+          const isDanger = item.danger !== 'none';
+          const stars = '★'.repeat(item.rarity) + '☆'.repeat(5 - item.rarity);
+
+          return `
+            <div class="insect-card ${isDanger ? 'is-danger' : ''}">
+              <div class="card-banner ${isDanger ? 'danger-banner' : ''}">
+                <span class="card-dex-no">${item.dexNo}</span>
+                <span class="card-stars">${stars}</span>
+              </div>
+
+              <div class="card-body">
+                <div class="card-title-row">
+                  <div>
+                    <h3 class="card-name">${item.name}</h3>
+                    <div class="card-kana">${item.kana} / ${item.englishName}</div>
+                  </div>
+                  <span class="card-order-tag">${item.order}</span>
+                </div>
+
+                <div class="meta-tags">
+                  <span class="meta-tag tag-season">🗓️ ${item.season}</span>
+                  <span class="meta-tag tag-env">📍 ${item.environment.split('（')[0]}</span>
+                  <span class="meta-tag tag-lens">🔭 ${item.recommendedLens.split('（')[0]}</span>
+                  ${isDanger ? `<span class="meta-tag tag-danger">${item.dangerLevel}</span>` : ''}
+                </div>
+
+                <p class="card-desc">${item.description}</p>
+
+                <div class="card-spots">
+                  <strong>主要発見スポット：</strong> ${item.spots.join('、')}
+                </div>
+
+                <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:2px;">
+                  <a href="../四季の花・草木図鑑/index.html" class="btn" style="background:#fdf2f8; color:#be185d; border:1px solid #fbcfe8; font-size:0.72rem; padding:3px 8px;">🌸 関連する花・樹木を見る</a>
+                  <a href="../index.html" class="btn" style="background:#f0fdfa; color:#0f766e; border:1px solid #99f6e4; font-size:0.72rem; padding:3px 8px;">🐦 この場所の野鳥を見る</a>
+                </div>
+
+                <div class="card-tip ${isDanger ? 'danger-tip' : ''}">
+                  <strong>📷 撮影アドバイス：</strong> ${item.photoTip}
+                  ${isDanger ? `<div style="margin-top:4px; font-weight:800; color:#b91c1c;">⚠️ ${item.dangerAdvice}</div>` : ''}
+                </div>
+              </div>
+
+              <div class="card-footer">
+                <div class="get-status-badge ${isGot ? 'got' : ''}">
+                  ${isGot ? '🏆 GET済み！' : '⚪ 未GET'}
+                </div>
+                <button class="btn-get" onclick="InsectApp.openCaptureModal('${item.id}', '${item.name}')">
+                  ${isGot ? '📷 写真を更新' : '📷 GET登録'}
+                </button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      openCaptureModal(id, name) {
+        document.getElementById('cap-target-id').value = id;
+        document.getElementById('cap-target-name').value = name;
+        document.getElementById('cap-memo').value = '';
+        document.getElementById('cap-file-input').value = '';
+        document.getElementById('cap-preview-img').style.display = 'none';
+
+        if (this.state.getRecords[id]) {
+          const rec = this.state.getRecords[id];
+          document.getElementById('cap-memo').value = rec.memo || '';
+          if (rec.photoUrl) {
+            const prev = document.getElementById('cap-preview-img');
+            prev.src = rec.photoUrl;
+            prev.style.display = 'block';
+          }
+        }
+
+        document.getElementById('capture-modal').classList.add('show');
+      },
+
+      closeCaptureModal() {
+        document.getElementById('capture-modal').classList.remove('show');
+      },
+
+      previewPhoto(e) {
+        const file = e.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = (event) => {
+          const img = document.getElementById('cap-preview-img');
+          img.src = event.target.result;
+          img.style.display = 'block';
+        };
+        reader.readAsDataURL(file);
+      },
+
+      saveCapture(e) {
+        e.preventDefault();
+        const id = document.getElementById('cap-target-id').value;
+        const memo = document.getElementById('cap-memo').value.trim();
+        const prevImg = document.getElementById('cap-preview-img');
+
+        this.state.getRecords[id] = {
+          date: new Date().toISOString(),
+          memo: memo,
+          photoUrl: prevImg.src || ''
+        };
+
+        this.saveStorage();
+        this.closeCaptureModal();
+        this.render();
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      InsectApp.init();
+    });
+  </script>
+</body>
+</html>

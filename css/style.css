@@ -1,0 +1,1052 @@
+/* にいがた野鳥図鑑 - ポケモン図鑑のワクワク感 × 自然・カメラアプリの見やすさ */
+:root {
+  --bg-main: #f4f7f4;
+  --bg-card: #ffffff;
+  --bg-dark: #0f1f1c;
+  --bg-accent-soft: #e6f4ea;
+  --primary: #0f766e;
+  --primary-dark: #115e59;
+  --primary-light: #14b8a6;
+  --pokedex-red: #dc2626;
+  --pokedex-gold: #f59e0b;
+  --pokedex-gold-bg: #fffbeb;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --shadow-sm: 0 2px 8px rgba(15, 31, 28, 0.06);
+  --shadow-md: 0 6px 20px rgba(15, 31, 28, 0.10);
+  --shadow-lg: 0 12px 32px rgba(15, 31, 28, 0.16);
+  --radius-md: 12px;
+  --radius-lg: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Hiragino Kaku Gothic ProN", "Noto Sans JP", "Yu Gothic", "Meiryo", sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+  padding-bottom: 80px;
+}
+
+/* 全5アプリ共通・最上部グローバルナビバー */
+.global-suite-nav {
+  background: #0f172a;
+  border-bottom: 1px solid #334155;
+  padding: 7px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+.global-suite-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.global-suite-links {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.suite-nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  text-decoration: none;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.12);
+  transition: all 0.15s;
+  white-space: nowrap;
+}
+.suite-nav-pill:hover {
+  background: rgba(255,255,255,0.14);
+  color: #ffffff;
+}
+.suite-nav-pill.active {
+  background: #0f766e;
+  color: #ffffff;
+  border-color: #2dd4bf;
+  font-weight: 800;
+}
+
+/* トップヘッダー（図鑑ステータスバー付き） */
+.app-header {
+  background: linear-gradient(135deg, #0f2922 0%, #0f766e 65%, #0d9488 100%);
+  color: #ffffff;
+  padding: 12px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+  border-bottom: 2px solid var(--pokedex-gold);
+}
+
+.header-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.brand-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.pokedex-lens {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 32% 32%, #67e8f9, #0284c7 60%, #1e3a8a 100%);
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.7);
+  flex-shrink: 0;
+}
+
+.brand-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.brand-sub {
+  font-size: 0.78rem;
+  color: #a7f3d0;
+  display: block;
+}
+
+.header-stats {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.dex-progress-pill {
+  background: rgba(15, 23, 42, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  padding: 6px 14px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+}
+
+.dex-progress-bar-wrap {
+  width: 90px;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.dex-progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #fbbf24, #f59e0b);
+  border-radius: 99px;
+  transition: width 0.4s ease;
+}
+
+.header-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* ナビゲーションバー（PC用上部タブ & スマホ下部固定バー） */
+.main-nav {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 43px;
+  z-index: 950;
+  box-shadow: var(--shadow-sm);
+}
+
+.nav-inner {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+  gap: 4px;
+  padding: 0 12px;
+}
+
+.nav-tab {
+  border: none;
+  background: transparent;
+  padding: 12px 18px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  transition: all 0.2s;
+}
+
+.nav-tab:hover {
+  color: var(--primary);
+  background: #f8fafc;
+}
+
+.nav-tab.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+  background: #f0fdfa;
+}
+
+/* メインコンテナ */
+.app-container {
+  max-width: 1280px;
+  margin: 20px auto;
+  padding: 0 16px;
+}
+
+.view-section {
+  display: none;
+  animation: fadeIn 0.22s ease;
+}
+
+.view-section.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* 汎用ボタン */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.18s;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+}
+.btn-primary:hover {
+  background: var(--primary-dark);
+}
+
+.btn-gold {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(245, 158, 11, 0.35);
+}
+.btn-gold:hover {
+  filter: brightness(1.06);
+}
+
+.btn-outline {
+  background: #ffffff;
+  color: var(--text-main);
+  border-color: #cbd5e1;
+}
+.btn-outline:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-ghost-light {
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  padding: 6px 12px;
+  font-size: 0.8rem;
+}
+.btn-ghost-light:hover {
+  background: rgba(255, 255, 255, 0.24);
+}
+
+.btn-sm {
+  padding: 5px 10px;
+  font-size: 0.8rem;
+}
+
+/* ホーム・北区季節ナビバナー */
+.hero-banner {
+  background: linear-gradient(125deg, #064e3b 0%, #0f766e 60%, #115e59 100%);
+  color: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 22px;
+  box-shadow: var(--shadow-md);
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(251, 191, 36, 0.22);
+  border: 1px solid #fbbf24;
+  color: #fef08a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.hero-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+}
+
+.hero-desc {
+  font-size: 0.92rem;
+  color: #d1fae5;
+  margin-bottom: 14px;
+}
+
+.hero-score-card {
+  background: rgba(15, 23, 42, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+
+.score-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.score-item-num {
+  font-size: 1.45rem;
+  font-weight: 800;
+  color: #fbbf24;
+}
+
+.score-item-label {
+  font-size: 0.75rem;
+  color: #cbd5e1;
+}
+
+/* セクション見出し */
+.section-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 24px 0 14px;
+}
+
+.section-title {
+  font-size: 1.18rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #0f2922;
+}
+
+/* 月セレクターバー */
+.month-selector {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  background: #ffffff;
+  padding: 10px 12px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.month-btn {
+  border: 1px solid #e2e8f0;
+  background: #f8fafc;
+  color: var(--text-main);
+  padding: 6px 11px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.month-btn:hover {
+  border-color: var(--primary);
+}
+
+.month-btn.active {
+  background: var(--primary);
+  color: #ffffff;
+  border-color: var(--primary);
+}
+
+/* 図鑑フィルターバー */
+.filter-bar {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.filter-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.filter-input, .filter-select {
+  padding: 7px 11px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  background: #ffffff;
+}
+
+/* 野鳥ポケモン図鑑カードグリッド */
+.bird-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 18px;
+}
+
+.bird-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 2px solid #e2e8f0;
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  position: relative;
+}
+
+.bird-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--primary-light);
+}
+
+/* ゲット済みカードはゴールド枠で特別感！ */
+.bird-card.captured {
+  border-color: var(--pokedex-gold);
+  background: linear-gradient(180deg, #fffdf5 0%, #ffffff 35%);
+  box-shadow: 0 6px 18px rgba(245, 158, 11, 0.16);
+}
+
+.bird-card-top {
+  position: relative;
+  height: 204px;
+  background: radial-gradient(circle at center, #1e293b 0%, #0b1320 100%);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* お手本写真と自分の写真：顔や全身が絶対に切れないよう contain 表示 */
+.card-img-single {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+  transition: transform 0.3s ease;
+}
+
+.bird-card:hover .card-img-single {
+  transform: scale(1.03);
+}
+
+.card-img-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  width: 100%;
+  height: 100%;
+  gap: 2px;
+  background: var(--pokedex-gold);
+}
+
+.card-img-split-pane {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #0b1320;
+}
+
+.card-img-split-pane img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+
+/* オス・メス切替ミニボタン（カード右下） */
+.sex-switch-bar {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  display: flex;
+  gap: 4px;
+  z-index: 3;
+  background: rgba(15, 23, 42, 0.85);
+  padding: 3px;
+  border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.sex-btn {
+  border: none;
+  background: transparent;
+  color: #cbd5e1;
+  font-size: 0.7rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 99px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.sex-btn.active-male {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.sex-btn.active-female {
+  background: #e11d48;
+  color: #ffffff;
+}
+
+/* レア度バッジ（ポケモンカード風） */
+.rarity-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 99px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+}
+.rarity-pill.r-1 { background: #f1f5f9; color: #475569; border-color: #cbd5e1; }
+.rarity-pill.r-2 { background: #dcfce7; color: #166534; border-color: #86efac; }
+.rarity-pill.r-3 { background: #e0f2fe; color: #075985; border-color: #7dd3fc; }
+.rarity-pill.r-4 { background: #fef3c7; color: #92400e; border-color: #fcd34d; }
+.rarity-pill.r-5 { background: linear-gradient(135deg, #fef08a, #f59e0b); color: #78350f; border-color: #d97706; }
+
+.split-pane-label {
+  position: absolute;
+  bottom: 4px;
+  left: 4px;
+  background: rgba(15, 23, 42, 0.78);
+  color: #ffffff;
+  font-size: 0.66rem;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+}
+
+.split-pane-label.my-shot {
+  background: rgba(217, 119, 6, 0.92);
+}
+
+.dex-no-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background: rgba(15, 23, 42, 0.82);
+  color: #ffffff;
+  font-size: 0.76rem;
+  font-weight: 800;
+  padding: 3px 9px;
+  border-radius: 99px;
+  letter-spacing: 0.04em;
+  z-index: 2;
+}
+
+.get-status-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 0.75rem;
+  font-weight: 800;
+  padding: 4px 10px;
+  border-radius: 99px;
+  z-index: 2;
+}
+
+.get-status-badge.is-get {
+  background: linear-gradient(135deg, #fbbf24, #d97706);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(217, 119, 6, 0.5);
+}
+
+.get-status-badge.not-get {
+  background: rgba(30, 41, 59, 0.72);
+  color: #e2e8f0;
+}
+
+.silhouette-filter {
+  filter: brightness(0.12) contrast(1.5) saturate(0);
+}
+
+.bird-card-body {
+  padding: 14px 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.bird-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.bird-name {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.bird-rarity {
+  font-size: 0.8rem;
+  color: #f59e0b;
+  letter-spacing: -1px;
+}
+
+.bird-catchphrase {
+  font-size: 0.8rem;
+  color: var(--primary);
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.type-chip {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.type-chip.type-water { background: #e0f2fe; color: #0369a1; }
+.type-chip.type-forest { background: #dcfce7; color: #15803d; }
+.type-chip.type-grass { background: #fef3c7; color: #b45309; }
+.type-chip.type-raptor { background: #fee2e2; color: #b91c1c; }
+.type-chip.type-common { background: #f3e8ff; color: #6d28d9; }
+.type-chip.type-special { background: #fef08a; color: #854d0e; border: 1px solid #facc15; }
+
+.bird-card-meta {
+  font-size: 0.78rem;
+  color: var(--text-muted);
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px dashed #e2e8f0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.bird-card-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+/* マップ画面レイアウト */
+.map-layout {
+  display: grid;
+  grid-template-columns: 1.45fr 1fr;
+  gap: 18px;
+  align-items: start;
+}
+
+#niigata-map {
+  width: 100%;
+  height: 580px;
+  border-radius: var(--radius-lg);
+  border: 2px solid #cbd5e1;
+  box-shadow: var(--shadow-sm);
+  z-index: 10;
+}
+
+.spot-list-panel {
+  max-height: 580px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-right: 4px;
+}
+
+.spot-card {
+  background: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 14px 16px;
+  border: 2px solid #e2e8f0;
+  cursor: pointer;
+  transition: all 0.18s;
+}
+
+.spot-card:hover, .spot-card.active {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-sm);
+  background: #f0fdfa;
+}
+
+.spot-card.home-spot {
+  border-left: 5px solid var(--pokedex-gold);
+}
+
+.spot-area-badge {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 99px;
+  background: #e2e8f0;
+  color: #1e293b;
+}
+
+.spot-area-badge.kita {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #f59e0b;
+}
+
+/* モーダル共通 */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.72);
+  backdrop-filter: blur(3px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-backdrop.open {
+  display: flex;
+}
+
+.modal-dialog {
+  background: #ffffff;
+  width: 100%;
+  max-width: 960px;
+  max-height: 90vh;
+  border-radius: var(--radius-lg);
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.modal-header {
+  background: linear-gradient(135deg, #0f2922, #0f766e);
+  color: #ffffff;
+  padding: 16px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.modal-close-btn {
+  background: rgba(255, 255, 255, 0.18);
+  border: none;
+  color: #ffffff;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.modal-body {
+  padding: 22px;
+}
+
+/* 図鑑モーダル内の「お手本写真 × 自分の撮影写真」横並び比較ビュー */
+.comparison-arena {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.compare-box {
+  background: #0f172a;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 2px solid #334155;
+  display: flex;
+  flex-direction: column;
+}
+
+.compare-box.my-best-box {
+  border-color: var(--pokedex-gold);
+}
+
+.compare-box-header {
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  font-size: 0.82rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.compare-img-wrap {
+  height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #090d16;
+  position: relative;
+}
+
+.compare-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* 鳴き声プレイヤーボックス */
+.audio-player-card {
+  background: #0f172a;
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-bottom: 18px;
+  border: 1px solid #334155;
+}
+
+.audio-controls-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.waveform-canvas {
+  background: #090d16;
+  border-radius: 8px;
+  border: 1px solid #1e293b;
+  flex: 1;
+  min-width: 180px;
+  height: 52px;
+}
+
+/* 図鑑スペック詳細ボックス */
+.dex-info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.dex-detail-card {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: 14px;
+}
+
+.dex-detail-card h4 {
+  font-size: 0.9rem;
+  color: var(--primary-dark);
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dex-detail-card p {
+  font-size: 0.86rem;
+  color: #334155;
+}
+
+/* 月別カレンダーバー（図鑑詳細内） */
+.month-calendar-bar {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.month-cell {
+  text-align: center;
+  font-size: 0.72rem;
+  padding: 4px 2px;
+  border-radius: 4px;
+  background: #e2e8f0;
+  color: #64748b;
+  font-weight: 700;
+}
+
+.month-cell.present {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+/* 写真目利き（セルフ採点＆自動解析）ボックス */
+.connoisseur-box {
+  background: #f0fdfa;
+  border: 2px solid #5eead4;
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-top: 14px;
+}
+
+.tip-alert {
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 0.84rem;
+  margin-bottom: 8px;
+}
+
+.tip-alert.good { background: #dcfce7; color: #14532d; border-left: 4px solid #22c55e; }
+.tip-alert.warn { background: #fef3c7; color: #78350f; border-left: 4px solid #f59e0b; }
+.tip-alert.info { background: #e0f2fe; color: #0c4a6e; border-left: 4px solid #0284c7; }
+
+.rating-slider-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 6px 0;
+  border-bottom: 1px dashed #cbd5e1;
+  font-size: 0.86rem;
+}
+
+/* マナー道場カード */
+.manner-chapter-card {
+  background: #ffffff;
+  border-radius: var(--radius-lg);
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-sm);
+  border-left: 6px solid var(--primary);
+}
+
+.manner-point-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 14px;
+  margin-top: 14px;
+}
+
+.manner-point-item {
+  background: #f8fafc;
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #e2e8f0;
+}
+
+/* トースト通知（「ゲットだぜ！」演出） */
+.get-toast {
+  position: fixed;
+  bottom: 28px;
+  right: 28px;
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  color: #ffffff;
+  border: 2px solid var(--pokedex-gold);
+  border-radius: var(--radius-lg);
+  padding: 16px 22px;
+  box-shadow: var(--shadow-lg);
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  gap: 14px;
+  animation: popIn 0.35s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+.get-toast.show {
+  display: flex;
+}
+
+@keyframes popIn {
+  from { transform: scale(0.8) translateY(30px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+/* レスポンシブ（スマホ・タブレット対応） */
+@media (max-width: 860px) {
+  .hero-banner {
+    grid-template-columns: 1fr;
+  }
+  .map-layout {
+    grid-template-columns: 1fr;
+  }
+  #niigata-map {
+    height: 380px;
+  }
+  .comparison-arena {
+    grid-template-columns: 1fr;
+  }
+}

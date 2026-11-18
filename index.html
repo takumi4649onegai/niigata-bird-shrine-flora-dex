@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="theme-color" content="#065f46" />
+  <link rel="manifest" href="manifest.json" />
+  <title>にいがた野鳥図鑑 | 新潟市北区＆新潟県全域 リアル野鳥ポケモン図鑑（全150種）</title>
+  <!-- Leaflet Map CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- 全5アプリ共通・最上部グローバルナビバー（1〜5番の順序固定） -->
+  <nav class="global-suite-nav">
+    <div class="global-suite-inner">
+      <div style="font-size:0.74rem; font-weight:800; color:#94a3b8; letter-spacing:0.04em;">
+        📷 新潟カメラ図鑑シリーズ
+      </div>
+      <div class="global-suite-links">
+        <a href="index.html" class="suite-nav-pill active">🐦 ① 野鳥図鑑</a>
+        <a href="神社仏閣・絶景・花図鑑/index.html" class="suite-nav-pill">⛩️ ② 神社仏閣・仏像</a>
+        <a href="日本の絶景・風景図鑑/index.html" class="suite-nav-pill">🌄 ③ 日本の絶景</a>
+        <a href="四季の花・草木図鑑/index.html" class="suite-nav-pill">🌸 ④ 四季の花</a>
+        <a href="昆虫図鑑/index.html" class="suite-nav-pill">🐝 ⑤ 昆虫図鑑</a>
+        <a href="冒険プランナー＆海釣り天気/index.html" class="suite-nav-pill">🗺️ ⑥ お出かけ・スナップ＆天気</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- トップヘッダー -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand-area">
+        <div class="pokedex-lens" title="図鑑センサー稼働中"></div>
+        <div>
+          <div class="brand-title">
+            <span>🐦 にいがた野鳥図鑑</span>
+            <span style="font-size:0.7rem; background:#fbbf24; color:#0f172a; padding:2px 8px; border-radius:99px; font-weight:800;">全150種・フィールドガイド</span>
+          </div>
+          <span class="brand-sub">新潟市北区（福島潟・海辺の森・阿賀野川）＆新潟県全域のリアル野鳥コレクション図鑑</span>
+        </div>
+      </div>
+
+      <div class="header-stats">
+        <div class="dex-progress-pill">
+          <span>🏆 図鑑GET数: <strong id="header-get-count" style="color:#fbbf24; font-size:1.05rem;">0</strong> / <span id="header-total-count">150</span>種 (<span id="header-get-pct">0</span>%)</span>
+          <div class="dex-progress-bar-wrap">
+            <div id="header-progress-fill" class="dex-progress-bar-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <button class="btn btn-gold btn-sm" onclick="App.openCaptureModal()">📷 写真を撮ってGET登録</button>
+          <button class="btn btn-ghost-light btn-sm" onclick="App.openBackupModal()">📱 バックアップ・共有</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- メインナビゲーションタブ -->
+  <nav class="main-nav">
+    <div class="nav-inner">
+      <button class="nav-tab active" data-tab="dashboard" onclick="App.switchTab('dashboard')">
+        🏠 今月の北区＆新潟ナビ
+      </button>
+      <button class="nav-tab" data-tab="pokedex" onclick="App.switchTab('pokedex')">
+        📖 野鳥ポケモン図鑑
+      </button>
+      <button class="nav-tab" data-tab="map" onclick="App.switchTab('map')">
+        🗺️ 新潟県・野鳥分布マップ
+      </button>
+      <button class="nav-tab" data-tab="gallery" onclick="App.switchTab('gallery')">
+        📸 写真目利き＆マイギャラリー
+      </button>
+      <button class="nav-tab" data-tab="manners" onclick="App.switchTab('manners')">
+        🛡️ 撮影マナー＆ルール道場
+      </button>
+    </div>
+  </nav>
+
+  <!-- メインコンテンツ領域 -->
+  <main class="app-container">
+
+    <!-- ==================== TAB 1: 今月の北区＆新潟ナビ ==================== -->
+    <section id="view-dashboard" class="view-section active">
+      <div class="hero-banner">
+        <div>
+          <span class="hero-badge">📍 ホーム拠点：新潟市北区（福島潟・海辺の森・阿賀野川・じゅんさい池）</span>
+          <h1 class="hero-title" id="dashboard-season-title">今月、新潟市北区と周辺で出会える野鳥たち</h1>
+          <p class="hero-desc" id="dashboard-season-desc">
+            スズメ・ハクチョウ・カモから一歩踏み出して、お手本写真と自分のベストショットを並べるあなただけの「新潟野鳥ポケモン図鑑」をコンプリートしましょう！
+          </p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <button class="btn btn-gold" onclick="App.switchTab('pokedex')">📖 図鑑一覧を見る</button>
+            <button class="btn btn-ghost-light" onclick="App.switchTab('map')">🗺️ 北区＆新潟県の分布マップを見る</button>
+            <button class="btn btn-ghost-light" onclick="App.switchTab('manners')">🛡️ 出撃前に撮影マナーを確認</button>
+          </div>
+        </div>
+
+        <div class="hero-score-card">
+          <div style="font-size:0.84rem; font-weight:700; color:#a7f3d0; display:flex; justify-content:space-between;">
+            <span>📊 あなたのバードカメラマン戦績</span>
+            <span id="dashboard-rank-badge" style="color:#fbbf24;">ビギナー観察者</span>
+          </div>
+          <div class="score-grid">
+            <div>
+              <div class="score-item-num" id="stat-captured-species">0</div>
+              <div class="score-item-label">GETした野鳥（種）</div>
+            </div>
+            <div>
+              <div class="score-item-num" id="stat-total-photos">0</div>
+              <div class="score-item-label">登録コレクション枚数</div>
+            </div>
+            <div>
+              <div class="score-item-num" id="stat-kita-species">0</div>
+              <div class="score-item-label">北区スポット生息種GET</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 季節・月切り替えセレクター -->
+      <div class="month-selector">
+        <span style="font-size:0.85rem; font-weight:800; color:#0f766e; margin-right:6px;">📅 探鳥する月を選択：</span>
+        <div id="dashboard-month-buttons" style="display:flex; flex-wrap:wrap; gap:5px;"></div>
+      </div>
+
+      <!-- ステップアップ提案：スズメ・ハクチョウ・カモの次に狙いたい鳥！ -->
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">🎯 【ステップアップ】スズメ・ハクチョウ・カモの次に北区周辺で狙いたい鳥！</h2>
+          <p style="font-size:0.84rem; color:var(--text-muted);">
+            見つけやすくて色が美しく、撮影したときの「ゲットだぜ！」の感動が大きいおすすめターゲットです
+          </p>
+        </div>
+      </div>
+      <div id="dashboard-stepup-grid" class="bird-grid"></div>
+
+      <!-- 選択中の月に「新潟市北区」で出会える野鳥一覧 -->
+      <div class="section-header" style="margin-top:32px;">
+        <div>
+          <h2 class="section-title">🌾 <span id="dashboard-month-label">11月</span>に「新潟市北区・秋葉区・弥彦周辺（福島潟・海辺の森・秋葉公園・弥彦山）」で狙える野鳥</h2>
+          <p style="font-size:0.84rem; color:var(--text-muted);">
+            カードをクリックすると「詳しい見分け方」「鳴き声再生」「カメラマン向け撮影のコツ」が見られます
+          </p>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="App.switchTab('pokedex')">全種図鑑へ →</button>
+      </div>
+      <div id="dashboard-kita-birds-grid" class="bird-grid"></div>
+    </section>
+
+    <!-- ==================== TAB 2: 野鳥ポケモン図鑑 ==================== -->
+    <section id="view-pokedex" class="view-section">
+      <div class="section-header" style="margin-top:4px;">
+        <div>
+          <h2 class="section-title">📖 にいがた野鳥ポケモン図鑑（お手本写真 × 自分の撮影写真）</h2>
+          <p style="font-size:0.84rem; color:var(--text-muted);">
+            未ゲットでもお手本写真・詳しい特徴・鳴き声はすべて閲覧可能！自分の写真を登録すると「GET!」金枠になりお手本と並んで表示されます
+          </p>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-outline btn-sm" id="btn-toggle-silhouette" onclick="App.toggleSilhouetteMode()">
+            👁️ 未GETをシルエット表示にする: OFF
+          </button>
+          <button class="btn btn-primary btn-sm" onclick="App.openAddBirdModal()">
+            ➕ 新しい野鳥を図鑑に追加
+          </button>
+        </div>
+      </div>
+
+      <!-- フィルターバー -->
+      <div class="filter-bar">
+        <div class="filter-group">
+          <span class="filter-label">🔍 名前・特徴検索:</span>
+          <input type="text" id="dex-search" class="filter-input" placeholder="例: カワセミ、青い、パンダ..." oninput="App.renderPokedex()" />
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">🏆 状態:</span>
+          <select id="dex-filter-status" class="filter-select" onchange="App.renderPokedex()">
+            <option value="all">すべて表示</option>
+            <option value="captured">GET済み（撮影済）のみ</option>
+            <option value="uncaptured">未GET（未撮影）のみ</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">📍 スポット/エリア:</span>
+          <select id="dex-filter-spot" class="filter-select" onchange="App.renderPokedex()">
+            <option value="all">新潟県全域（すべて）</option>
+            <optgroup label="【📍 下越・新潟市内（ホーム・近場）】">
+              <option value="kita_all">★新潟市北区エリアすべて（ホーム）</option>
+              <option value="fukushimagata">・福島潟（北区）</option>
+              <option value="kaibenomori">・海辺の森・島見浜（北区）</option>
+              <option value="aganogawa">・阿賀野川河口・松浜（北区）</option>
+              <option value="junsaiike">・じゅんさい池（東区・北区隣接）</option>
+              <option value="tarodai">・太郎代浜海岸（北区）</option>
+              <option value="toyanogata">・鳥屋野潟公園（中央区）</option>
+              <option value="sakata">・佐潟・西川（西区）</option>
+              <option value="akiha">★秋葉公園・新津丘陵・菩提寺山（秋葉区）</option>
+              <option value="hyoko">・瓢湖（阿賀野市）</option>
+            </optgroup>
+            <optgroup label="【🚗 中越・県央（日帰りドライブ）】">
+              <option value="yahiko">★弥彦公園（もみじ谷）・弥彦山・上堰潟（弥彦・西蒲）</option>
+              <option value="bijinbayashi">・十日町・松之山（美人林・星峠）</option>
+            </optgroup>
+            <optgroup label="【⛴️ 佐渡（島）】">
+              <option value="sado">・佐渡（トキの森・加茂湖）</option>
+            </optgroup>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">📅 季節・月:</span>
+          <select id="dex-filter-month" class="filter-select" onchange="App.renderPokedex()">
+            <option value="all">通年（すべての季節）</option>
+            <option value="season_winter">⛄ 冬（11月〜2月・冬鳥シーズン）</option>
+            <option value="season_spring">🌸 春（3月〜5月・春の渡り）</option>
+            <option value="season_summer">🌿 夏（6月〜8月・夏鳥シーズン）</option>
+            <option value="season_autumn">🍁 秋（9月〜10月・秋の渡り）</option>
+            <option value="1">1月</option><option value="2">2月</option><option value="3">3月</option>
+            <option value="4">4月</option><option value="5">5月</option><option value="6">6月</option>
+            <option value="7">7月</option><option value="8">8月</option><option value="9">9月</option>
+            <option value="10">10月</option><option value="11">11月</option><option value="12">12月</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">🌿 タイプ:</span>
+          <select id="dex-filter-type" class="filter-select" onchange="App.renderPokedex()">
+            <option value="all">すべてのタイプ</option>
+            <option value="身近">身近な鳥</option>
+            <option value="水辺">水辺・潟・河川</option>
+            <option value="森林">森林・公園</option>
+            <option value="草原">草原・ヨシ原・農耕地</option>
+            <option value="猛禽">猛禽類（タカ・ワシ・フクロウ）</option>
+            <option value="天然記念物">天然記念物</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">🌟 レア度:</span>
+          <select id="dex-filter-rarity" class="filter-select" onchange="App.renderPokedex()">
+            <option value="all">すべてのレア度</option>
+            <option value="1">★1（C：身近・入門）</option>
+            <option value="2">★2（U：普通・ステップアップ）</option>
+            <option value="3">★3（R：レア・人気ターゲット）</option>
+            <option value="4">★4（SR：スーパーレア）</option>
+            <option value="5">★5（UR：伝説級・新潟の宝）</option>
+            <option value="dimorphic">🚻 オス・メスで姿が違う鳥のみ</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="pokedex-count-bar" style="font-size:0.86rem; font-weight:700; color:var(--text-muted); margin-bottom:12px;"></div>
+      <div id="pokedex-grid" class="bird-grid"></div>
+    </section>
+
+    <!-- ==================== TAB 3: 新潟県・野鳥分布マップ ==================== -->
+    <section id="view-map" class="view-section">
+      <div class="section-header" style="margin-top:4px;">
+        <div>
+          <h2 class="section-title">🗺️ 新潟市北区＆新潟県全域 野鳥分布マップ・探鳥スポットガイド</h2>
+          <p style="font-size:0.84rem; color:var(--text-muted);">
+            黄色いピンはあなたの地元「新潟市北区ホームスポット」、緑のピンは県内主要スポット、赤いピンはあなたが追加したマイ撮影ポイントです
+          </p>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn btn-outline btn-sm" onclick="App.focusKitaArea()">🎯 新潟市北区にズーム</button>
+          <button class="btn btn-outline btn-sm" onclick="App.focusAllNiigata()">🗾 新潟県全体にズーム</button>
+          <button class="btn btn-primary btn-sm" id="btn-add-spot-mode" onclick="App.toggleAddSpotMode()">
+            📍 地図をクリックしてマイ撮影ポイントを追加
+          </button>
+        </div>
+      </div>
+
+      <!-- マップ絞り込みバー -->
+      <div class="filter-bar">
+        <div class="filter-group">
+          <span class="filter-label">🗾 エリア絞り込み:</span>
+          <select id="map-filter-area" class="filter-select" onchange="App.renderMapAndSpots()">
+            <option value="all">新潟県すべて（北区〜佐渡）</option>
+            <option value="新潟市北区">★新潟市北区（ホーム）</option>
+            <option value="新潟市内">新潟市内（中央・西・秋葉区）</option>
+            <option value="下越">下越（阿賀野・新発田・胎内・村上）</option>
+            <option value="中越">中越（弥彦・長岡・十日町松之山）</option>
+            <option value="上越">上越（妙高・上越朝日池）</option>
+            <option value="佐渡">佐渡（トキの森・加茂湖）</option>
+            <option value="マイポイント">📌 自分のマイ撮影ポイント</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">📅 季節:</span>
+          <select id="map-filter-season" class="filter-select" onchange="App.renderMapAndSpots()">
+            <option value="all">すべての季節</option>
+            <option value="winter">⛄ 冬（11〜2月：ハクチョウ・オオヒシクイ・冬鳥）</option>
+            <option value="spring">🌸 春（3〜5月：菜の花ノゴマ・夏鳥の渡り）</option>
+            <option value="summer">🌿 夏（6〜8月：オオヨシキリ・アカショウビン）</option>
+            <option value="autumn">🍁 秋（9〜10月：秋の渡り・冬の先発隊）</option>
+          </select>
+        </div>
+
+        <div class="filter-group">
+          <span class="filter-label">🐦 狙いたい野鳥で逆引き:</span>
+          <select id="map-filter-bird" class="filter-select" onchange="App.renderMapAndSpots()">
+            <option value="all">すべての野鳥</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="add-spot-banner" style="display:none; background:#fef3c7; border:2px solid #f59e0b; color:#92400e; padding:12px 16px; border-radius:10px; margin-bottom:14px; font-weight:700;">
+        👆 マップ上の「ここで野鳥を撮った！」「お気に入りの観察場所」をクリックすると、新しいマイ撮影ピンを追加できます。（もう一度ボタンを押すと解除）
+      </div>
+
+      <div class="map-layout">
+        <div>
+          <div id="niigata-map"></div>
+          <!-- 選択中スポットの詳細パネル（地図下に表示） -->
+          <div id="selected-spot-detail" style="margin-top:16px;"></div>
+        </div>
+        <div class="spot-list-panel" id="spot-list-container"></div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 4: 写真目利き＆マイギャラリー ==================== -->
+    <section id="view-gallery" class="view-section">
+      <div class="section-header" style="margin-top:4px;">
+        <div>
+          <h2 class="section-title">📸 写真目利き＆マイコレクションギャラリー</h2>
+          <p style="font-size:0.84rem; color:var(--text-muted);">
+            あなたが撮影して登録した野鳥写真の一覧です。EXIF情報・目利きスコアの確認や、複数枚撮った鳥の「ベストショット比較選定」ができます
+          </p>
+        </div>
+        <button class="btn btn-gold" onclick="App.openCaptureModal()">📷 新しい写真を登録する</button>
+      </div>
+
+      <div id="gallery-stats-bar" class="filter-bar" style="justify-content:space-between;"></div>
+      <div id="gallery-container"></div>
+    </section>
+
+    <!-- ==================== TAB 5: 撮影マナー＆ルール道場 ==================== -->
+    <section id="view-manners" class="view-section">
+      <div class="section-header" style="margin-top:4px;">
+        <div>
+          <h2 class="section-title">🛡️ 野鳥撮影・観察マナー＆新潟フィールドルール徹底ガイド</h2>
+          <p style="font-size:0.84rem; color:var(--text-muted);">
+            野鳥にストレスを与えず、地域の農家さんや周囲のカメラマンからも信頼されるための必読ガイドです
+          </p>
+        </div>
+      </div>
+
+      <!-- 出撃前マナーチェックリスト -->
+      <div style="background:linear-gradient(135deg, #0f2922, #115e59); color:#ffffff; padding:22px; border-radius:var(--radius-lg); margin-bottom:22px; box-shadow:var(--shadow-md);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:12px;">
+          <h3 style="font-size:1.15rem;">✅ 撮影に出かける前の「バードカメラマン6か条」セルフチェック</h3>
+          <span id="manner-check-progress" style="background:#fbbf24; color:#0f172a; padding:4px 12px; border-radius:99px; font-size:0.82rem; font-weight:800;">0 / 6 達成</span>
+        </div>
+        <div id="manner-checklist-container" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:10px;"></div>
+      </div>
+
+      <!-- マナー章別ガイド -->
+      <div id="manner-chapters-container"></div>
+
+      <!-- 現場の判断ケーススタディ -->
+      <div class="section-header">
+        <h3 class="section-title">💡 こんなときどうする？現場での実践ケーススタディ</h3>
+      </div>
+      <div id="manner-scenarios-container"></div>
+    </section>
+
+  </main>
+
+  <!-- ==================== MODAL 1: 野鳥図鑑 詳細＆比較モーダル ==================== -->
+  <div id="modal-bird-detail" class="modal-backdrop" onclick="if(event.target===this) App.closeBirdModal()">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div>
+          <span id="modal-bird-dexno" style="font-size:0.82rem; color:#fbbf24; font-weight:800;">No.001</span>
+          <h3 id="modal-bird-name" style="font-size:1.35rem; font-weight:800; display:inline; margin-left:8px;">スズメ</h3>
+          <span id="modal-bird-family" style="font-size:0.8rem; color:#a7f3d0; margin-left:10px;"></span>
+        </div>
+        <button class="modal-close-btn" onclick="App.closeBirdModal()">×</button>
+      </div>
+      <div class="modal-body" id="modal-bird-body"></div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 2: 写真登録＆「写真目利き」解析モーダル ==================== -->
+  <div id="modal-capture" class="modal-backdrop" onclick="if(event.target===this) App.closeCaptureModal()">
+    <div class="modal-dialog" style="max-width:820px;">
+      <div class="modal-header">
+        <h3 style="font-size:1.2rem; font-weight:800;">📷 野鳥の写真を登録して図鑑GET！（EXIF＆写真目利き診断付き）</h3>
+        <button class="modal-close-btn" onclick="App.closeCaptureModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <form id="form-capture" onsubmit="App.submitCaptureForm(event)">
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:14px; margin-bottom:14px;">
+            <div>
+              <label style="font-size:0.84rem; font-weight:700; display:block; margin-bottom:4px;">🐦 撮影した野鳥を選択 *</label>
+              <select id="cap-bird-id" class="filter-select" style="width:100%;" required onchange="App.onCaptureBirdChange()"></select>
+            </div>
+            <div>
+              <label style="font-size:0.84rem; font-weight:700; display:block; margin-bottom:4px;">🚻 撮影した個体の性別</label>
+              <select id="cap-sex" class="filter-select" style="width:100%;">
+                <option value="unspecified">指定なし（オスメス同色・ペア・不明）</option>
+                <option value="male">♂ オス（雄）を撮影</option>
+                <option value="female">♀ メス（雌）を撮影</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:0.84rem; font-weight:700; display:block; margin-bottom:4px;">📍 撮影したスポット（新潟県内）</label>
+              <select id="cap-spot-id" class="filter-select" style="width:100%;"></select>
+            </div>
+          </div>
+
+          <div style="background:#f8fafc; border:2px dashed #0f766e; border-radius:12px; padding:18px; text-align:center; margin-bottom:16px;">
+            <label for="cap-file-input" class="btn btn-primary" style="cursor:pointer;">
+              📁 カメラ・スマホ・PCから写真を選択する
+            </label>
+            <input type="file" id="cap-file-input" accept="image/*" style="display:none;" onchange="App.onPhotoFileSelected(event)" />
+            <p style="font-size:0.78rem; color:var(--text-muted); margin-top:6px;">
+              ※JPEG写真を選ぶと、撮影日・カメラ機種・レンズ・シャッター速度・F値・ISOを自動読み取り＆目利き診断します！
+            </p>
+            <div id="cap-preview-wrap" style="display:none; margin-top:12px;">
+              <img id="cap-preview-img" src="" alt="プレビュー" style="max-height:240px; max-width:100%; border-radius:8px; border:2px solid #cbd5e1;" />
+            </div>
+          </div>
+
+          <!-- 自動目利き解析レポート表示欄 -->
+          <div id="cap-connoisseur-report" class="connoisseur-box" style="display:none; margin-bottom:16px;"></div>
+
+          <!-- EXIF＆撮影データ入力欄 -->
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:10px; margin-bottom:14px;">
+            <div>
+              <label style="font-size:0.78rem; font-weight:700;">📅 撮影日</label>
+              <input type="date" id="cap-date" class="filter-input" style="width:100%;" />
+            </div>
+            <div>
+              <label style="font-size:0.78rem; font-weight:700;">📷 カメラ機種</label>
+              <input type="text" id="cap-camera" class="filter-input" style="width:100%;" placeholder="例: EOS R7 / α6700 / Z50" />
+            </div>
+            <div>
+              <label style="font-size:0.78rem; font-weight:700;">🔭 レンズ・焦点距離</label>
+              <input type="text" id="cap-focal" class="filter-input" style="width:100%;" placeholder="例: 400mm / 100-400mm" />
+            </div>
+            <div>
+              <label style="font-size:0.78rem; font-weight:700;">⚡ シャッタースピード</label>
+              <input type="text" id="cap-shutter" class="filter-input" style="width:100%;" placeholder="例: 1/1000秒" />
+            </div>
+            <div>
+              <label style="font-size:0.78rem; font-weight:700;">🔆 絞り（F値）・ISO</label>
+              <input type="text" id="cap-fstop-iso" class="filter-input" style="width:100%;" placeholder="例: F6.3 / ISO800" />
+            </div>
+          </div>
+
+          <!-- 写真目利きセルフ採点（5項目×20点＝100点満点） -->
+          <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:10px; padding:14px; margin-bottom:14px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <strong style="font-size:0.9rem; color:#92400e;">👑 写真目利きセルフチェック（ベストショット採点）</strong>
+              <span id="cap-total-score-badge" style="background:#f59e0b; color:#fff; font-weight:800; padding:2px 10px; border-radius:99px; font-size:0.85rem;">総合 84点</span>
+            </div>
+            <div class="rating-slider-row">
+              <span>① ピント（鳥の目にシャープに合っているか）</span>
+              <input type="range" id="score-focus" min="1" max="5" value="4" oninput="App.updateCaptureTotalScore()" />
+            </div>
+            <div class="rating-slider-row">
+              <span>② 構図・背景（枝被りがなく背景が整理されているか）</span>
+              <input type="range" id="score-comp" min="1" max="5" value="4" oninput="App.updateCaptureTotalScore()" />
+            </div>
+            <div class="rating-slider-row">
+              <span>③ 瞬間・ポーズ（鳥らしい可愛い仕草・瞳のキャッチライト）</span>
+              <input type="range" id="score-moment" min="1" max="5" value="4" oninput="App.updateCaptureTotalScore()" />
+            </div>
+            <div class="rating-slider-row">
+              <span>④ 光と露出（白飛び・黒潰れがなく羽毛の質感が出ているか）</span>
+              <input type="range" id="score-light" min="1" max="5" value="4" oninput="App.updateCaptureTotalScore()" />
+            </div>
+            <div class="rating-slider-row" style="border-bottom:none;">
+              <span>⑤ マナー遵守（鳥を驚かせず自然な距離で撮影できたか）</span>
+              <input type="range" id="score-manner" min="1" max="5" value="5" oninput="App.updateCaptureTotalScore()" />
+            </div>
+          </div>
+
+          <div style="margin-bottom:14px;">
+            <label style="font-size:0.82rem; font-weight:700; display:block; margin-bottom:4px;">📝 撮影メモ・出会った状況</label>
+            <input type="text" id="cap-memo" class="filter-input" style="width:100%;" placeholder="例: 福島潟の雁晴れ舎から朝7時に撮影！目の前にとまってくれた！" />
+          </div>
+
+          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+            <label style="font-size:0.86rem; font-weight:700; display:flex; align-items:center; gap:6px; cursor:pointer;">
+              <input type="checkbox" id="cap-is-best" checked />
+              🌟 この写真をこの野鳥の「ベストショット（図鑑の代表写真）」にする
+            </label>
+            <button type="submit" class="btn btn-gold">🏆 図鑑に登録して「ゲットだぜ！」</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 3: 新しい野鳥を図鑑に追加 ==================== -->
+  <div id="modal-add-bird" class="modal-backdrop" onclick="if(event.target===this) App.closeAddBirdModal()">
+    <div class="modal-dialog" style="max-width:620px;">
+      <div class="modal-header">
+        <h3 style="font-size:1.15rem; font-weight:800;">➕ 新しい野鳥を図鑑に追加する</h3>
+        <button class="modal-close-btn" onclick="App.closeAddBirdModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <form onsubmit="App.submitAddBird(event)">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:12px;">
+            <div>
+              <label style="font-size:0.8rem; font-weight:700;">野鳥の名前 *</label>
+              <input type="text" id="new-bird-name" class="filter-input" style="width:100%;" required placeholder="例: ルリビタキ" />
+            </div>
+            <div>
+              <label style="font-size:0.8rem; font-weight:700;">よみがな</label>
+              <input type="text" id="new-bird-kana" class="filter-input" style="width:100%;" placeholder="例: るりびたき" />
+            </div>
+            <div>
+              <label style="font-size:0.8rem; font-weight:700;">季節区分</label>
+              <select id="new-bird-season" class="filter-select" style="width:100%;">
+                <option value="留鳥">留鳥（一年中）</option>
+                <option value="冬鳥">冬鳥（秋〜冬）</option>
+                <option value="夏鳥">夏鳥（春〜夏）</option>
+                <option value="旅鳥">旅鳥（春と秋）</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:0.8rem; font-weight:700;">主な生息タイプ</label>
+              <select id="new-bird-type" class="filter-select" style="width:100%;">
+                <option value="森林">森林・公園</option>
+                <option value="水辺">水辺・潟・河川</option>
+                <option value="草原">草原・ヨシ原・農耕地</option>
+                <option value="猛禽">猛禽類</option>
+                <option value="身近">身近</option>
+              </select>
+            </div>
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="font-size:0.8rem; font-weight:700;">キャッチコピー（二つ名）</label>
+            <input type="text" id="new-bird-catch" class="filter-input" style="width:100%;" placeholder="例: 幸せを呼ぶ青い森の妖精" />
+          </div>
+          <div style="margin-bottom:12px;">
+            <label style="font-size:0.8rem; font-weight:700;">特徴・見分け方・新潟での出現メモ</label>
+            <textarea id="new-bird-desc" class="filter-input" style="width:100%; height:80px;" placeholder="羽の色や特徴、よく見かける場所などを自由に記入"></textarea>
+          </div>
+          <div style="text-align:right;">
+            <button type="submit" class="btn btn-primary">図鑑に追加する</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== MODAL 4: データ保存・バックアップ引継ぎ ==================== -->
+  <div id="modal-backup" class="modal-backdrop" onclick="if(event.target===this) App.closeBackupModal()">
+    <div class="modal-dialog" style="max-width:560px;">
+      <div class="modal-header">
+        <h3 style="font-size:1.15rem; font-weight:800;">💾 図鑑データのバックアップ書き出し・読み込み</h3>
+        <button class="modal-close-btn" onclick="App.closeBackupModal()">×</button>
+      </div>
+      <div class="modal-body">
+        <p style="font-size:0.88rem; color:var(--text-main); margin-bottom:16px;">
+          登録した写真や図鑑の進捗、追加したマイ撮影ポイントはブラウザ内の大容量データベース（IndexedDB）に自動保存されています。<br/>
+          <strong>📱 お出かけ先のスマホで使う方法</strong>や<strong>🤝 ご友人（1〜2人）と一緒に楽しむ方法</strong>、データのバックアップは以下をご覧ください。
+        </p>
+
+        <div style="background:linear-gradient(135deg,#f0fdfa,#e0f2fe); padding:16px; border-radius:10px; border:2px solid #0d9488; margin-bottom:16px;">
+          <h4 style="font-size:0.96rem; color:#0f766e; margin-bottom:6px;">📱 お出かけ先のスマホで全機能を使う＆🤝 1〜2人の友人と使う方法（完全無料）</h4>
+          <ol style="font-size:0.82rem; color:#1e293b; padding-left:20px; line-height:1.7;">
+            <li><strong>【1分で無料URL化】</strong> パソコンで <a href="https://app.netlify.com/drop" target="_blank" rel="noopener" style="color:#0284c7; font-weight:800;">Netlify Drop (app.netlify.com/drop) ↗</a>（またはGitHub Pages）を開き、デスクトップの<strong>『野鳥観察アプリ』フォルダを丸ごとドラッグ＆ドロップ</strong>します。</li>
+            <li><strong>【スマホのホーム画面アプリ化】</strong> 自動で発行された専用URL（<code>https://〇〇.netlify.app</code>）を自分のスマホで開き、ブラウザメニューの<strong>「ホーム画面に追加」</strong>を押すと、出かけ先（福島潟や弥彦など）でいつでも全150種の鳴き声・構図・駐車場・花・神社図鑑が見られます！</li>
+            <li><strong>【友人と一緒に使う】</strong> そのURLを<strong>ご友人（1〜2人）にLINEやメールで送るだけ</strong>でOK！写真データは「開いた人のスマホ・PCの中」に個別に保存されるため、<strong>ご友人が写真を登録してもあなたの図鑑と混ざらず、1つのURLでそれぞれ自分専用の図鑑として楽しめます！</strong></li>
+          </ol>
+        </div>
+
+        <div style="background:#f8fafc; padding:16px; border-radius:10px; border:1px solid #cbd5e1; margin-bottom:16px;">
+          <h4 style="font-size:0.95rem; margin-bottom:6px;">📤 バックアップファイルを書き出す（PC⇔スマホ引継・友人への自慢パック出力）</h4>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">現在登録されている写真・図鑑データを1つのJSONファイルとしてダウンロードします。</p>
+          <button class="btn btn-primary" onclick="App.downloadBackup()">💾 バックアップファイルをダウンロード</button>
+        </div>
+        <div style="background:#f8fafc; padding:16px; border-radius:10px; border:1px solid #cbd5e1;">
+          <h4 style="font-size:0.95rem; margin-bottom:6px;">📥 バックアップファイルを読み込む（復元・引継）</h4>
+          <p style="font-size:0.8rem; color:var(--text-muted); margin-bottom:10px;">保存したバックアップファイルを選択して図鑑データを復元します。</p>
+          <input type="file" accept=".json" onchange="App.uploadBackup(event)" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 「ゲットだぜ！」トースト通知 -->
+  <div id="get-toast" class="get-toast">
+    <div style="font-size:2.2rem;">🎉</div>
+    <div>
+      <div style="font-size:0.78rem; color:#fbbf24; font-weight:800;">NEW BIRD CAPTURED!</div>
+      <div id="get-toast-title" style="font-size:1.1rem; font-weight:800;">カワセミ をゲットだぜ！</div>
+      <div id="get-toast-sub" style="font-size:0.8rem; color:#cbd5e1;">図鑑にあなたの撮影写真が登録されました！</div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+  <script src="js/data-birds.js"></script>
+  <script src="js/data-birds-vol2.js"></script>
+  <script src="js/data-birds-vol3.js"></script>
+  <script src="js/data-spots.js"></script>
+  <script src="js/data-manners.js"></script>
+  <script src="js/audio-engine.js"></script>
+  <script src="js/exif-analyzer.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

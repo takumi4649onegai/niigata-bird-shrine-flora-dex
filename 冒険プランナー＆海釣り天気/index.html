@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>お出かけ・日常スナップ＆天気ナビ｜新潟カメラライフ第5部</title>
+  <style>
+    :root {
+      --primary: #0369a1;
+      --primary-dark: #0c4a6e;
+      --accent: #d97706;
+      --accent-green: #059669;
+      --danger: #dc2626;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --text-muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Yu Gothic", Meiryo, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* 5アプリ共通 最上部グローバルスイートナビ */
+    .global-suite-nav {
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      padding: 6px 14px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .global-suite-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .global-suite-brand {
+      color: #94a3b8;
+      font-size: 0.74rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .global-suite-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .suite-nav-pill {
+      text-decoration: none;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 6px;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      transition: all 0.18s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .suite-nav-pill:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+    .suite-nav-pill.active {
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #38bdf8;
+      box-shadow: 0 1px 6px rgba(2, 132, 199, 0.4);
+    }
+
+    /* Header (Unified 2nd tier) */
+    .app-header {
+      background: linear-gradient(135deg, #082f49 0%, #0c4a6e 50%, #0369a1 100%);
+      border-bottom: 2px solid #38bdf8;
+      padding: 14px 20px;
+      color: #fff;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+    }
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .brand-title {
+      font-size: 1.35rem;
+      font-weight: 900;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .brand-badge {
+      font-size: 0.72rem;
+      background: #fef3c7;
+      color: #92400e;
+      padding: 2px 9px;
+      border-radius: 99px;
+      font-weight: 800;
+    }
+    .brand-sub {
+      font-size: 0.8rem;
+      color: #bae6fd;
+      margin-top: 2px;
+    }
+
+    /* Weather Alert HUD Bar */
+    .weather-bar {
+      background: #f1f5f9;
+      border-bottom: 1px solid #cbd5e1;
+      padding: 8px 20px;
+    }
+    .weather-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .weather-box {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .weather-item {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.82rem;
+      color: #334155;
+    }
+    .weather-item strong {
+      color: #0369a1;
+      font-family: monospace;
+      font-size: 0.92rem;
+    }
+    .wind-badge {
+      padding: 4px 12px;
+      border-radius: 99px;
+      font-size: 0.76rem;
+      font-weight: 800;
+    }
+    .wind-good { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .wind-warn { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+    .wind-danger { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+
+    /* Nav Tabs (Unified 3rd tier white bar with bottom border active) */
+    .nav-tabs {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      padding: 0 16px;
+      position: sticky;
+      top: 39px;
+      z-index: 850;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .nav-tabs-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 4px;
+      overflow-x: auto;
+    }
+    .nav-tab {
+      padding: 12px 16px;
+      background: transparent;
+      color: #64748b;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border: none;
+      border-bottom: 3px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .nav-tab:hover { background: #f8fafc; color: #0369a1; }
+    .nav-tab.active {
+      color: #0369a1;
+      border-bottom-color: #0284c7;
+      background: linear-gradient(to top, rgba(2, 132, 199, 0.06), transparent);
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 7px 14px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid var(--border);
+      background: #fff;
+      color: #334155;
+      text-decoration: none;
+      transition: all 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+    .btn-primary {
+      background: #0284c7;
+      color: #fff;
+      border-color: #0369a1;
+    }
+    .btn-primary:hover {
+      background: #0369a1;
+      color: #fff;
+    }
+    .btn-outline {
+      background: #fff;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-sm {
+      padding: 5px 10px;
+      font-size: 0.76rem;
+    }
+    .filter-select {
+      padding: 8px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.84rem;
+      background: #fff;
+      color: #1e293b;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 22px 16px 80px;
+    }
+    .tab-content { display: none; }
+    .tab-content.active { display: block; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Planner Multi-Checkbox Box */
+    .planner-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 22px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .planner-title {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(185px, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+    .checkbox-pill {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      padding: 9px 12px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: #334155;
+      transition: all 0.18s;
+      user-select: none;
+    }
+    .checkbox-pill:hover { border-color: #0284c7; color: #0369a1; }
+    .checkbox-pill.checked {
+      background: #e0f2fe;
+      border-color: #0284c7;
+      color: #0369a1;
+    }
+
+    /* Safety Quick Toggles */
+    .safety-toggles {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      padding-top: 12px;
+      border-top: 1px dashed var(--border);
+      align-items: center;
+    }
+    .toggle-tag {
+      font-size: 0.78rem;
+      cursor: pointer;
+      padding: 5px 12px;
+      border-radius: 99px;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      color: #475569;
+      font-weight: 600;
+    }
+    .toggle-tag.checked {
+      background: #dcfce7;
+      color: #166534;
+      border-color: #22c55e;
+      font-weight: 800;
+    }
+
+    /* Spot Cards Grid */
+    .spots-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 18px;
+    }
+    .spot-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: transform 0.2s, border-color 0.2s;
+      display: flex;
+      flex-direction: column;
+    }
+    .spot-card:hover {
+      transform: translateY(-3px);
+      border-color: #0284c7;
+    }
+    .spot-header {
+      background: #0f172a;
+      color: #fff;
+      padding: 13px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .spot-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: #fff;
+    }
+    .spot-area {
+      font-size: 0.75rem;
+      color: #94a3b8;
+    }
+    .spot-body {
+      padding: 15px 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .feature-badge-row {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .feat-badge {
+      font-size: 0.72rem;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+    .feat-bird { background: #ccfbf1; color: #115e59; border: 1px solid #5eead4; }
+    .feat-insect { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+    .feat-flora { background: #fce7f3; color: #9d174d; border: 1px solid #f9a8d4; }
+    .feat-shrine { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .feat-fish { background: #e0f2fe; color: #075985; border: 1px solid #7dd3fc; }
+    .feat-camp { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; }
+
+    .spot-detail-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 9px 12px;
+      font-size: 0.79rem;
+      color: #334155;
+      line-height: 1.5;
+    }
+    .spot-safety-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      text-align: center;
+      font-size: 0.72rem;
+      margin-top: 2px;
+    }
+    .safety-item {
+      background: #f1f5f9;
+      padding: 5px 6px;
+      border-radius: 6px;
+      border: 1px solid #cbd5e1;
+      color: #334155;
+    }
+
+    /* Fish Dex Grid */
+    .fish-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .fish-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 16px 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    }
+    .fish-card.is-danger {
+      border: 2px solid #dc2626;
+      background: #fef2f2;
+    }
+    .fish-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 8px;
+    }
+    .fish-name {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: #0369a1;
+    }
+    .fish-card.is-danger .fish-name {
+      color: #b91c1c;
+    }
+    .fish-cat-tag {
+      font-size: 0.72rem;
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      padding: 2px 8px;
+      border-radius: 99px;
+      color: #475569;
+      font-weight: 700;
+    }
+
+    /* Manual Tab */
+    .manual-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 18px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+    .manual-card h3 {
+      font-size: 1.1rem;
+      color: #0369a1;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .manual-card p, .manual-card li {
+      font-size: 0.88rem;
+      color: #334155;
+      line-height: 1.7;
+    }
+    .manual-card ul {
+      padding-left: 20px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 5アプリ共通 最上部グローバルナビ（1番手〜5番手固定順） -->
+  <div class="global-suite-nav">
+    <div class="global-suite-inner">
+      <div class="global-suite-brand">📷 新潟ネイチャー＆カメラ図鑑シリーズ</div>
+      <div class="global-suite-links">
+        <a href="../index.html" class="suite-nav-pill">🐦 ① 野鳥図鑑</a>
+        <a href="../神社仏閣・絶景・花図鑑/index.html" class="suite-nav-pill">⛩️ ② 神社仏閣・絶景</a>
+        <a href="../四季の花・草木図鑑/index.html" class="suite-nav-pill">🌸 ③ 四季の花</a>
+        <a href="../昆虫図鑑/index.html" class="suite-nav-pill">🐝 ④ 昆虫図鑑</a>
+        <a href="index.html" class="suite-nav-pill active">🗺️ ⑤ お出かけ・スナップ＆天気</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header (Unified 2nd tier) -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div>
+        <div class="brand-title">
+          <span>🗺️ お出かけ・日常スナップ＆天気ナビ</span>
+          <span class="brand-badge">NIIGATA OUTING & SNAP SUITE</span>
+        </div>
+        <div class="brand-sub">日常スナップ＆雨の日24ミッション・半日お出かけ黄金ルート・水鏡＆夕日予報・海釣り＆野営ガイド</div>
+      </div>
+      <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+        <div style="background:rgba(0,0,0,0.28); border:1px solid rgba(255,255,255,0.2); padding:6px 12px; border-radius:99px; font-size:0.82rem; font-weight:700;">
+          🎯 スナップミッション達成: <strong id="hdr-snap-count" style="color:#fde68a;">0</strong> / 24
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Weather Alert Bar -->
+  <div class="weather-bar">
+    <div class="weather-inner">
+      <div class="weather-box">
+        <span style="font-weight:800; font-size:0.82rem; color:#0f172a;">📍 新潟市北区・沿岸部 現地リアル気象：</span>
+        <div class="weather-item">🌤️ 天気: <strong id="w-weather">晴れ/薄曇</strong></div>
+        <div class="weather-item">🌡️ 気温: <strong id="w-temp">14.5℃</strong></div>
+        <div class="weather-item">💨 風速: <strong id="w-wind">2.4 m/s</strong></div>
+        <div class="weather-item">🌇 今日の日の入り: <strong id="w-sunset">--:--</strong></div>
+      </div>
+      <div>
+        <span class="wind-badge wind-good" id="w-rating">🟢 絶好の撮影＆お出かけ日和！</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Nav Tabs (Unified 3rd tier) -->
+  <nav class="nav-tabs">
+    <div class="nav-tabs-inner">
+      <button class="nav-tab active" onclick="PlannerApp.switchTab('today')">🌟 本日のおすすめ＆ついで撮り掛け算ナビ</button>
+      <button class="nav-tab" onclick="PlannerApp.switchTab('snap')">🌾 日常スナップ＆雨の日24ミッション</button>
+      <button class="nav-tab" onclick="PlannerApp.switchTab('routes')">🚗 半日お出かけ黄金ルート</button>
+      <button class="nav-tab" onclick="PlannerApp.switchTab('forecast')">🌅 水鏡・雲海・野鳥チャンス予報</button>
+      <button class="nav-tab" onclick="PlannerApp.switchTab('planner')">🎛️ 自由掛け算プランナー</button>
+      <button class="nav-tab" onclick="PlannerApp.switchTab('fish')">🐟 海釣り＆魚図鑑（13種）</button>
+      <button class="nav-tab" onclick="PlannerApp.switchTab('manual')">⛺ 安全野営＆車中泊マニュアル</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- ==================== TAB 0: 本日のおすすめ＆ついで撮り掛け算ナビ ==================== -->
+    <section id="tab-today" class="tab-content active">
+      <!-- 1. 気分・目的別コース（プリセット提案） -->
+      <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:14px; padding:20px; margin-bottom:22px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:12px; margin-bottom:14px;">
+          <div>
+            <span style="background:#fef3c7; color:#92400e; font-size:0.74rem; font-weight:800; padding:3px 10px; border-radius:99px;">🎯 「今日は何を撮りに行く？」から選べる</span>
+            <h2 style="font-size:1.25rem; font-weight:900; margin-top:6px; color:#0f172a;">🌟 本日の気分別・お出かけ＆ついで撮りおすすめプラン</h2>
+            <p style="font-size:0.84rem; color:#475569; margin-top:3px;">
+              「今日は神社メイン」「今日は日常スナップメイン」「今日は野鳥メイン」など、主役に合わせて周りの鳥・花・虫や日常スナップのミッションをまるごと提案します！
+            </p>
+          </div>
+          <button class="btn btn-primary" onclick="PlannerApp.spinRandomPlan()">
+            🎲 ランダムに「今日のプラン」を決めてもらう！
+          </button>
+        </div>
+
+        <div id="recommended-plans-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:16px;"></div>
+      </div>
+
+      <!-- 2. 行先から逆引き！まるごと掛け算ナビ -->
+      <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:14px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+        <div style="margin-bottom:16px;">
+          <span style="background:#e0f2fe; color:#0369a1; font-size:0.74rem; font-weight:800; padding:3px 10px; border-radius:99px;">📍 「今日はここに行こう！」と決めたら</span>
+          <h3 style="font-size:1.15rem; font-weight:900; margin-top:6px; color:#0f172a;">🗺️ 行先スポット逆引き！周りの「鳥・花・虫・日常スナップ」まるごとナビ</h3>
+          <p style="font-size:0.84rem; color:#475569; margin-top:3px;">
+            行く場所を選ぶだけで、「この神社・公園に行くなら、ついでにこんな野鳥や花が狙える！」「こんな日常スナップ構図も試してみよう！」を自動表示します。
+          </p>
+        </div>
+
+        <div style="margin-bottom:16px; display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+          <label style="font-size:0.86rem; font-weight:800; color:#1e293b;">📌 行きたいスポットを選択：</label>
+          <select id="select-cross-spot" class="filter-select" style="min-width:280px; font-weight:700;" onchange="PlannerApp.renderSelectedCrossSpot(this.value)">
+            <!-- JSで動的生成 -->
+          </select>
+        </div>
+
+        <div id="cross-spot-result-box"></div>
+      </div>
+    </section>
+
+    <!-- ==================== TAB 1: 日常スナップ＆雨の日24ミッション ==================== -->
+    <section id="tab-snap" class="tab-content">
+      <div style="background:#ffffff; border:1px solid #cbd5e1; border-radius:14px; padding:20px; margin-bottom:18px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:14px;">
+          <div>
+            <span style="background:#e0f2fe; color:#0369a1; font-size:0.74rem; font-weight:800; padding:3px 10px; border-radius:99px;">🌦️ 雨の日・曇りの日・ご近所散歩が宝の山になる！</span>
+            <h2 style="font-size:1.25rem; font-weight:900; margin-top:6px; color:#0f172a;">🌾 新潟の日常スナップ＆天候別・24の撮影ミッション</h2>
+            <p style="font-size:0.84rem; color:#475569; margin-top:4px;">
+              遠くの名所へ行かない日でも、雨上がりの水たまりリフレクションや夕暮れのマジックアワーなど、カメラが10倍楽しくなる練習テーマ集です。
+            </p>
+          </div>
+          <!-- 🌇 新潟市リアルタイム日の入り＆マジックアワー計 -->
+          <div id="niigata-sunset-widget" style="background:#0f172a; color:#f8fafc; border:1px solid #334155; border-radius:12px; padding:12px 16px; min-width:270px;"></div>
+        </div>
+
+        <!-- 🎲 ランダム撮影お題ガチャ＆進捗バー -->
+        <div style="margin-top:16px; padding-top:14px; border-top:1px solid #e2e8f0; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-primary" onclick="PlannerApp.spinMissionGacha()">
+              🎲 今日なにする？気まぐれ撮影ガチャを回す！
+            </button>
+            <span id="mission-progress-text" style="font-size:0.84rem; font-weight:800; color:#0369a1;">ミッション達成: 0 / 24 (0%)</span>
+          </div>
+          <div style="display:flex; gap:6px; flex-wrap:wrap;">
+            <button class="btn btn-sm" onclick="PlannerApp.filterMissions('all')">すべて (24)</button>
+            <button class="btn btn-sm" onclick="PlannerApp.filterMissions('rain')">☔ 雨・曇り・水滴 (6)</button>
+            <button class="btn btn-sm" onclick="PlannerApp.filterMissions('Bokeh')">✨ 玉ボケ・光と影 (6)</button>
+            <button class="btn btn-sm" onclick="PlannerApp.filterMissions('town')">🌾 田園・ローカル線・街角 (6)</button>
+            <button class="btn btn-sm" onclick="PlannerApp.filterMissions('evening')">🌇 夕日・シルエット・夜 (6)</button>
+          </div>
+        </div>
+
+        <!-- ガチャ結果表示ボックス -->
+        <div id="mission-gacha-result" style="display:none; margin-top:14px; background:#f0f9ff; color:#0f172a; border-radius:12px; padding:16px; border:2px solid #0284c7;"></div>
+      </div>
+
+      <!-- 24ミッションカード一覧 -->
+      <div id="snap-missions-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr)); gap:16px;"></div>
+    </section>
+
+    <!-- ==================== TAB 2: 半日お出かけ黄金ルート ==================== -->
+    <section id="tab-routes" class="tab-content">
+      <div id="planner-routes-box"></div>
+    </section>
+
+    <!-- ==================== TAB 3: 水鏡・雲海・野鳥チャンス予報 ==================== -->
+    <section id="tab-forecast" class="tab-content">
+      <div id="planner-forecast-box"></div>
+    </section>
+
+    <!-- ==================== TAB 4: スポット掛け算プランナー ==================== -->
+    <section id="tab-planner" class="tab-content">
+      <div class="planner-box">
+        <div class="planner-title">
+          <span>✨ 今日の目的を自由に掛け算！（複数チェックで合致するスポットを表示）</span>
+        </div>
+
+        <div class="checkbox-grid">
+          <label class="checkbox-pill" onclick="PlannerApp.toggleFeat('bird', this)">
+            <span>🐦 野鳥撮影（150種）</span>
+          </label>
+          <label class="checkbox-pill" onclick="PlannerApp.toggleFeat('shrine', this)">
+            <span>⛩️ 神社仏閣・絶景（80選）</span>
+          </label>
+          <label class="checkbox-pill" onclick="PlannerApp.toggleFeat('flora', this)">
+            <span>🌸 四季の花・草木（50種）</span>
+          </label>
+          <label class="checkbox-pill" onclick="PlannerApp.toggleFeat('insect', this)">
+            <span>🐝 昆虫採集・撮影（50種）</span>
+          </label>
+          <label class="checkbox-pill" onclick="PlannerApp.toggleFeat('fishing', this)">
+            <span>🎣 海釣り・投げ釣り</span>
+          </label>
+          <label class="checkbox-pill checked" onclick="PlannerApp.toggleFeat('camp_day', this)">
+            <span>⛺ タープ・野営・外ご飯</span>
+          </label>
+          <label class="checkbox-pill" onclick="PlannerApp.toggleFeat('camp_night_car', this)">
+            <span>🚗 車中泊・1泊キャンプ</span>
+          </label>
+        </div>
+
+        <div class="safety-toggles">
+          <span style="font-size:0.78rem; font-weight:700; color:#475569;">🛡️ 安全こだわりフィルター：</span>
+          <span class="toggle-tag" id="tog-nosalt" onclick="PlannerApp.toggleSafety('nosalt')">潮風・塩害ゼロ（カメラ完全安心）</span>
+          <span class="toggle-tag" id="tog-nobear" onclick="PlannerApp.toggleSafety('nobear')">クマの心配ゼロ（平野・管理地）</span>
+          <span class="toggle-tag" id="tog-toilet" onclick="PlannerApp.toggleSafety('toilet')">24時間水洗トイレあり</span>
+        </div>
+      </div>
+
+      <!-- Results Count -->
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">
+        <span style="font-size:0.9rem; font-weight:700; color:#334155;">
+          🎯 条件にマッチしたスポット： <strong id="match-count" style="color:#0284c7; font-size:1.15rem;">0</strong> 件
+        </span>
+        <button class="btn btn-sm" onclick="PlannerApp.resetFilter()">↺ 条件をリセット</button>
+      </div>
+
+      <!-- Spots Grid -->
+      <div class="spots-grid" id="spots-grid"></div>
+    </section>
+
+    <!-- ==================== TAB 5: にいがた海釣り＆魚図鑑 ==================== -->
+    <section id="tab-fish" class="tab-content">
+      <div style="background:#ffffff; border-radius:12px; padding:16px 20px; margin-bottom:18px; border:1px solid #cbd5e1;">
+        <h3 style="font-size:1.1rem; color:#0369a1; margin-bottom:4px;">🎣 にいがた沿岸＆河川 釣れる魚図鑑（13種＋毒魚注意報）</h3>
+        <p style="font-size:0.84rem; color:#475569;">
+          砂浜からのシロギス投げ釣り、河口のハゼ、堤防のアジや根魚。美味しい食べ方と【触るな危険な毒魚アラート】を網羅！
+        </p>
+      </div>
+
+      <div class="fish-grid" id="fish-grid"></div>
+    </section>
+
+    <!-- ==================== TAB 6: 安全野営＆車中泊マニュアル ==================== -->
+    <section id="tab-manual" class="tab-content">
+      <div style="max-width:900px; margin:0 auto;">
+        <div class="manual-card">
+          <h3>⛺ 初心者でも絶対失敗しない！タープ設営＆外ご飯の極意</h3>
+          <ul>
+            <li><strong>普通のペグは砂浜に刺さらない！「砂袋ペグ」の知恵</strong><br>
+              砂浜では付属の金属ペグはスカスカで一瞬で抜けます。コンビニ袋に砂をぎっしり詰めてロープを結び、砂の中に深く埋めるだけで、強風でもビクともしない最強の重りになります！
+            </li>
+            <li><strong>初心者は「片側地面ペタ付け（シェルター張り）」が安全</strong><br>
+              高く張り上げると風をまともに受けて倒壊します。風が吹いてくる側を地面スレスレに下げて張ることで、風を綺麗に逃がして快適なプライベート空間を作れます。
+            </li>
+            <li><strong>バーナー調理のコツ</strong><br>
+              風防（アルミの風よけプレート）が必須です。風があると火が流れてお湯が沸きません。
+            </li>
+          </ul>
+        </div>
+
+        <div class="manual-card">
+          <h3>🚗 車中泊・1泊を快適にする「三種の神器」</h3>
+          <ul>
+            <li><strong>① フルフラット用マット（段差埋め）</strong><br>
+              シートを倒しただけでは腰が痛くなります。厚さ5〜8cmのインフレーターマットを敷くだけで自宅のベッド並みに熟睡できます。
+            </li>
+            <li><strong>② 遮光サンシェード（全窓目隠し）</strong><br>
+              外からの視線を遮るプライバシー保護と、朝日の眩しさ防止、冬の結露・冷気遮断に絶対不可欠です。
+            </li>
+            <li><strong>③ LEDランタン（車内火気厳禁！）</strong><br>
+              車内でガスバーナーや炭を使うと一酸化炭素中毒で命を落とします。車内調理は厳禁、明かりは必ずLEDを使いましょう。
+            </li>
+          </ul>
+        </div>
+
+        <div class="manual-card">
+          <h3>🛡️ 海岸・自然地帯の絶対マナー</h3>
+          <ul>
+            <li><strong>ゴミは100%持ち帰り</strong>（釣り糸や針は海鳥の足に絡まるため絶対に落とさない！）</li>
+            <li><strong>直火（砂の上の直焼き）禁止</strong>（必ず焚き火台やバーナーを使用）</li>
+            <li><strong>車を砂浜に突っ込まない</strong>（四駆でもスタックしてJAF案件が多発しています。必ず舗装駐車場に停めましょう）</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="../js/data-fish-camp.js"></script>
+  <script src="../神社仏閣・絶景・花図鑑/js/data-snap-missions.js"></script>
+  <script src="../js/data-today-outing-recommends.js"></script>
+  <script src="../神社仏閣・絶景・花図鑑/js/camera-enjoy-suite.js"></script>
+  <script>
+    const SNAP_STORAGE_KEY = "niigata_snap_missions_completed_v1";
+
+    const PlannerApp = {
+      state: {
+        activeTab: 'today',
+        missionFilter: 'all',
+        completedMissions: {},
+        selectedFeats: new Set(['camp_day']),
+        safetyNosalt: false,
+        safetyNobear: false,
+        safetyToilet: false
+      },
+
+      init() {
+        this.loadCompletedMissions();
+        this.fetchRealWeather();
+        this.renderSunsetWidget();
+        this.renderTodayRecommends();
+        this.renderCrossSpotSelect();
+        this.renderMissions();
+        this.renderRoutesAndForecast();
+        this.renderPlanner();
+        this.renderFish();
+      },
+
+      renderTodayRecommends() {
+        const plans = window.NIIGATA_RECOMMENDED_PLANS || [];
+        const grid = document.getElementById("recommended-plans-grid");
+        if (!grid) return;
+
+        grid.innerHTML = plans.map(p => `
+          <div style="background:#fff; border:1.5px solid #cbd5e1; border-top:4px solid ${p.accentColor}; border-radius:12px; padding:16px; display:flex; flex-direction:column; box-shadow:0 2px 6px rgba(0,0,0,0.03);">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+              <span style="font-size:0.72rem; font-weight:800; background:#f1f5f9; color:#334155; padding:2px 8px; border-radius:4px;">📍 ${p.area}</span>
+              <span style="font-size:0.74rem; font-weight:800; color:${p.accentColor};">${p.badge}</span>
+            </div>
+
+            <h3 style="font-size:1.08rem; font-weight:900; color:#0f172a; margin-bottom:4px;">${p.theme}</h3>
+            <div style="font-size:0.78rem; font-weight:700; color:${p.accentColor}; margin-bottom:8px;">${p.subTheme}</div>
+            <p style="font-size:0.8rem; color:#475569; margin-bottom:12px; background:#f8fafc; padding:8px 10px; border-radius:6px;">
+              💡 <strong>気分：</strong>${p.targetMood}
+            </p>
+
+            <div style="margin-bottom:12px; font-size:0.8rem; border-left:3px solid ${p.accentColor}; padding-left:8px;">
+              <strong style="color:#0f172a;">🏁 メイン目的地：${p.mainDestination.title}</strong>
+              <div style="font-size:0.76rem; color:#64748b; margin-top:2px;">${p.mainDestination.desc}</div>
+            </div>
+
+            <!-- ついで撮り掛け算リスト -->
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:8px; padding:10px; margin-bottom:12px; display:flex; flex-direction:column; gap:6px; font-size:0.78rem;">
+              <div style="font-weight:800; color:#0369a1; border-bottom:1px dashed #cbd5e1; padding-bottom:3px;">
+                ✨ ついでに狙える「鳥・花・虫・スナップ」：
+              </div>
+              <div>
+                <strong>🐦 一緒に狙える鳥：</strong>
+                ${p.linkedItems.birds.map(b => `<span style="background:#e0f2fe; color:#0369a1; padding:1px 6px; border-radius:4px; font-weight:700; margin-right:4px;">${b.name}</span>`).join("")}
+                <div style="font-size:0.73rem; color:#64748b; margin-top:2px;">${p.linkedItems.birds[0].desc}</div>
+              </div>
+
+              <div>
+                <strong>🌸 季節の草木・花：</strong>
+                ${p.linkedItems.flora.map(f => `<span style="background:#fce7f3; color:#9d174d; padding:1px 6px; border-radius:4px; font-weight:700; margin-right:4px;">${f.name}</span>`).join("")}
+              </div>
+
+              <div>
+                <strong>🐝 季節の昆虫：</strong>
+                ${p.linkedItems.insects.map(i => `<span style="background:#dcfce7; color:#166534; padding:1px 6px; border-radius:4px; font-weight:700; margin-right:4px;">${i.name}</span>`).join("")}
+              </div>
+
+              <div style="background:#fff; border:1px solid #bae6fd; border-radius:6px; padding:6px 8px; margin-top:2px;">
+                <strong style="color:#0284c7;">🌾 おすすめ日常スナップお題（${p.linkedItems.snapMission.code}）：</strong>
+                <div style="font-weight:700; color:#0f172a;">${p.linkedItems.snapMission.title}</div>
+                <div style="font-size:0.73rem; color:#475569; margin-top:2px;">${p.linkedItems.snapMission.tip}</div>
+              </div>
+
+              ${p.linkedItems.nearbyHiddenShrine ? `
+                <div style="background:#fef2f2; border:1px solid #fca5a5; border-radius:6px; padding:6px 8px; margin-top:2px;">
+                  <strong style="color:#991b1b;">⛩️ ついでに寄れる無人隠れ古社：</strong>
+                  <div style="font-weight:700; color:#0f172a;">${p.linkedItems.nearbyHiddenShrine.name}</div>
+                  <div style="font-size:0.73rem; color:#475569;">${p.linkedItems.nearbyHiddenShrine.desc}</div>
+                </div>
+              ` : ''}
+            </div>
+
+            <div style="margin-top:auto; font-size:0.74rem; color:#475569; background:#f1f5f9; padding:6px 8px; border-radius:6px; margin-bottom:10px;">
+              ${p.driveTip}
+            </div>
+
+            <a href="${p.mainDestination.link}" class="btn btn-sm btn-outline" style="justify-content:center; font-weight:800; border-color:${p.accentColor}; color:${p.accentColor};">
+              このコースの図鑑・ミッションを見る →
+            </a>
+          </div>
+        `).join("");
+      },
+
+      spinRandomPlan() {
+        const plans = window.NIIGATA_RECOMMENDED_PLANS || [];
+        if (!plans.length) return;
+        const pick = plans[Math.floor(Math.random() * plans.length)];
+        alert(`🎲 本日のおすすめプラン抽選結果！\n\n【${pick.theme}】\n📍 行先：${pick.spotName}\n💡 目的：${pick.subTheme}\n\n「${pick.mainDestination.title}」をチェックしてみてください！`);
+      },
+
+      renderCrossSpotSelect() {
+        const spots = window.NIIGATA_SPOT_CROSS_DEX || [];
+        const sel = document.getElementById("select-cross-spot");
+        if (!sel) return;
+
+        sel.innerHTML = spots.map(s => `
+          <option value="${s.id}">${s.name}</option>
+        `).join("");
+
+        if (spots.length > 0) {
+          this.renderSelectedCrossSpot(spots[0].id);
+        }
+      },
+
+      renderSelectedCrossSpot(spotId) {
+        const spots = window.NIIGATA_SPOT_CROSS_DEX || [];
+        const s = spots.find(x => x.id === spotId) || spots[0];
+        const box = document.getElementById("cross-spot-result-box");
+        if (!box || !s) return;
+
+        box.innerHTML = `
+          <div style="background:#f8fafc; border:1.5px solid #0284c7; border-radius:12px; padding:18px;">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:12px;">
+              <h4 style="font-size:1.15rem; font-weight:900; color:#0c4a6e;">📍 「${s.name}」に行くなら、これも一緒に撮れる！</h4>
+              <span style="background:#e0f2fe; color:#0369a1; font-size:0.75rem; font-weight:800; padding:3px 10px; border-radius:99px;">全自動掛け算チェック</span>
+            </div>
+
+            <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(260px, 1fr)); gap:14px; margin-bottom:14px;">
+              <div style="background:#fff; border:1px solid #cbd5e1; border-radius:8px; padding:12px;">
+                <strong style="color:#b91c1c; font-size:0.86rem; display:block; margin-bottom:4px;">⛩️ 神社仏閣・絶景スポット：</strong>
+                <div style="font-size:0.82rem; color:#1e293b; line-height:1.5;">${s.shrineScenery}</div>
+              </div>
+
+              <div style="background:#fff; border:1px solid #cbd5e1; border-radius:8px; padding:12px;">
+                <strong style="color:#0369a1; font-size:0.86rem; display:block; margin-bottom:4px;">🐦 周辺で出会える野鳥（150種連携）：</strong>
+                <div style="display:flex; gap:4px; flex-wrap:wrap; margin-top:4px;">
+                  ${s.birds.map(b => `<span style="background:#e0f2fe; color:#0369a1; font-size:0.76rem; font-weight:700; padding:2px 8px; border-radius:4px;">${b}</span>`).join("")}
+                </div>
+              </div>
+
+              <div style="background:#fff; border:1px solid #cbd5e1; border-radius:8px; padding:12px;">
+                <strong style="color:#9d174d; font-size:0.86rem; display:block; margin-bottom:4px;">🌸 咲いている花・草木（50種連携）：</strong>
+                <div style="display:flex; gap:4px; flex-wrap:wrap; margin-top:4px;">
+                  ${s.flora.map(f => `<span style="background:#fce7f3; color:#9d174d; font-size:0.76rem; font-weight:700; padding:2px 8px; border-radius:4px;">${f}</span>`).join("")}
+                </div>
+              </div>
+
+              <div style="background:#fff; border:1px solid #cbd5e1; border-radius:8px; padding:12px;">
+                <strong style="color:#166534; font-size:0.86rem; display:block; margin-bottom:4px;">🐝 観察できる昆虫（50種連携）：</strong>
+                <div style="display:flex; gap:4px; flex-wrap:wrap; margin-top:4px;">
+                  ${s.insects.map(i => `<span style="background:#dcfce7; color:#166534; font-size:0.76rem; font-weight:700; padding:2px 8px; border-radius:4px;">${i}</span>`).join("")}
+                </div>
+              </div>
+            </div>
+
+            <!-- ついでに狙える日常スナップミッション -->
+            <div style="background:#ffffff; border:1.5px dashed #0284c7; border-radius:8px; padding:12px; margin-bottom:12px;">
+              <strong style="color:#0284c7; font-size:0.86rem;">🌾 ついでに日常スナップも狙うなら、このミッション！：</strong>
+              <div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:6px;">
+                ${s.snapRecommends.map(m => `<span style="background:#f0f9ff; color:#0c4a6e; font-size:0.8rem; font-weight:800; padding:4px 10px; border-radius:6px; border:1px solid #bae6fd;">${m}</span>`).join("")}
+              </div>
+              <p style="font-size:0.78rem; color:#475569; margin-top:6px;">💡 ${s.tip}</p>
+            </div>
+
+            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+              <a href="../index.html?spot=${s.id}" class="btn btn-sm btn-outline">🐦 このスポットの野鳥を見る</a>
+              <a href="../神社仏閣・絶景・花図鑑/index.html?spot=${s.id}" class="btn btn-sm btn-outline">⛩️ このスポットの社寺・絶景を見る</a>
+              <a href="../四季の花・草木図鑑/index.html?spot=${s.id}" class="btn btn-sm btn-outline">🌸 このスポットの花を見る</a>
+            </div>
+          </div>
+        `;
+      },
+
+      loadCompletedMissions() {
+        try {
+          // 神社仏閣側でチェックしていたミッション達成状況とも連動
+          const raw = localStorage.getItem(SNAP_STORAGE_KEY);
+          if (raw) {
+            this.state.completedMissions = JSON.parse(raw) || {};
+          }
+        } catch (_) {}
+      },
+
+      saveCompletedMissions() {
+        try {
+          localStorage.setItem(SNAP_STORAGE_KEY, JSON.stringify(this.state.completedMissions));
+        } catch (_) {}
+      },
+
+      switchTab(tabId) {
+        this.state.activeTab = tabId;
+        document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+
+        const btn = document.querySelector(`.nav-tab[onclick*="'${tabId}'"]`);
+        if (btn) btn.classList.add('active');
+
+        const tab = document.getElementById(`tab-${tabId}`);
+        if (tab) tab.classList.add('active');
+      },
+
+      renderSunsetWidget() {
+        const wEl = document.getElementById("niigata-sunset-widget");
+        if (!wEl || !window.calculateNiigataSunset) return;
+        const info = window.calculateNiigataSunset(new Date());
+        const sunsetHud = document.getElementById("w-sunset");
+        if (sunsetHud) sunsetHud.textContent = `${info.sunsetStr} (黄金時刻 ${info.goldenStartStr}〜)`;
+
+        wEl.innerHTML = `
+          <div style="font-size:0.75rem; color:#fde68a; font-weight:800;">🌇 新潟市・本日の夕日＆マジックアワー計（${info.month}月${info.day}日）</div>
+          <div style="display:flex; gap:14px; align-items:baseline; margin-top:4px;">
+            <div><span style="font-size:0.74rem; color:#cbd5e1;">日没目安:</span> <strong style="font-size:1.15rem; color:#fff;">${info.sunsetStr}</strong></div>
+            <div><span style="font-size:0.74rem; color:#cbd5e1;">黄金タイム:</span> <strong style="font-size:0.95rem; color:#fbbf24;">${info.goldenStartStr}〜${info.magicEndStr}</strong></div>
+          </div>
+          <div style="font-size:0.72rem; color:#94a3b8; margin-top:3px;">📍 島見浜・関屋分水・阿賀野川河口での夕日撮影目安</div>
+        `;
+      },
+
+      filterMissions(cat) {
+        this.state.missionFilter = cat;
+        this.renderMissions();
+      },
+
+      toggleMissionDone(mId) {
+        this.state.completedMissions[mId] = !this.state.completedMissions[mId];
+        this.saveCompletedMissions();
+        this.renderMissions();
+      },
+
+      spinMissionGacha() {
+        const missions = window.NIIGATA_SNAP_MISSIONS || [];
+        if (!missions.length) return;
+        const pick = missions[Math.floor(Math.random() * missions.length)];
+        const box = document.getElementById("mission-gacha-result");
+        if (!box) return;
+        box.style.display = "block";
+        box.innerHTML = `
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:6px;">
+            <span style="background:#0284c7; color:#fff; font-size:0.74rem; font-weight:800; padding:3px 10px; border-radius:99px;">🎯 本日のガチャ当選ミッション！ (${pick.code})</span>
+            <span style="font-size:0.78rem; font-weight:700; color:#0369a1;">${pick.category} ｜ 🌤️ ${pick.weather}</span>
+          </div>
+          <h4 style="font-size:1.08rem; font-weight:900; color:#0f172a; margin-bottom:6px;">${pick.title}</h4>
+          <p style="font-size:0.84rem; color:#334155; margin-bottom:8px;"><strong>📐 構図のコツ：</strong>${pick.composition} — ${pick.tip}</p>
+          <div style="font-size:0.78rem; background:#fff; padding:6px 10px; border-radius:6px; border:1px solid #bae6fd; color:#0c4a6e;">
+            ⚙️ <strong>カメラ設定目安：</strong>${pick.cameraSetting} ／ 📍 <strong>おすすめ場所：</strong>${pick.niigataSpot}
+          </div>
+        `;
+      },
+
+      renderMissions() {
+        const missions = window.NIIGATA_SNAP_MISSIONS || [];
+        const grid = document.getElementById("snap-missions-grid");
+        if (!grid) return;
+
+        const doneCount = missions.filter(m => !!this.state.completedMissions[m.id]).length;
+        const pct = missions.length ? Math.round((doneCount / missions.length) * 100) : 0;
+
+        const progEl = document.getElementById("mission-progress-text");
+        if (progEl) progEl.textContent = `ミッション達成: ${doneCount} / ${missions.length} (${pct}%)`;
+        const hdrCount = document.getElementById("hdr-snap-count");
+        if (hdrCount) hdrCount.textContent = doneCount;
+
+        const catFilter = this.state.missionFilter || 'all';
+        const filtered = missions.filter(m => {
+          if (catFilter === 'all') return true;
+          if (catFilter === 'rain') return m.category.includes('雨・曇り');
+          if (catFilter === 'Bokeh') return m.category.includes('玉ボケ');
+          if (catFilter === 'town') return m.category.includes('田園');
+          if (catFilter === 'evening') return m.category.includes('夕日');
+          return true;
+        });
+
+        grid.innerHTML = filtered.map(m => {
+          const isDone = !!this.state.completedMissions[m.id];
+          return `
+            <div style="background:${isDone ? '#f0fdf4' : '#fff'}; border:1.5px solid ${isDone ? '#22c55e' : '#cbd5e1'}; border-radius:14px; padding:16px; display:flex; flex-direction:column; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+              <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                <span style="background:#0f172a; color:#38bdf8; font-size:0.72rem; font-weight:800; padding:2px 9px; border-radius:99px;">${m.code} ｜ ${m.weather}</span>
+                <label style="display:flex; align-items:center; gap:5px; font-size:0.8rem; font-weight:800; color:${isDone ? '#15803d' : '#475569'}; cursor:pointer;">
+                  <input type="checkbox" ${isDone ? 'checked' : ''} onchange="PlannerApp.toggleMissionDone('${m.id}')" style="width:16px; height:16px; cursor:pointer;" />
+                  ${isDone ? '🏆 クリア済！' : '達成チェック'}
+                </label>
+              </div>
+              <div style="font-size:0.75rem; font-weight:800; color:#0369a1; margin-bottom:4px;">${m.category}</div>
+              <h4 style="font-size:1rem; font-weight:900; color:#0f172a; margin-bottom:8px; line-height:1.4;">${m.title}</h4>
+              <div style="background:#f8fafc; border-left:3px solid #0284c7; padding:8px 10px; border-radius:6px; font-size:0.78rem; margin-bottom:8px;">
+                <div><strong>📐 狙う構図：</strong>${m.composition}</div>
+                <div style="margin-top:3px; color:#334155;">💡 ${m.tip}</div>
+              </div>
+              <div style="margin-top:auto; font-size:0.75rem; color:#475569; background:#f1f5f9; padding:7px 10px; border-radius:6px;">
+                <div>⚙️ <strong>設定目安：</strong>${m.cameraSetting}</div>
+                <div style="margin-top:2px;">📍 <strong>新潟スポット例：</strong>${m.niigataSpot}</div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      renderRoutesAndForecast() {
+        if (!window.CameraEnjoySuite) return;
+        const rBox = document.getElementById("planner-routes-box");
+        if (rBox && window.CameraEnjoySuite.renderRoutesSubView) {
+          window.CameraEnjoySuite.renderRoutesSubView(rBox);
+        }
+        const fBox = document.getElementById("planner-forecast-box");
+        if (fBox && window.CameraEnjoySuite.renderWeatherSubView) {
+          window.CameraEnjoySuite.renderWeatherSubView(fBox);
+        }
+      },
+
+      // Open-Meteo API for Niigata Kita-ku area
+      async fetchRealWeather() {
+        try {
+          const url = 'https://api.open-meteo.com/v1/forecast?latitude=37.95&longitude=139.20&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m,wind_direction_10m&timezone=Asia%2FTokyo';
+          const res = await fetch(url);
+          if (!res.ok) return;
+          const data = await res.json();
+          const cur = data.current;
+
+          const temp = cur.temperature_2m;
+          const wind = (cur.wind_speed_10m / 3.6).toFixed(1);
+          const code = cur.weather_code;
+
+          let weatherText = "晴れ";
+          if (code >= 1 && code <= 3) weatherText = "晴れ/薄曇";
+          else if (code >= 51 && code <= 67) weatherText = "雨（水滴・苔スナップ日和！）";
+          else if (code >= 71) weatherText = "雪";
+
+          document.getElementById('w-weather').textContent = weatherText;
+          document.getElementById('w-temp').textContent = `${temp}℃`;
+          document.getElementById('w-wind').textContent = `${wind} m/s`;
+
+          const ratingEl = document.getElementById('w-rating');
+          const windNum = parseFloat(wind);
+          if (windNum <= 2.5) {
+            ratingEl.className = 'wind-badge wind-good';
+            ratingEl.textContent = '🟢 無風〜微風：水鏡＆野鳥撮影の特大チャンス！';
+          } else if (windNum <= 5.5) {
+            ratingEl.className = 'wind-badge wind-warn';
+            ratingEl.textContent = '🟡 そよ風：森の野鳥・神社参拝・日常スナップ推奨';
+          } else {
+            ratingEl.className = 'wind-badge wind-danger';
+            ratingEl.textContent = '🔴 強風注意：屋内額縁構図・街角スナップが安心';
+          }
+        } catch (_) {}
+      },
+
+      toggleFeat(feat, el) {
+        if (this.state.selectedFeats.has(feat)) {
+          this.state.selectedFeats.delete(feat);
+          el.classList.remove('checked');
+        } else {
+          this.state.selectedFeats.add(feat);
+          el.classList.add('checked');
+        }
+        this.renderPlanner();
+      },
+
+      toggleSafety(type) {
+        if (type === 'nosalt') {
+          this.state.safetyNosalt = !this.state.safetyNosalt;
+          document.getElementById('tog-nosalt').classList.toggle('checked', this.state.safetyNosalt);
+        } else if (type === 'nobear') {
+          this.state.safetyNobear = !this.state.safetyNobear;
+          document.getElementById('tog-nobear').classList.toggle('checked', this.state.safetyNobear);
+        } else if (type === 'toilet') {
+          this.state.safetyToilet = !this.state.safetyToilet;
+          document.getElementById('tog-toilet').classList.toggle('checked', this.state.safetyToilet);
+        }
+        this.renderPlanner();
+      },
+
+      resetFilter() {
+        this.state.selectedFeats.clear();
+        this.state.safetyNosalt = false;
+        this.state.safetyNobear = false;
+        this.state.safetyToilet = false;
+
+        document.querySelectorAll('.checkbox-pill').forEach(p => p.classList.remove('checked'));
+        document.querySelectorAll('.toggle-tag').forEach(t => t.classList.remove('checked'));
+        this.renderPlanner();
+      },
+
+      renderPlanner() {
+        const spots = window.NIIGATA_ADVENTURE_SPOTS || [];
+        const grid = document.getElementById('spots-grid');
+
+        const filtered = spots.filter(spot => {
+          for (const feat of this.state.selectedFeats) {
+            if (!spot.features.includes(feat)) return false;
+          }
+          if (this.state.safetyNosalt && spot.safety.saltWind.includes('あり')) return false;
+          if (this.state.safetyNobear && spot.safety.bear !== 'ゼロ') return false;
+          if (this.state.safetyToilet && !spot.toiletWater.includes('トイレ')) return false;
+          return true;
+        });
+
+        document.getElementById('match-count').textContent = filtered.length;
+
+        if (filtered.length === 0) {
+          grid.innerHTML = `
+            <div style="grid-column: 1 / -1; text-align:center; padding:50px 20px; background:#fff; border-radius:12px; border:1px solid #cbd5e1;">
+              <div style="font-size:2.5rem; margin-bottom:10px;">🔍</div>
+              <h3 style="color:#334155; font-size:1.05rem;">条件に一致するスポットが見つかりませんでした</h3>
+              <p style="font-size:0.85rem; color:#64748b; margin-top:6px;">選択条件を少し減らしてお試しください。</p>
+            </div>
+          `;
+          return;
+        }
+
+        const featNames = {
+          bird: { name: '🐦 野鳥', cls: 'feat-bird' },
+          insect: { name: '🐝 昆虫', cls: 'feat-insect' },
+          flora: { name: '🌸 花・木', cls: 'feat-flora' },
+          shrine: { name: '⛩️ 神社絶景', cls: 'feat-shrine' },
+          fishing: { name: '🎣 海釣り', cls: 'feat-fish' },
+          camp_day: { name: '⛺ デイ野営', cls: 'feat-camp' },
+          camp_night_car: { name: '🚗 車中泊1泊', cls: 'feat-camp' }
+        };
+
+        grid.innerHTML = filtered.map(spot => {
+          const badges = spot.features.map(f => {
+            const def = featNames[f] || { name: f, cls: 'feat-bird' };
+            return `<span class="feat-badge ${def.cls}">${def.name}</span>`;
+          }).join(' ');
+
+          return `
+            <div class="spot-card">
+              <div class="spot-header">
+                <div>
+                  <h3 class="spot-name">${spot.name}</h3>
+                  <div class="spot-area">${spot.area}</div>
+                </div>
+              </div>
+
+              <div class="spot-body">
+                <div class="feature-badge-row">
+                  ${badges}
+                </div>
+
+                <div class="spot-detail-box" style="border-left:3px solid #0284c7;">
+                  <strong>🌟 この拠点の醍醐味：</strong><br>
+                  ${spot.highlight}
+                </div>
+
+                <div class="spot-detail-box">
+                  <strong>⛺ 野営・タープ適性：</strong><br>
+                  ${spot.tarpCampType}
+                </div>
+
+                <div class="spot-detail-box">
+                  <strong>🚗 駐車場・設備：</strong><br>
+                  ${spot.carAccess} / ${spot.toiletWater}
+                  ${spot.nearbyOnsen ? `<div style="margin-top:4px; color:#b45309; font-weight:700;">♨️ 近くの温泉: ${spot.nearbyOnsen}</div>` : ''}
+                </div>
+
+                <div class="spot-safety-row">
+                  <div class="safety-item">🐻 クマ: <strong>${spot.safety.bear}</strong></div>
+                  <div class="safety-item">🌊 水害: <strong>${spot.safety.flood}</strong></div>
+                  <div class="safety-item">💨 潮風: <strong>${spot.safety.saltWind}</strong></div>
+                </div>
+
+                <div style="margin-top:auto; padding-top:6px;">
+                  <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(spot.name + ' 駐車場 新潟')}" target="_blank" rel="noopener" class="btn btn-primary" style="width:100%; justify-content:center;">
+                    🗺️ Googleマップで場所・駐車場を開く ↗
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+      },
+
+      renderFish() {
+        const list = window.NIIGATA_FISH_DEX || [];
+        const grid = document.getElementById('fish-grid');
+
+        grid.innerHTML = list.map(fish => {
+          const isDanger = fish.danger !== 'none';
+          return `
+            <div class="fish-card ${isDanger ? 'is-danger' : ''}">
+              <div class="fish-title-row">
+                <div>
+                  <h3 class="fish-name">${fish.name}</h3>
+                  <div style="font-size:0.75rem; color:#64748b;">${fish.kana}</div>
+                </div>
+                <span class="fish-cat-tag">${fish.category}</span>
+              </div>
+
+              <div style="font-size:0.8rem; margin-bottom:8px; color:#334155;">
+                🗓️ <strong>旬の時期：</strong> ${fish.season} / 📏 ${fish.size}
+              </div>
+
+              <div style="font-size:0.8rem; margin-bottom:8px; color:#334155;">
+                📍 <strong>釣れる場所：</strong> ${fish.spots.join('、')}
+              </div>
+
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:8px 12px; border-radius:6px; font-size:0.78rem; margin-bottom:8px; color:#334155;">
+                🎣 <strong>釣り方：</strong> ${fish.method}
+              </div>
+
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; padding:8px 12px; border-radius:6px; font-size:0.78rem; margin-bottom:8px; color:#334155;">
+                🍽️ <strong>美味い食べ方：</strong> ${fish.eatStyle}
+              </div>
+
+              <div style="font-size:0.78rem; color:${isDanger ? '#b91c1c' : '#0369a1'}; line-height:1.5;">
+                ${isDanger ? `<strong>${fish.dangerLevel}</strong><br>` : '💡 '} ${fish.tip}
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      PlannerApp.init();
+    });
+  </script>
+</body>
+</html>

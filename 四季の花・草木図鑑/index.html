@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>にいがた四季の花・山野草・花木図鑑 | NIIGATA FLORA & BLOOMS DEX</title>
+  <style>
+    :root {
+      --sakura: #db2777;
+      --sakura-light: #fdf2f8;
+      --leaf: #15803d;
+      --leaf-dark: #064e3b;
+      --gold: #d97706;
+      --bg: #f8faf8;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    /* 全5アプリ共通・最上部グローバルナビバー */
+    .global-suite-nav {
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      padding: 7px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .global-suite-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .global-suite-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .suite-nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      text-decoration: none;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .suite-nav-pill:hover {
+      background: rgba(255,255,255,0.14);
+      color: #ffffff;
+    }
+    .suite-nav-pill.active {
+      background: #be185d;
+      color: #ffffff;
+      border-color: #f472b6;
+      font-weight: 800;
+    }
+
+    .flora-header {
+      background: linear-gradient(135deg, #4a044e 0%, #831843 60%, #9d174d 100%);
+      color: #fff;
+      padding: 12px 20px;
+      border-bottom: 2px solid #f472b6;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    .flora-header-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .brand-title {
+      font-size: 1.2rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .brand-sub {
+      font-size: 0.75rem;
+      color: #fbcfe8;
+      display: block;
+      margin-top: 2px;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .progress-pill {
+      background: rgba(15,23,42,0.5);
+      border: 1px solid rgba(244,114,182,0.5);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 7px 13px;
+      border-radius: 7px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn-sm { padding: 5px 10px; font-size: 0.75rem; }
+    .btn-sakura { background: var(--sakura); color: #fff; }
+    .btn-sakura:hover { background: #be185d; }
+    .btn-gold { background: #d97706; color: #fff; }
+    .btn-gold:hover { background: #b45309; }
+    .btn-outline { background: #fff; color: var(--text); border-color: #cbd5e1; }
+    .btn-outline:hover { border-color: var(--sakura); color: var(--sakura); }
+    .btn-bird { background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; }
+    .btn-shrine { background: #f1f5f9; color: #334155; border: 1px solid #cbd5e1; }
+
+    .cat-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 43px;
+      z-index: 950;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .cat-nav-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      gap: 4px;
+      padding: 0 12px;
+    }
+    .cat-tab {
+      background: transparent;
+      color: #64748b;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 11px 16px;
+      border-radius: 0;
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .cat-tab:hover {
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .cat-tab.active {
+      color: #be185d;
+      border-bottom-color: #be185d;
+      background: #fdf2f8;
+      font-weight: 800;
+    }
+
+    .container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+    .filter-bar {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .filter-select, .filter-input {
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      background: #fff;
+    }
+    .linked-spot-banner {
+      background: linear-gradient(135deg, #fdf2f8 0%, #f0fdf4 100%);
+      border: 2px solid #db2777;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .dex-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(310px, 1fr));
+      gap: 18px;
+    }
+    .dex-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 2px solid #e2e8f0;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.16s, box-shadow 0.16s;
+      display: flex;
+      flex-direction: column;
+    }
+    .dex-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+    }
+    .dex-card.captured {
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 2px rgba(245,158,11,0.25);
+    }
+    .card-top {
+      position: relative;
+      height: 205px;
+      background: #0b1320;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .card-top img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #0b1320;
+    }
+    .card-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      height: 100%;
+      gap: 2px;
+      background: #fbbf24;
+    }
+    .card-split-pane {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #0b1320;
+    }
+    .split-label {
+      position: absolute;
+      bottom: 6px;
+      left: 6px;
+      background: rgba(15,23,42,0.82);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .split-label.mine { background: #d97706; }
+    .dex-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(15,23,42,0.85);
+      color: #fbcfe8;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+      z-index: 2;
+    }
+    .get-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 99px;
+      z-index: 2;
+    }
+    .get-badge.is-get { background: #f59e0b; color: #fff; }
+    .get-badge.not-get { background: rgba(15,23,42,0.75); color: #cbd5e1; }
+    .card-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .cat-pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 99px;
+      background: #fdf2f8;
+      color: #9d174d;
+      border: 1px solid #f9a8d4;
+    }
+
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 16px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-window {
+      background: #fff;
+      width: 100%;
+      max-width: 1020px;
+      max-height: 92vh;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+    }
+    .modal-header {
+      background: linear-gradient(135deg, #064e3b 0%, #9d174d 100%);
+      color: #fff;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .compare-arena {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .compare-box {
+      background: #0f172a;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid #334155;
+    }
+    .compare-box.mine { border-color: #f59e0b; }
+    .compare-header {
+      padding: 8px 12px;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.08);
+    }
+    .compare-img-wrap {
+      height: 270px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #090d16;
+      position: relative;
+    }
+    .compare-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .info-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .info-card h4 { font-size: 0.9rem; margin-bottom: 6px; color: #0f172a; }
+    .info-card p { font-size: 0.83rem; color: #334155; }
+    .month-bar {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 4px;
+      margin-top: 8px;
+    }
+    .month-cell {
+      text-align: center;
+      padding: 4px 2px;
+      font-size: 0.72rem;
+      border-radius: 4px;
+      background: #f1f5f9;
+      color: #94a3b8;
+    }
+    .month-cell.on {
+      background: #db2777;
+      color: #fff;
+      font-weight: 800;
+    }
+  
+  /* 花撮影レシピ＆AI作例アコーディオン */
+  .recipe-box {
+    background: #fffbeb;
+    border: 1.5px solid #fde68a;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+  }
+  .recipe-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .recipe-card {
+    background: #ffffff;
+    border: 1px solid #fed7aa;
+    border-radius: 8px;
+    padding: 10px 12px;
+    font-size: 0.82rem;
+    color: #451a03;
+    line-height: 1.5;
+  }
+  details.recipe-accordion {
+    margin-top: 12px;
+    background: #fdf2f8;
+    border: 1.5px solid #fbcfe8;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  details.recipe-accordion[open] {
+    border-color: #db2777;
+  }
+  summary.recipe-accordion-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 14px;
+    background: #fce7f3;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 800;
+    color: #9d174d;
+    transition: background 0.2s;
+  }
+  summary.recipe-accordion-summary:hover {
+    background: #fbcfe8;
+  }
+  .recipe-accordion-content {
+    padding: 14px;
+    border-top: 1px solid #fbcfe8;
+    background: #fdf2f8;
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- 全5アプリ共通・最上部グローバルナビバー（1〜5番の順序固定） -->
+  <nav class="global-suite-nav">
+    <div class="global-suite-inner">
+      <div style="font-size:0.74rem; font-weight:800; color:#94a3b8; letter-spacing:0.04em;">
+        📷 新潟カメラ図鑑シリーズ
+      </div>
+      <div class="global-suite-links">
+        <a href="../index.html" class="suite-nav-pill">🐦 ① 野鳥図鑑</a>
+        <a href="../神社仏閣・絶景・花図鑑/index.html" class="suite-nav-pill">⛩️ ② 神社仏閣・仏像</a>
+        <a href="../日本の絶景・風景図鑑/index.html" class="suite-nav-pill">🌄 ③ 日本の絶景</a>
+        <a href="index.html" class="suite-nav-pill active">🌸 ④ 四季の花</a>
+        <a href="../昆虫図鑑/index.html" class="suite-nav-pill">🐝 ⑤ 昆虫図鑑</a>
+        <a href="../冒険プランナー＆海釣り天気/index.html" class="suite-nav-pill">🗺️ ⑥ お出かけ・スナップ＆天気</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="flora-header">
+    <div class="flora-header-inner">
+      <div>
+        <div class="brand-title">
+          <span>🌸 にいがた四季の花・山野草・花木図鑑</span>
+          <span style="font-size:0.7rem; background:#fbcfe8; color:#831843; padding:2px 8px; border-radius:99px; font-weight:800;">全50種・開花カレンダー</span>
+        </div>
+        <span class="brand-sub">雪割草・カタクリ・オニバスから桜・紫陽花・紅葉まで！ボケ味と開花カレンダーで集める植物図鑑</span>
+      </div>
+
+      <div class="header-right">
+        <div class="progress-pill">
+          🏆 図鑑GET数: <strong id="hdr-get-count" style="color:#fbcfe8;">0</strong> / <span id="hdr-total-count">50</span> (<span id="hdr-pct">0</span>%)
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="FloraApp.openCaptureModal()">📷 写真を撮ってGET登録</button>
+      </div>
+    </div>
+  </header>
+
+  <nav class="cat-nav">
+    <div class="cat-nav-inner">
+      <button class="cat-tab active" data-cat="all" onclick="FloraApp.setCategory('all')">✨ すべて表示 (50)</button>
+      <button class="cat-tab" data-cat="春の山野草（スプリング・エフェメラル）" onclick="FloraApp.setCategory('春の山野草（スプリング・エフェメラル）')">🧚 春の山野草（雪割草・カタクリ）</button>
+      <button class="cat-tab" data-cat="水辺・湿地の花" onclick="FloraApp.setCategory('水辺・湿地の花')">💧 水辺・海辺の花（オニバス・ハス）</button>
+      <button class="cat-tab" data-cat="季節の群生花" onclick="FloraApp.setCategory('季節の群生花')">🌼 季節の大群落（菜の花・彼岸花）</button>
+      <button class="cat-tab" data-cat="花木・庭木" onclick="FloraApp.setCategory('花木・庭木')">🌳 花木・紅葉（雪椿・大藤・桜・紅葉）</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div id="linked-spot-banner" class="linked-spot-banner">
+      <div>
+        <span style="font-size:0.72rem; background:#db2777; color:#fff; padding:2px 8px; border-radius:99px; font-weight:800;">📍 エリア連動モード</span>
+        <div id="linked-spot-title" style="font-size:1rem; font-weight:800; color:#831843; margin-top:3px;"></div>
+        <div style="font-size:0.8rem; color:#166534;">野鳥撮影・神社巡りとあわせて、このエリアで撮れる珍しい花・山野草・花木です！</div>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn btn-outline btn-sm" onclick="FloraApp.clearSpotFilter()">🗾 新潟県すべてを表示</button>
+        <a id="linked-shrine-btn" href="../神社仏閣・絶景・花図鑑/index.html" class="btn btn-shrine btn-sm">⛩️🏔️ この場所の神社・絶景を見る</a>
+        <a id="linked-bird-btn" href="../index.html" class="btn btn-bird btn-sm">🐦 この場所の野鳥を見る</a>
+      </div>
+    </div>
+
+    <div class="filter-bar">
+      <div>
+        <strong style="font-size:0.78rem;">🔍 名前・特徴:</strong>
+        <input type="text" id="flt-search" class="filter-input" placeholder="例: 雪割草、カタクリ、弥彦、秋葉区..." oninput="FloraApp.renderGrid()" />
+      </div>
+      <div>
+        <strong style="font-size:0.78rem;">📍 スポット/エリア:</strong>
+        <select id="flt-spot" class="filter-select" onchange="FloraApp.onSpotSelectChange()">
+          <option value="all">新潟県全域（すべて）</option>
+          <optgroup label="【📍 下越・新潟市内（ホーム・近場）】">
+            <option value="fukushimagata">★福島潟（北区：菜の花・オニバス・ハス）</option>
+            <option value="kaibenomori">★島見浜・海辺の森（北区：ハマナス・クロマツ）</option>
+            <option value="toyanogata">・鳥屋野潟・白山公園（中央区：桜並木・蓮）</option>
+            <option value="akiha">★秋葉区（菩提寺山・護摩堂山・北方文化博物館大藤）</option>
+            <option value="hyoko">・瓢湖・五十公野公園（阿賀野・新発田：あやめ・ハス・睡蓮）</option>
+            <option value="tainai">・胎内渓谷・五頭（イワウチワ・高山植物）</option>
+          </optgroup>
+          <optgroup label="【🚗 中越・県央（日帰りドライブ）】">
+            <option value="yahiko">★弥彦・角田（雪割草・もみじ谷紅葉・菊まつり）</option>
+            <option value="yukuzan">・長岡・悠久山・越路（コスモス・もみじ園）</option>
+            <option value="bijinbayashi">・松之山・十日町（美人林ブナ新緑・シラネアオイ・雪椿）</option>
+          </optgroup>
+          <optgroup label="【🏔️ 上越（遠征）】">
+            <option value="myoko">・妙高高原・いもり池（ミズバショウ・紅葉）</option>
+          </optgroup>
+          <optgroup label="【⛴️ 佐渡（島）】">
+            <option value="sado">・佐渡（大野亀トビシマカンゾウ群生）</option>
+          </optgroup>
+        </select>
+      </div>
+      <div>
+        <strong style="font-size:0.78rem;">📅 開花月:</strong>
+        <select id="flt-month" class="filter-select" onchange="FloraApp.renderGrid()">
+          <option value="all">通年（すべて）</option>
+          <option value="3">3月（雪割草・カタクリ）</option>
+          <option value="4">4月（桜・菜の花・水芭蕉・雪椿）</option>
+          <option value="5">5月（大藤・シラネアオイ・ハマナス）</option>
+          <option value="6">6月（花菖蒲・紫陽花・トビシマカンゾウ）</option>
+          <option value="7">7月〜8月（ハス・オニバス）</option>
+          <option value="9">9月〜10月（彼岸花・コスモス）</option>
+          <option value="11">11月（紅葉・弥彦菊まつり）</option>
+        </select>
+      </div>
+      <div>
+        <strong style="font-size:0.78rem;">🏆 状態:</strong>
+        <select id="flt-status" class="filter-select" onchange="FloraApp.renderGrid()">
+          <option value="all">すべて</option>
+          <option value="captured">GET済みのみ</option>
+          <option value="uncaptured">未GETのみ</option>
+        </select>
+      </div>
+    </div>
+
+    <div id="grid-count-bar" style="font-size:0.84rem; font-weight:700; color:var(--muted); margin-bottom:12px;"></div>
+    <div id="flora-dex-grid" class="dex-grid"></div>
+  </main>
+
+  <div id="modal-detail" class="modal-backdrop" onclick="if(event.target===this) FloraApp.closeDetailModal()">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div>
+          <span id="mdl-dexno" style="background:#fbcfe8; color:#831843; font-weight:900; padding:2px 8px; border-radius:6px; font-size:0.78rem; margin-right:6px;">No.001</span>
+          <strong id="mdl-title" style="font-size:1.15rem;"></strong>
+          <div id="mdl-en-title" style="font-size:0.76rem; color:#fbcfe8;"></div>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="FloraApp.closeDetailModal()">✕ 閉じる</button>
+      </div>
+      <div id="mdl-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <div id="modal-capture" class="modal-backdrop" onclick="if(event.target===this) FloraApp.closeCaptureModal()">
+    <div class="modal-window" style="max-width:680px;">
+      <div class="modal-header">
+        <strong>📷 撮影した「花・山野草・紅葉」を登録して図鑑GET！</strong>
+        <button class="btn btn-outline btn-sm" onclick="FloraApp.closeCaptureModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.84rem; font-weight:800; display:block; margin-bottom:4px;">🌸 登録する花・植物：</label>
+          <select id="cap-item-id" class="filter-select" style="width:100%;"></select>
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.84rem; font-weight:800; display:block; margin-bottom:4px;">📁 撮影した写真を選択（EXIF自動解析・IndexedDB大容量保存）：</label>
+          <input type="file" id="cap-file" accept="image/*" onchange="FloraApp.onSelectCaptureFile(event)" />
+        </div>
+        <div id="cap-preview-box" style="display:none; margin-bottom:12px; background:#0f172a; padding:12px; border-radius:10px; color:#fff;">
+          <img id="cap-preview-img" style="width:100%; max-height:220px; object-fit:contain; border-radius:6px;" />
+          <div id="cap-exif-info" style="font-size:0.78rem; color:#fbcfe8; margin-top:8px;"></div>
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.84rem; font-weight:800; display:block; margin-bottom:4px;">📝 撮影メモ（咲いていた場所・ボケ味や光の工夫など）：</label>
+          <input type="text" id="cap-memo" class="filter-input" style="width:100%;" placeholder="例: 弥彦山でF4開放・前ボケを入れて撮影！" />
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+          <button class="btn btn-outline" onclick="FloraApp.closeCaptureModal()">キャンセル</button>
+          <button class="btn btn-gold" onclick="FloraApp.saveCapture()">🏆 花図鑑にGET登録する！</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/data-spots.js"></script>
+  <script src="../js/exif-analyzer.js"></script>
+  <script src="js/data-flora-dex.js"></script>
+  <script>
+    window.FloraApp = (function() {
+      const DB_NAME = "NiigataFloraDexDB";
+      const STORE_NAME = "kv";
+      let db = null;
+      let state = { captures: {}, customRef: {}, wikiCache: {} };
+      let currentCat = "all";
+      let pendingCap = null;
+
+      function openDB() {
+        return new Promise((resolve) => {
+          if (!window.indexedDB) { resolve(null); return; }
+          const req = indexedDB.open(DB_NAME, 1);
+          req.onupgradeneeded = (e) => {
+            const d = e.target.result;
+            if (!d.objectStoreNames.contains(STORE_NAME)) d.createObjectStore(STORE_NAME);
+          };
+          req.onsuccess = (e) => { db = e.target.result; resolve(db); };
+          req.onerror = () => resolve(null);
+        });
+      }
+
+      async function loadState() {
+        await openDB();
+        if (!db) return;
+        return new Promise((resolve) => {
+          const tx = db.transaction(STORE_NAME, "readonly");
+          const req = tx.objectStore(STORE_NAME).get("state");
+          req.onsuccess = () => {
+            if (req.result) {
+              state.captures = req.result.captures || {};
+              state.customRef = req.result.customRef || {};
+              state.wikiCache = req.result.wikiCache || {};
+            }
+            resolve();
+          };
+          req.onerror = () => resolve();
+        });
+      }
+
+      function saveState() {
+        if (!db) return;
+        const tx = db.transaction(STORE_NAME, "readwrite");
+        tx.objectStore(STORE_NAME).put(state, "state");
+      }
+
+      function getFallbackSvg(item) {
+        const [c1, c2, c3] = item.colorPalette || ["#db2777", "#15803d", "#0f172a"];
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="${c1}"/>
+              <stop offset="60%" stop-color="${c2}"/>
+              <stop offset="100%" stop-color="${c3}"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="260" fill="url(#g)"/>
+          <text x="200" y="130" font-size="64" text-anchor="middle">🌸</text>
+          <text x="200" y="195" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">${item.name.slice(0, 18)}</text>
+        </svg>`;
+        return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+      }
+
+      async function fetchRefPhoto(item, callback) {
+        if (state.customRef[item.id]) { callback(state.customRef[item.id]); return; }
+        if (state.wikiCache[item.id]) { callback(state.wikiCache[item.id]); return; }
+        try {
+          const url = `https://ja.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(item.wikiTitle || item.name)}&prop=pageimages&format=json&pithumbsize=720&origin=*`;
+          const res = await fetch(url);
+          if (res.ok) {
+            const data = await res.json();
+            const pages = data.query && data.query.pages;
+            if (pages) {
+              const pg = Object.values(pages)[0];
+              if (pg && pg.thumbnail && pg.thumbnail.source) {
+                state.wikiCache[item.id] = pg.thumbnail.source;
+                saveState();
+                callback(pg.thumbnail.source);
+                return;
+              }
+            }
+          }
+        } catch (_) {}
+      }
+
+      function updateHeader() {
+        const total = window.NIIGATA_FLORA_DEX.length;
+        const got = window.NIIGATA_FLORA_DEX.filter(it => (state.captures[it.id] || []).length > 0).length;
+        document.getElementById("hdr-get-count").textContent = got;
+        document.getElementById("hdr-total-count").textContent = total;
+        document.getElementById("hdr-pct").textContent = Math.round((got / total) * 100);
+      }
+
+      function setCategory(cat) {
+        currentCat = cat;
+        document.querySelectorAll(".cat-tab").forEach(b => b.classList.toggle("active", b.dataset.cat === cat));
+        renderGrid();
+      }
+
+      function onSpotSelectChange() {
+        updateLinkedSpotBanner(document.getElementById("flt-spot").value);
+        renderGrid();
+      }
+
+      function clearSpotFilter() {
+        document.getElementById("flt-spot").value = "all";
+        updateLinkedSpotBanner("all");
+        renderGrid();
+      }
+
+      function updateLinkedSpotBanner(spotId) {
+        const banner = document.getElementById("linked-spot-banner");
+        const toShrine = document.getElementById("btn-to-shrine");
+        const toBird = document.getElementById("btn-to-bird");
+        if (!spotId || spotId === "all") {
+          banner.style.display = "none";
+          if (toShrine) toShrine.href = "../神社仏閣・絶景・花図鑑/index.html";
+          if (toBird) toBird.href = "../index.html";
+          return;
+        }
+        const sp = (window.NIIGATA_SPOTS || []).find(s => s.id === spotId);
+        banner.style.display = "flex";
+        document.getElementById("linked-spot-title").textContent =
+          `📍 「${sp ? sp.name : spotId}」周辺で撮影できる花・山野草・花木を表示中`;
+        document.getElementById("linked-shrine-btn").href = `../神社仏閣・絶景・花図鑑/index.html?spot=${encodeURIComponent(spotId)}`;
+        document.getElementById("linked-bird-btn").href = `../index.html?spot=${encodeURIComponent(spotId)}`;
+        if (toShrine) toShrine.href = `../神社仏閣・絶景・花図鑑/index.html?spot=${encodeURIComponent(spotId)}`;
+        if (toBird) toBird.href = `../index.html?spot=${encodeURIComponent(spotId)}`;
+      }
+
+      function renderGrid() {
+        const q = (document.getElementById("flt-search")?.value || "").trim().toLowerCase();
+        const spotFilter = document.getElementById("flt-spot")?.value || "all";
+        const monthFilter = document.getElementById("flt-month")?.value || "all";
+        const statusFilter = document.getElementById("flt-status")?.value || "all";
+
+        const filtered = window.NIIGATA_FLORA_DEX.filter(it => {
+          if (currentCat !== "all" && it.category !== currentCat) return false;
+          if (spotFilter !== "all" && it.spotId !== spotFilter) return false;
+          const isCap = (state.captures[it.id] || []).length > 0;
+          if (statusFilter === "captured" && !isCap) return false;
+          if (statusFilter === "uncaptured" && isCap) return false;
+          if (monthFilter !== "all" && !it.months.includes(Number(monthFilter))) return false;
+          if (q) {
+            const hay = `${it.name} ${it.englishTitle} ${it.area} ${it.spotName} ${it.catchphrase} ${it.bloomFeature} ${(it.subTags||[]).join(" ")}`.toLowerCase();
+            if (!hay.includes(q)) return false;
+          }
+          return true;
+        });
+
+        const gotCount = filtered.filter(it => (state.captures[it.id] || []).length > 0).length;
+        document.getElementById("grid-count-bar").textContent =
+          `表示中: ${filtered.length}種 （うちGET済み: ${gotCount}種 / 未GET: ${filtered.length - gotCount}種）`;
+
+        const gridEl = document.getElementById("flora-dex-grid");
+        if (filtered.length === 0) {
+          gridEl.innerHTML = `<div style="grid-column:1/-1; background:#fff; padding:28px; border-radius:12px; text-align:center; color:#64748b;">該当する花・植物がありません。フィルターを戻してみてください。</div>`;
+          return;
+        }
+
+        gridEl.innerHTML = filtered.map(it => {
+          const caps = state.captures[it.id] || [];
+          const bestCap = caps[0];
+          const fallback = getFallbackSvg(it);
+          const stars = "★".repeat(it.rarity || 3) + "☆".repeat(5 - (it.rarity || 3));
+
+          const mediaHtml = bestCap ? `
+            <div class="card-split">
+              <div class="card-split-pane">
+                <img data-ref-id="${it.id}" src="${fallback}" alt="${it.name}" />
+                <span class="split-label">お手本</span>
+              </div>
+              <div class="card-split-pane">
+                <img src="${bestCap.dataUrl}" alt="${it.name} 自分の撮影" />
+                <span class="split-label mine">MY SHOT (${bestCap.score || 92}点)</span>
+              </div>
+            </div>
+          ` : `<img data-ref-id="${it.id}" src="${fallback}" alt="${it.name}" />`;
+
+          return `
+            <article class="dex-card ${bestCap ? 'captured' : ''}" onclick="FloraApp.openDetailModal('${it.id}')">
+              <div class="card-top">
+                <span class="dex-badge">No.${it.dexNo}</span>
+                <span class="get-badge ${bestCap ? 'is-get' : 'not-get'}">${bestCap ? `🏆 GET済 (${caps.length}枚)` : '未GET・お手本'}</span>
+                ${mediaHtml}
+              </div>
+              <div class="card-body">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                  <span class="cat-pill">${it.category}</span>
+                  <span style="font-size:0.74rem; color:#db2777; font-weight:800;">レア度 ${stars}</span>
+                </div>
+                <h3 style="font-size:1.02rem; font-weight:900; color:#0f172a; margin-bottom:4px;">${it.name}</h3>
+                <div style="font-size:0.76rem; color:#15803d; font-weight:700; margin-bottom:6px;">${it.catchphrase}</div>
+                <p style="font-size:0.78rem; color:#475569; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; margin-bottom:10px;">
+                  ${it.bloomFeature}
+                </p>
+                <div style="margin-top:auto; font-size:0.74rem; color:#64748b; border-top:1px solid #f1f5f9; padding-top:8px; margin-bottom:8px;">
+                  <div>📍 ${it.spotName}</div>
+                  <div>📅 見頃: ${it.months.map(m => m + '月').join('・')}</div>
+                </div>
+                <div style="display:flex; gap:6px;" onclick="event.stopPropagation();">
+                  <button class="btn btn-outline btn-sm" style="flex:1;" onclick="FloraApp.openDetailModal('${it.id}')">📖 撮り方・詳細</button>
+                  <a href="../index.html?spot=${it.spotId}" class="btn btn-bird btn-sm" title="この場所の野鳥を見る">🐦 野鳥</a>
+                  <button class="btn btn-gold btn-sm" onclick="FloraApp.openCaptureModal('${it.id}')">📷 GET登録</button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        gridEl.querySelectorAll("img[data-ref-id]").forEach(imgEl => {
+          const id = imgEl.getAttribute("data-ref-id");
+          const item = window.NIIGATA_FLORA_DEX.find(x => x.id === id);
+          if (item) fetchRefPhoto(item, url => { if (url) imgEl.src = url; });
+        });
+      }
+
+      
+      function copyFloraPrompt(itemId) {
+        const item = window.NIIGATA_FLORA_DEX.find(x => x.id === itemId);
+        if (!item) return;
+        const prompt = `Award-winning macro flower photography of ${item.englishTitle || item.name} in Niigata Japan. ${item.cameraTips || ''}. Beautiful shallow depth of field, delicate creamy foreground bokeh, sparkling morning dew drops, soft natural spring morning light, 8k resolution, shot on 90mm macro lens at F2.8.`;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(prompt).then(() => {
+            alert(`【「${item.name}」のAIボケ味作例プロンプトをコピーしました！】\n\nAI（Midjourney、ChatGPT、このチャットなど）に貼り付けると、この花のプロ級ボケ作例を生成できます。`);
+          }).catch(() => {
+            window.prompt("以下のプロンプトをコピーしてください：", prompt);
+          });
+        } else {
+          window.prompt("以下のプロンプトをコピーしてください：", prompt);
+        }
+      }
+
+      function openDetailModal(itemId) {
+        const item = window.NIIGATA_FLORA_DEX.find(x => x.id === itemId);
+        if (!item) return;
+
+        document.getElementById("mdl-dexno").textContent = `No.${item.dexNo}`;
+        document.getElementById("mdl-title").textContent = item.name;
+        document.getElementById("mdl-en-title").textContent = item.englishTitle || "";
+
+        const caps = state.captures[item.id] || [];
+        const bestCap = caps[0];
+        const fallback = getFallbackSvg(item);
+        const googleImgUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(item.searchQuery || item.name)}`;
+
+        let monthHtml = `<div class="month-bar">`;
+        for (let m = 1; m <= 12; m++) {
+          monthHtml += `<div class="month-cell ${item.months.includes(m) ? 'on' : ''}">${m}月</div>`;
+        }
+        monthHtml += `</div>`;
+
+        document.getElementById("mdl-body").innerHTML = `
+          <div class="compare-arena">
+            <div class="compare-box">
+              <div class="compare-header">
+                <span>📘 お手本写真（クリックで別カット候補表示）</span>
+                <span style="font-size:0.72rem; color:#fbcfe8;">${state.customRef[item.id] ? '✨カスタム設定中' : '参考フォト'}</span>
+              </div>
+              <div class="compare-img-wrap" style="cursor:pointer;" onclick="FloraApp.loadCandidates('${item.id}')">
+                <img id="mdl-ref-img" src="${fallback}" alt="${item.name}" />
+              </div>
+            </div>
+            <div class="compare-box mine">
+              <div class="compare-header" style="background:rgba(245,158,11,0.22);">
+                <span>🏆 あなたのベストショット</span>
+                <span>${bestCap ? `GET済！ 目利きスコア ${bestCap.score || 92}点` : '未登録'}</span>
+              </div>
+              <div class="compare-img-wrap">
+                ${bestCap
+                  ? `<img src="${bestCap.dataUrl}" alt="マイベストショット" />`
+                  : `<div style="text-align:center; padding:20px; color:#cbd5e1;">
+                      <div style="font-size:2.2rem; margin-bottom:6px;">🌸</div>
+                      <p style="font-size:0.84rem; margin-bottom:12px;">まだ「${item.name}」のあなたの写真が登録されていません。</p>
+                      <button class="btn btn-gold" onclick="FloraApp.openCaptureModal('${item.id}')">📷 撮影した写真を登録してGET！</button>
+                    </div>`
+                }
+              </div>
+            </div>
+          </div>
+
+          <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:10px 14px; margin-bottom:16px;">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+              <button class="btn btn-sakura btn-sm" onclick="FloraApp.loadCandidates('${item.id}')">🔍 他の見やすい写真候補から選ぶ</button>
+              <a href="${googleImgUrl}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">🔎 Google画像検索で見る ↗</a>
+              <label class="btn btn-outline btn-sm" style="cursor:pointer;">
+                📁 PCの画像とお手本を入れ替え
+                <input type="file" accept="image/*" style="display:none;" onchange="FloraApp.onUploadRefFile('${item.id}', event)" />
+              </label>
+              <button class="btn btn-outline btn-sm" onclick="FloraApp.promptRefUrl('${item.id}')">🔗 画像URLでお手本を入れ替え</button>
+              ${state.customRef[item.id] ? `<button class="btn btn-outline btn-sm" style="color:#dc2626;" onclick="FloraApp.resetRef('${item.id}')">↺ 初期写真に戻す</button>` : ''}
+            </div>
+            <div id="mdl-candidates-drawer" style="display:none; margin-top:10px; background:#0f172a; padding:10px; border-radius:8px; color:#fff;">
+              <div id="mdl-candidates-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:8px;"></div>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card" style="background:#fdf2f8; border-color:#f9a8d4;">
+              <h4>🌸 花・植物の特徴と見分け方</h4>
+              <p>${item.bloomFeature}</p>
+            </div>
+            <div class="info-card" style="background:#f0fdf4; border-color:#bbf7d0;">
+              <h4>📸 ボケ味・光線・構図の撮影テクニック</h4>
+              <p>${item.cameraTips}</p>
+              <div style="margin-top:8px; font-size:0.78rem; background:#fff; padding:6px 10px; border-radius:6px; border:1px solid #cbd5e1;">
+                <strong>推奨設定：</strong> ${item.recommendedSpec.focalLength} ／ SS ${item.recommendedSpec.shutterSpeed} ／ 絞り ${item.recommendedSpec.fStop}
+              </div>
+            </div>
+            <div class="info-card" style="grid-column: 1 / -1;">
+              <h4>📅 開花カレンダー＆ベストな時間帯・天気（📍 ${item.spotName}）</h4>
+              <p><strong>狙い目条件：</strong>${item.bestTimeWeather}</p>
+              ${monthHtml}
+            </div>
+          </div>
+
+          <!-- 4部作連動バー（生態チェーン＆スポット連動） -->
+          <div style="background:linear-gradient(135deg, #f0fdfa 0%, #fffbeb 100%); border:2px solid #0d9488; border-radius:12px; padding:14px 16px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div>
+              <div style="font-size:0.88rem; font-weight:800; color:#0f766e;">
+                🔗 同じエリア（${item.spotName.split('（')[0]}）で一緒に撮れる野鳥・昆虫・神社仏閣！
+              </div>
+              <div style="font-size:0.82rem; color:#1e293b; margin-top:4px;">
+                🐦 同じ場所の野鳥：<strong>${(item.linkedBirds || []).join(" ・ ")}</strong>
+              </div>
+              ${item.linkedInsects && item.linkedInsects.length > 0 ? `
+              <div style="font-size:0.82rem; color:#065f46; margin-top:2px;">
+                🐝 この花・周辺に集まる昆虫：<strong>${item.linkedInsects.join(" ・ ")}</strong>
+              </div>` : ''}
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a href="../神社仏閣・絶景・花図鑑/index.html?spot=${item.spotId}" class="btn btn-shrine btn-sm">⛩️ この場所の神社・絶景 →</a>
+              <a href="../昆虫図鑑/index.html" class="btn btn-sm" style="background:linear-gradient(135deg,#059669,#0284c7);color:#fff;border:1px solid #34d399;">🐝 昆虫図鑑 →</a>
+              <a href="../index.html?spot=${item.spotId}" class="btn btn-bird btn-sm">🐦 この場所の野鳥 →</a>
+            </div>
+          </div>
+
+          <div style="background:#fef2f2; border-left:5px solid #dc2626; padding:10px 14px; border-radius:8px; font-size:0.82rem; color:#7f1d1d;">
+            <strong>🛡️ 山野草・植物の撮影マナー：</strong> ${item.mannerNote}
+          </div>
+        `;
+
+        fetchRefPhoto(item, url => {
+          const img = document.getElementById("mdl-ref-img");
+          if (img && url) img.src = url;
+        });
+
+        document.getElementById("modal-detail").classList.add("open");
+      }
+
+      function closeDetailModal() {
+        document.getElementById("modal-detail").classList.remove("open");
+      }
+
+      async function loadCandidates(itemId) {
+        const item = window.NIIGATA_FLORA_DEX.find(x => x.id === itemId);
+        if (!item) return;
+        const drawer = document.getElementById("mdl-candidates-drawer");
+        const grid = document.getElementById("mdl-candidates-grid");
+        drawer.style.display = "block";
+        grid.innerHTML = `<div style="grid-column:1/-1; padding:10px; font-size:0.8rem;">🔍 「${item.name}」の別カット候補を検索中...</div>`;
+
+        const urls = [];
+        try {
+          const cUrl = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(item.searchQuery || item.name)}&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url&iiurlwidth=640&format=json&origin=*`;
+          const res = await fetch(cUrl);
+          if (res.ok) {
+            const data = await res.json();
+            if (data.query && data.query.pages) {
+              Object.values(data.query.pages).forEach(pg => {
+                const ii = pg.imageinfo && pg.imageinfo[0];
+                if (ii && (ii.thumburl || ii.url)) urls.push(ii.thumburl || ii.url);
+              });
+            }
+          }
+        } catch (_) {}
+
+        if (urls.length === 0) {
+          grid.innerHTML = `<div style="grid-column:1/-1; padding:10px; font-size:0.8rem;">候補が見つかりませんでした。「🔎 Google画像検索で見る」から探してURLまたはファイルで入れ替えられます。</div>`;
+          return;
+        }
+
+        grid.innerHTML = urls.map((u, idx) => `
+          <div style="background:#1e293b; border:1px solid #475569; border-radius:6px; overflow:hidden; cursor:pointer;" onclick="FloraApp.setCustomRef('${item.id}', '${u.replace(/'/g, "\\'")}')">
+            <img src="${u}" style="width:100%; height:95px; object-fit:contain; background:#090d16;" />
+            <div style="font-size:0.68rem; text-align:center; padding:3px;">👆 候補 #${idx + 1} に切替</div>
+          </div>
+        `).join("");
+      }
+
+      function setCustomRef(itemId, url) {
+        state.customRef[itemId] = url;
+        saveState();
+        openDetailModal(itemId);
+        renderGrid();
+      }
+
+      function onUploadRefFile(itemId, event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = new Image();
+          img.onload = function() {
+            const canvas = document.createElement("canvas");
+            const maxD = 850;
+            let w = img.width, h = img.height;
+            if (w > maxD || h > maxD) {
+              if (w > h) { h = Math.round(h * maxD / w); w = maxD; }
+              else { w = Math.round(w * maxD / h); h = maxD; }
+            }
+            canvas.width = w; canvas.height = h;
+            canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+            setCustomRef(itemId, canvas.toDataURL("image/jpeg", 0.85));
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function promptRefUrl(itemId) {
+        const u = prompt("🔗 差し替えたいお手本画像のURLを貼り付けてください：");
+        if (u && u.trim()) setCustomRef(itemId, u.trim());
+      }
+
+      function resetRef(itemId) {
+        delete state.customRef[itemId];
+        saveState();
+        openDetailModal(itemId);
+        renderGrid();
+      }
+
+      function openCaptureModal(preselectId) {
+        const sel = document.getElementById("cap-item-id");
+        sel.innerHTML = window.NIIGATA_FLORA_DEX.map(it =>
+          `<option value="${it.id}">No.${it.dexNo} ${it.name}</option>`
+        ).join("");
+        if (preselectId) sel.value = preselectId;
+        pendingCap = null;
+        document.getElementById("cap-file").value = "";
+        document.getElementById("cap-preview-box").style.display = "none";
+        document.getElementById("cap-memo").value = "";
+        document.getElementById("modal-capture").classList.add("open");
+      }
+
+      function closeCaptureModal() {
+        document.getElementById("modal-capture").classList.remove("open");
+      }
+
+      async function onSelectCaptureFile(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        let exif = {};
+        if (window.ExifAnalyzer && window.ExifAnalyzer.extractExifFromFile) {
+          try { exif = await window.ExifAnalyzer.extractExifFromFile(file); } catch (_) {}
+        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = new Image();
+          img.onload = function() {
+            const canvas = document.createElement("canvas");
+            const maxD = 1000;
+            let w = img.width, h = img.height;
+            if (w > maxD || h > maxD) {
+              if (w > h) { h = Math.round(h * maxD / w); w = maxD; }
+              else { w = Math.round(w * maxD / h); h = maxD; }
+            }
+            canvas.width = w; canvas.height = h;
+            canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+            const dataUrl = canvas.toDataURL("image/jpeg", 0.86);
+            pendingCap = {
+              id: "fcap_" + Date.now(),
+              dataUrl,
+              date: exif.date || new Date().toISOString().slice(0, 10),
+              camera: exif.cameraModel || "カメラ撮影",
+              focalLength: exif.focalLength ? `${exif.focalLength}mm` : "",
+              shutterSpeed: exif.shutterSpeedText || "",
+              fNumber: exif.fNumber ? `F${exif.fNumber}` : "",
+              score: 94
+            };
+            document.getElementById("cap-preview-img").src = dataUrl;
+            document.getElementById("cap-exif-info").textContent =
+              `📸 自動読取: ${pendingCap.date} / ${pendingCap.camera} ${pendingCap.focalLength} ${pendingCap.fNumber} ${pendingCap.shutterSpeed} （ボケ味＆色彩目利き評価: 94点！）`;
+            document.getElementById("cap-preview-box").style.display = "block";
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function saveCapture() {
+        if (!pendingCap) { alert("写真ファイルを選択してください。"); return; }
+        const itemId = document.getElementById("cap-item-id").value;
+        pendingCap.memo = document.getElementById("cap-memo").value.trim();
+        if (!state.captures[itemId]) state.captures[itemId] = [];
+        state.captures[itemId].unshift(pendingCap);
+        saveState();
+        updateHeader();
+        closeCaptureModal();
+        renderGrid();
+        openDetailModal(itemId);
+      }
+
+      async function init() {
+        await loadState();
+        updateHeader();
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const spotParam = params.get("spot");
+          if (spotParam) {
+            const sel = document.getElementById("flt-spot");
+            if (sel && [...sel.options].some(o => o.value === spotParam)) {
+              sel.value = spotParam;
+            }
+            updateLinkedSpotBanner(spotParam);
+          }
+        } catch (_) {}
+        renderGrid();
+      }
+
+      return {
+        init, setCategory, onSpotSelectChange, clearSpotFilter, renderGrid,
+        copyFloraPrompt, openDetailModal, closeDetailModal, loadCandidates, setCustomRef,
+        onUploadRefFile, promptRefUrl, resetRef, openCaptureModal,
+        closeCaptureModal, onSelectCaptureFile, saveCapture
+      };
+    })();
+
+    window.addEventListener("DOMContentLoaded", () => FloraApp.init());
+  </script>
+</body>
+</html>

@@ -1,0 +1,3328 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>にいがた神社仏閣・仏像＆御朱印図鑑 - 全88社寺・大観音・仁王像・親子相関図</title>
+  <style>
+    :root {
+      --vermilion: #991b1b;
+      --vermilion-bright: #b91c1c;
+      --gold: #d97706;
+      --gold-light: #fef3c7;
+      --sumi: #0f172a;
+      --bg-washi: #f8fafc;
+      --card-bg: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+      background: var(--bg-washi);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    /* 全5アプリ共通・最上部グローバルナビバー */
+    .global-suite-nav {
+      background: #0f172a;
+      border-bottom: 1px solid #334155;
+      padding: 7px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .global-suite-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .global-suite-links {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .suite-nav-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #cbd5e1;
+      text-decoration: none;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.12);
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+    .suite-nav-pill:hover {
+      background: rgba(255,255,255,0.14);
+      color: #ffffff;
+    }
+    .suite-nav-pill.active {
+      background: #b91c1c;
+      color: #ffffff;
+      border-color: #f87171;
+      font-weight: 800;
+    }
+
+    /* 落ち着いた和モダン・朱色ヘッダー */
+    .wa-header {
+      background: linear-gradient(135deg, #450a0a 0%, #7f1d1d 60%, #991b1b 100%);
+      color: #f8fafc;
+      padding: 12px 20px;
+      border-bottom: 2px solid #d97706;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    .wa-header-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .brand-title {
+      font-size: 1.2rem;
+      font-weight: 900;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      color: #ffffff;
+    }
+    .brand-sub {
+      font-size: 0.75rem;
+      color: #fde68a;
+      display: block;
+      margin-top: 2px;
+    }
+    .header-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .progress-pill {
+      background: rgba(15,23,42,0.55);
+      border: 1px solid rgba(251,191,36,0.45);
+      padding: 6px 14px;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      color: #ffffff;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 7px 13px;
+      border-radius: 7px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+      transition: all 0.15s;
+    }
+    .btn-sm { padding: 5px 10px; font-size: 0.75rem; }
+    .btn-vermilion { background: #b91c1c; color: #fff; }
+    .btn-vermilion:hover { background: #991b1b; }
+    .btn-gold { background: #d97706; color: #fff; }
+    .btn-gold:hover { background: #b45309; }
+    .btn-outline { background: #fff; color: #334155; border-color: #cbd5e1; }
+    .btn-outline:hover { background: #f1f5f9; border-color: #94a3b8; color: #0f172a; }
+    .btn-bird-link {
+      background: #f1f5f9;
+      color: #334155;
+      border: 1px solid #cbd5e1;
+    }
+    .btn-bird-link:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    /* カテゴリタブ（野鳥図鑑と同じ白背景＋下線ハイライト方式に完全統一） */
+    .cat-nav {
+      background: #ffffff;
+      border-bottom: 1px solid #e2e8f0;
+      position: sticky;
+      top: 43px;
+      z-index: 950;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .cat-nav-inner {
+      max-width: 1380px;
+      margin: 0 auto;
+      display: flex;
+      overflow-x: auto;
+      gap: 4px;
+      padding: 0 12px;
+    }
+    .cat-tab {
+      background: transparent;
+      color: #64748b;
+      border: none;
+      border-bottom: 3px solid transparent;
+      padding: 11px 16px;
+      border-radius: 0;
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.15s;
+    }
+    .cat-tab:hover {
+      color: #0f172a;
+      background: #f8fafc;
+    }
+    .cat-tab.active {
+      color: #b91c1c;
+      border-bottom-color: #b91c1c;
+      background: #fef2f2;
+      font-weight: 800;
+    }
+
+    .container {
+      max-width: 1380px;
+      margin: 0 auto;
+      padding: 20px 16px 60px;
+    }
+
+    /* フィルターバー */
+    .filter-bar {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    }
+    .filter-select, .filter-input {
+      padding: 7px 10px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      background: #fff;
+    }
+
+    /* 連動バナー */
+    .linked-spot-banner {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef2f2 100%);
+      border: 2px solid #f59e0b;
+      border-radius: 12px;
+      padding: 14px 18px;
+      margin-bottom: 18px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* カードグリッド */
+    .dex-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+    }
+    .dex-card {
+      background: #fff;
+      border-radius: 14px;
+      border: 2px solid #e2e8f0;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.16s, box-shadow 0.16s;
+      display: flex;
+      flex-direction: column;
+    }
+    .dex-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.1);
+      border-color: #cbd5e1;
+    }
+    .dex-card.captured {
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 2px rgba(245,158,11,0.25);
+    }
+    .card-top {
+      position: relative;
+      height: 205px;
+      background: #0b1320;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .card-top img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      background: #0b1320;
+    }
+    .card-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      width: 100%;
+      height: 100%;
+      gap: 2px;
+      background: #fbbf24;
+    }
+    .card-split-pane {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #0b1320;
+    }
+    .split-label {
+      position: absolute;
+      bottom: 6px;
+      left: 6px;
+      background: rgba(15,23,42,0.82);
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .split-label.mine { background: #d97706; }
+    .dex-badge {
+      position: absolute;
+      top: 8px;
+      left: 8px;
+      background: rgba(15,23,42,0.85);
+      color: #fde68a;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 6px;
+      z-index: 2;
+    }
+    .get-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 9px;
+      border-radius: 99px;
+      z-index: 2;
+    }
+    .get-badge.is-get { background: #f59e0b; color: #fff; }
+    .get-badge.not-get { background: rgba(15,23,42,0.75); color: #cbd5e1; }
+
+    .card-body {
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+    .cat-pill {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 99px;
+    }
+    .cat-shrine { background: #fee2e2; color: #991b1b; border: 1px solid #fca5a5; }
+    .cat-scenery { background: #e0f2fe; color: #075985; border: 1px solid #7dd3fc; }
+    .cat-flora { background: #dcfce7; color: #166534; border: 1px solid #86efac; }
+
+    /* おすすめアングル3選ボックス */
+    .recipe-box {
+      background: linear-gradient(135deg, #fffbeb 0%, #fef2f2 100%);
+      border: 2px solid #f59e0b;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .recipe-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .recipe-card {
+      background: #fff;
+      border: 1px solid #fcd34d;
+      border-left: 5px solid #dc2626;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 0.82rem;
+      color: #1e293b;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.04);
+    }
+
+    /* 5大構図ガイド */
+    .comp-guide-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+    .comp-card {
+      background: #fff;
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .comp-svg-wrap {
+      background: #0f172a;
+      padding: 14px;
+      text-align: center;
+    }
+    .comp-body {
+      padding: 16px;
+    }
+
+    /* 地域別マイ写真集 */
+    .photobook-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+    .pb-card {
+      background: #fff;
+      border-radius: 12px;
+      border: 2px solid #e2e8f0;
+      overflow: hidden;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+    }
+    .pb-card.is-mine {
+      border-color: #f59e0b;
+      box-shadow: 0 0 0 2px rgba(245,158,11,0.28);
+    }
+    .pb-img-wrap {
+      position: relative;
+      height: 185px;
+      background: #0b1320;
+    }
+    .pb-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* モーダル */
+    .modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15,23,42,0.78);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      padding: 16px;
+    }
+    .modal-backdrop.open { display: flex; }
+    .modal-window {
+      background: #fff;
+      width: 100%;
+      max-width: 1060px;
+      max-height: 92vh;
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.45);
+    }
+    .modal-header {
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #334155;
+    }
+    .modal-body {
+      padding: 20px;
+      overflow-y: auto;
+    }
+    .compare-arena {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+    .compare-box {
+      background: #0f172a;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 2px solid #334155;
+    }
+    .compare-box.mine { border-color: #f59e0b; }
+    .compare-header {
+      padding: 8px 12px;
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255,255,255,0.08);
+    }
+    .compare-img-wrap {
+      height: 270px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #090d16;
+      position: relative;
+    }
+    .compare-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+    .info-card {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 10px;
+      padding: 14px;
+    }
+    .info-card h4 {
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+      color: #0f172a;
+    }
+    .info-card p {
+      font-size: 0.83rem;
+      color: #334155;
+    }
+    .month-bar {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 4px;
+      margin-top: 8px;
+    }
+    .month-cell {
+      text-align: center;
+      padding: 4px 2px;
+      font-size: 0.72rem;
+      border-radius: 4px;
+      background: #f1f5f9;
+      color: #94a3b8;
+    }
+    .month-cell.on {
+      background: #dc2626;
+      color: #fff;
+      font-weight: 800;
+    }
+  
+  /* 地域クイックフィルター */
+  .region-filter-bar {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+    background: #f1f5f9;
+    padding: 8px 12px;
+    border-radius: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #cbd5e1;
+  }
+  .btn-region {
+    background: #ffffff;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+  }
+  .btn-region:hover {
+    background: #e2e8f0;
+    color: #0f172a;
+  }
+  .btn-region.active {
+    background: #0f172a;
+    color: #ffffff;
+    border-color: #0f172a;
+  }
+  .btn-region[data-region='kaetsu'].active,
+  .btn-region[data-region='chuetsu'].active,
+  .btn-region[data-region='joetsu'].active,
+  .btn-region[data-region='sado'].active {
+    background: #0f172a;
+    border-color: #0f172a;
+  }
+
+  /* AIレシピ作例アコーディオン */
+  details.recipe-accordion {
+    margin-top: 14px;
+    background: #fffbeb;
+    border: 1.5px solid #fde68a;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  details.recipe-accordion[open] {
+    border-color: #f59e0b;
+  }
+  summary.recipe-accordion-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 12px 14px;
+    background: #fef3c7;
+    cursor: pointer;
+    user-select: none;
+    font-weight: 800;
+    color: #92400e;
+    transition: background 0.2s;
+  }
+  summary.recipe-accordion-summary:hover {
+    background: #fde68a;
+  }
+  .recipe-accordion-content {
+    padding: 14px;
+    border-top: 1px solid #fde68a;
+    background: #fffbeb;
+  }
+
+
+    /* 👣 行ったことある（訪問済み）判定バッジ＆バー */
+    .visit-toggle-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 99px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.25);
+      border: 1px solid transparent;
+      user-select: none;
+    }
+    .visit-toggle-badge.not-visited {
+      background: rgba(15, 23, 42, 0.78);
+      color: #cbd5e1;
+      border-color: rgba(255, 255, 255, 0.25);
+    }
+    .visit-toggle-badge.not-visited:hover {
+      background: #0f172a;
+      color: #38bdf8;
+      border-color: #38bdf8;
+      transform: scale(1.05);
+    }
+    .visit-toggle-badge.is-visited {
+      background: #059669;
+      color: #ffffff;
+      border-color: #34d399;
+      box-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
+    }
+    .visit-toggle-badge.is-visited:hover {
+      background: #047857;
+      transform: scale(1.05);
+    }
+
+    .detail-visit-bar {
+      margin-bottom: 14px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      background: #f8fafc;
+      border: 1.5px dashed #cbd5e1;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      gap: 10px;
+    }
+    .detail-visit-bar:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+    }
+    .detail-visit-bar.is-visited {
+      background: #ecfdf5;
+      border: 1.5px solid #10b981;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.15);
+    }
+    .detail-visit-bar.is-visited:hover {
+      background: #d1fae5;
+    }
+    .btn-visited-on {
+      background: #059669;
+      color: #ffffff;
+      font-weight: 800;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 99px;
+      box-shadow: 0 2px 6px rgba(5, 150, 105, 0.3);
+    }
+    .btn-visited-off {
+      background: #ffffff;
+      color: #475569;
+      font-weight: 800;
+      border: 1.5px solid #cbd5e1;
+      padding: 6px 14px;
+      border-radius: 99px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- 全5アプリ共通・最上部グローバルナビバー（1〜5番の順序固定） -->
+  <nav class="global-suite-nav">
+    <div class="global-suite-inner">
+      <div style="font-size:0.74rem; font-weight:800; color:#94a3b8; letter-spacing:0.04em;">
+        📷 新潟カメラ図鑑シリーズ
+      </div>
+      <div class="global-suite-links">
+        <a href="../index.html" id="btn-back-bird-dex" class="suite-nav-pill">🐦 ① 野鳥図鑑</a>
+        <a href="index.html" class="suite-nav-pill active">⛩️ ② 神社仏閣・仏像</a>
+        <a href="../日本の絶景・風景図鑑/index.html" class="suite-nav-pill">🌄 ③ 日本の絶景</a>
+        <a href="../四季の花・草木図鑑/index.html" id="btn-to-flora-dex" class="suite-nav-pill">🌸 ④ 四季の花</a>
+        <a href="../昆虫図鑑/index.html" class="suite-nav-pill">🐝 ⑤ 昆虫図鑑</a>
+        <a href="../冒険プランナー＆海釣り天気/index.html" class="suite-nav-pill">🗺️ ⑥ お出かけ・スナップ＆天気</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- 神社仏閣・絶景ヘッダー -->
+  <header class="wa-header">
+    <div class="wa-header-inner">
+      <div>
+        <div class="brand-title">
+          <span>⛩️ にいがた神社仏閣・仏像＆御朱印図鑑</span>
+          <span style="font-size:0.7rem; background:#fbbf24; color:#0f172a; padding:2px 8px; border-radius:99px; font-weight:800;">全88社寺・御朱印巡り</span>
+        </div>
+        <span class="brand-sub">御朱印がもらえる名社・名刹 ＋ 迫力の仏像様（大観音・金剛力士・十二神将）＋ 隠れ古社と石仏・親子相関図</span>
+      </div>
+
+      <div class="header-right">
+        <div class="progress-pill" style="display:flex; align-items:center; gap:6px; flex-wrap:wrap;">
+          <span>🏆 写真GET: <strong id="hdr-get-count" style="color:#fbbf24;">0</strong>/<span id="hdr-total-count">88</span> (<span id="hdr-pct">0</span>%)</span>
+          <span style="opacity:0.4;">|</span>
+          <span>👣 訪問済: <strong id="hdr-visited-count" style="color:#34d399;">0</strong>/<span id="hdr-visited-total">88</span> (<span id="hdr-visited-pct">0</span>%)</span>
+        </div>
+        <button class="btn btn-gold btn-sm" onclick="JapanApp.openCaptureModal()">📷 写真を撮ってGET登録</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- カテゴリ＆機能切り替えナビ（野鳥図鑑と同じ白背景タブ） -->
+  <nav class="cat-nav">
+    <div class="cat-nav-inner">
+      <button class="cat-tab active" data-cat="all" onclick="JapanApp.setCategory('all')">✨ すべて表示 (88)</button>
+      <button class="cat-tab" data-cat="shrine_only" onclick="JapanApp.setCategory('shrine_only')">⛩️ 神社のみ (65)</button>
+      <button class="cat-tab" data-cat="temple_only" onclick="JapanApp.setCategory('temple_only')">🗿 お寺・仏像 (23)</button>
+      <button class="cat-tab" data-cat="goshuin_spot" onclick="JapanApp.setCategory('goshuin_spot')">🏮 御朱印あり (48)</button>
+      <button class="cat-tab" data-cat="lineage" onclick="JapanApp.setCategory('lineage')">⛩️ 神社・親子相関図</button>
+      <button class="cat-tab" data-cat="goshuin_book" onclick="JapanApp.setCategory('goshuin_book')">📖 マイ御朱印帳記録</button>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- 野鳥アプリからスポット指定で飛んできた時の連動バナー -->
+    <div id="linked-spot-banner" class="linked-spot-banner">
+      <div>
+        <span style="font-size:0.72rem; background:#0f172a; color:#f8fafc; padding:2px 8px; border-radius:4px; font-weight:700;">📍 エリア連動モード</span>
+        <div id="linked-spot-title" style="font-size:0.96rem; font-weight:800; color:#0f172a; margin-top:3px;"></div>
+        <div id="linked-spot-sub" style="font-size:0.78rem; color:#475569;"></div>
+      </div>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <button class="btn btn-outline btn-sm" onclick="JapanApp.clearSpotFilter()">🗾 新潟県すべてを表示</button>
+        <a id="linked-spot-flora-btn" href="../四季の花・草木図鑑/index.html" class="btn btn-outline btn-sm">🌸 この場所の花図鑑へ →</a>
+        <a id="linked-spot-back-btn" href="../index.html" class="btn btn-outline btn-sm">🐦 この場所の野鳥図鑑へ →</a>
+      </div>
+    </div>
+
+    <!-- ① 図鑑一覧セクション（all / 神社仏閣 / 絶景・風景） -->
+    <section id="sec-dex-main">
+      <!-- 撮影マナー＆豆知識（スッキリ1行アコーディオン） -->
+      <details style="background:#fff; border:1px solid #cbd5e1; border-radius:10px; padding:9px 14px; margin-bottom:12px; font-size:0.8rem; color:#334155;">
+        <summary style="cursor:pointer; font-weight:700; color:#0f172a; display:flex; justify-content:space-between; align-items:center; list-style:none;">
+          <span>💡 <strong>撮影ガイド：</strong>屋外の参道・石仏・五百羅漢・お地蔵様はすべて撮影OK！（本堂内部は控えめに）</span>
+          <span style="font-size:0.74rem; color:#64748b; font-weight:600;">▼ 詳細・リンクを開く</span>
+        </summary>
+        <div style="margin-top:8px; padding-top:8px; border-top:1px solid #e2e8f0; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+          <span style="color:#475569;">参道の石仏や小さな祠は、苔や木漏れ日と重なって味わい深い作品になります。地域順（下越→中越→上越→佐渡）で並んでいます。</span>
+          <div style="display:flex; gap:6px;">
+            <button class="btn btn-outline btn-sm" onclick="JapanApp.setCategory('仏像・石仏・小さなお宮')">🗿 石仏・古社20選を見る</button>
+            <button class="btn btn-outline btn-sm" onclick="JapanApp.setCategory('composition')">📐 5大構図の撮り方</button>
+          </div>
+        </div>
+      </details>
+
+      <!-- 地域クイック絞り込みバー -->
+      <div class="region-filter-bar">
+        <strong style="font-size:0.76rem; color:#475569; margin-right:4px;">🗾 地域絞り込み:</strong>
+        <button class="btn-region active" data-region="all" onclick="JapanApp.setRegionFilter('all')">新潟県すべて (88)</button>
+        <button class="btn-region" data-region="kaetsu" onclick="JapanApp.setRegionFilter('kaetsu')">📍 下越・北区ホーム＆周辺 (55)</button>
+        <button class="btn-region" data-region="chuetsu" onclick="JapanApp.setRegionFilter('chuetsu')">🚗 中越・県央 (23)</button>
+        <button class="btn-region" data-region="joetsu" onclick="JapanApp.setRegionFilter('joetsu')">🏔️ 上越・糸魚川 (7)</button>
+        <button class="btn-region" data-region="sado" onclick="JapanApp.setRegionFilter('sado')">⛴️ 佐渡 (3)</button>
+      </div>
+
+      <!-- 📍 GPS現在地 ＆ 「自宅・北区へ近づく寄り道ナビ」コントロールバー -->
+      
+      <!-- 💡 仏像の4大階級と見分け方ガイド（タップで展開・新潟のスポット直行リンク付き） -->
+      <details id="buddha-rank-guide-panel" style="background:#fffbeb; border:2px solid #f59e0b; border-radius:12px; margin-bottom:14px; overflow:hidden; box-shadow:0 4px 12px rgba(245,158,11,0.1);">
+        <summary style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding:12px 16px; cursor:pointer; font-size:0.88rem; font-weight:900; color:#92400e; background:#fef3c7; user-select:none;">
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <span style="font-size:0.78rem; background:#b45309; color:#fff; padding:3px 9px; border-radius:99px;">💡 1分でわかる！</span>
+            <span>仏像の4大階級（如来・菩薩・明王・天部）と見分け方ガイド</span>
+          </div>
+          <span style="font-size:0.78rem; color:#b45309; font-weight:800;">▼ タップして階級表と命名ルールを見る</span>
+        </summary>
+        <div style="padding:16px 18px; font-size:0.83rem; color:#1e293b; line-height:1.7;">
+          <p style="margin:0 0 14px 0; color:#78350f; font-weight:700;">
+            仏像は上から<strong>「如来 ➔ 菩薩 ➔ 明王 ➔ 天部」</strong>という明確な4大階級（ランク）に分かれています。各階級の解説と、<strong>「新潟で実際に会えるスポット」</strong>を直接選んで図鑑を絞り込めます！
+          </p>
+
+          <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px; margin-bottom:14px;">
+            <!-- 第1位：如来 -->
+            <div style="background:#fff; border-left:4px solid #b45309; padding:12px 14px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                  <strong style="color:#b45309; font-size:0.95rem;">👑 第1位：如来（にょらい）</strong>
+                  <span style="font-size:0.7rem; background:#fef3c7; color:#92400e; padding:1px 6px; border-radius:4px; font-weight:800;">仏教の最高峰</span>
+                </div>
+                <div style="font-size:0.76rem; color:#64748b; margin-bottom:6px;">【役割】悟りを開いた絶対的存在（会社の社長）</div>
+                <p style="font-size:0.78rem; margin:0 0 6px 0; line-height:1.5;">
+                  物欲を完全に断ち切っているため宝飾品はゼロ。薄い布1枚をまとい、頭はパンチパーマのような螺髪（らほつ）。<br/>
+                  📍 <em>釈迦如来、阿弥陀如来、薬師如来、大日如来（五智如来）</em>
+                </p>
+              </div>
+              <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_nyorai')" style="background:#b45309; color:#fff; font-size:0.75rem; font-weight:800; padding:5px 10px; border:none; border-radius:6px; cursor:pointer; width:100%; margin-top:8px;">
+                👑 新潟の如来スポット（五智如来坐像など）を見る ➔
+              </button>
+            </div>
+
+            <!-- 第2位：菩薩 -->
+            <div style="background:#fff; border-left:4px solid #d97706; padding:12px 14px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                  <strong style="color:#d97706; font-size:0.95rem;">💎 第2位：菩薩（ぼさつ）</strong>
+                  <span style="font-size:0.7rem; background:#fef3c7; color:#92400e; padding:1px 6px; border-radius:4px; font-weight:800;">慈悲のリーダー</span>
+                </div>
+                <div style="font-size:0.76rem; color:#64748b; margin-bottom:6px;">【役割】人々を救うため人間界で修行する現場指揮官（専務）</div>
+                <p style="font-size:0.78rem; margin:0 0 6px 0; line-height:1.5;">
+                  悟れる境地に達しながら人々を救うため現場に残る。出家前の王子の姿（宝冠や首飾りなどきらびやかな装身具）。<br/>
+                  📍 <em>観音菩薩（聖観音・十一面・千手など六観音）、文殊菩薩、普賢菩薩、地蔵菩薩</em>
+                </p>
+              </div>
+              <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;">
+                <button class="btn btn-sm" onclick="JapanApp.selectFeature('daikannon')" style="background:#d97706; color:#fff; font-size:0.72rem; font-weight:800; padding:5px 8px; border:none; border-radius:6px; cursor:pointer; flex:1;">
+                  💎 越後胎内観音（全高26m露天） ➔
+                </button>
+                <button class="btn btn-sm" onclick="JapanApp.selectFeature('kannon_temple')" style="background:#fef3c7; color:#92400e; border:1px solid #d97706; font-size:0.72rem; font-weight:800; padding:5px 8px; border-radius:6px; cursor:pointer; flex:1;">
+                  観音霊場（宝積院・普談寺など） ➔
+                </button>
+              </div>
+            </div>
+
+            <!-- 第3位：明王 -->
+            <div style="background:#fff; border-left:4px solid #dc2626; padding:12px 14px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                  <strong style="color:#dc2626; font-size:0.95rem;">🔥 第3位：明王（みょうおう）</strong>
+                  <span style="font-size:0.7rem; background:#fee2e2; color:#991b1b; padding:1px 6px; border-radius:4px; font-weight:800;">怒りの鬼教官</span>
+                </div>
+                <div style="font-size:0.76rem; color:#64748b; margin-bottom:6px;">【役割】言うことを聞かない悪人を力づくでも改心させる如来の化身</div>
+                <p style="font-size:0.78rem; margin:0 0 6px 0; line-height:1.5;">
+                  背中に火炎光背（炎）を背負い、激しい怒りの形相。右手に魔を断つ利剣、左手に悪人を縛り引き上げる羂索（縄）を持つ。<br/>
+                  📍 <em>不動明王（五大明王の筆頭）、降三世明王、愛染明王、孔雀明王</em>
+                </p>
+              </div>
+              <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_myoo')" style="background:#dc2626; color:#fff; font-size:0.75rem; font-weight:800; padding:5px 10px; border:none; border-radius:6px; cursor:pointer; width:100%; margin-top:8px;">
+                🔥 日本三不動・新発田「菅谷不動尊」を見る ➔
+              </button>
+            </div>
+
+            <!-- 第4位：天部（四天王・八部衆・仁王・毘沙門天） -->
+            <div style="background:#fff; border-left:4px solid #0284c7; padding:12px 14px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                  <strong style="color:#0284c7; font-size:0.95rem;">⚔️ 第4位：天部（てんぶ）</strong>
+                  <span style="font-size:0.7rem; background:#e0f2fe; color:#0369a1; padding:1px 6px; border-radius:4px; font-weight:800;">武神ボディーガード</span>
+                </div>
+                <div style="font-size:0.76rem; color:#64748b; margin-bottom:6px;">【役割】寺院と仏法を外敵から守る武闘派守護神軍団（警備隊長）</div>
+                <p style="font-size:0.78rem; margin:0 0 6px 0; line-height:1.5;">
+                  古代インドの神々や鬼神が仏教に帰依した姿。甲冑（よろい）や武器を身にまとい仏敵を踏みつける。<br/>
+                  ・<strong>金剛力士（仁王）</strong>：山門を守る阿形・吽形の最強ペア！<br/>
+                  ・<strong>四天王</strong>：東西南北を守る武将（持国天・増長天・広目天・多聞天/毘沙門天）<br/>
+                  ・<strong>八部衆</strong>：阿修羅（三面六臂の美少年武神）、夜叉、天、竜など<br/>
+                  ・<strong>十二神将</strong>：薬師如来を守る12体の武神（長岡・寛益寺のバサラ大将など）<br/>
+                  ・<strong>福神・女神</strong>：弁財天、大黒天、吉祥天、帝釈天
+                </p>
+              </div>
+              <div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;">
+                <button class="btn btn-sm" onclick="JapanApp.selectFeature('nio')" style="background:#0284c7; color:#fff; font-size:0.72rem; font-weight:800; padding:5px 8px; border:none; border-radius:6px; cursor:pointer; flex:1;">
+                  ⚔️ 山門の仁王像（9社寺） ➔
+                </button>
+                <button class="btn btn-sm" onclick="JapanApp.selectFeature('bishamon')" style="background:#e0f2fe; color:#0369a1; border:1px solid #0284c7; font-size:0.72rem; font-weight:800; padding:5px 8px; border-radius:6px; cursor:pointer; flex:1;">
+                  越後浦佐・毘沙門堂 ➔
+                </button>
+              </div>
+            </div>
+
+            <!-- 番外：羅漢・石仏 -->
+            <div style="background:#fff; border-left:4px solid #64748b; padding:12px 14px; border-radius:8px; box-shadow:0 1px 4px rgba(0,0,0,0.06); display:flex; flex-direction:column; justify-content:space-between;">
+              <div>
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                  <strong style="color:#475569; font-size:0.95rem;">🪨 仏弟子・石仏：羅漢・お地蔵様</strong>
+                  <span style="font-size:0.7rem; background:#f1f5f9; color:#475569; padding:1px 6px; border-radius:4px; font-weight:800;">生身の修行者</span>
+                </div>
+                <div style="font-size:0.76rem; color:#64748b; margin-bottom:6px;">【役割】お釈迦様の生身の弟子たち＆辻を守る身近な仏様</div>
+                <p style="font-size:0.78rem; margin:0 0 6px 0; line-height:1.5;">
+                  神仏ではなく「人間」なので、泣いたり笑ったり居眠りしたりと喜怒哀楽が豊か！苔むした境内に並ぶ石仏は最高の被写体です。<br/>
+                  📍 <em>五百羅漢（慈光寺・佐渡長谷寺）、六地蔵、道祖神</em>
+                </p>
+              </div>
+              <button class="btn btn-sm" onclick="JapanApp.selectFeature('rank_rakan')" style="background:#475569; color:#fff; font-size:0.75rem; font-weight:800; padding:5px 10px; border:none; border-radius:6px; cursor:pointer; width:100%; margin-top:8px;">
+                🪨 五百羅漢（慈光寺・長谷寺）＆石仏群を見る ➔
+              </button>
+            </div>
+          </div>
+
+          <div style="background:#fff; padding:10px 14px; border-radius:8px; border:1px solid #fed7aa;">
+            <strong style="color:#92400e;">💡 名前の末尾で見分けるルール</strong><br/>
+            <span style="font-size:0.78rem; color:#475569;">
+              ・末尾が「〜如来」「〜薬師」「〜阿弥陀」➔ 👑 <strong>如来</strong><br/>
+              ・末尾が「〜観音」「〜菩薩」「〜地蔵」➔ 💎 <strong>菩薩</strong>（「観世音菩薩」を略して観音と呼ぶため観音は100%菩薩！）<br/>
+              ・末尾が「〜明王」「〜不動」➔ 🔥 <strong>明王</strong><br/>
+              ・末尾が「〜天」「〜神」「〜力士」➔ ⚔️ <strong>天部</strong>（仁王像、毘沙門天、四天王、阿修羅、弁財天など）<br/>
+              ・末尾が「〜羅漢」➔ 🪨 <strong>羅漢</strong>（お釈迦様の生身の弟子500人）
+            </span>
+          </div>
+
+          <div style="background:#f8fafc; margin-top:10px; padding:10px 14px; border-radius:8px; border:1px solid #e2e8f0; font-size:0.8rem; color:#475569; line-height:1.6;">
+            📷 <strong>カメラ撮影のポイント：</strong> お寺の御本尊（如来・菩薩）は本堂の奥深くに安置され「秘仏」「撮影禁止」が一般的です。そのため本図鑑では、山門の格子越しに拝める<strong>「仁王像」</strong>や、屋外の全高26m青銅大観音<strong>「越後胎内観音」</strong>、苔むした<strong>「境内の石仏群・五百羅漢」</strong>など、現地でカメラマンが実際に撮影できるリアルな被写体を中心にご案内しています。
+          </div>
+        </div>
+      </details>
+
+      <details id="geo-location-panel" style="background:#f0f9ff; border:1.5px solid #0284c7; border-radius:12px; margin-bottom:14px; box-shadow:0 2px 8px rgba(2,132,199,0.06); overflow:hidden;">
+        <summary style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; padding:10px 14px; cursor:pointer; font-size:0.84rem; font-weight:800; color:#0c4a6e; user-select:none;">
+          <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+            <span style="font-size:0.75rem; font-weight:800; background:#0284c7; color:#fff; padding:3px 9px; border-radius:99px;">🧭 リアル距離＆帰り道ナビ</span>
+            <span id="geo-status-summary" style="font-size:0.8rem; color:#0369a1; font-weight:700;">現在地：新潟市北区（豊栄・福島潟周辺）</span>
+          </div>
+          <span style="font-size:0.78rem; color:#0284c7; font-weight:700;">▼ タップしてナビ・並び替え設定を開く</span>
+        </summary>
+        <div style="padding:10px 14px 14px; border-top:1px dashed #bae6fd;">
+          <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+            <strong id="geo-status-text" style="font-size:0.86rem; color:#0c4a6e;">現在地：新潟市北区（豊栄・福島潟周辺）</strong>
+            <div style="display:flex; gap:6px; flex-wrap:wrap;">
+              <button class="btn btn-primary btn-sm" onclick="JapanApp.requestCurrentGPS()">
+                📍 スマホの現在地（GPS）で更新
+              </button>
+              <button class="btn btn-outline btn-sm" id="btn-way-home" onclick="JapanApp.toggleWayHomeMode()">
+                🏠 自宅（北区）へ近づくスポットのみ表示
+              </button>
+            </div>
+          </div>
+
+          <div style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:0.78rem; color:#334155;">
+            <span>📍 <strong>いま出先にいる場所を選択（手動変更）：</strong></span>
+            <select id="geo-preset-select" class="filter-select" style="font-size:0.78rem; padding:4px 8px;" onchange="JapanApp.setPresetLocation(this.value)">
+              <option value="home_kita">🏠 新潟市北区（豊栄・福島潟周辺）</option>
+              <option value="center_chuo">🏢 新潟市中央区（新潟駅・万代・古町）</option>
+              <option value="west_kounan">🌾 新潟市西区・江南区（内野・亀田）</option>
+              <option value="shibata_seiro">🏯 下越北東部：新発田・聖籠・胎内</option>
+              <option value="murakami_north">🌊 下越最北部：村上・笹川流れ</option>
+              <option value="agano_east">🦆 下越東部：阿賀野（瓢湖）・阿賀町</option>
+              <option value="akiha_niitsu">🍁 秋葉区・五泉（新津駅・秋葉公園・慈光寺）</option>
+              <option value="yahiko_shrine">⛩️ 弥彦・角田山（西蒲区・弥彦村）</option>
+              <option value="sanjo_kamo">🛠️ 県央：三条・加茂・燕（燕三条）</option>
+              <option value="nagaoka_st">🎆 中越：長岡・見附（長岡駅周辺）</option>
+              <option value="kashiwazaki_sea">🌊 中越沿岸：柏崎・出雲崎</option>
+              <option value="uonuma_tokamachi">🌾 魚沼・十日町（南魚沼・越後湯沢）</option>
+              <option value="joetsu_takada">🏔️ 上越：高田城址・直江津駅</option>
+              <option value="itoigawa_west">💎 上越西端：糸魚川・親不知</option>
+              <option value="sado_island">⛴️ 佐渡島（両津港・相川）</option>
+            </select>
+
+            <span style="margin-left:auto; display:flex; align-items:center; gap:6px;">
+              <strong>並び替え：</strong>
+              <button class="btn btn-sm btn-outline active" id="btn-sort-dist" onclick="JapanApp.toggleSortByDistance(true)">📍 現在地から近い順</button>
+              <button class="btn btn-sm btn-outline" id="btn-sort-region" onclick="JapanApp.toggleSortByDistance(false)">🗾 地域・番号順</button>
+            </span>
+          </div>
+        </div>
+      </details>
+
+      <!-- フィルターバー -->
+      <div class="filter-bar">
+        <div>
+          <strong style="font-size:0.78rem;">🔍 キーワード:</strong>
+          <input type="text" id="flt-search" class="filter-input" placeholder="例: 弥彦、秋葉区、紅葉、水鏡..." oninput="JapanApp.renderGrid()" />
+        </div>
+        <div>
+          <strong style="font-size:0.78rem;">📍 エリア/スポット（野鳥図鑑連動）:</strong>
+          <select id="flt-spot" class="filter-select" onchange="JapanApp.onSpotSelectChange()">
+            <option value="all">すべての市町村・エリア（全域）</option>
+            <optgroup label="【📍 下越・新潟市内（ホーム・近場）】">
+              <option value="fukushimagata">★福島潟・菜の花畑・野鳥前線（新潟市北区）</option>
+              <option value="kaibenomori">★島見浜・海辺の森・太郎代浜夕日（新潟市北区）</option>
+              <option value="matsuhama">★松浜稲荷神社・阿賀野川河口夕日（新潟市北区）</option>
+              <option value="hiyoriyama">・白山神社・旧齋藤家別邸・下町湊稲荷（中央区）</option>
+              <option value="toyanogata">・萬代橋・鳥屋野潟桜並木（中央区）</option>
+              <option value="nishikan">・角田山麓・角田岬灯台・内野神社（西区・西蒲区）</option>
+              <option value="akiha">★秋葉区（新津・北方文化博物館・古津八幡山・中野邸もみじ園）</option>
+              <option value="gosen">・慈光寺巨杉・村松公園（五泉市）</option>
+              <option value="hyoko">・瓢湖・旦飯野神社・出湯温泉・天朝山・阿賀野川（阿賀野・阿賀町）</option>
+              <option value="shibata">・清水園名勝庭園・諏訪神社・菅谷不動尊・五十公野（新発田市）</option>
+              <option value="tainai">・乙宝寺・胎内渓谷・関川村丸山大橋（胎内市・関川村）</option>
+              <option value="murakami">・笹川流れ・瀬波海岸・村上羽黒神社（村上市）</option>
+            </optgroup>
+            <optgroup label="【🚗 中越・県央（日帰りドライブ）】">
+              <option value="yahiko">★弥彦（彌彦神社・もみじ谷・国上寺五合庵・大河津分水）</option>
+              <option value="sanjo_kamo">・加茂山公園青海神社・三条八幡宮・八木ヶ鼻（加茂・三条）</option>
+              <option value="nagaoka">・宝徳山稲荷・高龍神社・良寛堂・寺泊白山媛神社・青海川駅（長岡・柏崎）</option>
+              <option value="bijinbayashi">・美人林・星峠・清津峡・蒲生棚田・山本山・八海山（十日町・魚沼）</option>
+            </optgroup>
+            <optgroup label="【🏔️ 上越（遠征）】">
+              <option value="joetsu_myoko">・いもり池妙高山・春日山林泉寺・親不知・能生弁天岩（妙高・上越・糸魚川）</option>
+            </optgroup>
+            <optgroup label="【⛴️ 佐渡（島）】">
+              <option value="sado">・妙宣寺五重塔・北沢浮遊選鉱場・佐渡清水寺・尖閣湾（佐渡市）</option>
+            </optgroup>
+          </select>
+        </div>
+                <div>
+          <strong style="font-size:0.78rem;">📸 仏像ランク・境内の見どころ:</strong>
+          <select id="flt-feature" class="filter-select" onchange="JapanApp.renderGrid()">
+            <option value="all">被写体・見どころ：すべて（88件）</option>
+
+            <optgroup label="── 👑 第1位：如来（仏教最高位の仏様） ──">
+              <option value="rank_nyorai">👑 如来すべて（五智如来・薬師堂 2件）</option>
+            </optgroup>
+
+            <optgroup label="── 💎 第2位：菩薩（慈悲で人々を救う観音様） ──">
+              <option value="rank_bosatsu">💎 菩薩すべて（7件）</option>
+              <option value="daikannon">　└ 露天大観音（全高26m 越後胎内観音 1件）</option>
+              <option value="kannon_temple">　└ 観音霊場・観音堂（宝積院・普談寺など 6件）</option>
+            </optgroup>
+
+            <optgroup label="── 🔥 第3位：明王（悪を懲らしめる怒りの仏） ──">
+              <option value="rank_myoo">🔥 明王（日本三不動・菅谷不動尊 1件）</option>
+            </optgroup>
+
+            <optgroup label="── ⚔️ 第4位：天部（お寺を守る武神・ボディーガード） ──">
+              <option value="rank_tenbu">⚔️ 天部すべて（9社寺）</option>
+              <option value="nio">　└ 金剛力士（山門の仁王像 9社寺）</option>
+              <option value="bishamon">　└ 毘沙門天（越後浦佐・普光寺毘沙門堂 1件）</option>
+            </optgroup>
+
+            <optgroup label="── 🪨 仏弟子・石仏（生身の弟子・辻の野仏） ──">
+              <option value="rank_rakan">🪨 羅漢・石仏すべて（8件）</option>
+              <option value="gohyaku_rakan">　└ 五百羅漢（慈光寺・佐渡長谷寺 2件）</option>
+              <option value="stone_jizo">　└ 境内の石仏群・お地蔵様・道祖神（6件）</option>
+            </optgroup>
+
+            <optgroup label="── ⛩️ 神社・境内風景・建築 ──">
+              <option value="heritage">🏛️ 国宝・重要文化財の木造建築（9件）</option>
+              <option value="hall_only">🏯 お堂建築（本尊はお堂内・外観撮影 7件）</option>
+              <option value="torii">⛩️ 朱塗り大鳥居・連鳥居（30件）</option>
+              <option value="cedar">🌲 杉並木参道・御神木・巨木（34件）</option>
+            </optgroup>
+          </select>
+        </div>
+        <div>
+          <strong style="font-size:0.78rem;">🏆 状態:</strong>
+          <select id="flt-status" class="filter-select" onchange="JapanApp.renderGrid()">
+            <option value="all">状態：すべて</option>
+            <option value="unvisited">❓ まだ行ったことない（未訪問）のみ</option>
+            <option value="visited">👣 行ったことある（訪問済み）のみ</option>
+            <option value="visited_unget">🎯 行ったけど写真未GET（リベンジ候補！）</option>
+            <option value="captured">🏆 写真GET済みのみ</option>
+            <option value="uncaptured">📷 写真未GETのみ</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="grid-count-bar" style="font-size:0.84rem; font-weight:700; color:var(--muted); margin-bottom:12px;"></div>
+      <div id="japan-dex-grid" class="dex-grid"></div>
+    </section>
+
+    <!-- ② 脱・日の丸！神社仏閣＆絶景『5大・黄金構図』お手本図解セクション -->
+    <section id="sec-composition-guide" style="display:none;">
+      <div style="background:#fff; border:2px solid #f59e0b; border-radius:16px; padding:22px; margin-bottom:20px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; margin-bottom:10px;">
+          <div>
+            <span style="background:#991b1b; color:#fef08a; font-size:0.75rem; font-weight:900; padding:3px 10px; border-radius:99px;">📸 カメラ初心者から一気にプロっぽくなる！</span>
+            <h2 style="font-size:1.35rem; font-weight:900; color:#0f172a; margin-top:6px;">📐 野鳥の「日の丸構図」から一歩進む！神社仏閣＆絶景の『5大・黄金構図』図解ガイド</h2>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="JapanApp.setCategory('all')">← 図鑑カード一覧に戻る</button>
+        </div>
+        <p style="font-size:0.88rem; color:#334155;">
+          野鳥撮影では鳥を画面の真ん中に捉える<strong>「日の丸構図」</strong>が大正解ですが、神社仏閣や広い風景をただ真ん中に撮ると「普通の記念写真」になりがちです。<br/>
+          カメラのファインダー内にある<strong>「グリッド線（格子線）」を表示（DISPボタン等でON）</strong>にして、以下の<strong>5つの型</strong>のどれかに当てはめるだけで、外国人が見て息を呑むような作品に変わります！
+        </p>
+
+        <div class="comp-guide-grid">
+          <!-- 構図1: 額縁構図 -->
+          <div class="comp-card">
+            <div class="comp-svg-wrap">
+              <svg viewBox="0 0 360 210" width="100%" height="185">
+                <rect width="360" height="210" fill="#0f172a"/>
+                <!-- 奥の社殿 -->
+                <polygon points="180,68 125,105 235,105" fill="#d97706"/>
+                <rect x="140" y="105" width="80" height="55" fill="#991b1b"/>
+                <!-- 手前の黒い鳥居・モミジのシルエット（額縁） -->
+                <rect x="28" y="20" width="24" height="190" fill="#020617"/>
+                <rect x="308" y="20" width="24" height="190" fill="#020617"/>
+                <rect x="15" y="20" width="330" height="26" fill="#020617"/>
+                <circle cx="65" cy="55" r="28" fill="#dc2626" opacity="0.85"/>
+                <circle cx="295" cy="50" r="32" fill="#ea580c" opacity="0.85"/>
+                <!-- ガイド枠 -->
+                <rect x="52" y="46" width="256" height="145" fill="none" stroke="#fde047" stroke-width="2.5" stroke-dasharray="6,4"/>
+                <text x="180" y="185" fill="#fde047" font-size="12" font-weight="bold" text-anchor="middle">周囲を暗い門・鳥居・枝葉で囲んで中央の主役を際立たせる</text>
+              </svg>
+            </div>
+            <div class="comp-body">
+              <span class="cat-pill cat-shrine" style="margin-bottom:6px;">神社仏閣・庭園で最強 No.1</span>
+              <h3 style="font-size:1.05rem; font-weight:900; margin-bottom:6px;">① 額縁構図（トンネル構図）</h3>
+              <p style="font-size:0.83rem; color:#334155; margin-bottom:8px;">
+                <strong>【撮り方】</strong> 鳥居の柱、山門（随神門）、和室の障子枠、あるいは手前のモミジや桜の枝葉を<strong>「写真のフチ（額縁）」</strong>として画面の周囲に配置し、その奥にある社殿や景色を切り取ります。<br/>
+                <strong>【コツ】</strong> 手前の門や日陰に立つことで、周囲が自然に暗く落ち、奥の光が当たっている社殿や紅葉が劇的に浮かび上がります。
+              </p>
+              <div style="font-size:0.78rem; background:#fef2f2; padding:6px 10px; border-radius:6px; color:#991b1b; font-weight:700;">
+                📍 この構図が刺さる場所：彌彦神社（随神門）、旧齋藤家別邸（座敷から庭園）、弥彦もみじ谷（朱橋の上のモミジ）、清津峡渓谷トンネル
+              </div>
+            </div>
+          </div>
+
+          <!-- 構図2: 放射線・奥行き構図 -->
+          <div class="comp-card">
+            <div class="comp-svg-wrap">
+              <svg viewBox="0 0 360 210" width="100%" height="185">
+                <rect width="360" height="210" fill="#062e22"/>
+                <!-- 杉並木 -->
+                <rect x="25" y="0" width="22" height="210" fill="#022c22"/>
+                <rect x="85" y="15" width="16" height="195" fill="#064e3b"/>
+                <rect x="313" y="0" width="22" height="210" fill="#022c22"/>
+                <rect x="259" y="15" width="16" height="195" fill="#064e3b"/>
+                <!-- 参道（下から奥へ細くなる） -->
+                <polygon points="70,210 290,210 200,85 160,85" fill="#94a3b8" opacity="0.5"/>
+                <!-- 放射線ライン -->
+                <line x1="70" y1="210" x2="180" y2="75" stroke="#fde047" stroke-width="3"/>
+                <line x1="290" y1="210" x2="180" y2="75" stroke="#fde047" stroke-width="3"/>
+                <line x1="0" y1="25" x2="180" y2="75" stroke="#38bdf8" stroke-width="2" stroke-dasharray="5,4"/>
+                <line x1="360" y1="25" x2="180" y2="75" stroke="#38bdf8" stroke-width="2" stroke-dasharray="5,4"/>
+                <circle cx="180" cy="75" r="10" fill="#ef4444"/>
+                <text x="180" y="55" fill="#fde047" font-size="12" font-weight="bold" text-anchor="middle">消失点（一番奥の鳥居・光）へ視線を吸い込む</text>
+              </svg>
+            </div>
+            <div class="comp-body">
+              <span class="cat-pill cat-shrine" style="margin-bottom:6px;">参道・鳥居・並木道で必須</span>
+              <h3 style="font-size:1.05rem; font-weight:900; margin-bottom:6px;">② 放射線構図（リーディングライン）</h3>
+              <p style="font-size:0.83rem; color:#334155; margin-bottom:8px;">
+                <strong>【撮り方】</strong> 参道の石畳、連なる赤い鳥居、杉並木やブナ林などを、<strong>画面の左下・右下から「奥の1点（消失点）」に向かって斜めに収束する</strong>ように配置します。<br/>
+                <strong>【コツ】</strong> 参道の端（少し斜め位置）または低い姿勢（ローアングル）から撮ると、手前が広く・奥が狭くなり、写真に圧倒的な「奥行き」が生まれます。
+              </p>
+              <div style="font-size:0.78rem; background:#fef2f2; padding:6px 10px; border-radius:6px; color:#991b1b; font-weight:700;">
+                📍 この構図が刺さる場所：彌彦神社（一の鳥居〜玉ノ橋の杉並木）、雲洞庵（赤門〜本堂の石畳）、蒼柴神社、美人林、萬代橋
+              </div>
+            </div>
+          </div>
+
+          <!-- 構図3: 三分割構図 -->
+          <div class="comp-card">
+            <div class="comp-svg-wrap">
+              <svg viewBox="0 0 360 210" width="100%" height="185">
+                <rect width="360" height="70" fill="#1e3a8a"/>
+                <rect y="70" width="360" height="140" fill="#14532d"/>
+                <!-- 棚田や菜の花の曲線 -->
+                <path d="M 0 130 Q 150 110 360 155" stroke="#fde047" stroke-width="4" fill="none"/>
+                <path d="M 0 165 Q 170 140 360 190" stroke="#fde047" stroke-width="4" fill="none"/>
+                <!-- 三分割グリッド -->
+                <line x1="120" y1="0" x2="120" y2="210" stroke="#fff" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <line x1="240" y1="0" x2="240" y2="210" stroke="#fff" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <line x1="0" y1="70" x2="360" y2="70" stroke="#fde047" stroke-width="2.5"/>
+                <line x1="0" y1="140" x2="360" y2="140" stroke="#fff" stroke-width="1.5" stroke-dasharray="4,4"/>
+                <!-- 交点 -->
+                <circle cx="240" cy="70" r="9" fill="#ef4444"/>
+                <circle cx="120" cy="140" r="9" fill="#ef4444"/>
+                <text x="180" y="30" fill="#fff" font-size="12" font-weight="bold" text-anchor="middle">空 1 ： 地上 2 （または 空 2 ： 地上 1）に分け、赤い交点に主役を置く</text>
+              </svg>
+            </div>
+            <div class="comp-body">
+              <span class="cat-pill cat-scenery" style="margin-bottom:6px;">絶景・風景の基本にして王道</span>
+              <h3 style="font-size:1.05rem; font-weight:900; margin-bottom:6px;">③ 三分割構図（1:2の黄金比）</h3>
+              <p style="font-size:0.83rem; color:#334155; margin-bottom:8px;">
+                <strong>【撮り方】</strong> 画面を縦・横に3等分する線を引き、<strong>「地平線・水平線を上1/3か下1/3の線に合わせる」</strong>、そして<strong>「線が交わる4つの交点のどれかに五重塔・一本桜・太陽・社殿を置く」</strong>撮り方です。<br/>
+                <strong>【コツ】</strong> 地面の花や棚田を見せたい時は<strong>「空1：地上2」</strong>、朝焼けや夕焼け空を見せたい時は<strong>「空2：地上1」</strong>にします（真ん中で半分に割らないのが鉄則！）。
+              </p>
+              <div style="font-size:0.78rem; background:#e0f2fe; padding:6px 10px; border-radius:6px; color:#075985; font-weight:700;">
+                📍 この構図が刺さる場所：福島潟（菜の花＋五頭連峰）、星峠の棚田、妙宣寺五重塔、大野亀、日本海夕日
+              </div>
+            </div>
+          </div>
+
+          <!-- 構図4: シンメトリー＆水鏡構図 -->
+          <div class="comp-card">
+            <div class="comp-svg-wrap">
+              <svg viewBox="0 0 360 210" width="100%" height="185">
+                <rect width="360" height="105" fill="#0f172a"/>
+                <rect y="105" width="360" height="105" fill="#1e293b"/>
+                <!-- 上の山・社殿 -->
+                <polygon points="180,30 105,105 255,105" fill="#dc2626"/>
+                <!-- 下の水鏡反射 -->
+                <polygon points="180,180 105,105 255,105" fill="#dc2626" opacity="0.55"/>
+                <!-- 対称軸 -->
+                <line x1="180" y1="0" x2="180" y2="210" stroke="#fde047" stroke-width="2" stroke-dasharray="5,4"/>
+                <line x1="0" y1="105" x2="360" y2="105" stroke="#38bdf8" stroke-width="2.5"/>
+                <text x="180" y="22" fill="#fde047" font-size="12" font-weight="bold" text-anchor="middle">正面ド真ん中・上下二分割が唯一「神構図」になる瞬間！</text>
+              </svg>
+            </div>
+            <div class="comp-body">
+              <span class="cat-pill cat-scenery" style="margin-bottom:6px;">日の丸・二分割がプロ級になる特例</span>
+              <h3 style="font-size:1.05rem; font-weight:900; margin-bottom:6px;">④ シンメトリー＆水鏡リフレクション構図</h3>
+              <p style="font-size:0.83rem; color:#334155; margin-bottom:8px;">
+                <strong>【撮り方】</strong> 壮大な神社本殿を正面から撮る時や、風のない早朝の水面に山やトンネルが映り込む「水鏡（リフレクション）」の時は、あえて<strong>左右対称・上下50:50のド真ん中配置</strong>にします。<br/>
+                <strong>【コツ】</strong> 1ミリでも斜めに傾くと美しさが崩れるため、カメラの電子水準器をピッタリ水平に合わせ、自分の立ち位置も左右の中心に立つのが極意です。
+              </p>
+              <div style="font-size:0.78rem; background:#e0f2fe; padding:6px 10px; border-radius:6px; color:#075985; font-weight:700;">
+                📍 この構図が刺さる場所：清津峡トンネル（水鏡）、いもり池（逆さ妙高）、宝徳山稲荷大社、北沢浮遊選鉱場跡
+              </div>
+            </div>
+          </div>
+
+          <!-- 構図5: 前ボケ＆望遠圧縮レイヤー構図 -->
+          <div class="comp-card">
+            <div class="comp-svg-wrap">
+              <svg viewBox="0 0 360 210" width="100%" height="185">
+                <rect width="360" height="210" fill="#1e1b4b"/>
+                <!-- 背景の大きな雪山・社殿 -->
+                <polygon points="210,25 90,175 330,175" fill="#cbd5e1" opacity="0.85"/>
+                <polygon points="150,80 95,175 205,175" fill="#991b1b"/>
+                <!-- 手前の大きな前ボケ（花・風鈴・灯籠） -->
+                <circle cx="75" cy="145" r="48" fill="#f472b6" opacity="0.65"/>
+                <circle cx="115" cy="170" r="36" fill="#fde047" opacity="0.55"/>
+                <text x="75" y="148" fill="#fff" font-size="11" font-weight="bold" text-anchor="middle">手前：ふんわり前ボケ</text>
+                <text x="225" y="115" fill="#0f172a" font-size="12" font-weight="bold" text-anchor="middle">奥：ピントくっきり主役</text>
+              </svg>
+            </div>
+            <div class="comp-body">
+              <span class="cat-pill cat-flora" style="margin-bottom:6px;">野鳥用の望遠レンズが大活躍！</span>
+              <h3 style="font-size:1.05rem; font-weight:900; margin-bottom:6px;">⑤ 前ボケ＆望遠圧縮（3層レイヤー）構図</h3>
+              <p style="font-size:0.83rem; color:#334155; margin-bottom:8px;">
+                <strong>【撮り方】</strong> レンズのすぐ手前に「花・風鈴・石灯籠・紅葉の葉」を近づけてふんわりぼかし（前ボケ）、その奥にある社殿や五重塔にピントを合わせます。<br/>
+                <strong>【コツ】</strong> 野鳥撮影でお使いの<strong>中望遠〜望遠レンズ（85〜300mm）</strong>を使うと、遠くの雪山や社殿がグッと大きく引き寄せられる「圧縮効果」が出て、スマホでは絶対に撮れない立体感が出ます！
+              </p>
+              <div style="font-size:0.78rem; background:#dcfce7; padding:6px 10px; border-radius:6px; color:#166534; font-weight:700;">
+                📍 この構図が刺さる場所：白山神社（風鈴＋本殿）、乙宝寺（しだれ桜＋三重塔）、福島潟（菜の花＋五頭山）
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ③ 3アプリ横断・地域別マイ写真集セクション -->
+    
+    <!-- ⛩️ 神社の親子相関図（系譜ツリー）セクション -->
+    <section id="sec-lineage-guide" style="display:none; margin-bottom:40px;">
+      <div style="background:linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%); border:1.5px solid #f59e0b; border-radius:14px; padding:20px 24px; margin-bottom:28px; box-shadow:0 4px 12px rgba(245, 158, 11, 0.12);">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span style="font-size:1.8rem;">⛩️</span>
+              <h2 style="font-size:1.3rem; font-weight:900; color:#78350f; margin:0;">
+                新潟・神社の親子相関図（本宮・勧請・里宮の系譜）
+              </h2>
+            </div>
+            <p style="font-size:0.86rem; color:#92400e; margin:6px 0 0 0; line-height:1.6;">
+              新潟の神社は、本宮（親社）から地域の新田開拓・水防・五穀豊穣を祈って神様をお迎えした<strong>「親子関係（勧請・分霊）」</strong>で深く結びついています。<br>
+              親神社と北区周辺の小さなお宮（子神社・里宮）のネットワークを眺めながら、歴史ロマンの探訪をお楽しみください！
+            </p>
+          </div>
+          <button class="btn btn-outline btn-sm" style="border-color:#d97706; color:#92400e; background:#ffffff;" onclick="JapanApp.setCategory('all')">
+            ← 通常の図鑑一覧に戻る
+          </button>
+        </div>
+      </div>
+
+      <div id="lineage-tree-container" style="display:flex; flex-direction:column; gap:32px;">
+        <!-- JSで系譜グループごとに動的描画 -->
+      </div>
+    </section>
+  
+    <section id="sec-photobook" style="display:none;">
+      <div style="background:#0f172a; color:#f8fafc; border-radius:14px; padding:20px; margin-bottom:18px; border:1px solid #334155;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+          <div>
+            <span style="background:#334155; color:#e2e8f0; font-size:0.72rem; font-weight:700; padding:2px 9px; border-radius:4px;">📕 3アプリ（野鳥・神社仏閣・絶景・花）統合</span>
+            <h2 style="font-size:1.25rem; font-weight:900; margin-top:6px;">🗾 新潟エリア別・マイ写真集</h2>
+            <p style="font-size:0.8rem; color:#94a3b8; margin-top:3px;">
+              各アプリで登録した写真を自動集計し、「北区」「秋葉区」「弥彦」など地域ごとのアルバムとして鑑賞できます。
+            </p>
+          </div>
+          <div id="pb-summary-badges" style="display:flex; gap:8px; flex-wrap:wrap;"></div>
+        </div>
+
+        <!-- エリア＆表示モード切替バー -->
+        <div style="margin-top:14px; background:#1e293b; border:1px solid #334155; padding:10px 14px; border-radius:8px; display:flex; flex-wrap:wrap; gap:12px; align-items:center;">
+          <div>
+            <strong style="font-size:0.78rem; color:#cbd5e1;">📍 地域チャプター:</strong>
+            <select id="pb-region-select" class="filter-select" onchange="JapanApp.renderPhotoBook()">
+              <option value="all">🗾 新潟県すべて（全地域チャプター）</option>
+              <option value="kita">🦢 新潟市北区（福島潟・島見浜・海辺の森・阿賀野川）</option>
+              <option value="akiha">🍁 新潟市秋葉区・五泉（秋葉公園・新津丘陵・菩提寺山）</option>
+              <option value="yahiko">⛩️ 弥彦・西蒲エリア（彌彦神社・弥彦山・角田山・夏井）</option>
+              <option value="agano_tainai">🌾 阿賀野・胎内・村上（瓢湖・旦飯野神社・乙宝寺）</option>
+              <option value="chuo_nishi">🌉 新潟市中央区・西区（白山神社・旧齋藤家・萬代橋・佐潟）</option>
+              <option value="chuetsu_uonuma">🏔️ 長岡・十日町・魚沼（宝徳山・星峠・美人林・清津峡・雲洞庵）</option>
+              <option value="myoko_sado">🌊 妙高・上越・佐渡（いもり池・高田城・佐渡五重塔・大野亀）</option>
+            </select>
+          </div>
+          <div>
+            <strong style="font-size:0.78rem; color:#cbd5e1;">🖼️ 表示モード:</strong>
+            <select id="pb-mode-select" class="filter-select" onchange="JapanApp.renderPhotoBook()">
+              <option value="all_with_ref">✨ マイ写真＋未撮影はお手本で表示</option>
+              <option value="mine_only">🏆 GET登録したマイ写真のみ表示</option>
+            </select>
+          </div>
+          <div>
+            <strong style="font-size:0.78rem; color:#cbd5e1;">🎨 ジャンル:</strong>
+            <select id="pb-genre-select" class="filter-select" onchange="JapanApp.renderPhotoBook()">
+              <option value="all">すべて（野鳥・神社仏閣・絶景・花）</option>
+              <option value="bird">🐦 野鳥のみ</option>
+              <option value="shrine">⛩️ 神社仏閣のみ</option>
+              <option value="scenery">🏔️ 絶景・風景のみ</option>
+              <option value="flora">🌸 四季の花・草木のみ</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div id="pb-chapters-container"></div>
+    </section>
+
+    <!-- ④ カメラ満喫5大スペシャルスタジオ（黄金ルート・ポストカード・御朱印帳・水鏡雲海予報・称号バッジ） -->
+    <section id="sec-enjoy-suite" style="display:none;"></section>
+  
+    <!-- 🌾 新潟・日常スナップ＆雨の日 24の撮影ミッション セクション -->
+    <section id="sec-snap-missions" style="display:none;">
+      <!-- ヘッダーバナー ＆ 夕日リアルタイム計 -->
+      <div style="background:#0f172a; color:#f8fafc; border-radius:14px; padding:20px; margin-bottom:16px; border:1px solid #334155;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; margin-bottom:10px;">
+          <div>
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+              <span style="background:#334155; color:#e2e8f0; font-size:0.72rem; font-weight:700; padding:2px 8px; border-radius:4px;">身近な風景を作品に変える</span>
+              <span style="background:rgba(255,255,255,0.08); color:#cbd5e1; font-size:0.72rem; padding:2px 8px; border-radius:4px;">全ミッション駐車場ガイド付</span>
+            </div>
+            <h2 style="font-size:1.25rem; font-weight:900; margin:0;">
+              🌾 新潟・日常スナップ＆雨の日 24の撮影ミッション
+            </h2>
+          </div>
+          <button class="btn btn-gold btn-sm" onclick="JapanApp.spinMissionGacha()" style="font-size:0.82rem; padding:8px 14px; font-weight:800;">
+            🎲 今日なにする？気まぐれ撮影ガチャ
+          </button>
+        </div>
+
+        <p style="font-size:0.8rem; line-height:1.55; color:#94a3b8; margin:0 0 14px 0;">
+          遠くの名所に行かなくても、身近な「田んぼ・河川敷・海岸・松林」を作品に変える24の切り取り術と、機材を濡らさず車内から楽しむ雨の日の裏ワザ集です。
+        </p>
+
+        <!-- ☀️ 新潟市リアルタイム夕日タイマー ＆ マジックアワー計 -->
+        <div id="mission-sunset-timer-box" style="background:#1e293b; border:1px solid #475569; border-radius:8px; padding:10px 14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <div style="display:flex; align-items:center; gap:10px;">
+            <div style="font-size:1.5rem;">🌇</div>
+            <div>
+              <div style="font-size:0.72rem; color:#94a3b8; font-weight:700;">新潟市（北区周辺）本日のマジックアワー目安</div>
+              <div style="font-size:0.95rem; font-weight:800; color:#f8fafc;">
+                日の入り <span id="mission-sunset-time" style="color:#fbbf24;">--:--</span> 頃 ／ 黄金タイム <span id="mission-magic-time" style="color:#fde68a;">--:-- 〜 --:--</span>
+              </div>
+            </div>
+          </div>
+          <div id="mission-countdown-text" style="font-size:0.78rem; font-weight:700; background:#334155; color:#f8fafc; padding:4px 10px; border-radius:6px;">
+            計算中...
+          </div>
+        </div>
+      </div>
+
+      <!-- 🏆 コンプリート進捗バー ＆ 称号 -->
+      <div style="background:#fff; border:1px solid #cbd5e1; border-radius:12px; padding:14px 18px; margin-bottom:16px; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+          <div>
+            <strong style="font-size:0.92rem; color:#0f172a;">🏆 日常スナップ・ミッション達成度</strong>
+            <span id="mission-rank-badge" style="margin-left:8px; font-size:0.75rem; background:#0284c7; color:#fff; padding:2px 8px; border-radius:99px; font-weight:800;">🔰 見習いスナップハンター</span>
+          </div>
+          <div style="font-size:0.85rem; font-weight:900; color:#059669;">
+            達成: <span id="mission-cleared-count">0</span> / 24 完了 (<span id="mission-cleared-pct">0</span>%)
+          </div>
+        </div>
+        <div style="width:100%; height:10px; background:#e2e8f0; border-radius:99px; overflow:hidden;">
+          <div id="mission-progress-bar" style="width:0%; height:100%; background:linear-gradient(90deg,#10b981,#0284c7); transition:width 0.4s ease;"></div>
+        </div>
+      </div>
+
+      <!-- フィルタータブ -->
+      <div style="display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px;" id="mission-category-tabs">
+        <button class="btn-region active" data-mcat="all" onclick="JapanApp.filterMissionCategory('all')">全24ミッション</button>
+        <button class="btn-region" data-mcat="paddy" onclick="JapanApp.filterMissionCategory('paddy')">🌾 田んぼ・農道（6）</button>
+        <button class="btn-region" data-mcat="river" onclick="JapanApp.filterMissionCategory('river')">🏞️ 河川敷・土手（6）</button>
+        <button class="btn-region" data-mcat="coast" onclick="JapanApp.filterMissionCategory('coast')">🌊 海岸・松林・竹林（6）</button>
+        <button class="btn-region" data-mcat="rain" onclick="JapanApp.filterMissionCategory('rain')">☔ 雨の日・車内裏ワザ（6）</button>
+      </div>
+
+      <!-- 24ミッション カードグリッド -->
+      <div id="mission-cards-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:14px;"></div>
+    </section>
+
+    <!-- 🎲 ガチャ結果モーダル -->
+    <div id="modal-gacha" class="modal-overlay" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.7); z-index:9999; justify-content:center; align-items:center; padding:16px;">
+      <div style="background:#fff; border-radius:16px; max-width:480px; width:100%; overflow:hidden; box-shadow:0 10px 25px rgba(0,0,0,0.3); animation:popIn 0.25s ease;">
+        <div style="background:linear-gradient(135deg,#065f46,#0284c7); color:#fff; padding:16px 20px; display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:1.05rem;">🎲 本日のおすすめ気まぐれミッション！</strong>
+          <button style="background:none; border:none; color:#fff; font-size:1.4rem; cursor:pointer;" onclick="JapanApp.closeGachaModal()">×</button>
+        </div>
+        <div id="gacha-modal-body" style="padding:20px;"></div>
+        <div style="background:#f8fafc; padding:12px 20px; display:flex; justify-content:space-between; gap:10px; border-top:1px solid #e2e8f0;">
+          <button class="btn btn-outline btn-sm" onclick="JapanApp.spinMissionGacha()">🎲 もう1回引く</button>
+          <button class="btn btn-vermilion btn-sm" onclick="JapanApp.closeGachaModal()">このお題で出発！</button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- 詳細モーダル -->
+  <div id="modal-detail" class="modal-backdrop" onclick="if(event.target===this) JapanApp.closeDetailModal()">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div>
+          <span id="mdl-dexno" style="background:#fbbf24; color:#0f172a; font-weight:900; padding:2px 8px; border-radius:6px; font-size:0.78rem; margin-right:6px;">No.001</span>
+          <strong id="mdl-title" style="font-size:1.15rem;"></strong>
+          <div id="mdl-en-title" style="font-size:0.76rem; color:#fde68a;"></div>
+        </div>
+        <button class="btn btn-outline btn-sm" onclick="JapanApp.closeDetailModal()">✕ 閉じる</button>
+      </div>
+      <div id="mdl-body" class="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- 写真GET登録モーダル -->
+  <div id="modal-capture" class="modal-backdrop" onclick="if(event.target===this) JapanApp.closeCaptureModal()">
+    <div class="modal-window" style="max-width:680px;">
+      <div class="modal-header">
+        <strong>📷 撮影した「神社仏閣・絶景」を登録して図鑑GET！</strong>
+        <button class="btn btn-outline btn-sm" onclick="JapanApp.closeCaptureModal()">✕</button>
+      </div>
+      <div class="modal-body">
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.84rem; font-weight:800; display:block; margin-bottom:4px;">🎯 登録する図鑑ターゲット：</label>
+          <select id="cap-item-id" class="filter-select" style="width:100%;"></select>
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.84rem; font-weight:800; display:block; margin-bottom:4px;">📁 撮影した写真を選択（EXIF設定も自動解析します）：</label>
+          <input type="file" id="cap-file" accept="image/*" onchange="JapanApp.onSelectCaptureFile(event)" />
+        </div>
+        <div id="cap-preview-box" style="display:none; margin-bottom:12px; background:#0f172a; padding:12px; border-radius:10px; color:#fff;">
+          <img id="cap-preview-img" style="width:100%; max-height:220px; object-fit:contain; border-radius:6px;" />
+          <div id="cap-exif-info" style="font-size:0.78rem; color:#fde68a; margin-top:8px;"></div>
+        </div>
+        <div style="margin-bottom:12px;">
+          <label style="font-size:0.84rem; font-weight:800; display:block; margin-bottom:4px;">📝 撮影メモ（時間帯・天気・工夫した構図など）：</label>
+          <input type="text" id="cap-memo" class="filter-input" style="width:100%;" placeholder="例: 早朝7時に額縁構図で随神門から撮影！" />
+        </div>
+        <div style="display:flex; justify-content:flex-end; gap:10px;">
+          <button class="btn btn-outline" onclick="JapanApp.closeCaptureModal()">キャンセル</button>
+          <button class="btn btn-gold" onclick="JapanApp.saveCapture()">🏆 図鑑にGET登録する！</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3つのアプリのデータをすべて読み込み（地域別写真集で横断結合するため） -->
+  <script src="../js/data-spots.js"></script>
+  <script src="../js/data-birds.js"></script>
+  <script src="../js/data-birds-vol2.js"></script>
+  <script src="../js/data-birds-vol3.js"></script>
+  <script src="../四季の花・草木図鑑/js/data-flora-dex.js"></script>
+  <script src="../js/exif-analyzer.js"></script>
+  <script src="../js/niigata-geo-engine.js"></script>
+  <script src="js/data-snap-missions.js"></script>
+  <script src="js/data-japan-dex.js"></script>
+  <script src="js/camera-enjoy-suite.js"></script>
+  <script>
+    window.JapanApp = (function() {
+      const DB_NAME = "NiigataShrineSceneryDexDB";
+      const STORE_NAME = "kv";
+      const STORAGE_KEY = "niigata_japan_beauty_dex_v1";
+      let db = null;
+      let state = {
+        captures: {},      // { itemId: [{ id, dataUrl, date, camera, focalLength, shutterSpeed, fNumber, iso, score, memo }] }
+        customRef: {},     // { itemId: url }
+        wikiCache: {}      // { itemId: url }
+      };
+      let currentCat = "all";
+      let currentRegion = "all";
+      let pendingCap = null;
+
+      // 📍 GPS・距離ソート・帰り道作戦ステート
+      let userLocation = {
+        name: "新潟市北区（豊栄・福島潟周辺）",
+        lat: 37.9150,
+        lng: 139.2450,
+        isGps: false
+      };
+      let isSortByDistance = false;
+      let isWayHomeMode = false;
+      let bearingFilter = "all"; // "all" | "north" | "south"
+
+      function openDB() {
+        return new Promise((resolve) => {
+          if (!window.indexedDB) { resolve(null); return; }
+          const req = indexedDB.open(DB_NAME, 1);
+          req.onupgradeneeded = (e) => {
+            const d = e.target.result;
+            if (!d.objectStoreNames.contains(STORE_NAME)) d.createObjectStore(STORE_NAME);
+          };
+          req.onsuccess = (e) => { db = e.target.result; resolve(db); };
+          req.onerror = () => resolve(null);
+        });
+      }
+
+      async function loadState() {
+        await openDB();
+        if (!db) return;
+        return new Promise((resolve) => {
+          const tx = db.transaction(STORE_NAME, "readonly");
+          const req = tx.objectStore(STORE_NAME).get("state");
+          req.onsuccess = () => {
+            if (req.result) {
+              state.captures = req.result.captures || {};
+              state.customRef = req.result.customRef || {};
+              state.wikiCache = req.result.wikiCache || {};
+              state.visited = req.result.visited || {};
+            } else {
+              try {
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (raw) {
+                  const parsed = JSON.parse(raw);
+                  state.captures = parsed.captures || {};
+                  state.customRef = parsed.customRef || {};
+                  state.wikiCache = parsed.wikiCache || {};
+                  state.visited = parsed.visited || {};
+                }
+              } catch (_) {}
+            }
+            resolve();
+          };
+          req.onerror = () => resolve();
+        });
+      }
+
+      function saveState() {
+        if (!db) return;
+        try {
+          const tx = db.transaction(STORE_NAME, "readwrite");
+          tx.objectStore(STORE_NAME).put(state, "state");
+        } catch (_) {}
+      }
+
+      // 他のアプリ（野鳥図鑑DB・花図鑑DB）からキャプチャデータを読み込むヘルパー
+      function readOtherDexDB(dbName, keyName) {
+        return new Promise((resolve) => {
+          if (!window.indexedDB) { resolve(null); return; }
+          try {
+            const req = indexedDB.open(dbName, 1);
+            req.onsuccess = (e) => {
+              const d = e.target.result;
+              if (!d.objectStoreNames.contains("kv")) { resolve(null); return; }
+              const tx = d.transaction("kv", "readonly");
+              const g = tx.objectStore("kv").get(keyName);
+              g.onsuccess = () => resolve(g.result || null);
+              g.onerror = () => resolve(null);
+            };
+            req.onerror = () => resolve(null);
+          } catch (_) {
+            resolve(null);
+          }
+        });
+      }
+
+      function getFallbackSvg(item) {
+        const [c1, c2, c3] = item.colorPalette || ["#991b1b", "#d97706", "#0f172a"];
+        const icon = item.category === "神社仏閣" ? "⛩️" : item.category === "絶景・風景" ? "🏔️" : "🌸";
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260">
+          <defs>
+            <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="${c1}"/>
+              <stop offset="60%" stop-color="${c2}"/>
+              <stop offset="100%" stop-color="${c3}"/>
+            </linearGradient>
+          </defs>
+          <rect width="400" height="260" fill="url(#g)"/>
+          <circle cx="310" cy="70" r="45" fill="#fef08a" opacity="0.35"/>
+          <text x="200" y="135" font-size="64" text-anchor="middle">${icon}</text>
+          <text x="200" y="195" font-family="sans-serif" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">${item.name.slice(0, 18)}</text>
+        </svg>`;
+        return "data:image/svg+xml;utf8," + encodeURIComponent(svg);
+      }
+
+      async function fetchRefPhoto(item, callback) {
+        if (state.customRef[item.id]) {
+          callback(state.customRef[item.id]);
+          return;
+        }
+        if (item.photoUrl) {
+          callback(item.photoUrl);
+          return;
+        }
+        if (state.wikiCache[item.id]) {
+          callback(state.wikiCache[item.id]);
+          return;
+        }
+        try {
+          const url = `https://ja.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(item.wikiTitle || item.name)}&prop=pageimages&format=json&pithumbsize=720&origin=*`;
+          const res = await fetch(url);
+          if (res.ok) {
+            const data = await res.json();
+            const pages = data.query && data.query.pages;
+            if (pages) {
+              const pg = Object.values(pages)[0];
+              if (pg && pg.thumbnail && pg.thumbnail.source) {
+                state.wikiCache[item.id] = pg.thumbnail.source;
+                saveState();
+                callback(pg.thumbnail.source);
+                return;
+              }
+            }
+          }
+        } catch (_) {}
+
+        try {
+          const cUrl = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(item.searchQuery || item.name)}&gsrnamespace=6&gsrlimit=1&prop=imageinfo&iiprop=url&iiurlwidth=720&format=json&origin=*`;
+          const cRes = await fetch(cUrl);
+          if (cRes.ok) {
+            const cData = await cRes.json();
+            if (cData.query && cData.query.pages) {
+              const firstPg = Object.values(cData.query.pages)[0];
+              const ii = firstPg && firstPg.imageinfo && firstPg.imageinfo[0];
+              if (ii && (ii.thumburl || ii.url)) {
+                const found = ii.thumburl || ii.url;
+                state.wikiCache[item.id] = found;
+                saveState();
+                callback(found);
+                return;
+              }
+            }
+          }
+        } catch (_) {}
+      }
+
+            function getMapSearchUrl(item, isParking = false) {
+        if (!item) return "https://www.google.com/maps";
+        
+        // 1. スポット専用のピンポイントGoogleマップクエリが指定されている場合
+        if (isParking && item.parkingMapQuery) {
+          return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(item.parkingMapQuery);
+        }
+        if (!isParking && item.spotMapQuery) {
+          return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(item.spotMapQuery);
+        }
+
+        // 2. マップオーバーライド設定（ピンポイント検索語）
+        const mapOverrides = {
+          "katsuduka_suwa_kita": { spot: "葛塚稲荷神社 新潟市北区葛塚3293", pkg: "葛塚稲荷神社 駐車場 新潟市北区" },
+          "kita_kuzutsuka_ichiba_inari": { spot: "葛塚 稲荷神社 新潟市北区", pkg: "豊栄駅前 駐車場 新潟市北区" },
+          "matsuhama_inari_sunset": { spot: "松浜稲荷神社 新潟市北区松浜本町3丁目", pkg: "松浜稲荷神社 新潟市北区" },
+          "shimamihama_sunset": { spot: "島見浜海水浴場 新潟市北区", pkg: "島見浜海水浴場 駐車場" },
+          "tarodai_kannon": { spot: "太郎代 新潟市北区", pkg: "太郎代浜 駐車場 新潟市北区" },
+          "tarodai_inari_pine": { spot: "海辺の森 新潟市北区", pkg: "海辺の森 駐車場 新潟市北区" },
+          "kakuda_misaki": { spot: "角田岬灯台 新潟市西蒲区", pkg: "角田浜 駐車場" },
+          "kakuda_hangan": { spot: "角田浜 新潟市西蒲区", pkg: "角田浜 駐車場" },
+          "sasagawanagare": { spot: "道の駅 笹川流れ 村上市", pkg: "道の駅 笹川流れ 駐車場" },
+          "agano_river_mist": { spot: "道の駅 阿賀の里 阿賀町", pkg: "道の駅 阿賀の里 駐車場" },
+          "hyoko_swan_lake": { spot: "瓢湖 阿賀野市", pkg: "瓢湖 駐車場" },
+          "fukushimagata_mist": { spot: "水の駅 ビュー福島潟 新潟市北区", pkg: "ビュー福島潟 駐車場" },
+          "fukushimagata": { spot: "水の駅 ビュー福島潟 新潟市北区", pkg: "ビュー福島潟 駐車場" },
+          "omigawa_yoneyama": { spot: "青海川駅 柏崎市", pkg: "青海川駅 駐車場" },
+          "sekikawa_maruyama": { spot: "丸山大橋 関川村", pkg: "丸山大橋 展望台 駐車場 関川村" },
+          "shuten_doji_shrine": { spot: "酒呑童子神社 燕市", pkg: "道の駅 国上 駐車場" },
+          "minato_inari": { spot: "湊稲荷神社 新潟市中央区", pkg: "湊稲荷神社 駐車場 新潟" },
+          "shibata_suwa": { spot: "諏訪神社 新発田市諏訪町", pkg: "新発田 諏訪神社 駐車場" },
+          "suganoya_fudo": { spot: "菅谷不動尊 新発田市", pkg: "菅谷不動尊 駐車場" },
+          "sanjo_hachiman": { spot: "三条八幡宮 三条市", pkg: "三条八幡宮 駐車場" },
+          "uchino_shrine": { spot: "内野神社 新潟市西区", pkg: "内野神社 駐車場" },
+          "tenchouzan_shrine": { spot: "天朝山公園 阿賀野市", pkg: "天朝山公園 駐車場" },
+          "ijimino_bentendo": { spot: "五十公野公園 新発田市", pkg: "五十公野公園 駐車場" },
+          "muramatsu_atago": { spot: "村松公園 五泉市", pkg: "村松公園 駐車場" },
+          "benten_iwa_nou": { spot: "弁天岩 糸魚川市能生", pkg: "弁天岩 駐車場 糸魚川" },
+          "gochi_kokubunji": { spot: "五智国分寺 上越市", pkg: "五智国分寺 駐車場" },
+          "hakkaisan_son_shrine": { spot: "八海山尊神社 南魚沼市", pkg: "八海山尊神社 駐車場" },
+          "gimyou_tanada": { spot: "儀明の棚田 十日町市", pkg: "儀明の棚田 駐車場" },
+          "kamou_tanada": { spot: "蒲生の棚田 十日町市", pkg: "蒲生の棚田 駐車場" },
+          "yamamotoyama": { spot: "山本山高原 小千谷市", pkg: "山本山高原 駐車場" },
+          "toyano_lagoon": { spot: "鳥屋野潟公園 新潟市中央区", pkg: "鳥屋野潟公園 駐車場" },
+          "sado_senkakuwan": { spot: "尖閣湾揚島遊園 佐渡市", pkg: "尖閣湾揚島遊園 駐車場" }
+        };
+
+        if (mapOverrides[item.id]) {
+          const target = isParking ? mapOverrides[item.id].pkg : mapOverrides[item.id].spot;
+          return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(target);
+        }
+
+        // 3. 一般スポットの自動クエリ生成（※wikiTitleは地名記事で誤爆するため絶対に使わない！）
+        let cleanName = (item.name || "").split("（")[0].replace(/[「」『』]/g, "").trim();
+        cleanName = cleanName.split("＆")[0].split("&")[0].split("〜")[0].trim();
+        let cleanArea = (item.area || "新潟県").replace(/（.*?）/g, "").replace("エリア", "").split("・")[0].trim();
+        
+        let targetQuery = isParking ? (cleanName + " 駐車場 " + cleanArea) : (cleanName + " " + cleanArea);
+        return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(targetQuery);
+      }
+
+      function updateHeader() {
+        const total = window.JAPAN_BEAUTY_DEX.length;
+        const got = window.JAPAN_BEAUTY_DEX.filter(it => (state.captures[it.id] || []).length > 0).length;
+        document.getElementById("hdr-get-count").textContent = got;
+        document.getElementById("hdr-total-count").textContent = total;
+        document.getElementById("hdr-pct").textContent = Math.round((got / total) * 100);
+      }
+
+      
+      function renderLineageTree() {
+        const container = document.getElementById("lineage-tree-container");
+        if (!container) return;
+
+        // Group spots by lineage group
+        const groups = {};
+        window.JAPAN_BEAUTY_DEX.forEach(item => {
+          if (item.lineage && item.lineage.group) {
+            const g = item.lineage.group;
+            if (!groups[g]) {
+              groups[g] = {
+                id: g,
+                name: item.lineage.groupName || "神社の系譜",
+                desc: item.lineage.groupDesc || "",
+                parents: [],
+                children: []
+              };
+            }
+            if (item.lineage.role === "parent") {
+              groups[g].parents.push(item);
+            } else {
+              groups[g].children.push(item);
+            }
+          }
+        });
+
+        container.innerHTML = Object.values(groups).map(g => {
+          const parentHtml = g.parents.map(p => {
+            const isVis = !!(state.visited && state.visited[p.id]);
+            const caps = state.captures[p.id] || [];
+            const photo = p.photoUrl || (state.wikiCache && state.wikiCache[p.id]) || getFallbackSvg(p);
+            return `
+              <div style="background:#ffffff; border:2px solid #f59e0b; border-radius:12px; padding:16px; box-shadow:0 4px 12px rgba(245, 158, 11, 0.15); max-width:540px; margin:0 auto; width:100%;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
+                  <span style="background:#b45309; color:#fff; font-size:0.75rem; font-weight:800; padding:2px 10px; border-radius:99px;">
+                    👑 親神社（本宮・勧請元）
+                  </span>
+                  <span style="font-size:0.75rem; font-weight:800; color:#b45309;">No.${p.dexNo}</span>
+                </div>
+                <div style="display:flex; gap:14px; align-items:center;">
+                  <img src="${photo}" alt="${p.name}" style="width:90px; height:90px; object-fit:cover; border-radius:8px; border:1px solid #e2e8f0; flex-shrink:0;" />
+                  <div style="flex:1;">
+                    <h4 style="font-size:1.05rem; font-weight:900; color:#0f172a; margin:0 0 4px 0;">${p.name}</h4>
+                    <div style="font-size:0.75rem; color:#64748b; margin-bottom:6px;">📍 ${p.spotName || p.area}</div>
+                    <div style="font-size:0.76rem; color:#78350f; background:#fffbeb; padding:4px 8px; border-radius:4px; border-left:3px solid #f59e0b;">
+                      ${p.lineage.desc || ""}
+                    </div>
+                  </div>
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:6px; margin-top:12px;">
+                  <button class="visit-toggle-badge ${isVis ? 'is-visited' : 'not-visited'}" onclick="event.stopPropagation(); JapanApp.toggleVisited('${p.id}', event)">
+                    ${isVis ? '✅ 行った！' : '👣 未訪問'}
+                  </button>
+                  <button class="btn btn-outline btn-sm" onclick="JapanApp.openDetailModal('${p.id}')">📐 詳細・レシピ</button>
+                  <a href="${getMapSearchUrl(p, false)}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">🗺️ 地図</a>
+                </div>
+              </div>
+            `;
+          }).join("");
+
+          const childrenHtml = g.children.map(c => {
+            const isVis = !!(state.visited && state.visited[c.id]);
+            const caps = state.captures[c.id] || [];
+            const photo = c.photoUrl || (state.wikiCache && state.wikiCache[c.id]) || getFallbackSvg(c);
+            return `
+              <div style="background:#ffffff; border:1.5px solid #cbd5e1; border-radius:10px; padding:14px; box-shadow:0 2px 6px rgba(0,0,0,0.05); transition:all 0.2s ease;">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+                  <span style="background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; font-size:0.72rem; font-weight:800; padding:2px 8px; border-radius:99px;">
+                    👶 子神社（分霊・里宮）
+                  </span>
+                  <span style="font-size:0.72rem; font-weight:800; color:#475569;">No.${c.dexNo}</span>
+                </div>
+                <div style="display:flex; gap:10px; align-items:center; margin-bottom:8px;">
+                  <img src="${photo}" alt="${c.name}" style="width:70px; height:70px; object-fit:cover; border-radius:6px; border:1px solid #e2e8f0; flex-shrink:0;" />
+                  <div style="flex:1;">
+                    <h5 style="font-size:0.95rem; font-weight:900; color:#0f172a; margin:0 0 2px 0;">${c.name}</h5>
+                    <div style="font-size:0.72rem; color:#64748b; margin-bottom:3px;">📍 ${c.spotName || c.area}</div>
+                  </div>
+                </div>
+                <div style="font-size:0.74rem; color:#334155; background:#f8fafc; padding:5px 8px; border-radius:4px; margin-bottom:10px; border-left:3px solid #10b981;">
+                  ${c.lineage.desc || ""}
+                </div>
+                <div style="display:flex; justify-content:flex-end; gap:5px;">
+                  <button class="visit-toggle-badge ${isVis ? 'is-visited' : 'not-visited'}" onclick="event.stopPropagation(); JapanApp.toggleVisited('${c.id}', event)">
+                    ${isVis ? '✅ 行った！' : '👣 未訪問'}
+                  </button>
+                  <button class="btn btn-outline btn-sm" onclick="JapanApp.openDetailModal('${c.id}')">📐 詳細</button>
+                  <a href="${getMapSearchUrl(c, false)}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">🗺️ 地図</a>
+                </div>
+              </div>
+            `;
+          }).join("");
+
+          return `
+            <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:14px; padding:20px; box-shadow:0 2px 8px rgba(0,0,0,0.04);">
+              <div style="border-bottom:2px solid #e2e8f0; padding-bottom:12px; margin-bottom:18px;">
+                <h3 style="font-size:1.15rem; font-weight:900; color:#0f172a; margin:0 0 4px 0;">
+                  ${g.name}
+                </h3>
+                <p style="font-size:0.8rem; color:#64748b; margin:0;">${g.desc}</p>
+              </div>
+
+              <!-- 親神社セクション -->
+              <div style="margin-bottom:20px;">
+                ${parentHtml}
+              </div>
+
+              <!-- 樹形図コネクタ（矢印） -->
+              <div style="text-align:center; margin:-8px 0 16px 0; font-size:1.4rem; color:#f59e0b; font-weight:900; display:flex; flex-direction:column; align-items:center;">
+                <span>↓</span>
+                <span style="font-size:0.75rem; background:#fef3c7; color:#92400e; padding:2px 10px; border-radius:99px; border:1px solid #fcd34d; font-weight:800; margin-top:2px;">
+                  御神霊の分霊・勧請（北区・周辺の小さなお宮たちへ）
+                </span>
+              </div>
+
+              <!-- 子神社グリッド -->
+              <div style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:14px;">
+                ${childrenHtml}
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      function setCategory(cat) {
+        currentCat = cat;
+        const bGuide = document.getElementById("buddha-rank-guide-panel");
+        if (bGuide) {
+          bGuide.style.display = (cat === "shrine_only" || cat === "lineage" || cat === "goshuin_book") ? "none" : "block";
+          if (cat === "temple_only") bGuide.open = true;
+        }
+        document.querySelectorAll(".cat-tab").forEach(b => {
+          b.classList.toggle("active", b.dataset.cat === cat);
+        });
+
+        const secDex = document.getElementById("sec-dex-main");
+        const secComp = document.getElementById("sec-composition-guide");
+        const secLineage = document.getElementById("sec-lineage-guide");
+        const secPb = document.getElementById("sec-photobook");
+        const secSuite = document.getElementById("sec-enjoy-suite");
+        const secMission = document.getElementById("sec-snap-missions");
+
+        if (secMission) secMission.style.display = "none";
+
+        if (cat === "lineage") {
+          secDex.style.display = "none";
+          secComp.style.display = "none";
+          secPb.style.display = "none";
+          if (secSuite) secSuite.style.display = "none";
+          if (secLineage) {
+            secLineage.style.display = "block";
+            renderLineageTree();
+          }
+        } else if (cat === "composition") {
+          if (secLineage) secLineage.style.display = "none";
+          secDex.style.display = "none";
+          secComp.style.display = "block";
+          secPb.style.display = "none";
+          if (secSuite) secSuite.style.display = "none";
+        } else if (cat === "photobook") {
+          secDex.style.display = "none";
+          secComp.style.display = "none";
+          secPb.style.display = "block";
+          if (secSuite) secSuite.style.display = "none";
+          renderPhotoBook();
+          if (secLineage) secLineage.style.display = "none";
+        } else if (cat === "goshuin_book" || cat === "suite") {
+          secDex.style.display = "none";
+          secComp.style.display = "none";
+          secPb.style.display = "none";
+          if (secSuite) {
+            secSuite.style.display = "block";
+            if (window.CameraEnjoySuite) {
+              window.CameraEnjoySuite.renderSuiteMain("goshuin");
+            }
+          }
+        } else {
+          secDex.style.display = "block";
+          secComp.style.display = "none";
+          secPb.style.display = "none";
+          if (secSuite) secSuite.style.display = "none";
+          if (secLineage) secLineage.style.display = "none";
+          renderGrid();
+        }
+      }
+
+      
+      function setRegionFilter(region) {
+        currentRegion = region;
+        document.querySelectorAll('.btn-region').forEach(btn => {
+          if (btn.getAttribute('data-region') === region) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+        });
+        if (region !== 'all') {
+          // If a specific region is chosen, reset the fine-grained spot dropdown
+          const sel = document.getElementById("flt-spot");
+          if (sel) sel.value = "all";
+          updateLinkedSpotBanner("all");
+        }
+        renderGrid();
+      }
+
+      function onSpotSelectChange() {
+        const spotVal = document.getElementById("flt-spot").value;
+        updateLinkedSpotBanner(spotVal);
+        renderGrid();
+      }
+
+      function clearSpotFilter() {
+        document.getElementById("flt-spot").value = "all";
+        updateLinkedSpotBanner("all");
+        renderGrid();
+      }
+
+      function updateLinkedSpotBanner(spotId) {
+        const banner = document.getElementById("linked-spot-banner");
+        const backHdrBtn = document.getElementById("btn-back-bird-dex");
+        const floraHdrBtn = document.getElementById("btn-to-flora-dex");
+        const floraSpotBtn = document.getElementById("linked-spot-flora-btn");
+        if (!spotId || spotId === "all") {
+          banner.style.display = "none";
+          if (backHdrBtn) backHdrBtn.href = "../index.html";
+          if (floraHdrBtn) floraHdrBtn.href = "../四季の花・草木図鑑/index.html";
+          return;
+        }
+        const sp = (window.NIIGATA_SPOTS || []).find(s => s.id === spotId);
+        banner.style.display = "flex";
+        document.getElementById("linked-spot-title").textContent =
+          `📍 「${sp ? sp.name : spotId}」周辺の神社仏閣・日本の絶景を表示中`;
+        document.getElementById("linked-spot-sub").textContent =
+          sp && sp.crossLinks
+            ? `🐦 野鳥撮影や花撮影とあわせて同じ日に周辺で狙える「神社仏閣・日本の原風景」ターゲットです！`
+            : "";
+        document.getElementById("linked-spot-back-btn").href = `../index.html?spot=${encodeURIComponent(spotId)}`;
+        if (floraSpotBtn) floraSpotBtn.href = `../四季の花・草木図鑑/index.html?spot=${encodeURIComponent(spotId)}`;
+        if (backHdrBtn) backHdrBtn.href = `../index.html?spot=${encodeURIComponent(spotId)}`;
+        if (floraHdrBtn) floraHdrBtn.href = `../四季の花・草木図鑑/index.html?spot=${encodeURIComponent(spotId)}`;
+      }
+
+      function getCatClass(cat) {
+        if (cat === "神社仏閣") return "cat-shrine";
+        if (cat === "絶景・風景") return "cat-scenery";
+        return "cat-flora";
+      }
+
+      
+      // ==================== 🌾 日常スナップ＆24ミッション ロジック ====================
+      let missionCatFilter = "all";
+      const clearedMissionsKey = "niigata_snap_missions_cleared_v1";
+
+      function getClearedMissions() {
+        try {
+          return JSON.parse(localStorage.getItem(clearedMissionsKey) || "[]");
+        } catch (_) {
+          return [];
+        }
+      }
+
+      function toggleMissionClear(id) {
+        let cleared = getClearedMissions();
+        if (cleared.includes(id)) {
+          cleared = cleared.filter(x => x !== id);
+        } else {
+          cleared.push(id);
+        }
+        localStorage.setItem(clearedMissionsKey, JSON.stringify(cleared));
+        renderSnapMissions();
+      }
+
+      function filterMissionCategory(mcat) {
+        missionCatFilter = mcat;
+        document.querySelectorAll('#mission-category-tabs .btn-region').forEach(btn => {
+          btn.classList.toggle('active', btn.getAttribute('data-mcat') === mcat);
+        });
+        renderMissionGrid();
+      }
+
+      function updateSunsetTimer() {
+        if (!window.calculateNiigataSunset) return;
+        const now = new Date();
+        const info = window.calculateNiigataSunset(now);
+        const sunsetEl = document.getElementById("mission-sunset-time");
+        const magicEl = document.getElementById("mission-magic-time");
+        const countEl = document.getElementById("mission-countdown-text");
+        if (sunsetEl) sunsetEl.textContent = info.sunsetTimeStr;
+        if (magicEl) magicEl.textContent = `${info.magicStartStr} 〜 ${info.magicEndStr}`;
+
+        if (countEl) {
+          const diffMs = info.sunsetDate.getTime() - now.getTime();
+          const diffMin = Math.round(diffMs / (60 * 1000));
+          if (diffMin > 0) {
+            const h = Math.floor(diffMin / 60);
+            const m = diffMin % 60;
+            countEl.textContent = `日没まであと ${h > 0 ? h + '時間' : ''}${m}分！`;
+            countEl.style.background = "#0284c7";
+          } else if (diffMin >= -30) {
+            countEl.textContent = "🌇 いま最高の夕焼けマジックアワー中！";
+            countEl.style.background = "#ea580c";
+          } else {
+            countEl.textContent = "🌙 本日の日没終了（明日の夕暮れを狙おう！）";
+            countEl.style.background = "#475569";
+          }
+        }
+      }
+
+      function renderMissionGrid() {
+        const grid = document.getElementById("mission-cards-grid");
+        if (!grid || !window.NIIGATA_SNAP_MISSIONS) return;
+        const cleared = getClearedMissions();
+
+        const filtered = window.NIIGATA_SNAP_MISSIONS.filter(m => {
+          if (missionCatFilter === "all") return true;
+          return m.category === missionCatFilter;
+        });
+
+        grid.innerHTML = filtered.map(m => {
+          const isDone = cleared.includes(m.id);
+          return `
+            <div style="background:#fff; border:${isDone ? '2px solid #10b981' : '1px solid #cbd5e1'}; border-radius:12px; padding:14px; display:flex; flex-direction:column; box-shadow:0 2px 5px rgba(0,0,0,0.05); position:relative; overflow:hidden;">
+              ${isDone ? '<div style="position:absolute; top:8px; right:8px; background:#10b981; color:#fff; font-size:0.7rem; font-weight:800; padding:2px 8px; border-radius:99px;">✅ CLEAR</div>' : ''}
+              <div style="display:flex; align-items:center; gap:6px; margin-bottom:6px;">
+                <span style="font-size:0.72rem; font-weight:800; background:#f1f5f9; color:#475569; padding:2px 6px; border-radius:4px;">${m.id}</span>
+                <span style="font-size:0.75rem; font-weight:800; color:#0284c7;">${m.categoryName}</span>
+              </div>
+              <h4 style="font-size:0.96rem; font-weight:900; color:#0f172a; margin:0 0 6px 0; line-height:1.4;">
+                ${m.title}
+              </h4>
+              <p style="font-size:0.78rem; color:#475569; line-height:1.45; margin:0 0 10px 0;">
+                ${m.description}
+              </p>
+              
+              <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:8px 10px; font-size:0.74rem; color:#334155; margin-bottom:10px;">
+                <div style="margin-bottom:3px;"><strong style="color:#0369a1;">🅿️ 駐車場:</strong> ${m.parkingInfo}</div>
+                <div style="margin-bottom:3px;"><strong style="color:#b45309;">📸 推奨設定:</strong> ${m.recommendedSpec}</div>
+                <div><strong style="color:#059669;">💡 プロのコツ:</strong> ${m.tips}</div>
+              </div>
+
+              <div style="margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:8px;">
+                <span style="font-size:0.7rem; color:#64748b; font-weight:700;">獲得称号: 「${m.rewardTitle}」</span>
+                <button class="btn btn-sm ${isDone ? 'btn-outline' : 'btn-gold'}" style="font-size:0.75rem; padding:4px 12px; font-weight:800;" onclick="JapanApp.toggleMissionClear('${m.id}')">
+                  ${isDone ? 'クリア取消' : '✅ クリアした！'}
+                </button>
+              </div>
+            </div>
+          `;
+        }).join("");
+      }
+
+      function renderSnapMissions() {
+        updateSunsetTimer();
+        const cleared = getClearedMissions();
+        const count = cleared.length;
+        const total = (window.NIIGATA_SNAP_MISSIONS || []).length || 24;
+        const pct = Math.round((count / total) * 100);
+
+        const countEl = document.getElementById("mission-cleared-count");
+        const pctEl = document.getElementById("mission-cleared-pct");
+        const barEl = document.getElementById("mission-progress-bar");
+        const rankEl = document.getElementById("mission-rank-badge");
+
+        if (countEl) countEl.textContent = count;
+        if (pctEl) pctEl.textContent = pct;
+        if (barEl) barEl.style.width = pct + "%";
+
+        let rank = "🔰 見習いスナップハンター";
+        if (count >= 24) rank = "👑 越後日常スナップ完全制覇の達人！";
+        else if (count >= 18) rank = "🌟 光とボケの魔術師";
+        else if (count >= 10) rank = "🌾 越後の風景マスター";
+        else if (count >= 4) rank = "📷 新潟の日常散歩カメラマン";
+
+        if (rankEl) rankEl.textContent = rank;
+
+        renderMissionGrid();
+      }
+
+      function spinMissionGacha() {
+        if (!window.NIIGATA_SNAP_MISSIONS) return;
+        const modal = document.getElementById("modal-gacha");
+        const body = document.getElementById("gacha-modal-body");
+        if (!modal || !body) return;
+
+        // Choose random mission
+        const list = window.NIIGATA_SNAP_MISSIONS;
+        const m = list[Math.floor(Math.random() * list.length)];
+        const cleared = getClearedMissions();
+        const isDone = cleared.includes(m.id);
+
+        body.innerHTML = `
+          <div style="text-align:center; margin-bottom:12px;">
+            <span style="font-size:2.2rem;">✨🎲✨</span>
+            <div style="font-size:0.78rem; font-weight:800; color:#0284c7; margin-top:4px;">${m.categoryName} ・ ${m.id}</div>
+            <h3 style="font-size:1.15rem; font-weight:900; color:#0f172a; margin:4px 0 8px 0;">${m.title}</h3>
+          </div>
+          <p style="font-size:0.82rem; color:#475569; line-height:1.5; margin-bottom:12px;">${m.description}</p>
+          <div style="background:#f1f5f9; border-radius:8px; padding:10px; font-size:0.75rem; color:#334155; margin-bottom:14px;">
+            <div style="margin-bottom:4px;"><strong>🅿️ 拠点駐車場:</strong> ${m.parkingInfo}</div>
+            <div style="margin-bottom:4px;"><strong>📸 カメラ設定:</strong> ${m.recommendedSpec}</div>
+            <div><strong>💡 成功の秘訣:</strong> ${m.tips}</div>
+          </div>
+          <div style="text-align:center;">
+            <button class="btn btn-sm ${isDone ? 'btn-outline' : 'btn-gold'}" style="font-size:0.82rem; padding:6px 16px; font-weight:800;" onclick="JapanApp.toggleMissionClear('${m.id}'); JapanApp.closeGachaModal();">
+              ${isDone ? 'クリア済み（もう一度挑戦）' : '✅ このミッションをクリアする！'}
+            </button>
+          </div>
+        `;
+
+        modal.style.display = "flex";
+      }
+
+      function closeGachaModal() {
+        const modal = document.getElementById("modal-gacha");
+        if (modal) modal.style.display = "none";
+      }
+
+      function renderGrid() {
+        const q = (document.getElementById("flt-search")?.value || "").trim().toLowerCase();
+        const spotFilter = document.getElementById("flt-spot")?.value || "all";
+        const featureFilter = document.getElementById("flt-feature")?.value || "all";
+        const statusFilter = document.getElementById("flt-status")?.value || "all";
+
+        const filtered = window.JAPAN_BEAUTY_DEX.filter(it => {
+          if (currentCat === "shrine_only") {
+            if (it.hasBuddha) return false;
+          } else if (currentCat === "temple_only") {
+            if (!it.hasBuddha) return false;
+          } else if (currentCat === "goshuin_spot") {
+            if (!it.hasGoshuin) return false;
+          } else if (currentCat !== "all" && it.category !== currentCat) {
+            return false;
+          }
+          if (currentRegion !== "all" && it.region !== currentRegion) return false;
+          if (spotFilter !== "all" && it.spotId !== spotFilter) return false;
+          const isCap = (state.captures[it.id] || []).length > 0;
+          const isVis = !!(state.visited && state.visited[it.id]);
+          if (statusFilter === "visited" && !isVis) return false;
+          if (statusFilter === "unvisited" && isVis) return false;
+          if (statusFilter === "visited_unget" && (!isVis || isCap)) return false;
+          if (statusFilter === "captured" && !isCap) return false;
+          if (statusFilter === "uncaptured" && isCap) return false;
+
+          const isGohyakuRakan = it.name.includes('五百羅漢') || it.name.includes('羅漢像');
+          const isStoneJizo = (it.name.includes('石仏') || it.name.includes('地蔵') || it.name.includes('道祖神') || (it.subTags && it.subTags.some(t => t.includes('石仏') || t.includes('お地蔵様') || t.includes('道祖神')))) && !isGohyakuRakan;
+          const isRakanAll = isGohyakuRakan || isStoneJizo;
+          const isNyorai = it.id === 'gochi_kokubunji' || it.id === 'deyu_yakushido_ubason';
+          const isBosatsu = it.id === 'echigo_tainai_kannon' || (it.buddhaTypes || []).includes('kannon');
+          const isTenbu = it.hasNio || it.id === 'minamiuonuma_urasa_bishamon';
+          const isMyoo = (it.buddhaTypes || []).includes('fudo');
+          const hallOnlyList = ["deyu_yakushido_ubason", "kita_otematsu_yakushi", "tarodai_kannon_kita", "minamiuonuma_uonuma_shrine", "izumozaki_ryokando", "uonuma_saifukuji_kaisando", "ijimino_bentendo"];
+          const isHallOnly = hallOnlyList.includes(it.id);
+          const isHeritage = it.name.includes("文化財") || it.name.includes("国宝") || it.name.includes("重文") || (it.subTags && it.subTags.some(t => t.includes("文化財") || t.includes("国宝") || t.includes("登録有形文化財") || t.includes("重文")));
+          const isTorii = it.name.includes("鳥居") || (it.subTags && it.subTags.some(t => t.includes("鳥居"))) || it.shotRecipes.some(r => r.includes("鳥居")) || (it.catchphrase && it.catchphrase.includes("鳥居"));
+          const isCedar = it.name.includes("杉") || it.name.includes("ケヤキ") || (it.subTags && it.subTags.some(t => t.includes("杉") || t.includes("社叢") || t.includes("巨木"))) || it.shotRecipes.some(r => r.includes("杉") || r.includes("ケヤキ")) || (it.catchphrase && it.catchphrase.includes("杉"));
+
+          if (featureFilter === "rank_nyorai" && !isNyorai) return false;
+          if (featureFilter === "rank_bosatsu" && !isBosatsu) return false;
+          if (featureFilter === "daikannon" && it.id !== "echigo_tainai_kannon") return false;
+          if (featureFilter === "kannon_temple" && (it.id === "echigo_tainai_kannon" || !(it.buddhaTypes || []).includes('kannon'))) return false;
+          if (featureFilter === "rank_myoo" && !isMyoo) return false;
+          if (featureFilter === "rank_tenbu" && !isTenbu) return false;
+          if (featureFilter === "nio" && !it.hasNio) return false;
+          if (featureFilter === "bishamon" && it.id !== "minamiuonuma_urasa_bishamon") return false;
+          if (featureFilter === "rank_rakan" && !isRakanAll) return false;
+          if (featureFilter === "gohyaku_rakan" && !isGohyakuRakan) return false;
+          if (featureFilter === "stone_jizo" && !isStoneJizo) return false;
+          if (featureFilter === "hall_only" && !isHallOnly) return false;
+          if (featureFilter === "heritage" && !isHeritage) return false;
+          if (featureFilter === "torii" && !isTorii) return false;
+          if (featureFilter === "cedar" && !isCedar) return false;
+
+          if (q) {
+            const hay = `${it.name} ${it.englishTitle} ${it.area} ${it.spotName} ${it.catchphrase} ${it.inboundAppeal} ${it.compositionType || ""} ${it.parkingInfo || ""} ${(it.subTags||[]).join(" ")}`.toLowerCase();
+            if (!hay.includes(q)) return false;
+          }
+          return true;
+        });
+
+        const countBar = document.getElementById("grid-count-bar");
+        const gotCount = filtered.filter(it => (state.captures[it.id] || []).length > 0).length;
+        const visitedFiltered = filtered.filter(it => !!(state.visited && state.visited[it.id])).length;
+        countBar.textContent = `表示中: ${filtered.length}件 （👣 訪問済: ${visitedFiltered}件 / 🏆 写真GET: ${gotCount}件）`;
+
+        
+        // 📍 リアル距離・方角・自宅へ近づく度合いの計算
+        if (window.NiigataGeoEngine) {
+          filtered.forEach(it => {
+            const dist = window.NiigataGeoEngine.calcDistanceKm(userLocation.lat, userLocation.lng, it.lat, it.lng);
+            const bearing = window.NiigataGeoEngine.calcCompassBearing(userLocation.lat, userLocation.lng, it.lat, it.lng);
+            const drive = window.NiigataGeoEngine.estimateDriveTime(dist);
+            const homeApproach = window.NiigataGeoEngine.evaluateHomeApproach(userLocation.lat, userLocation.lng, it.lat, it.lng);
+
+            it._geo = {
+              dist,
+              bearing,
+              drive,
+              homeApproach
+            };
+          });
+
+          // 「自宅（北区）へ近づくスポットのみ表示」モードがONの場合
+          if (isWayHomeMode) {
+            filtered = filtered.filter(it => it._geo && it._geo.homeApproach && it._geo.homeApproach.isCloserToHome);
+          }
+
+          // ソート判定（距離順または地域順）
+          if (isSortByDistance || isWayHomeMode) {
+            filtered.sort((a, b) => {
+              const dA = (a._geo && a._geo.dist != null) ? a._geo.dist : 9999;
+              const dB = (b._geo && b._geo.dist != null) ? b._geo.dist : 9999;
+              return dA - dB;
+            });
+          } else {
+            // 通常の地域順ソート
+            const regionOrder = { kaetsu: 1, chuetsu: 2, joetsu: 3, sado: 4 };
+            filtered.sort((a, b) => {
+              if (currentRegion === "all") {
+                const regA = regionOrder[a.region] || 99;
+                const regB = regionOrder[b.region] || 99;
+                if (regA !== regB) return regA - regB;
+              }
+              return (a.dexNo || "").localeCompare(b.dexNo || "");
+            });
+          }
+        } else {
+          const regionOrder = { kaetsu: 1, chuetsu: 2, joetsu: 3, sado: 4 };
+          filtered.sort((a, b) => {
+            if (currentRegion === "all") {
+              const regA = regionOrder[a.region] || 99;
+              const regB = regionOrder[b.region] || 99;
+              if (regA !== regB) return regA - regB;
+            }
+            return (a.dexNo || "").localeCompare(b.dexNo || "");
+          });
+        }
+
+        const gridEl = document.getElementById("japan-dex-grid");
+        if (filtered.length === 0) {
+          gridEl.innerHTML = `<div style="grid-column:1/-1; background:#fff; padding:28px; border-radius:12px; text-align:center; color:#64748b;">該当する図鑑項目がありません。「新潟県すべてを表示」または別のカテゴリをお試しください。</div>`;
+          return;
+        }
+
+        gridEl.innerHTML = filtered.map(it => {
+          const caps = state.captures[it.id] || [];
+          const bestCap = caps[0];
+          const fallback = it.photoUrl || (state.wikiCache && state.wikiCache[it.id]) || getFallbackSvg(it);
+          const stars = "★".repeat(it.rarity || 3) + "☆".repeat(5 - (it.rarity || 3));
+          const firstRecipe = (it.shotRecipes && it.shotRecipes[0]) ? it.shotRecipes[0] : "";
+
+          const mediaHtml = bestCap ? `
+            <div class="card-split">
+              <div class="card-split-pane">
+                <img data-ref-id="${it.id}" src="${fallback}" alt="${it.name}" />
+                <span class="split-label">お手本</span>
+              </div>
+              <div class="card-split-pane">
+                <img src="${bestCap.dataUrl}" alt="${it.name} 自分の撮影" />
+                <span class="split-label mine">MY SHOT (${bestCap.score || 90}点)</span>
+              </div>
+            </div>
+          ` : `
+            <img data-ref-id="${it.id}" src="${fallback}" alt="${it.name}" />
+          `;
+
+          let statueBadge = "";
+          const isGohyakuRakanItem = it.name.includes('五百羅漢') || it.name.includes('羅漢像');
+          const isStoneStatue = (it.name.includes('石仏') || it.name.includes('地蔵') || it.name.includes('道祖神') || (it.subTags && it.subTags.some(t => t.includes('石仏') || t.includes('羅漢') || t.includes('お地蔵様') || t.includes('野仏')))) && !isGohyakuRakanItem;
+          const isPagodaOrHeritage = it.name.includes('三重塔') || it.name.includes('五重塔') || it.name.includes('文化財') || (it.subTags && it.subTags.some(t => t.includes('三重塔') || t.includes('五重塔') || t.includes('文化財')));
+          const hallOnlyList = ["deyu_yakushido_ubason", "kita_otematsu_yakushi", "tarodai_kannon_kita", "minamiuonuma_uonuma_shrine", "izumozaki_ryokando", "uonuma_saifukuji_kaisando", "ijimino_bentendo"];
+          const isHallOnlyItem = hallOnlyList.includes(it.id);
+
+          if (it.id === 'echigo_tainai_kannon') {
+            statueBadge = '<span style="background:#fef3c7; color:#92400e; border:1px solid #f59e0b; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">💎 菩薩（露天大観音）</span>';
+          } else if (it.id === 'gochi_kokubunji') {
+            statueBadge = '<span style="background:#fef3c7; color:#92400e; border:1px solid #f59e0b; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">👑 如来（五智如来坐像）</span>';
+          } else if (it.id === 'suganoya_fudo') {
+            statueBadge = '<span style="background:#fee2e2; color:#991b1b; border:1px solid #ef4444; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">🔥 明王（不動明王）</span>';
+          } else if (it.id === 'minamiuonuma_urasa_bishamon') {
+            statueBadge = '<span style="background:#fee2e2; color:#991b1b; border:1px solid #f87171; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">⚔️ 天部（毘沙門天・二王）</span>';
+          } else if (it.hasNio) {
+            statueBadge = '<span style="background:#fee2e2; color:#991b1b; border:1px solid #f87171; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">⚔️ 天部（山門仁王像）</span>';
+          } else if (isHallOnlyItem) {
+            statueBadge = '<span style="background:#fefce8; color:#854d0e; border:1px solid #fde047; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">🏯 お堂建築（本尊はお堂内）</span>';
+          } else if (isGohyakuRakanItem) {
+            statueBadge = '<span style="background:#f1f5f9; color:#334155; border:1px solid #cbd5e1; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">🪨 羅漢（五百羅漢）</span>';
+          } else if (isStoneStatue) {
+            statueBadge = '<span style="background:#f1f5f9; color:#334155; border:1px solid #cbd5e1; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">🪨 石仏（境内の石仏群）</span>';
+          } else if (isPagodaOrHeritage) {
+            statueBadge = '<span style="background:#eff6ff; color:#1e40af; border:1px solid #93c5fd; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">🏛️ 名建築・文化財</span>';
+          } else if (it.hasBuddha) {
+            statueBadge = '<span style="background:#f8fafc; color:#475569; border:1px solid #cbd5e1; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">🗿 お寺・古堂</span>';
+          } else {
+            statueBadge = '<span style="background:#fff1f2; color:#be123c; border:1px solid #fecdd3; font-size:0.68rem; font-weight:800; padding:2px 6px; border-radius:4px;">⛩️ 神社</span>';
+          }
+
+          return `
+            <article class="dex-card ${bestCap ? 'captured' : ''}" onclick="JapanApp.openDetailModal('${it.id}')">
+              <div class="card-top">
+                <div style="display:flex; align-items:center; gap:5px;">
+                  <span class="dex-badge">No.${it.dexNo}</span>
+                  ${it.region === 'kaetsu' ? '<span style="background:rgba(15,23,42,0.85); color:#e2e8f0; border:1px solid #475569; font-size:0.68rem; font-weight:700; padding:2px 6px; border-radius:4px;">📍 下越・市内</span>' :
+                    it.region === 'chuetsu' ? '<span style="background:rgba(15,23,42,0.85); color:#e2e8f0; border:1px solid #475569; font-size:0.68rem; font-weight:700; padding:2px 6px; border-radius:4px;">🚗 中越</span>' :
+                    it.region === 'joetsu' ? '<span style="background:rgba(15,23,42,0.85); color:#e2e8f0; border:1px solid #475569; font-size:0.68rem; font-weight:700; padding:2px 6px; border-radius:4px;">🏔️ 上越</span>' :
+                    '<span style="background:rgba(15,23,42,0.85); color:#e2e8f0; border:1px solid #475569; font-size:0.68rem; font-weight:700; padding:2px 6px; border-radius:4px;">⛴️ 佐渡</span>'}
+                </div>
+                <span class="get-badge ${bestCap ? 'is-get' : 'not-get'}">${bestCap ? `🏆 GET済 (${caps.length}枚)` : '未GET・お手本'}</span>
+                ${mediaHtml}
+              </div>
+              <div class="card-body">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; gap:4px; flex-wrap:wrap;">
+                  <div style="display:flex; gap:4px; align-items:center; flex-wrap:wrap;">
+                    <span class="cat-pill ${getCatClass(it.category)}">${it.category}</span> ${statueBadge}
+                    ${it.lineage ? (it.lineage.role === 'parent' 
+                      ? '<span style="font-size:0.68rem; background:#fef3c7; color:#92400e; border:1px solid #fcd34d; padding:2px 6px; border-radius:4px; font-weight:800;">👑 親神社</span>' 
+                      : '<span style="font-size:0.68rem; background:#ecfdf5; color:#065f46; border:1px solid #a7f3d0; padding:2px 6px; border-radius:4px; font-weight:800;">👶 子神社</span>') 
+                      : ''}
+                    ${it.hasGoshuin
+                      ? `<span style="font-size:0.68rem; background:#fef2f2; color:#b91c1c; border:1px solid #fca5a5; padding:2px 7px; border-radius:99px; font-weight:800;">🏮 御朱印あり${it.hasGoshuincho ? '・帳面有' : ''}</span>`
+                      : (it.category !== '絶景・風景' ? `<span style="font-size:0.68rem; background:#f1f5f9; color:#475569; border:1px solid #cbd5e1; padding:2px 7px; border-radius:99px; font-weight:700;">🗿 無人・秘境（写真特化）</span>` : '')
+                    }
+                  </div>
+                  <span style="font-size:0.68rem; background:#f8fafc; color:#475569; border:1px solid #e2e8f0; padding:2px 6px; border-radius:4px; font-weight:700;">📐 ${(it.compositionType || '三分割・額縁構図').split('＋')[0]}</span>
+                </div>
+                <div style="font-size:0.73rem; color:#64748b; font-weight:700; margin-bottom:3px; display:flex; align-items:center; gap:4px; flex-wrap:wrap;">
+                  <span>📍 ${it.spotName ? it.spotName.split('（')[0] : (it.area || '新潟県')}</span>
+                  ${it._geo && it._geo.dist != null ? `
+                    <span style="background:${it._geo.homeApproach && it._geo.homeApproach.isCloserToHome ? '#dcfce7' : '#f0f9ff'}; color:${it._geo.homeApproach && it._geo.homeApproach.isCloserToHome ? '#15803d' : '#0369a1'}; border:1px solid ${it._geo.homeApproach && it._geo.homeApproach.isCloserToHome ? '#86efac' : '#bae6fd'}; font-size:0.7rem; font-weight:800; padding:1px 6px; border-radius:4px;">
+                      📍 現在地から ${it._geo.dist}km（${it._geo.drive}）${it._geo.bearing.icon}${it._geo.bearing.text}
+                      ${it._geo.homeApproach && it._geo.homeApproach.isCloserToHome ? ` ➔ 🏠自宅へ${it._geo.homeApproach.closerDistance}km接近！` : ''}
+                    </span>
+                  ` : ''}
+                </div>
+                <h3 style="font-size:1rem; font-weight:900; color:#0f172a; margin-bottom:3px;">${it.name}</h3>
+                <div style="font-size:0.75rem; color:#991b1b; font-weight:700; margin-bottom:6px;">${it.catchphrase}</div>
+
+                ${it.goshuinInfo && it.category !== '絶景・風景' ? `
+                  <div style="background:${it.hasGoshuin ? '#fffbeb' : '#f8fafc'}; border-left:3px solid ${it.hasGoshuin ? '#d97706' : '#64748b'}; padding:5px 8px; border-radius:4px; font-size:0.72rem; color:#334155; margin-bottom:6px;">
+                    ${it.goshuinInfo}
+                  </div>
+                ` : (firstRecipe ? `
+                  <div style="background:#f8fafc; border-left:3px solid #991b1b; padding:6px 8px; border-radius:4px; font-size:0.74rem; color:#334155; margin-bottom:8px;">
+                    <strong>🎯 アングル：</strong>${firstRecipe}
+                  </div>
+                ` : '')}
+
+                <div style="margin-top:auto; font-size:0.72rem; color:#475569; background:#f8fafc; border:1px solid #e2e8f0; border-radius:6px; padding:7px 9px; margin-bottom:8px;">
+                  <div style="margin-bottom:2px;"><strong>🅿️ 駐車場：</strong>${(it.parkingInfo || '').slice(0, 48)}...</div>
+                  <div style="margin-bottom:2px;"><strong>📷 撮影可否：</strong>${(it.photoPermission || '').slice(0, 46)}...</div>
+                  <div style="color:#475569;"><strong>🐦 野鳥：</strong>${(it.linkedBirds || []).slice(0, 4).join("・")}</div>
+                </div>
+                <div style="display:flex; gap:5px; flex-wrap:wrap;" onclick="event.stopPropagation();">
+                  <button class="btn btn-outline btn-sm" style="flex:1; min-width:95px;" onclick="JapanApp.openDetailModal('${it.id}')">📐 詳細・レシピ</button>
+                  <a href="${getMapSearchUrl(it, false)}" target="_blank" rel="noopener" class="btn btn-outline btn-sm" title="Googleマップで場所を見る">🗺️ 地図</a>
+                  <a href="${getMapSearchUrl(it, true)}" target="_blank" rel="noopener" class="btn btn-outline btn-sm" title="Googleマップで駐車場・ナビを開く">🅿️ 駐車場</a>
+                  <a href="../index.html?spot=${it.spotId}" class="btn btn-outline btn-sm" title="このスポットで出会える野鳥を見る">🐦 野鳥</a>
+                  <button class="btn btn-gold btn-sm" onclick="JapanApp.openCaptureModal('${it.id}')">📷 GET</button>
+                </div>
+              </div>
+            </article>
+          `;
+        }).join("");
+
+        gridEl.querySelectorAll("img[data-ref-id]").forEach(imgEl => {
+          const id = imgEl.getAttribute("data-ref-id");
+          const item = window.JAPAN_BEAUTY_DEX.find(x => x.id === id);
+          if (item) {
+            fetchRefPhoto(item, url => {
+              if (url) imgEl.src = url;
+            });
+          }
+        });
+      }
+
+      function openDetailModal(itemId) {
+        const item = window.JAPAN_BEAUTY_DEX.find(x => x.id === itemId);
+        if (!item) return;
+
+        document.getElementById("mdl-dexno").textContent = `No.${item.dexNo}`;
+        document.getElementById("mdl-title").textContent = item.name;
+        document.getElementById("mdl-en-title").textContent = item.englishTitle || "";
+
+        const caps = state.captures[item.id] || [];
+        const bestCap = caps[0];
+        const fallback = getFallbackSvg(item);
+        const initialRef = state.customRef[item.id] || item.photoUrl || state.wikiCache[item.id] || fallback;
+        const googleImgUrl = `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(item.searchQuery || item.name)}`;
+        const spotMapUrl = getMapSearchUrl(item, false);
+        const parkingMapUrl = getMapSearchUrl(item, true);
+
+        const isVisited = !!(state.visited && state.visited[item.id]);
+        const visitBarHtml = `
+          <div id="mdl-visit-bar" data-id="${item.id}" class="detail-visit-bar ${isVisited ? 'is-visited' : ''}" onclick="JapanApp.toggleVisited('${item.id}', event)">
+            <div style="display:flex; align-items:center; gap:10px;">
+              <span style="font-size:1.4rem;">${isVisited ? '✅' : '👣'}</span>
+              <div>
+                <strong style="font-size:0.92rem; color:${isVisited ? '#065f46' : '#1e293b'};">
+                  ${isVisited ? 'このスポットは「行ったことある！（訪問済み）」に登録中' : 'このスポットに行ったことありますか？'}
+                </strong>
+                <div style="font-size:0.75rem; color:${isVisited ? '#047857' : '#64748b'};">
+                  ${isVisited ? 'タップすると未訪問に戻せます（訪問記録を解除）' : 'ここをタップすると「行った！」に記録され、まだ行ったことのない場所と分けて探せます'}
+                </div>
+              </div>
+            </div>
+            <button class="btn ${isVisited ? 'btn-visited-on' : 'btn-visited-off'} btn-sm" style="pointer-events:none; flex-shrink:0;">
+              ${isVisited ? '✅ 訪問済み' : '＋ 行った！'}
+            </button>
+          </div>
+        `;
+        let monthHtml = `<div class="month-bar">`;
+        for (let m = 1; m <= 12; m++) {
+          monthHtml += `<div class="month-cell ${item.months.includes(m) ? 'on' : ''}">${m}月</div>`;
+        }
+        monthHtml += `</div>`;
+
+        
+        let lineageBoxHtml = "";
+        if (item.lineage) {
+          if (item.lineage.role === "child") {
+            lineageBoxHtml = `
+              <div style="background:#fffbeb; border:1.5px solid #f59e0b; border-radius:8px; padding:12px 16px; margin-bottom:14px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+                  <div style="display:flex; align-items:center; gap:6px;">
+                    <span style="font-size:0.75rem; background:#059669; color:#fff; padding:2px 8px; border-radius:99px; font-weight:800;">👶 子神社（分霊・里宮）</span>
+                    <strong style="font-size:0.9rem; color:#78350f;">👑 親神社：${item.lineage.parentName}（No.${item.lineage.parentDexNo}）</strong>
+                  </div>
+                  <button class="btn btn-gold btn-sm" style="font-size:0.75rem; padding:4px 10px;" onclick="JapanApp.openDetailModal('${item.lineage.parentId}')">
+                    👑 親神社の詳細を見る ➔
+                  </button>
+                </div>
+                <div style="font-size:0.78rem; color:#92400e; margin-top:6px; line-height:1.5;">
+                  ${item.lineage.desc}
+                </div>
+              </div>
+            `;
+          } else if (item.lineage.role === "parent") {
+            lineageBoxHtml = `
+              <div style="background:#fffbeb; border:1.5px solid #f59e0b; border-radius:8px; padding:12px 16px; margin-bottom:14px;">
+                <div style="margin-bottom:6px;">
+                  <span style="font-size:0.75rem; background:#b45309; color:#fff; padding:2px 8px; border-radius:99px; font-weight:800;">👑 親神社（本宮・勧請元）</span>
+                  <strong style="font-size:0.9rem; color:#78350f; margin-left:6px;">分霊先の子神社（里宮・小さなお宮たち）</strong>
+                </div>
+                <div style="font-size:0.78rem; color:#92400e; margin-bottom:8px;">
+                  ${item.lineage.desc}
+                </div>
+                <div style="display:flex; gap:6px; flex-wrap:wrap;">
+                  ${(item.lineage.children || []).map(c => `
+                    <button class="btn btn-outline btn-sm" style="border-color:#d97706; color:#92400e; background:#fff; font-size:0.75rem; padding:3px 8px;" onclick="JapanApp.openDetailModal('${c.id}')">
+                      👶 ${c.name} ➔
+                    </button>
+                  `).join('')}
+                </div>
+              </div>
+            `;
+          }
+        }
+
+        const recipesHtml = (item.shotRecipes && item.shotRecipes.length > 0) ? `
+          <div class="recipe-box">
+            <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+              <h4 style="font-size:0.98rem; font-weight:900; color:#78350f;">
+                📍 どこに立ってどう切り取る？「${item.name}」の鉄板アングル・3ショットレシピ
+              </h4>
+              <span style="background:#991b1b; color:#fef08a; font-size:0.74rem; font-weight:800; padding:3px 10px; border-radius:99px;">
+                📐 推奨構図：${item.compositionType || '額縁構図・三分割構図'}
+              </span>
+            </div>
+            <div class="recipe-list">
+              ${item.shotRecipes.map((r, idx) => `
+                <div class="recipe-card" style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+                  <div style="flex:1;">${r}</div>
+                  <button class="btn btn-outline btn-sm" style="font-size:0.72rem; padding:3px 8px; white-space:nowrap; border-color:#d97706; color:#b45309; background:#fffbeb; flex-shrink:0;" onclick="JapanApp.copyRecipePrompt('${item.id}', ${idx})" title="このアングルのAI画像生成プロンプトをコピー">
+                    📋 AIプロンプト
+                  </button>
+                </div>
+              `).join("")}
+            </div>
+            ${item.recipeImages && item.recipeImages.length > 0 ? `
+              <!-- 📸 タップした時だけ読み込むオンデマンド・アコーディオン方式（0KB消費） -->
+              <details class="recipe-accordion">
+                <summary class="recipe-accordion-summary">
+                  <span style="display:flex; align-items:center; gap:8px;">
+                    <span style="font-size:1.15rem;">📸</span>
+                    <span style="font-size:0.92rem; font-weight:900; color:#92400e;">
+                      レシピ実証・AI作例イメージを見る（タップで展開）
+                    </span>
+                  </span>
+                  <span style="font-size:0.72rem; font-weight:800; background:#991b1b; color:#fef08a; padding:3px 10px; border-radius:99px; box-shadow:0 1px 3px rgba(0,0,0,0.15);">
+                    🤖 AI作成イメージ作例
+                  </span>
+                </summary>
+                <div class="recipe-accordion-content">
+                  <p style="font-size:0.75rem; color:#78350f; margin:0 0 12px 0; line-height:1.5;">
+                    ※上のメインお手本枠は<strong>「実在する現地の本物写真」</strong>です。以下の作例は、各アドバイス（望遠圧縮・額縁構図・F2.8ボケなど）の視覚的効果をお伝えするために<strong>「AIでシミュレーション作成した参考作例」</strong>となります。
+                  </p>
+                  <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:12px;">
+                    ${item.recipeImages.map(img => `
+                      <div style="background:#fff; border:1px solid #fed7aa; border-radius:8px; overflow:hidden; box-shadow:0 2px 6px rgba(0,0,0,0.06);">
+                        <div style="position:relative;">
+                          <img src="${img.url}" alt="${img.title}" loading="lazy" style="width:100%; height:190px; object-fit:cover; display:block;" />
+                          <span style="position:absolute; top:8px; left:8px; background:rgba(15,23,42,0.85); color:#fde047; font-size:0.68rem; font-weight:800; padding:2px 7px; border-radius:4px; backdrop-filter:blur(4px); border:1px solid rgba(253,224,71,0.5);">
+                            🤖 AI作成イメージ作例
+                          </span>
+                        </div>
+                        <div style="padding:10px;">
+                          <strong style="font-size:0.84rem; color:#b45309; display:block; margin-bottom:4px;">${img.title}</strong>
+                          <p style="font-size:0.75rem; color:#475569; margin:0; line-height:1.45;">${img.desc}</p>
+                        </div>
+                      </div>
+                    `).join("")}
+                  </div>
+                </div>
+              </details>
+            ` : ""}
+          </div>
+        ` : "";
+
+        const hallNoticeList = ["deyu_yakushido_ubason", "kita_otematsu_yakushi", "tarodai_kannon_kita", "minamiuonuma_uonuma_shrine", "izumozaki_ryokando", "uonuma_saifukuji_kaisando", "ijimino_bentendo"];
+        let statueNoticeHtml = "";
+        if (item.id === "echigo_tainai_kannon") {
+          statueNoticeHtml = `
+            <div style="background:#ecfdf5; border:1.5px solid #10b981; border-radius:10px; padding:12px 16px; margin-bottom:14px; box-shadow:0 2px 6px rgba(16,185,129,0.08);">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                <span style="font-size:0.75rem; background:#059669; color:#fff; font-weight:800; padding:2px 8px; border-radius:99px;">💎 肉眼拝観・撮影OK！</span>
+                <strong style="color:#065f46; font-size:0.92rem;">全高26m！青空にそびえる日本海側最大の露天大観音菩薩</strong>
+              </div>
+              <p style="font-size:0.8rem; color:#047857; margin:0; line-height:1.55;">
+                誰でも大観音の足元まで歩いて行け、屋外で全身をこの目で拝観・撮影できます。青空を背にした超広角見上げや、境内の可愛い童地蔵とのコラボが最高です。
+              </p>
+            </div>
+          `;
+        } else if (item.hasNio) {
+          statueNoticeHtml = `
+            <div style="background:#fef2f2; border:1.5px solid #f87171; border-radius:10px; padding:12px 16px; margin-bottom:14px; box-shadow:0 2px 6px rgba(239,68,68,0.08);">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                <span style="font-size:0.75rem; background:#dc2626; color:#fff; font-weight:800; padding:2px 8px; border-radius:99px;">💪 山門仁王像（肉眼拝観OK！）</span>
+                <strong style="color:#991b1b; font-size:0.92rem;">山門（仁王門）の左右に安置された金剛力士立像</strong>
+              </div>
+              <p style="font-size:0.8rem; color:#b91c1c; margin:0; line-height:1.55;">
+                屋外の山門にて格子越しに大迫力の筋肉美や憤怒の表情を肉眼で拝観できます。中望遠や望遠レンズで格子越しにアップを狙うのがおすすめです。
+              </p>
+            </div>
+          `;
+        } else if (hallNoticeList.includes(item.id)) {
+          statueNoticeHtml = `
+            <div style="background:#fffbeb; border:1.5px solid #f59e0b; border-radius:10px; padding:12px 16px; margin-bottom:14px; box-shadow:0 2px 6px rgba(245,158,11,0.08);">
+              <div style="display:flex; align-items:center; gap:8px; margin-bottom:4px;">
+                <span style="font-size:0.75rem; background:#b45309; color:#fff; font-weight:800; padding:2px 8px; border-radius:99px;">🏯 お堂建築・外観撮影（本尊非公開）</span>
+                <strong style="color:#92400e; font-size:0.92rem;">※御本尊はお堂の中に安置されています</strong>
+              </div>
+              <p style="font-size:0.8rem; color:#78350f; margin:0; line-height:1.55;">
+                仏像（本尊）はお堂内（秘仏・非公開）のため、<strong>「歴史ある木造お堂の外観や石段」</strong>、および<strong>「境内に並ぶ苔むした石仏群・お地蔵様や自然」</strong>が主な撮影被写体となります。
+              </p>
+            </div>
+          `;
+        }
+
+        const bodyEl = document.getElementById("mdl-body");
+        bodyEl.innerHTML = `
+          <!-- 📍 所在地・市町村 ＆ Googleマップ直接ナビバー -->
+          <div style="background:linear-gradient(135deg,#eff6ff,#f0fdf4); border:1.5px solid #38bdf8; border-radius:10px; padding:12px 14px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; box-shadow:0 2px 6px rgba(0,0,0,0.04);">
+            <div>
+              <div style="font-size:0.75rem; font-weight:800; color:#0369a1; margin-bottom:3px; display:flex; align-items:center; gap:6px;">
+                <span style="background:#0284c7; color:#fff; padding:2px 8px; border-radius:99px;">📍 所在地・市町村</span>
+                <span>${item.area || '新潟県'}</span>
+              </div>
+              <strong style="font-size:0.96rem; color:#0f172a;">${item.spotName || item.name}</strong>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a href="${spotMapUrl}" target="_blank" rel="noopener" class="btn btn-sm" style="background:#0284c7; color:#fff; font-weight:800; text-decoration:none; box-shadow:0 2px 4px rgba(2,132,199,0.3);">
+                🗺️ スポットをGoogleマップで開く ↗
+              </a>
+              <a href="${parkingMapUrl}" target="_blank" rel="noopener" class="btn btn-sm" style="background:#059669; color:#fff; font-weight:800; text-decoration:none; box-shadow:0 2px 4px rgba(5,150,105,0.3);">
+                🚗 駐車場をマップで開く（ナビ開始） ↗
+              </a>
+            </div>
+          </div>
+
+          ${statueNoticeHtml}
+
+          <div class="compare-arena">
+            <div class="compare-box">
+              <div class="compare-header">
+                <span>📘 実地・現地のお手本写真（実写・Wikipedia）</span>
+                <span style="font-size:0.72rem; color:#fde68a;">${state.customRef[item.id] ? '✨カスタム設定中' : '📷 現地実写'}</span>
+              </div>
+              <div class="compare-img-wrap" style="cursor:pointer;" onclick="JapanApp.loadCandidates('${item.id}')">
+                <img id="mdl-ref-img" src="${initialRef}" alt="${item.name}" />
+              </div>
+            </div>
+
+            <div class="compare-box mine">
+              <div class="compare-header" style="background:rgba(245,158,11,0.22);">
+                <span>🏆 あなたのベストショット</span>
+                <span>${bestCap ? `GET済！ 目利きスコア ${bestCap.score || 92}点` : '未登録'}</span>
+              </div>
+              <div class="compare-img-wrap">
+                ${bestCap
+                  ? `<img src="${bestCap.dataUrl}" alt="マイベストショット" />`
+                  : `<div style="text-align:center; padding:20px; color:#cbd5e1;">
+                      <div style="font-size:2.2rem; margin-bottom:6px;">📷</div>
+                      <p style="font-size:0.84rem; margin-bottom:12px;">まだ「${item.name}」のあなたの写真が登録されていません。</p>
+                      <button class="btn btn-gold" onclick="JapanApp.openCaptureModal('${item.id}')">📷 撮影した写真を登録してGET！</button>
+                    </div>`
+                }
+              </div>
+            </div>
+          </div>
+
+          <!-- お手本写真の切り替え＆Google画像検索ツールバー -->
+          <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:10px 14px; margin-bottom:16px;">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; align-items:center;">
+              <button class="btn btn-vermilion btn-sm" onclick="JapanApp.loadCandidates('${item.id}')">🔍 他の見やすい写真候補から選ぶ</button>
+              <a href="${googleImgUrl}" target="_blank" rel="noopener" class="btn btn-outline btn-sm">🔎 Google画像検索で作例を見る ↗</a>
+              <label class="btn btn-outline btn-sm" style="cursor:pointer;">
+                📁 PCの画像とお手本を入れ替え
+                <input type="file" accept="image/*" style="display:none;" onchange="JapanApp.onUploadRefFile('${item.id}', event)" />
+              </label>
+              <button class="btn btn-outline btn-sm" onclick="JapanApp.promptRefUrl('${item.id}')">🔗 画像URLでお手本を入れ替え</button>
+              ${state.customRef[item.id] ? `<button class="btn btn-outline btn-sm" style="color:#dc2626;" onclick="JapanApp.resetRef('${item.id}')">↺ 初期写真に戻す</button>` : ''}
+            </div>
+            <div id="mdl-candidates-drawer" style="display:none; margin-top:10px; background:#0f172a; padding:10px; border-radius:8px; color:#fff;">
+              <div id="mdl-candidates-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(130px, 1fr)); gap:8px;"></div>
+            </div>
+          </div>
+
+          <!-- 鉄板3ショットレシピ -->
+          ${recipesHtml}
+
+          <!-- 🏮 御朱印・オリジナル御朱印帳・社務所ガイド -->
+          ${item.goshuinInfo ? `
+            <div style="background:${item.hasGoshuin ? '#fffbeb' : '#f8fafc'}; border:1.5px solid ${item.hasGoshuin ? '#f59e0b' : '#cbd5e1'}; border-radius:10px; padding:12px 14px; margin-bottom:16px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+              <div style="flex:1; min-width:240px;">
+                <h4 style="font-size:0.9rem; font-weight:900; color:${item.hasGoshuin ? '#92400e' : '#334155'}; margin-bottom:4px;">
+                  ${item.hasGoshuin ? '🏮 御朱印・オリジナル御朱印帳ガイド' : '🗿 社務所・御朱印の有無について'}
+                </h4>
+                <p style="font-size:0.82rem; color:#1e293b; margin:0;">${item.goshuinInfo}</p>
+              </div>
+              ${item.hasGoshuin ? `
+                <button class="btn btn-vermilion btn-sm" onclick="JapanApp.closeDetailModal(); JapanApp.setCategory('goshuin_book');">
+                  📖 マイ御朱印帳に記録する →
+                </button>
+              ` : ''}
+            </div>
+          ` : ''}
+
+          <!-- 駐車場＆撮影許可情報（2カラム特設カード） -->
+          <div class="info-grid">
+            <div class="info-card" style="background:#eff6ff; border-color:#93c5fd;">
+              <h4>🅿️ 駐車場・車を停められる場所・トイレ情報</h4>
+              <p style="font-weight:700; color:#1e3a8a; margin-bottom:10px;">${item.parkingInfo || '専用駐車場あり'}</p>
+              <a href="${parkingMapUrl}" target="_blank" rel="noopener" class="btn btn-sm" style="background:#059669; color:#fff; font-weight:800; text-decoration:none; display:inline-flex; align-items:center; gap:5px;">
+                🚗 Googleマップで駐車場の位置を見る・ナビ開始 ↗
+              </a>
+            </div>
+            <div class="info-card" style="background:#fef2f2; border-color:#fca5a5;">
+              <h4>📷 撮影OK/NG範囲・三脚使用ルール</h4>
+              <p style="font-weight:700; color:#991b1b;">${item.photoPermission || '屋外参道・外観は撮影OK（建物内・御神体正面は撮影控えめに）'}</p>
+            </div>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-card" style="background:#fffbeb; border-color:#fde68a;">
+              <h4>🌍 なぜ外国人がこの写真を見て「日本に行きたい！」と感動するのか？</h4>
+              <p>${item.inboundAppeal}</p>
+            </div>
+            <div class="info-card" style="background:#f0fdf4; border-color:#bbf7d0;">
+              <h4>📸 カメラマン向け・構図＆設定の極意</h4>
+              <p>${item.cameraTips}</p>
+              <div style="margin-top:8px; font-size:0.78rem; background:#fff; padding:6px 10px; border-radius:6px; border:1px solid #cbd5e1;">
+                <strong>推奨設定：</strong> ${item.recommendedSpec.focalLength} ／ SS ${item.recommendedSpec.shutterSpeed} ／ 絞り ${item.recommendedSpec.fStop}
+              </div>
+            </div>
+            <div class="info-card">
+              <h4>⏰ ベストな時間帯・気象条件・シーズン</h4>
+              <p><strong>狙い目条件：</strong>${item.bestTimeWeather}</p>
+              ${monthHtml}
+            </div>
+            <div class="info-card">
+              <h4>🏷️ 海外発信・SNS用 英語キャプション＆ハッシュタグ</h4>
+              <p style="font-family:monospace; background:#fff; padding:8px; border-radius:6px; border:1px solid #cbd5e1; margin-bottom:8px;">${item.englishTags}</p>
+              <button class="btn btn-outline btn-sm" onclick="navigator.clipboard.writeText('${item.englishTags.replace(/'/g, "\\'")}'); alert('英語キャプション＆タグをコピーしました！');">📋 英語タグをコピー</button>
+            </div>
+          </div>
+
+          <!-- 野鳥観察アプリ＆花図鑑との相互連動カード -->
+          <div style="background:linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%); border:2px solid #0d9488; border-radius:12px; padding:14px 16px; margin-bottom:14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+            <div>
+              <div style="font-size:0.88rem; font-weight:800; color:#0f766e;">
+                🐦🌸 同じ日・同じ場所（${item.spotName}）で一緒に撮影できる野鳥＆花図鑑連動！
+              </div>
+              <div style="font-size:0.82rem; color:#1e293b; margin-top:4px;">
+                主な出現野鳥：<strong>${(item.linkedBirds || []).join(" ・ ")}</strong>
+              </div>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap;">
+              <a href="../四季の花・草木図鑑/index.html?spot=${item.spotId}" class="btn btn-sm" style="background:linear-gradient(135deg,#db2777,#15803d);color:#fff;">
+                🌸 この場所の花・草木を見る →
+              </a>
+              <a href="../index.html?spot=${item.spotId}" class="btn btn-bird-link btn-sm">
+                🐦 野鳥図鑑で「${item.spotName.split('（')[0]}」を開く →
+              </a>
+            </div>
+          </div>
+
+          <div style="background:#fef2f2; border-left:5px solid #dc2626; padding:10px 14px; border-radius:8px; font-size:0.82rem; color:#7f1d1d;">
+            <strong>🛡️ 撮影マナー・注意事項：</strong> ${item.mannerNote}
+          </div>
+        `;
+
+        fetchRefPhoto(item, url => {
+          const img = document.getElementById("mdl-ref-img");
+          if (img && url) img.src = url;
+        });
+
+        document.getElementById("modal-detail").classList.add("open");
+      }
+
+      function closeDetailModal() {
+        document.getElementById("modal-detail").classList.remove("open");
+      }
+
+      // 3アプリ横断・地域別マイ写真集レンダリング
+      async function renderPhotoBook() {
+        const container = document.getElementById("pb-chapters-container");
+        if (!container) return;
+        container.innerHTML = `<div style="background:#fff; padding:24px; border-radius:12px; text-align:center;">📚 3つのアプリ（野鳥・神社仏閣・絶景・花）のデータベースを集計中...</div>`;
+
+        // 1. 野鳥DBと花DBからキャプチャ取得
+        let birdCaptures = {};
+        let birdWikiCache = {};
+        try {
+          const bCap = await readOtherDexDB("NiigataBirdDexDB", "captures");
+          const bWiki = await readOtherDexDB("NiigataBirdDexDB", "wikiPhotos");
+          if (bCap) birdCaptures = bCap;
+          if (bWiki) birdWikiCache = bWiki;
+        } catch (_) {}
+
+        let floraCaptures = {};
+        let floraWikiCache = {};
+        try {
+          const fState = await readOtherDexDB("NiigataFloraDexDB", "state");
+          if (fState) {
+            floraCaptures = fState.captures || {};
+            floraWikiCache = fState.wikiCache || {};
+          }
+        } catch (_) {}
+
+        // 2. 地域チャプター定義
+        const chapters = [
+          {
+            id: "kita",
+            title: "🦢 第1章：新潟市北区（福島潟・島見浜・海辺の森・阿賀野川河口）",
+            subtitle: "ホームグラウンド！220種の野鳥の楽園と菜の花・オニバス・日本海夕日",
+            spotIds: ["fukushimagata", "kaibenomori", "aganogawa"]
+          },
+          {
+            id: "akiha",
+            title: "🍁 第2章：新潟市秋葉区・五泉（秋葉公園・新津丘陵・菩提寺山・滝谷慈光寺）",
+            subtitle: "春のオオルリ・秋の紅葉トンネル・老杉の参道と里山の山野草",
+            spotIds: ["akiha"]
+          },
+          {
+            id: "yahiko",
+            title: "⛩️ 第3章：弥彦・西蒲エリア（彌彦神社・もみじ谷・弥彦山・角田山・上堰潟）",
+            subtitle: "越後一宮の格式ある社殿、もみじ谷の朱橋、雪割草とカタクリの群生地",
+            spotIds: ["yahiko"]
+          },
+          {
+            id: "agano_tainai",
+            title: "🌾 第4章：阿賀野・胎内・村上（瓢湖・旦飯野神社・乙宝寺・胎内川）",
+            subtitle: "白鳥飛来地・福を呼ぶ神社・国の重要文化財三重塔と清流の渓谷",
+            spotIds: ["hyoko", "tainai", "murakami"]
+          },
+          {
+            id: "chuo_nishi",
+            title: "🌉 第5章：新潟市中央区・西区（白山神社・旧齋藤家別邸・萬代橋・鳥屋野潟・佐潟）",
+            subtitle: "港町新潟の総鎮守、額縁構図の名庭園、ラムサール条約湿地と都市水辺",
+            spotIds: ["hiyoriyama", "toyanogata", "sakata", "bigswan"]
+          },
+          {
+            id: "chuetsu_uonuma",
+            title: "🏔️ 第6章：長岡・十日町・魚沼（宝徳山・悠久山・星峠の棚田・美人林・清津峡・雲洞庵）",
+            subtitle: "世界の写真家が憧れる水鏡の棚田、ブナ林、朱塗りの大社殿と古刹",
+            spotIds: ["yukuzan", "bijinbayashi", "okutadami"]
+          },
+          {
+            id: "myoko_sado",
+            title: "🌊 第7章：妙高・上越・佐渡（いもり池・高田城・妙宣寺五重塔・大野亀）",
+            subtitle: "逆さ妙高と水芭蕉、日本三大夜桜、トキ舞う佐渡の五重塔とカンゾウ大群落",
+            spotIds: ["myoko", "sado"]
+          }
+        ];
+
+        const regFilter = document.getElementById("pb-region-select")?.value || "all";
+        const modeFilter = document.getElementById("pb-mode-select")?.value || "all_with_ref";
+        const genreFilter = document.getElementById("pb-genre-select")?.value || "all";
+
+        // 3. 3つの図鑑から全アイテムを統一フォーマットに変換
+        const allUnified = [];
+
+        // (A) 神社仏閣・絶景
+        (window.JAPAN_BEAUTY_DEX || []).forEach(it => {
+          const caps = state.captures[it.id] || [];
+          const best = caps[0];
+          allUnified.push({
+            uid: "jp_" + it.id,
+            genre: it.category === "神社仏閣" ? "shrine" : "scenery",
+            genreLabel: it.category === "神社仏閣" ? "⛩️ 神社仏閣" : "🏔️ 絶景・風景",
+            dexNo: "No." + it.dexNo,
+            name: it.name,
+            spotId: it.spotId,
+            spotName: it.spotName,
+            catchphrase: it.compositionType ? `📐 ${it.compositionType}` : it.catchphrase,
+            hasMine: !!best,
+            myPhoto: best ? best.dataUrl : null,
+            myDate: best ? best.date : null,
+            myMemo: best ? best.memo : null,
+            refPhoto: state.customRef[it.id] || it.photoUrl || state.wikiCache[it.id] || getFallbackSvg(it),
+            wikiTitle: it.wikiTitle,
+            linkUrl: `javascript:JapanApp.openDetailModal('${it.id}')`
+          });
+        });
+
+        // (B) 四季の花・草木
+        (window.NIIGATA_FLORA_DEX || []).forEach(fl => {
+          const caps = floraCaptures[fl.id] || [];
+          const best = caps[0];
+          allUnified.push({
+            uid: "fl_" + fl.id,
+            genre: "flora",
+            genreLabel: "🌸 四季の花・草木",
+            dexNo: "FL-" + fl.dexNo,
+            name: fl.name,
+            spotId: fl.spotId,
+            spotName: fl.spotName,
+            catchphrase: fl.seasonText || fl.catchphrase,
+            hasMine: !!best,
+            myPhoto: best ? best.dataUrl : null,
+            myDate: best ? best.date : null,
+            myMemo: best ? best.memo : null,
+            refPhoto: floraWikiCache[fl.id] || getFallbackSvg({ name: fl.name, category: "花", colorPalette: fl.colorPalette }),
+            wikiTitle: fl.wikiTitle,
+            linkUrl: `../四季の花・草木図鑑/index.html?spot=${encodeURIComponent(fl.spotId)}`
+          });
+        });
+
+        // (C) 野鳥図鑑（各鳥のメインspotIdsの先頭または主要スポットに割り当て）
+        (window.NIIGATA_BIRDS || []).forEach(bd => {
+          const caps = birdCaptures[bd.id] || [];
+          const best = caps[0];
+          const primarySpot = (bd.spotIds && bd.spotIds[0]) || "fukushimagata";
+          allUnified.push({
+            uid: "bd_" + bd.id,
+            genre: "bird",
+            genreLabel: "🐦 野鳥",
+            dexNo: "BD-" + bd.dexNo,
+            name: bd.name,
+            spotId: primarySpot,
+            spotIds: bd.spotIds || [primarySpot],
+            spotName: (bd.spots && bd.spots[0]) || "新潟県内",
+            catchphrase: bd.catchphrase,
+            hasMine: !!best,
+            myPhoto: best ? best.dataUrl : null,
+            myDate: best ? best.date : null,
+            myMemo: best ? best.memo : null,
+            refPhoto: birdWikiCache[bd.wikiTitle] || getFallbackSvg({ name: bd.name, category: "野鳥", colorPalette: ["#0f766e", "#0284c7", "#0f172a"] }),
+            wikiTitle: bd.wikiTitle,
+            linkUrl: `../index.html?spot=${encodeURIComponent(primarySpot)}`
+          });
+        });
+
+        // サマリーバッジ更新
+        const totalMyBirds = allUnified.filter(x => x.genre === "bird" && x.hasMine).length;
+        const totalMyShrines = allUnified.filter(x => (x.genre === "shrine" || x.genre === "scenery") && x.hasMine).length;
+        const totalMyFlora = allUnified.filter(x => x.genre === "flora" && x.hasMine).length;
+        const badgeEl = document.getElementById("pb-summary-badges");
+        if (badgeEl) {
+          badgeEl.innerHTML = `
+            <span style="background:rgba(13,148,136,0.9); padding:6px 12px; border-radius:99px; font-size:0.78rem; font-weight:800;">🐦 野鳥マイ写真: ${totalMyBirds}種</span>
+            <span style="background:rgba(220,38,38,0.9); padding:6px 12px; border-radius:99px; font-size:0.78rem; font-weight:800;">⛩️🏔️ 神社・絶景マイ写真: ${totalMyShrines}件</span>
+            <span style="background:rgba(219,39,119,0.9); padding:6px 12px; border-radius:99px; font-size:0.78rem; font-weight:800;">🌸 花マイ写真: ${totalMyFlora}種</span>
+          `;
+        }
+
+        const activeChapters = regFilter === "all"
+          ? chapters
+          : chapters.filter(c => c.id === regFilter);
+
+        let html = "";
+        activeChapters.forEach(ch => {
+          const items = allUnified.filter(item => {
+            if (genreFilter !== "all" && item.genre !== genreFilter) return false;
+            if (modeFilter === "mine_only" && !item.hasMine) return false;
+            if (item.genre === "bird") {
+              // 野鳥はそのチャプターの代表種（最大8種＋撮影済み種）を表示
+              const matchSpot = ch.spotIds.includes(item.spotId) || (item.spotIds && item.spotIds[0] && ch.spotIds.includes(item.spotIds[0]));
+              return matchSpot;
+            }
+            return ch.spotIds.includes(item.spotId);
+          });
+
+          if (items.length === 0) return;
+
+          const myCount = items.filter(i => i.hasMine).length;
+
+          html += `
+            <div style="background:#fff; border:2px solid #e2e8f0; border-radius:16px; padding:18px; margin-bottom:22px; box-shadow:0 4px 12px rgba(0,0,0,0.04);">
+              <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px; border-bottom:2px solid #f1f5f9; padding-bottom:10px; margin-bottom:14px;">
+                <div>
+                  <h3 style="font-size:1.15rem; font-weight:900; color:#0f172a;">${ch.title}</h3>
+                  <div style="font-size:0.8rem; color:#64748b;">${ch.subtitle}</div>
+                </div>
+                <span style="background:#fef3c7; color:#92400e; font-size:0.78rem; font-weight:800; padding:4px 12px; border-radius:99px;">
+                  📸 この地域の収録数: ${items.length}件（うちマイ撮影GET: ${myCount}件）
+                </span>
+              </div>
+              <div class="photobook-grid">
+                ${items.map(it => `
+                  <div class="pb-card ${it.hasMine ? 'is-mine' : ''}">
+                    <div class="pb-img-wrap">
+                      <span class="dex-badge">${it.dexNo}</span>
+                      <span class="get-badge ${it.hasMine ? 'is-get' : 'not-get'}">${it.hasMine ? '🏆 MY SHOT' : 'お手本プレビュー'}</span>
+                      <img data-pb-wiki="${it.wikiTitle || ''}" src="${it.myPhoto || it.refPhoto}" alt="${it.name}" />
+                    </div>
+                    <div style="padding:11px; display:flex; flex-direction:column; flex:1;">
+                      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+                        <span style="font-size:0.7rem; font-weight:800; color:#475569;">${it.genreLabel}</span>
+                        <span style="font-size:0.68rem; color:#64748b;">📍 ${it.spotName.split('（')[0]}</span>
+                      </div>
+                      <strong style="font-size:0.95rem; color:#0f172a; margin-bottom:3px;">${it.name}</strong>
+                      <div style="font-size:0.74rem; color:#b45309; margin-bottom:8px;">${it.catchphrase || ''}</div>
+                      ${it.myMemo ? `<div style="font-size:0.74rem; background:#fffbeb; padding:5px 8px; border-radius:6px; margin-bottom:8px;">📝 ${it.myMemo} (${it.myDate || ''})</div>` : ''}
+                      <a href="${it.linkUrl}" class="btn btn-outline btn-sm" style="margin-top:auto;">図鑑で開く →</a>
+                    </div>
+                  </div>
+                `).join("")}
+              </div>
+            </div>
+          `;
+        });
+
+        if (!html) {
+          html = `
+            <div style="background:#fff; padding:32px; border-radius:14px; text-align:center; color:#475569;">
+              <div style="font-size:2.4rem; margin-bottom:8px;">📷</div>
+              <h3 style="margin-bottom:6px;">まだこの条件のマイ撮影写真が登録されていません</h3>
+              <p style="font-size:0.85rem; margin-bottom:14px;">上の「🖼️ アルバム表示モード」を<strong>『✨ マイ撮影写真＋未撮影はお手本で地域アルバム表示』</strong>に切り替えると、各地域でどんな野鳥・神社仏閣・絶景・花が撮れるかの完成イメージ写真集をご覧いただけます！</p>
+              <button class="btn btn-gold" onclick="document.getElementById('pb-mode-select').value='all_with_ref'; JapanApp.renderPhotoBook();">✨ お手本込みで地域別アルバムを見る</button>
+            </div>
+          `;
+        }
+
+        container.innerHTML = html;
+
+        // Wikipedia画像が未キャッシュのカードを非同期で補完
+        container.querySelectorAll("img[data-pb-wiki]").forEach(async (imgEl) => {
+          const wt = imgEl.getAttribute("data-pb-wiki");
+          if (!wt || !imgEl.src.startsWith("data:image/svg")) return;
+          try {
+            const u = `https://ja.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(wt)}&prop=pageimages&format=json&pithumbsize=520&origin=*`;
+            const r = await fetch(u);
+            if (r.ok) {
+              const d = await r.json();
+              const pages = d.query && d.query.pages;
+              if (pages) {
+                const pg = Object.values(pages)[0];
+                if (pg && pg.thumbnail && pg.thumbnail.source) {
+                  imgEl.src = pg.thumbnail.source;
+                }
+              }
+            }
+          } catch (_) {}
+        });
+      }
+
+      async function loadCandidates(itemId) {
+        const item = window.JAPAN_BEAUTY_DEX.find(x => x.id === itemId);
+        if (!item) return;
+        const drawer = document.getElementById("mdl-candidates-drawer");
+        const grid = document.getElementById("mdl-candidates-grid");
+        drawer.style.display = "block";
+        grid.innerHTML = `<div style="grid-column:1/-1; padding:10px; font-size:0.8rem;">🔍 「${item.name}」の別カット候補を検索中...</div>`;
+
+        const urls = [];
+        try {
+          const cUrl = `https://commons.wikimedia.org/w/api.php?action=query&generator=search&gsrsearch=${encodeURIComponent(item.searchQuery || item.name)}&gsrnamespace=6&gsrlimit=10&prop=imageinfo&iiprop=url&iiurlwidth=640&format=json&origin=*`;
+          const res = await fetch(cUrl);
+          if (res.ok) {
+            const data = await res.json();
+            if (data.query && data.query.pages) {
+              Object.values(data.query.pages).forEach(pg => {
+                const ii = pg.imageinfo && pg.imageinfo[0];
+                if (ii && (ii.thumburl || ii.url)) urls.push(ii.thumburl || ii.url);
+              });
+            }
+          }
+        } catch (_) {}
+
+        if (urls.length === 0) {
+          grid.innerHTML = `<div style="grid-column:1/-1; padding:10px; font-size:0.8rem;">候補が見つかりませんでした。「🔎 Google画像検索で作例を見る」から探してURLまたはファイルで入れ替えられます。</div>`;
+          return;
+        }
+
+        grid.innerHTML = urls.map((u, idx) => `
+          <div style="background:#1e293b; border:1px solid #475569; border-radius:6px; overflow:hidden; cursor:pointer;" onclick="JapanApp.setCustomRef('${item.id}', '${u.replace(/'/g, "\\'")}')">
+            <img src="${u}" style="width:100%; height:95px; object-fit:contain; background:#090d16;" />
+            <div style="font-size:0.68rem; text-align:center; padding:3px;">👆 候補 #${idx + 1} に切替</div>
+          </div>
+        `).join("");
+      }
+
+      function setCustomRef(itemId, url) {
+        state.customRef[itemId] = url;
+        saveState();
+        openDetailModal(itemId);
+        renderGrid();
+      }
+
+      function onUploadRefFile(itemId, event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = new Image();
+          img.onload = function() {
+            const canvas = document.createElement("canvas");
+            const maxD = 850;
+            let w = img.width, h = img.height;
+            if (w > maxD || h > maxD) {
+              if (w > h) { h = Math.round(h * maxD / w); w = maxD; }
+              else { w = Math.round(w * maxD / h); h = maxD; }
+            }
+            canvas.width = w; canvas.height = h;
+            canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+            setCustomRef(itemId, canvas.toDataURL("image/jpeg", 0.85));
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function promptRefUrl(itemId) {
+        const u = prompt("🔗 差し替えたいお手本画像のURLを貼り付けてください：");
+        if (u && u.trim()) setCustomRef(itemId, u.trim());
+      }
+
+      function resetRef(itemId) {
+        delete state.customRef[itemId];
+        saveState();
+        openDetailModal(itemId);
+        renderGrid();
+      }
+
+      function openCaptureModal(preselectId) {
+        const sel = document.getElementById("cap-item-id");
+        sel.innerHTML = window.JAPAN_BEAUTY_DEX.map(it =>
+          `<option value="${it.id}">No.${it.dexNo} [${it.category}] ${it.name}</option>`
+        ).join("");
+        if (preselectId) sel.value = preselectId;
+        pendingCap = null;
+        document.getElementById("cap-file").value = "";
+        document.getElementById("cap-preview-box").style.display = "none";
+        document.getElementById("cap-memo").value = "";
+        document.getElementById("modal-capture").classList.add("open");
+      }
+
+      function closeCaptureModal() {
+        document.getElementById("modal-capture").classList.remove("open");
+      }
+
+      async function onSelectCaptureFile(event) {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+        let exif = {};
+        if (window.ExifAnalyzer && window.ExifAnalyzer.extractExifFromFile) {
+          try { exif = await window.ExifAnalyzer.extractExifFromFile(file); } catch (_) {}
+        }
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          const img = new Image();
+          img.onload = function() {
+            const canvas = document.createElement("canvas");
+            const maxD = 1000;
+            let w = img.width, h = img.height;
+            if (w > maxD || h > maxD) {
+              if (w > h) { h = Math.round(h * maxD / w); w = maxD; }
+              else { w = Math.round(w * maxD / h); h = maxD; }
+            }
+            canvas.width = w; canvas.height = h;
+            canvas.getContext("2d").drawImage(img, 0, 0, w, h);
+            const dataUrl = canvas.toDataURL("image/jpeg", 0.86);
+            pendingCap = {
+              id: "jcap_" + Date.now(),
+              dataUrl,
+              date: exif.date || new Date().toISOString().slice(0, 10),
+              camera: exif.cameraModel || "カメラ撮影",
+              focalLength: exif.focalLength ? `${exif.focalLength}mm` : "",
+              shutterSpeed: exif.shutterSpeedText || "",
+              fNumber: exif.fNumber ? `F${exif.fNumber}` : "",
+              score: 92
+            };
+            document.getElementById("cap-preview-img").src = dataUrl;
+            document.getElementById("cap-exif-info").textContent =
+              `📸 自動読取: ${pendingCap.date} / ${pendingCap.camera} ${pendingCap.focalLength} ${pendingCap.fNumber} ${pendingCap.shutterSpeed} （和の美・インバウンド目利き評価: 92点！）`;
+            document.getElementById("cap-preview-box").style.display = "block";
+          };
+          img.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+
+      function saveCapture() {
+        if (!pendingCap) {
+          alert("写真ファイルを選択してください。");
+          return;
+        }
+        const itemId = document.getElementById("cap-item-id").value;
+        pendingCap.memo = document.getElementById("cap-memo").value.trim();
+        if (!state.captures[itemId]) state.captures[itemId] = [];
+        state.captures[itemId].unshift(pendingCap);
+        saveState();
+        updateHeader();
+        closeCaptureModal();
+        renderGrid();
+        openDetailModal(itemId);
+      }
+
+      async function init() {
+        await loadState();
+        updateHeader();
+        try {
+          const params = new URLSearchParams(window.location.search);
+          const spotParam = params.get("spot");
+          const viewParam = params.get("view");
+          if (spotParam) {
+            const sel = document.getElementById("flt-spot");
+            if (sel && [...sel.options].some(o => o.value === spotParam)) {
+              sel.value = spotParam;
+            }
+            updateLinkedSpotBanner(spotParam);
+          }
+          if (viewParam === "photobook") {
+            setCategory("photobook");
+            return;
+          }
+          if (viewParam === "composition") {
+            setCategory("composition");
+            return;
+          }
+          if (viewParam === "suite") {
+            setCategory("suite");
+            const sub = params.get("sub");
+            if (sub && window.CameraEnjoySuite) {
+              window.CameraEnjoySuite.renderSuiteMain(sub);
+            }
+            return;
+          }
+        } catch (_) {}
+        renderGrid();
+      }
+
+      function copyRecipePrompt(itemId, idx) {
+        const item = window.JAPAN_BEAUTY_DEX.find(x => x.id === itemId);
+        if (!item) return;
+        const recipeText = (item.shotRecipes && item.shotRecipes[idx]) ? item.shotRecipes[idx].replace(/^[①②③【.*?】]/, '').trim() : item.name;
+        const prompt = `Award-winning landscape photography of ${item.englishTitle || item.name} in Niigata Japan. ${recipeText}. Recommended composition: ${item.compositionType}. Telephoto / macro camera perspective, ultra-detailed natural texture, misty morning light, authentic Japanese atmosphere, 8k resolution, shot on professional mirrorless camera.`;
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(prompt).then(() => {
+            alert(`【アングル${idx + 1}のAI画像生成プロンプトをコピーしました！】\n\nAI（Midjourney、ChatGPT、このチャットなど）に貼り付けると、このアングルの写真作例を生成できます。`);
+          }).catch(() => {
+            window.prompt("以下のプロンプトをコピーしてください：", prompt);
+          });
+        } else {
+          window.prompt("以下のプロンプトをコピーしてください：", prompt);
+        }
+      }
+
+      function requestCurrentGPS() {
+        if (!navigator.geolocation) {
+          alert("お使いの端末またはブラウザはGPS位置情報に対応していません。下のプリセット選択をご利用ください。");
+          return;
+        }
+        const statusEl = document.getElementById("geo-status-text");
+        if (statusEl) statusEl.textContent = "📡 GPS現在地を取得中...";
+
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            userLocation.lat = pos.coords.latitude;
+            userLocation.lng = pos.coords.longitude;
+            userLocation.name = "📡 スマホGPS現在地";
+            userLocation.isGps = true;
+            isSortByDistance = true;
+
+            if (statusEl) statusEl.textContent = `📍 現在地取得完了（北緯${userLocation.lat.toFixed(3)}, 東経${userLocation.lng.toFixed(3)}）`;
+            const sumEl = document.getElementById("geo-status-summary"); if (sumEl) sumEl.textContent = `現在地：GPS取得完了`;
+            renderGrid();
+          },
+          (err) => {
+            alert("位置情報の取得が許可されませんでした。ブラウザの設定で位置情報を許可するか、下のプリセット選択をご利用ください。");
+            if (statusEl) statusEl.textContent = "基準地点：新潟市北区（豊栄・福島潟周辺）";
+          },
+          { enableHighAccuracy: true, timeout: 10000, maximumAge: 60000 }
+        );
+      }
+
+      function setPresetLocation(presetId) {
+        if (!window.NiigataGeoEngine) return;
+        const p = window.NiigataGeoEngine.PRESET_LOCATIONS.find(x => x.id === presetId);
+        if (!p) return;
+
+        userLocation.lat = p.lat;
+        userLocation.lng = p.lng;
+        userLocation.name = p.name;
+        userLocation.isGps = false;
+        isSortByDistance = true;
+
+        const statusEl = document.getElementById("geo-status-text");
+        if (statusEl) statusEl.textContent = `基準地点：${p.name}`;
+        const sumEl = document.getElementById("geo-status-summary"); if (sumEl) sumEl.textContent = `現在地：${p.name}`;
+        renderGrid();
+      }
+
+      function toggleWayHomeMode() {
+        isWayHomeMode = !isWayHomeMode;
+        const btn = document.getElementById("btn-way-home");
+        if (btn) {
+          btn.style.background = isWayHomeMode ? "#15803d" : "";
+          btn.style.color = isWayHomeMode ? "#ffffff" : "";
+          btn.style.borderColor = isWayHomeMode ? "#166534" : "";
+          btn.textContent = isWayHomeMode ? "🏠 自宅へ近づくスポットのみ表示中！（解除）" : "🏠 自宅（北区）へ近づくスポットのみ表示";
+        }
+        renderGrid();
+      }
+
+      function toggleSortByDistance(isDist) {
+        isSortByDistance = isDist;
+        const btnDist = document.getElementById("btn-sort-dist");
+        const btnReg = document.getElementById("btn-sort-region");
+        if (btnDist) btnDist.classList.toggle("active", isDist);
+        if (btnReg) btnReg.classList.toggle("active", !isDist);
+        renderGrid();
+      }
+
+      
+      function toggleVisited(itemId, event) {
+        if (event) {
+          event.stopPropagation();
+          event.preventDefault();
+        }
+        state.visited = state.visited || {};
+        if (state.visited[itemId]) {
+          delete state.visited[itemId];
+        } else {
+          state.visited[itemId] = {
+            visitedAt: new Date().toISOString().split('T')[0],
+            timestamp: Date.now()
+          };
+        }
+        saveState();
+        updateHeader();
+        renderGrid();
+
+        // モーダルが開いていれば再描画
+        const vBar = document.getElementById("mdl-visit-bar");
+        if (vBar && vBar.dataset.id === itemId) {
+          openDetailModal(itemId);
+        }
+      }
+
+      function selectFeature(val) {
+        const sel = document.getElementById("flt-feature");
+        if (sel) {
+          sel.value = val;
+          renderGrid();
+          document.getElementById("flt-feature")?.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+  
+      return {
+        selectFeature,
+        toggleVisited: toggleVisited,
+        spinMissionGacha,
+        closeGachaModal,
+        toggleMissionClear,
+        filterMissionCategory,
+        renderSnapMissions,
+        init,
+        setCategory,
+        onSpotSelectChange,
+        clearSpotFilter,
+        setRegionFilter,
+        requestCurrentGPS,
+        setPresetLocation,
+        toggleWayHomeMode,
+        toggleSortByDistance,
+        renderGrid,
+        openDetailModal,
+        closeDetailModal,
+        renderPhotoBook,
+        loadCandidates,
+        setCustomRef,
+        onUploadRefFile,
+        promptRefUrl,
+        resetRef,
+        openCaptureModal,
+        closeCaptureModal,
+        onSelectCaptureFile,
+        saveCapture,
+        copyRecipePrompt
+      };
+    })();
+
+    window.addEventListener("DOMContentLoaded", () => JapanApp.init());
+  </script>
+</body>
+</html>
