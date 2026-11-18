@@ -1,4 +1,4 @@
-// にいがた神社仏閣・仏像＆御朱印図鑑 データベース（全88社寺）
+// 新潟カメラ図鑑シリーズ - 神社仏閣・仏像・絶景データベース（全88選）
 window.JAPAN_BEAUTY_DEX = [
   {
     "id": "yahiko_shrine",
@@ -181,10 +181,8 @@ window.JAPAN_BEAUTY_DEX = [
     "lat": 37.625,
     "lng": 139.225,
     "hasNio": false,
-    "hasBuddha": true,
-    "buddhaTypes": [
-      "nyorai"
-    ],
+    "hasBuddha": false,
+    "buddhaTypes": [],
     "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Jik%C5%8Dji_Temple_%282%29%2C_Gosen%2C_Niigata%2C_Japan%2C_July_2022.jpg"
   },
   {
@@ -442,8 +440,12 @@ window.JAPAN_BEAUTY_DEX = [
     "hasBuddha": true,
     "buddhaTypes": [
       "kannon",
-      "nio"
-    ]
+      "bosatsu",
+      "nio",
+      "tenbu",
+      "nyorai"
+    ],
+    "buddhaHighlight": "山門に鎮座する巨大金剛力士立像（仁王像）と木造三重塔・秘仏大日如来"
   },
   {
     "id": "hakusan_shrine",
@@ -818,10 +820,8 @@ window.JAPAN_BEAUTY_DEX = [
     "lng": 138.3667,
     "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Myousenji_temple_%E9%98%BF%E4%BB%8F%E5%9D%8A%E5%A6%99%E5%AE%A3%E5%AF%BA_%283658494016%29.jpg",
     "hasNio": true,
-    "hasBuddha": true,
-    "buddhaTypes": [
-      "nio"
-    ]
+    "hasBuddha": false,
+    "buddhaTypes": []
   },
   {
     "id": "niigata_gokoku_shrine",
@@ -894,10 +894,8 @@ window.JAPAN_BEAUTY_DEX = [
     "lat": 37.9308,
     "lng": 139.0345,
     "hasNio": false,
-    "hasBuddha": true,
-    "buddhaTypes": [
-      "kannon"
-    ],
+    "hasBuddha": false,
+    "buddhaTypes": [],
     "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/2/29/Niigata_Gokoku_Shrine_20070815.png"
   },
   {
@@ -967,7 +965,7 @@ window.JAPAN_BEAUTY_DEX = [
     "lat": 37.8596,
     "lng": 139.1585,
     "hasNio": false,
-    "hasBuddha": true,
+    "hasBuddha": false,
     "buddhaTypes": [],
     "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/5/58/Shugetsuji_Temple_%282%29%2C_Niigata%2C_Niigata%2C_Japan%2C_August_2022.jpg"
   },
@@ -1039,10 +1037,8 @@ window.JAPAN_BEAUTY_DEX = [
     "lat": 37.7885,
     "lng": 138.8415,
     "hasNio": false,
-    "hasBuddha": true,
-    "buddhaTypes": [
-      "shaka"
-    ],
+    "hasBuddha": false,
+    "buddhaTypes": [],
     "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/e/ef/My%C5%8Dk%C5%8Dji_Temple_%282%29%2C_Niigata%2C_Niigata%2C_Japan%2C_August_2022.jpg"
   },
   {
@@ -1117,10 +1113,12 @@ window.JAPAN_BEAUTY_DEX = [
     "hasBuddha": true,
     "buddhaTypes": [
       "kannon",
+      "bosatsu",
       "nio",
-      "enma"
+      "tenbu"
     ],
-    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Kokujouji_Temple%2C_Tsubame%2C_Niigata%2C_Japan%2C_May_2021.jpg"
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/f/f5/Kokujouji_Temple%2C_Tsubame%2C_Niigata%2C_Japan%2C_May_2021.jpg",
+    "buddhaHighlight": "山門の巨大金剛力士立像（阿形・吽形仁王像）と千手観音・閻魔大王像"
   },
   {
     "id": "deyu_yakushido_ubason",
@@ -1195,8 +1193,11 @@ window.JAPAN_BEAUTY_DEX = [
     "hasNio": false,
     "hasBuddha": true,
     "buddhaTypes": [
-      "yakushi"
-    ]
+      "yakushi",
+      "nyorai",
+      "rakan"
+    ],
+    "buddhaHighlight": "開湯1200年の霊泉を見守る薬師如来坐像と優しい表情の姥尊石仏群"
   },
   {
     "id": "koryu_jinja_small_shrine",
@@ -1447,7 +1448,7 @@ window.JAPAN_BEAUTY_DEX = [
     "lat": 37.4475,
     "lng": 138.8524,
     "hasNio": false,
-    "hasBuddha": true,
+    "hasBuddha": false,
     "buddhaTypes": []
   },
   {
@@ -1590,9 +1591,13 @@ window.JAPAN_BEAUTY_DEX = [
     "hasBuddha": true,
     "buddhaTypes": [
       "kannon",
-      "nio"
+      "bosatsu",
+      "nio",
+      "tenbu",
+      "rakan"
     ],
-    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/%E4%BD%90%E6%B8%A1%E3%83%BB%E6%B8%85%E6%B0%B4%E5%AF%BA_02.jpg"
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/d/d8/%E4%BD%90%E6%B8%A1%E3%83%BB%E6%B8%85%E6%B0%B4%E5%AF%BA_02.jpg",
+    "buddhaHighlight": "長谷寺の苔むす五百羅漢石仏群・十一面観音と、清水寺の山門仁王像"
   },
   {
     "id": "minato_inari",
@@ -1852,8 +1857,11 @@ window.JAPAN_BEAUTY_DEX = [
     "hasBuddha": true,
     "buddhaTypes": [
       "fudo",
-      "nio"
-    ]
+      "myoo",
+      "nio",
+      "tenbu"
+    ],
+    "buddhaHighlight": "日本三大不動尊・源頼朝公ゆかりの不動明王立像と山門の仁王像"
   },
   {
     "id": "sanjo_hachiman",
@@ -2073,7 +2081,7 @@ window.JAPAN_BEAUTY_DEX = [
     "lat": 37.0012,
     "lng": 138.2863,
     "hasNio": false,
-    "hasBuddha": true,
+    "hasBuddha": false,
     "buddhaTypes": [],
     "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Linsenji_1.jpg"
   },
@@ -2431,7 +2439,7 @@ window.JAPAN_BEAUTY_DEX = [
     "lng": 139.3274,
     "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Ijimino_Park_Bentendo_Shibata.jpg/800px-Ijimino_Park_Bentendo_Shibata.jpg",
     "hasNio": false,
-    "hasBuddha": true,
+    "hasBuddha": false,
     "buddhaTypes": []
   },
   {
@@ -2916,10 +2924,12 @@ window.JAPAN_BEAUTY_DEX = [
     "hasNio": true,
     "hasBuddha": true,
     "buddhaTypes": [
+      "nyorai",
       "nio",
-      "nyorai"
+      "tenbu"
     ],
-    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Gochi-kokubunji_hondou.JPG"
+    "photoUrl": "https://upload.wikimedia.org/wikipedia/commons/f/fd/Gochi-kokubunji_hondou.JPG",
+    "buddhaHighlight": "奈良時代創建・堂々たる木造五智如来坐像（大日・阿弥陀等）と山門仁王像"
   },
   {
     "id": "hakkaisan_son_shrine",
@@ -4053,7 +4063,7 @@ window.JAPAN_BEAUTY_DEX = [
     "lat": 37.6358,
     "lng": 139.0425,
     "hasNio": false,
-    "hasBuddha": true,
+    "hasBuddha": false,
     "buddhaTypes": []
   },
   {
@@ -4123,10 +4133,8 @@ window.JAPAN_BEAUTY_DEX = [
     "lat": 37.1065,
     "lng": 138.6186,
     "hasNio": false,
-    "hasBuddha": true,
-    "buddhaTypes": [
-      "nyorai"
-    ]
+    "hasBuddha": false,
+    "buddhaTypes": []
   },
   {
     "id": "itoigawa_amatsujinja",
@@ -4418,8 +4426,11 @@ window.JAPAN_BEAUTY_DEX = [
     "hasNio": false,
     "hasBuddha": true,
     "buddhaTypes": [
-      "yakushi"
-    ]
+      "yakushi",
+      "nyorai",
+      "rakan"
+    ],
+    "buddhaHighlight": "静寂の社叢に佇む薬師如来石仏と苔むした境内の古石仏群"
   },
   {
     "id": "kita_kizaki_suwa",
@@ -4560,8 +4571,10 @@ window.JAPAN_BEAUTY_DEX = [
     "hasNio": false,
     "hasBuddha": true,
     "buddhaTypes": [
-      "kannon"
-    ]
+      "kannon",
+      "bosatsu"
+    ],
+    "buddhaHighlight": "越後三十三観音霊場・秘仏如意輪観音菩薩と心安らぐ池泉名園"
   },
   {
     "id": "shibata_otomo_inari",
@@ -4810,7 +4823,7 @@ window.JAPAN_BEAUTY_DEX = [
     "lat": 37.662,
     "lng": 139.051,
     "hasNio": false,
-    "hasBuddha": true,
+    "hasBuddha": false,
     "buddhaTypes": []
   },
   {
@@ -4937,7 +4950,8 @@ window.JAPAN_BEAUTY_DEX = [
     "hasBuddha": true,
     "buddhaTypes": [
       "nyorai"
-    ]
+    ],
+    "buddhaHighlight": "石川雲蝶の極彩色天上彫刻が守る本尊・阿弥陀如来坐像と道元禅師像"
   },
   {
     "id": "nigorikawa_shinmeigu",
@@ -6337,9 +6351,11 @@ window.JAPAN_BEAUTY_DEX = [
     "hasBuddha": true,
     "buddhaTypes": [
       "kannon",
+      "bosatsu",
       "nio",
-      "enma"
-    ]
+      "tenbu"
+    ],
+    "buddhaHighlight": "聖徳太子伝承の朝日観音像と仁王門の股くぐり金剛力士像（仁王様）"
   },
   {
     "id": "nagaoka_kannyakuji_temple",
@@ -6416,8 +6432,11 @@ window.JAPAN_BEAUTY_DEX = [
     "hasBuddha": true,
     "buddhaTypes": [
       "yakushi",
-      "nio"
-    ]
+      "nyorai",
+      "nio",
+      "tenbu"
+    ],
+    "buddhaHighlight": "南北朝時代の逆谷仁王様（股くぐり像）と薬師十二神将・バサラ大将"
   },
   {
     "id": "echigo_tainai_kannon",
@@ -6494,8 +6513,10 @@ window.JAPAN_BEAUTY_DEX = [
     "hasNio": false,
     "hasBuddha": true,
     "buddhaTypes": [
-      "kannon"
-    ]
+      "kannon",
+      "bosatsu"
+    ],
+    "buddhaHighlight": "全高26m青銅大観音菩薩（青空にそびえる日本海側最大の露天大仏・屋外拝観＆撮影OK）"
   },
   {
     "id": "minamiuonuma_urasa_bishamon",
@@ -6572,7 +6593,9 @@ window.JAPAN_BEAUTY_DEX = [
     "hasNio": true,
     "hasBuddha": true,
     "buddhaTypes": [
+      "tenbu",
       "nio"
-    ]
+    ],
+    "buddhaHighlight": "坂上田村麻呂開基・越後随一の毘沙門天立像（天部）と豪壮な山門仁王門"
   }
 ];

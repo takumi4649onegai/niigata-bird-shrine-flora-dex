@@ -745,6 +745,27 @@
     .purpose-btn {
       transition: all 0.2s ease;
       font-family: inherit;
+      cursor: pointer;
+    }
+    .purpose-btn.btn-buddha {
+      background: #f5f3ff;
+      color: #6d28d9;
+      border: 1.5px solid #c4b5fd;
+    }
+    .purpose-btn.btn-goshuin {
+      background: #fff1f2;
+      color: #be123c;
+      border: 1.5px solid #fecdd3;
+    }
+    .purpose-btn.btn-nearby {
+      background: #f0f9ff;
+      color: #0369a1;
+      border: 1.5px solid #bae6fd;
+    }
+    .purpose-btn.btn-all {
+      background: #fff;
+      color: #475569;
+      border: 1.5px solid #cbd5e1;
     }
     .purpose-btn:hover {
       transform: translateY(-1px);
@@ -855,28 +876,28 @@
           </span>
           
           <!-- ① 仏像・見どころ拝観 (第1の目的) -->
-          <button class="purpose-btn btn-buddha active" id="btn-mode-buddha" onclick="JapanApp.selectIntentMode('buddha')" style="font-weight:800; font-size:0.84rem; padding:6px 14px; border-radius:8px; border:2px solid #7c3aed; background:#f5f3ff; color:#6d28d9; cursor:pointer; display:flex; align-items:center; gap:6px;">
+          <button class="purpose-btn btn-buddha active" id="btn-mode-buddha" onclick="JapanApp.selectIntentMode('buddha')" style="font-weight:800; font-size:0.84rem; padding:6px 14px; border-radius:8px; display:flex; align-items:center; gap:6px;">
             <span>👑</span>
             <span>仏像・見どころ拝観</span>
-            <span style="font-size:0.7rem; background:#7c3aed; color:#fff; padding:1px 6px; border-radius:99px;">24名刹</span>
+            <span style="font-size:0.7rem; background:#7c3aed; color:#fff; padding:1px 6px; border-radius:99px;">13名刹</span>
           </button>
 
           <!-- ② 御朱印めぐり (第2の目的) -->
-          <button class="purpose-btn btn-goshuin" id="btn-mode-goshuin" onclick="JapanApp.selectIntentMode('goshuin')" style="font-weight:800; font-size:0.84rem; padding:6px 14px; border-radius:8px; border:2px solid #e11d48; background:#fff1f2; color:#be123c; cursor:pointer; display:flex; align-items:center; gap:6px;">
+          <button class="purpose-btn btn-goshuin" id="btn-mode-goshuin" onclick="JapanApp.selectIntentMode('goshuin')" style="font-weight:800; font-size:0.84rem; padding:6px 14px; border-radius:8px; display:flex; align-items:center; gap:6px;">
             <span>🏮</span>
             <span>御朱印めぐり</span>
             <span style="font-size:0.7rem; background:#e11d48; color:#fff; padding:1px 6px; border-radius:99px;">51社寺</span>
           </button>
 
           <!-- ③ 近く・帰り道 (第3の目的) -->
-          <button class="purpose-btn btn-nearby" id="btn-mode-nearby" onclick="JapanApp.selectIntentMode('nearby')" style="font-weight:800; font-size:0.84rem; padding:6px 14px; border-radius:8px; border:2px solid #0284c7; background:#f0f9ff; color:#0369a1; cursor:pointer; display:flex; align-items:center; gap:6px;">
+          <button class="purpose-btn btn-nearby" id="btn-mode-nearby" onclick="JapanApp.selectIntentMode('nearby')" style="font-weight:800; font-size:0.84rem; padding:6px 14px; border-radius:8px; display:flex; align-items:center; gap:6px;">
             <span>📍</span>
             <span>近く・帰り道ナビ</span>
             <span style="font-size:0.7rem; background:#0284c7; color:#fff; padding:1px 6px; border-radius:99px;">距離順</span>
           </button>
 
           <!-- 全社寺表示 -->
-          <button class="purpose-btn btn-all" id="btn-mode-all" onclick="JapanApp.selectIntentMode('all')" style="font-weight:700; font-size:0.8rem; padding:6px 12px; border-radius:8px; border:1px solid #cbd5e1; background:#fff; color:#475569; cursor:pointer;">
+          <button class="purpose-btn btn-all" id="btn-mode-all" onclick="JapanApp.selectIntentMode('all')" style="font-weight:700; font-size:0.8rem; padding:6px 12px; border-radius:8px;">
             ⛩️ 新潟県全88社寺
           </button>
         </div>
@@ -899,12 +920,12 @@
       <!-- 👑 仏像モード時に出現する「仏像系統・階級別サブフィルターバー」 -->
       <div id="subbar-buddha" style="display:flex; align-items:center; gap:6px; flex-wrap:wrap; padding:8px 12px; background:#faf5ff; border:1px solid #e9d5ff; border-radius:8px; font-size:0.75rem;">
         <strong style="color:#6d28d9; margin-right:4px;">👑 仏像の系統から選ぶ:</strong>
-        <button class="subfilter-btn active" id="sbtn-buddha-all" onclick="JapanApp.filterBuddhaSub('all')">すべて (24)</button>
-        <button class="subfilter-btn" id="sbtn-buddha-nyorai" onclick="JapanApp.filterBuddhaSub('nyorai')">🌟 如来（五智国分寺・出湯薬師堂）</button>
-        <button class="subfilter-btn" id="sbtn-buddha-bosatsu" onclick="JapanApp.filterBuddhaSub('bosatsu')">💖 菩薩・大観音（胎内大観音・観音寺）</button>
+        <button class="subfilter-btn active" id="sbtn-buddha-all" onclick="JapanApp.filterBuddhaSub('all')">すべて (13)</button>
+        <button class="subfilter-btn" id="sbtn-buddha-nyorai" onclick="JapanApp.filterBuddhaSub('nyorai')">🌟 如来（五智国分寺・出湯薬師堂・乙松）</button>
+        <button class="subfilter-btn" id="sbtn-buddha-bosatsu" onclick="JapanApp.filterBuddhaSub('bosatsu')">💖 菩薩・大観音（胎内大観音・国上寺・普談寺）</button>
         <button class="subfilter-btn" id="sbtn-buddha-myoo" onclick="JapanApp.filterBuddhaSub('myoo')">🔥 不動明王（菅谷不動尊）</button>
-        <button class="subfilter-btn" id="sbtn-buddha-tenbu" onclick="JapanApp.filterBuddhaSub('tenbu')">⚔️ 天部・仁王像（国上寺・種月寺・浦佐）</button>
-        <button class="subfilter-btn" id="sbtn-buddha-rakan" onclick="JapanApp.filterBuddhaSub('rakan')">🗿 五百羅漢・石仏群（慈光寺・長谷寺）</button>
+        <button class="subfilter-btn" id="sbtn-buddha-tenbu" onclick="JapanApp.filterBuddhaSub('tenbu')">⚔️ 天部・仁王像（国上寺・普談寺・寛益寺・浦佐）</button>
+        <button class="subfilter-btn" id="sbtn-buddha-rakan" onclick="JapanApp.filterBuddhaSub('rakan')">🗿 五百羅漢・石仏群（佐渡長谷寺・出湯華報寺）</button>
       </div>
 
       <!-- 🏮 御朱印モード時に出現する「御朱印案内バー」 -->
@@ -2733,7 +2754,7 @@
                 <!-- 🎯 選択された目的に合わせた最優先ヒーロー情報枠 -->
                 ${currentIntentMode === 'buddha' ? `
                   <div style="background:#faf5ff; border:1.5px solid #c084fc; border-radius:6px; padding:6px 9px; font-size:0.75rem; color:#581c87; margin-bottom:6px;">
-                    <strong style="color:#7c3aed;">👑 本尊・拝観見どころ：</strong>${it.catchphrase || '歴史ある仏像・境内見どころ'}
+                    <strong style="color:#7c3aed;">👑 本尊・拝観見どころ：</strong>${it.buddhaHighlight || it.catchphrase}
                     ${it.hasNio ? '<span style="font-size:0.68rem; background:#dc2626; color:#fff; padding:1px 5px; border-radius:4px; font-weight:800; margin-left:4px;">💪 山門仁王像</span>' : ''}
                     ${it.id === 'echigo_tainai_kannon' ? '<span style="font-size:0.68rem; background:#059669; color:#fff; padding:1px 5px; border-radius:4px; font-weight:800; margin-left:4px;">全高26m露天大観音</span>' : ''}
                   </div>
